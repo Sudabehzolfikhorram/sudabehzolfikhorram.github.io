@@ -12,6 +12,7 @@
     "animejs": "^4.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "libphonenumber-js": "^1.13.15",
     "lucide-react": "^1.60.0",
     "motion": "^14.4.0",
     "next": "16.4.2",

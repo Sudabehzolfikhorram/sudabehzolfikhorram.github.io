@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/motion/reveal";
 import { MessagePopover } from "./message-popover";
+import { MessageSheet } from "./message-sheet";
 
 export function CtaBand() {
   return (
@@ -11,8 +12,10 @@ export function CtaBand() {
             Have a tangled product? <em className="text-signal">Let’s straighten it out.</em>
           </h2>
         </div>
+        {/* Below lg the popover has no room to open, so a bottom sheet takes over. */}
+        <MessageSheet className="lg:hidden" />
         {/* Reserve the open panel's height so it never covers the heading. */}
-        <div className="lg:min-h-[220px] lg:self-end">
+        <div className="hidden lg:block lg:min-h-[220px] lg:self-end">
           <MessagePopover />
         </div>
       </Reveal>

@@ -5,6 +5,7 @@ import { AnimatePresence, motion, type Transition } from "motion/react";
 import {
   type FormEvent,
   type KeyboardEvent,
+  useEffect,
   useId,
   useLayoutEffect,
   useRef,
@@ -12,7 +13,7 @@ import {
   useSyncExternalStore,
 } from "react";
 import { EASE_OUT } from "@/components/motion/reveal";
-import { type ContactKind, contactKind, MIN_LENGTH, sendMessage } from "@/lib/contact";
+import { type ContactKind, checkContact, MIN_LENGTH, sendMessage } from "@/lib/contact";
 import { site } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -93,7 +94,16 @@ function LengthRing({ length }: { length: number }) {
  * Sits in the page flow, so opening and sending grow the hero instead of
  * floating over it.
  */
-export function ContactComposer({ className }: { className?: string }) {
+export function ContactComposer({
+  className,
+  bare = false,
+  autoFocus = false,
+}: {
+  className?: string;
+  /** Drops the card chrome, for when a sheet already frames it. */
+  bare?: boolean;
+  autoFocus?: boolean;
+}) {
   const id = useId();
   const shortcut = useShortcut();
   const [message, setMessage] = useState("");
@@ -104,10 +114,23 @@ export function ContactComposer({ className }: { className?: string }) {
   const textRef = useRef<HTMLTextAreaElement>(null);
 
   const length = message.trim().length;
-  const kind = contactKind(contact);
-  const ready = length >= MIN_LENGTH && kind !== null;
-  const contactError = contactTouched && contact.trim() !== "" && !kind;
+  const check = checkContact(contact);
+  const { kind } = check;
+  const ready = length >= MIN_LENGTH && check.valid;
+  // Judged once the visitor leaves the field (or tries to send), not mid-typing.
+  const contactError =
+    contactTouched && !check.valid
+      ? (check.error ?? "Add how I can reach you: email, phone or Telegram.")
+      : undefined;
   const KindIcon = kind ? KINDS[kind].Icon : AtSign;
+
+  useEffect(() => {
+    if (autoFocus) {
+      // After the sheet's slide-in, so the keyboard doesn't fight the animation.
+      const t = window.setTimeout(() => textRef.current?.focus({ preventScroll: true }), 350);
+      return () => window.clearTimeout(t);
+    }
+  }, [autoFocus]);
 
   // The textarea grows with the message instead of scrolling inside itself.
   useLayoutEffect(() => {
@@ -130,7 +153,7 @@ export function ContactComposer({ className }: { className?: string }) {
     setPhase("sending");
     try {
       await sendMessage(message.trim(), contact.trim());
-      setSentTo(contact.trim());
+      setSentTo(check.value);
       setMessage("");
       setContact("");
       setContactTouched(false);
@@ -151,10 +174,13 @@ export function ContactComposer({ className }: { className?: string }) {
     <motion.div
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       className={cn(
-        "relative w-full max-w-[600px] overflow-hidden rounded-[28px] border border-rule bg-paper/85 text-left text-ink shadow-[0_40px_90px_-50px_rgba(23,20,15,0.55)] backdrop-blur-md",
+        "relative w-full max-w-[600px] overflow-hidden text-left text-ink",
+        bare
+          ? "rounded-2xl"
+          : "rounded-[28px] border border-rule bg-paper/85 shadow-[0_40px_90px_-50px_rgba(23,20,15,0.55)] backdrop-blur-md",
         className
       )}
-      initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
+      initial={bare ? false : { opacity: 0, y: 24, filter: "blur(6px)" }}
       layout
       transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.35, layout: MORPH }}
     >
@@ -268,19 +294,19 @@ export function ContactComposer({ className }: { className?: string }) {
                 </label>
                 <input
                   aria-describedby={contactError ? `${id}-contact-error` : undefined}
-                  aria-invalid={contactError}
+                  aria-invalid={Boolean(contactError)}
                   autoComplete="email"
                   className="h-full min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-ink-soft/70 disabled:opacity-60"
                   disabled={phase === "sending"}
                   id={`${id}-contact`}
-                  onBlur={() => setContactTouched(true)}
+                  onBlur={() => setContactTouched(contact.trim() !== "")}
                   onChange={(e) => setContact(e.target.value)}
                   onKeyDown={onKeyDown}
-                  placeholder="Your email, phone or Telegram ID"
+                  placeholder="Email, phone or Telegram ID"
                   value={contact}
                 />
                 <AnimatePresence initial={false}>
-                  {kind ? (
+                  {kind && check.valid ? (
                     <motion.span
                       animate={{ opacity: 1, x: 0 }}
                       className="shrink-0 rounded-full bg-blush px-2.5 py-1 font-mono text-[10px] text-signal uppercase tracking-[0.08em]"
@@ -295,16 +321,30 @@ export function ContactComposer({ className }: { className?: string }) {
                 </AnimatePresence>
               </div>
               <AnimatePresence initial={false}>
-                {contactError ? (
+                {contactError || check.suggestion ? (
                   <motion.p
                     animate={{ height: "auto", opacity: 1 }}
-                    className="overflow-hidden px-2 text-destructive text-sm"
+                    className={cn("overflow-hidden px-2 text-sm", contactError ? "text-destructive" : "text-ink-soft")}
                     exit={{ height: 0, opacity: 0 }}
                     id={`${id}-contact-error`}
                     initial={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.25, ease: EASE_OUT }}
                   >
-                    <span className="block pt-2">Add an email, a phone number or a Telegram ID like @name.</span>
+                    <span className="block pt-2">
+                      {contactError ?? (
+                        <>
+                          Did you mean{" "}
+                          <button
+                            className="font-mono text-signal underline underline-offset-2"
+                            onClick={() => setContact(check.suggestion ?? contact)}
+                            type="button"
+                          >
+                            {check.suggestion}
+                          </button>
+                          ?
+                        </>
+                      )}
+                    </span>
                   </motion.p>
                 ) : null}
               </AnimatePresence>
