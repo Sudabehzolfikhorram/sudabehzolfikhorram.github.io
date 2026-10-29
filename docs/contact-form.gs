@@ -64,7 +64,7 @@ function doPost(e) {
 
 function notifyTelegram(message, contact) {
   var props = PropertiesService.getScriptProperties();
-  var token = props.getProperty("TELEGRAM_TOKEN");
+  var token = (props.getProperty("TELEGRAM_TOKEN") || "").trim();
   var chatId = props.getProperty("TELEGRAM_CHAT_ID");
   if (!token || !chatId) {
     return;
@@ -79,12 +79,17 @@ function notifyTelegram(message, contact) {
 /** Run once from the editor after pressing Start in your bot. */
 function connectTelegram() {
   var props = PropertiesService.getScriptProperties();
-  var token = props.getProperty("TELEGRAM_TOKEN");
+  var token = (props.getProperty("TELEGRAM_TOKEN") || "").trim();
   if (!token) {
     throw new Error("Add TELEGRAM_TOKEN in Project Settings → Script Properties first.");
   }
-  var res = UrlFetchApp.fetch("https://api.telegram.org/bot" + token + "/getUpdates", { muteHttpExceptions: true });
-  var updates = JSON.parse(res.getContentText()).result || [];
+  // Says which bot the token belongs to, so a token from another bot is obvious.
+  var me = telegram(token, "getMe");
+  console.log("Token belongs to @" + me.username);
+  // getUpdates refuses to work while a webhook is set; clear it, keeping pending messages.
+  telegram(token, "deleteWebhook", { drop_pending_updates: false });
+
+  var updates = telegram(token, "getUpdates");
   var chat = null;
   for (var i = updates.length - 1; i >= 0 && !chat; i--) {
     var msg = updates[i].message || updates[i].edited_message;
@@ -93,11 +98,32 @@ function connectTelegram() {
     }
   }
   if (!chat) {
-    throw new Error("No chat found. Open your bot in Telegram, press Start (or send it any message), then run this again.");
+    throw new Error(
+      "No chat found for @" + me.username + ". Open https://t.me/" + me.username +
+        " from your own account, send it any message, then run this again."
+    );
   }
   props.setProperty("TELEGRAM_CHAT_ID", String(chat.id));
   sendTelegram(token, chat.id, "✅ Connected. Messages from your portfolio will arrive here.");
   console.log("Connected to @" + (chat.username || chat.first_name) + " (chat " + chat.id + ")");
+}
+
+/** Calls a Bot API method and returns its result, or throws Telegram's own error. */
+function telegram(token, method, payload) {
+  var res = UrlFetchApp.fetch("https://api.telegram.org/bot" + token + "/" + method, {
+    method: "post",
+    contentType: "application/json",
+    payload: JSON.stringify(payload || {}),
+    muteHttpExceptions: true,
+  });
+  var body = JSON.parse(res.getContentText());
+  if (!body.ok) {
+    var hint = body.error_code === 401 || body.error_code === 404
+      ? " The token is wrong or incomplete: copy it again from @BotFather → /mybots → your bot → API Token."
+      : "";
+    throw new Error("Telegram " + method + " failed: " + body.description + "." + hint);
+  }
+  return body.result;
 }
 
 function sendTelegram(token, chatId, text) {
