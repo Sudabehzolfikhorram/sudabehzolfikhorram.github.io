@@ -1,12 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
 import CradleText from "@/components/kokonutui/cradle-text";
 import DotField from "@/components/kokonutui/dot-field";
 import TypewriterTitle from "@/components/kokonutui/type-writer";
 import { site } from "@/lib/content";
-import { MessagePopover } from "./message-popover";
+import { ContactComposer } from "./contact-composer";
 
 const helpWith = [
   { text: "a SaaS dashboard.", deleteAfter: true },
@@ -15,40 +13,6 @@ const helpWith = [
   { text: "a design system.", deleteAfter: true },
   { text: "a website redesign.", deleteAfter: true },
 ];
-
-function CopyEmail() {
-  const [copied, setCopied] = useState(false);
-  return (
-    <button
-      className="group inline-flex h-11 items-center gap-3 rounded-full border border-ink/15 bg-paper/80 px-5 text-sm backdrop-blur transition-colors hover:border-signal"
-      onClick={async () => {
-        try {
-          await navigator.clipboard.writeText(site.email);
-          setCopied(true);
-          setTimeout(() => setCopied(false), 1800);
-        } catch {
-          window.location.href = `mailto:${site.email}`;
-        }
-      }}
-      type="button"
-    >
-      <span className="font-mono">{site.email}</span>
-      <span className="relative grid h-5 w-14 place-items-center overflow-hidden rounded-full bg-ink text-[11px] text-paper">
-        <AnimatePresence initial={false} mode="popLayout">
-          <motion.span
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -14, opacity: 0 }}
-            initial={{ y: 14, opacity: 0 }}
-            key={copied ? "c" : "n"}
-            transition={{ type: "spring", stiffness: 500, damping: 32 }}
-          >
-            {copied ? "Copied ✓" : "Copy"}
-          </motion.span>
-        </AnimatePresence>
-      </span>
-    </button>
-  );
-}
 
 export function ContactHero() {
   return (
@@ -76,10 +40,7 @@ export function ContactHero() {
           />
         </div>
 
-        <div className="mt-12 flex min-h-[200px] flex-col items-center gap-4 sm:flex-row sm:items-start">
-          <MessagePopover align="start" />
-          <CopyEmail />
-        </div>
+        <ContactComposer className="mt-12" />
       </div>
     </DotField>
   );
