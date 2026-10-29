@@ -61,7 +61,7 @@ export function SystemLayout({ cs }: { cs: CaseStudy }) {
         <div className={cn(wrap, "grid gap-12 lg:grid-cols-12")}>
           <Reveal className="lg:col-span-4">
             <p className="eyebrow !text-paper/60"><span className="text-signal">01</span> — The brief</p>
-            <p className="mt-6 font-display text-6xl leading-none">Full site.</p>
+            <p className="mt-6 font-display text-5xl leading-none">Full site.</p>
           </Reveal>
           <Reveal className="self-end lg:col-span-7 lg:col-start-6" delay={0.1}>
             <p className="font-display text-2xl leading-snug sm:text-3xl">{cs.context}</p>

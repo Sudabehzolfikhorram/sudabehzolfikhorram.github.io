@@ -4,7 +4,6 @@ import { parsePhoneNumberFromString } from "libphonenumber-js/max";
 import { site } from "@/lib/content";
 
 export const SUBJECT = "Project enquiry from your portfolio";
-export const MIN_LENGTH = 10;
 
 export type ContactKind = "email" | "phone" | "telegram";
 
@@ -180,8 +179,6 @@ export function checkContact(raw: string): ContactCheck {
     error: "Add an email, a phone number, or a Telegram username starting with @.",
   };
 }
-
-export const isContact = (value: string) => checkContact(value).valid;
 
 /** Opens the visitor's mail app with their message addressed to Sudabeh. */
 export function sendByEmail(message: string, contact: string) {

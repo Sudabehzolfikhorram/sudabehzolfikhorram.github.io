@@ -19,7 +19,7 @@ export function Breadcrumb({ cs }: { cs: CaseStudy }) {
     <div className="border-rule border-b">
       <nav aria-label="Breadcrumb" className={cn(wrap, "flex items-center justify-between gap-4 py-3")}>
         <ol className="flex min-w-0 items-center gap-2 font-mono text-[0.75rem] uppercase tracking-[0.06em]">
-          <li><Link className="text-ink-soft hover:text-signal" href="/">Index</Link></li>
+          <li><Link className="text-ink-soft hover:text-signal" href="/">Hello</Link></li>
           <li aria-hidden className="text-ink-soft">/</li>
           <li><Link className="text-ink-soft hover:text-signal" href="/work">Work</Link></li>
           <li aria-hidden className="text-ink-soft">/</li>
@@ -231,7 +231,7 @@ export function MoreProjects({ cs }: { cs: CaseStudy }) {
 
 export function CaseTitle({ cs, className, size = "lg" }: { cs: CaseStudy; className?: string; size?: "lg" | "xl" }) {
   return (
-    <h1 className={cn("font-display leading-[0.95]", size === "xl" ? "text-[clamp(3.25rem,10vw,9rem)]" : "text-[clamp(3rem,7vw,6.5rem)]", className)}>
+    <h1 className={cn("font-display leading-[0.95]", size === "xl" ? "text-[clamp(2.5rem,6.5vw,4.75rem)]" : "text-[clamp(2.25rem,5vw,3.75rem)]", className)}>
       {cs.name}
     </h1>
   );

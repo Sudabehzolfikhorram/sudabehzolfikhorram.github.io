@@ -11,8 +11,9 @@ const SHEET = { type: "spring", duration: 0.5, bounce: 0.12 } as const;
 const noop = () => () => {};
 
 /**
- * Small screens' take on the message popover: a pill that opens the full
- * composer in a bottom sheet. Drag it down, tap outside or press Escape to close.
+ * A pill that opens the chat composer: a bottom sheet on phones (drag it
+ * down to close) and a centred dialog on larger screens. Tapping outside or
+ * pressing Escape closes either.
  */
 export function MessageSheet({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
@@ -65,7 +66,8 @@ export function MessageSheet({ className }: { className?: string }) {
         ? createPortal(
             <AnimatePresence>
               {open ? (
-                <div className="fixed inset-0 z-[100]">
+                // Bottom sheet on phones, a centred dialog from sm up.
+                <div className="fixed inset-0 z-[100] flex items-end justify-center sm:items-center sm:p-6">
                   <motion.button
                     animate={{ opacity: 1 }}
                     aria-label="Close"
@@ -77,17 +79,17 @@ export function MessageSheet({ className }: { className?: string }) {
                     type="button"
                   />
                   <motion.div
-                    animate={{ y: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
                     aria-label="Write me a message"
                     aria-modal="true"
-                    className="absolute inset-x-0 bottom-0 flex max-h-[92dvh] flex-col rounded-t-[28px] bg-paper text-ink shadow-[0_-20px_60px_-30px_rgba(0,0,0,0.5)]"
+                    className="relative flex max-h-[92dvh] w-full flex-col rounded-t-[28px] bg-paper text-ink shadow-[0_-20px_60px_-30px_rgba(0,0,0,0.5)] sm:max-w-[560px] sm:rounded-[28px] sm:shadow-2xl"
                     drag="y"
                     dragControls={drag}
                     dragListener={false}
                     dragConstraints={{ top: 0, bottom: 0 }}
                     dragElastic={{ top: 0, bottom: 0.6 }}
-                    exit={{ y: "100%" }}
-                    initial={{ y: "100%" }}
+                    exit={{ y: "100%", opacity: 0 }}
+                    initial={{ y: "100%", opacity: 0 }}
                     onDragEnd={onDragEnd}
                     role="dialog"
                     transition={SHEET}
@@ -97,7 +99,7 @@ export function MessageSheet({ className }: { className?: string }) {
                       onPointerDown={(e) => drag.start(e)}
                     >
                       <span className="w-8" />
-                      <span aria-hidden className="h-1.5 w-11 rounded-full bg-rule" />
+                      <span aria-hidden className="h-1.5 w-11 rounded-full bg-rule sm:invisible" />
                       <button
                         aria-label="Close"
                         className="grid size-8 place-items-center rounded-full text-ink-soft transition-colors hover:bg-paper-2"

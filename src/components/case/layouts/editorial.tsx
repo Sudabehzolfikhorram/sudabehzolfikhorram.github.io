@@ -44,7 +44,7 @@ export function EditorialLayout({ cs }: { cs: CaseStudy }) {
         <ScrollIndex scroller="window" selector="h2">
           <article className="mx-auto max-w-[680px]">
             <Chapter title="The brief">
-              <p className="first-letter:float-left first-letter:mt-1 first-letter:mr-3 first-letter:font-display first-letter:text-7xl first-letter:text-signal first-letter:leading-[0.8]">
+              <p className="first-letter:float-left first-letter:mt-1 first-letter:mr-3 first-letter:font-display first-letter:text-5xl first-letter:text-signal first-letter:leading-[0.8]">
                 {cs.summary}
               </p>
               <p>{cs.context}</p>

@@ -1,23 +1,19 @@
 import { Reveal } from "@/components/motion/reveal";
-import { MessagePopover } from "./message-popover";
 import { MessageSheet } from "./message-sheet";
 
 export function CtaBand() {
   return (
-    <section className="bg-ink text-paper">
-      <Reveal className="mx-auto flex max-w-[1240px] flex-col items-start gap-12 px-4 py-24 sm:px-8 lg:flex-row lg:items-end lg:justify-between">
+    // Ink in light mode; a raised navy panel in dark mode instead of an inverted, light one.
+    <section className="relative overflow-hidden bg-ink text-paper dark:border-rule dark:border-t dark:bg-paper-2 dark:text-ink">
+      <div aria-hidden className="pointer-events-none absolute -right-40 -bottom-60 size-[520px] rounded-full bg-glow/30 blur-[120px]" />
+      <Reveal className="relative mx-auto flex max-w-[1240px] flex-col items-start gap-12 px-4 py-24 sm:px-8 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="eyebrow !text-paper/60">Available for select projects</p>
-          <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.8rem,6vw,5.5rem)] leading-[1.02]">
-            Have a tangled product? <em className="text-signal">Let’s straighten it out.</em>
+          <p className="eyebrow !text-paper/60 dark:!text-ink-soft">Available for select projects</p>
+          <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.02]">
+            Have a tangled product? <em className="text-[#a596ff]">Let’s straighten it out.</em>
           </h2>
         </div>
-        {/* Below lg the popover has no room to open, so a bottom sheet takes over. */}
-        <MessageSheet className="lg:hidden" />
-        {/* Reserve the open panel's height so it never covers the heading. */}
-        <div className="hidden lg:block lg:min-h-[220px] lg:self-end">
-          <MessagePopover />
-        </div>
+        <MessageSheet className="shrink-0" />
       </Reveal>
     </section>
   );

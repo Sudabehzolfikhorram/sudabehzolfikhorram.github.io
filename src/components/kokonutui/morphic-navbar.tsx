@@ -310,7 +310,7 @@ function Segment({
       <NavLink
         aria-current={current ? "page" : undefined}
         className={cn(
-          "relative flex h-9 items-center rounded-xl px-4 font-medium text-sm transition-colors duration-150",
+          "relative flex h-9 items-center rounded-xl px-3 font-medium text-sm transition-colors duration-150 sm:px-4",
           SURFACE,
           FOCUS_RING,
           highlighted

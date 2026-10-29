@@ -6,7 +6,7 @@ export function SiteFooter() {
     <footer className="border-rule border-t">
       <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-14 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <p className="font-display text-3xl leading-tight">
+          <p className="font-display text-2xl leading-tight">
             From complexity <em className="text-signal">toward clarity.</em>
           </p>
           <p className="mt-3 max-w-sm text-ink-soft text-sm">
@@ -19,10 +19,12 @@ export function SiteFooter() {
         </div>
         <nav aria-label="Footer" className="grid content-start gap-2 text-sm">
           <span className="eyebrow mb-1">Pages</span>
-          <Link className="hover:text-signal" href="/">Index</Link>
+          <Link className="hover:text-signal" href="/">Hello</Link>
           <Link className="hover:text-signal" href="/work">Work</Link>
-          <Link className="hover:text-signal" href="/experience">Experience</Link>
+          <Link className="hover:text-signal" href="/experience">Career</Link>
+          <Link className="hover:text-signal" href="/about">About</Link>
           <Link className="hover:text-signal" href="/contact">Contact</Link>
+          <a className="hover:text-signal" download href={site.resume}>Resume (PDF) ↓</a>
         </nav>
         {site.socials.length > 0 && (
           <nav aria-label="Social" className="grid content-start gap-2 text-sm">

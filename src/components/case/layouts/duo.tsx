@@ -41,7 +41,7 @@ export function DuoLayout({ cs }: { cs: CaseStudy }) {
           <div className={cn(wrap, "grid items-start gap-12 lg:grid-cols-12")}>
             <Reveal className={cn("lg:sticky lg:top-28 lg:col-span-4", i % 2 === 1 && "lg:order-2 lg:col-start-9")}>
               <p className="eyebrow"><span className="text-signal">0{i + 1}</span> — Product</p>
-              <h2 className="mt-4 font-display text-6xl leading-none">{p.name}</h2>
+              <h2 className="mt-4 font-display text-5xl leading-none">{p.name}</h2>
               <p className="mt-6 text-ink-soft leading-relaxed">{p.body}</p>
               <ul className="mt-6 flex flex-wrap gap-2">
                 {p.points.map((pt) => (

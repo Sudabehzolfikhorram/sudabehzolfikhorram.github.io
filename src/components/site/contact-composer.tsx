@@ -1,27 +1,26 @@
 "use client";
 
-import { ArrowUpRight, AtSign, Mail, Phone, Send } from "lucide-react";
+import { ArrowUp, AtSign, Mail, Phone, Send } from "lucide-react";
 import { AnimatePresence, motion, type Transition } from "motion/react";
-import {
-  type FormEvent,
-  type KeyboardEvent,
-  useEffect,
-  useId,
-  useLayoutEffect,
-  useRef,
-  useState,
-  useSyncExternalStore,
-} from "react";
+import Image from "next/image";
+import { type FormEvent, type KeyboardEvent, useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { EASE_OUT } from "@/components/motion/reveal";
-import { type ContactKind, checkContact, MIN_LENGTH, sendMessage } from "@/lib/contact";
+import { type ContactKind, checkContact, sendMessage } from "@/lib/contact";
 import { site } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
-type Phase = "idle" | "sending" | "sent" | "error";
+/**
+ * The contact form as a short chat: Sudabeh says hello, the visitor writes,
+ * she asks how to reach them, and the message is sent. Two questions, one at
+ * a time, so it never feels like a form.
+ */
 
-// The same snappy spring as the copy pill, so small swaps feel related.
-const POP: Transition = { type: "spring", stiffness: 500, damping: 32 };
-const MORPH: Transition = { type: "spring", duration: 0.5, bounce: 0.15 };
+type Step = "message" | "contact" | "sending" | "sent";
+type Bubble = { id: number; from: "bot" | "me"; text: string; error?: boolean };
+
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const POP: Transition = { type: "spring", stiffness: 520, damping: 34 };
+const TYPING_MS = 650;
 
 const KINDS: Record<ContactKind, { label: string; Icon: typeof Mail }> = {
   email: { label: "Email", Icon: Mail },
@@ -29,71 +28,32 @@ const KINDS: Record<ContactKind, { label: string; Icon: typeof Mail }> = {
   telegram: { label: "Telegram", Icon: Send },
 };
 
-const noop = () => () => {};
-const useShortcut = () =>
-  useSyncExternalStore(
-    noop,
-    () => (/Mac|iPhone|iPad/.test(navigator.platform) ? "⌘" : "Ctrl"),
-    () => "Ctrl"
-  );
+const GREETING = "Hi, I’m Sudabeh 👋 What are you working on? Tell me as much or as little as you like.";
+const ASK_CONTACT = "Thanks! How can I reach you? An email, a phone number or a Telegram username all work.";
+const STARTERS = ["I’m hiring a product designer", "I have a product to untangle", "Just saying hi 👋"];
 
-/** Fills as the message reaches its minimum length, then turns into a tick. */
-function LengthRing({ length }: { length: number }) {
-  const done = length >= MIN_LENGTH;
+function Typing() {
   return (
-    <span className="flex items-center gap-2 font-mono text-[11px] text-ink-soft uppercase tracking-[0.06em]">
-      <AnimatePresence initial={false} mode="popLayout">
+    <motion.div
+      animate={{ opacity: 1, y: 0 }}
+      aria-label="Sudabeh is typing"
+      className="flex w-fit items-center gap-1 rounded-2xl rounded-bl-md bg-paper-2 px-4 py-3"
+      exit={{ opacity: 0, transition: { duration: 0.1 } }}
+      initial={{ opacity: 0, y: 6 }}
+      role="status"
+    >
+      {[0, 1, 2].map((i) => (
         <motion.span
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -10, opacity: 0 }}
-          initial={{ y: 10, opacity: 0 }}
-          key={done ? "ready" : "count"}
-          transition={POP}
-        >
-          {done ? "Ready" : `${length}/${MIN_LENGTH}`}
-        </motion.span>
-      </AnimatePresence>
-      <svg aria-hidden className="size-6 -rotate-90" viewBox="0 0 24 24">
-        <circle className="stroke-rule" cx="12" cy="12" fill="none" r="10" strokeWidth="2" />
-        <motion.circle
-          animate={{ pathLength: Math.min(length / MIN_LENGTH, 1) }}
-          className="stroke-signal"
-          cx="12"
-          cy="12"
-          fill={done ? "var(--signal)" : "none"}
-          initial={false}
-          r="10"
-          strokeLinecap="round"
-          strokeWidth="2"
-          transition={POP}
+          animate={{ y: [0, -4, 0], opacity: [0.4, 1, 0.4] }}
+          className="size-1.5 rounded-full bg-ink-soft"
+          key={i}
+          transition={{ duration: 0.9, repeat: Number.POSITIVE_INFINITY, delay: i * 0.15 }}
         />
-        <AnimatePresence>
-          {done ? (
-            <motion.path
-              animate={{ pathLength: 1 }}
-              className="rotate-90 stroke-paper"
-              d="M7.5 12.5 10.5 15.5 16.5 9"
-              exit={{ opacity: 0 }}
-              fill="none"
-              initial={{ pathLength: 0 }}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              style={{ transformOrigin: "12px 12px" }}
-              transition={{ duration: 0.3, ease: EASE_OUT, delay: 0.1 }}
-            />
-          ) : null}
-        </AnimatePresence>
-      </svg>
-    </span>
+      ))}
+    </motion.div>
   );
 }
 
-/**
- * The contact page's message box: write first, then say how to reply.
- * Sits in the page flow, so opening and sending grow the hero instead of
- * floating over it.
- */
 export function ContactComposer({
   className,
   bare = false,
@@ -105,311 +65,331 @@ export function ContactComposer({
   autoFocus?: boolean;
 }) {
   const id = useId();
-  const shortcut = useShortcut();
-  const [message, setMessage] = useState("");
-  const [contact, setContact] = useState("");
-  const [contactTouched, setContactTouched] = useState(false);
-  const [phase, setPhase] = useState<Phase>("idle");
-  const [sentTo, setSentTo] = useState("");
-  const textRef = useRef<HTMLTextAreaElement>(null);
+  const [bubbles, setBubbles] = useState<Bubble[]>([]);
+  const [typing, setTyping] = useState(true);
+  const [step, setStep] = useState<Step>("message");
+  const [input, setInput] = useState("");
+  const [draft, setDraft] = useState("");
+  const [touched, setTouched] = useState(false);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const nextId = useRef(0);
 
-  const length = message.trim().length;
-  const check = checkContact(contact);
-  const { kind } = check;
-  const ready = length >= MIN_LENGTH && check.valid;
-  // Judged once the visitor leaves the field (or tries to send), not mid-typing.
-  const contactError =
-    contactTouched && !check.valid
-      ? (check.error ?? "Add how I can reach you: email, phone or Telegram.")
-      : undefined;
-  const KindIcon = kind ? KINDS[kind].Icon : AtSign;
+  const say = useCallback((from: Bubble["from"], text: string, error?: boolean) => {
+    nextId.current += 1;
+    const bubble = { id: nextId.current, from, text, error };
+    setBubbles((b) => [...b, bubble]);
+  }, []);
+
+  // Sudabeh "types" before each reply, like a person would.
+  const reply = useCallback(
+    (text: string, error?: boolean) =>
+      new Promise<void>((resolve) => {
+        setTyping(true);
+        window.setTimeout(() => {
+          setTyping(false);
+          say("bot", text, error);
+          resolve();
+        }, TYPING_MS);
+      }),
+    [say]
+  );
 
   useEffect(() => {
-    if (autoFocus) {
-      // After the sheet's slide-in, so the keyboard doesn't fight the animation.
-      const t = window.setTimeout(() => textRef.current?.focus({ preventScroll: true }), 350);
-      return () => window.clearTimeout(t);
-    }
+    const t = window.setTimeout(() => {
+      setTyping(false);
+      say("bot", GREETING);
+    }, TYPING_MS);
+    return () => window.clearTimeout(t);
+  }, [say]);
+
+  useEffect(() => {
+    if (!autoFocus) return;
+    // After a sheet's slide-in, so the keyboard doesn't fight the animation.
+    const t = window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 350);
+    return () => window.clearTimeout(t);
   }, [autoFocus]);
 
-  // The textarea grows with the message instead of scrolling inside itself.
+  // Keep the newest bubble in view.
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el && bubbles.length + Number(typing) > 0) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+  }, [bubbles, typing]);
+
+  // The message box grows with its text, up to a point.
   useLayoutEffect(() => {
-    const el = textRef.current;
+    const el = inputRef.current;
     if (el) {
       el.style.height = "auto";
-      el.style.height = `${el.scrollHeight}px`;
+      el.style.height = `${Math.min(el.scrollHeight, 160)}px`;
     }
-  }, [message]);
+  }, [input, step]);
+
+  const check = checkContact(input);
+  const contactError = step === "contact" && touched && input.trim() !== "" && !check.valid ? check.error : undefined;
+  const canSend =
+    !typing && (step === "message" ? input.trim() !== "" : step === "contact" ? check.valid : false);
+  const KindIcon = check.kind ? KINDS[check.kind].Icon : AtSign;
 
   const submit = async (event?: FormEvent) => {
     event?.preventDefault();
-    if (phase === "sending") {
+    if (step === "contact" && !check.valid) {
+      setTouched(true);
       return;
     }
-    if (!ready) {
-      setContactTouched(true);
+    if (!canSend) return;
+
+    if (step === "message") {
+      const text = input.trim();
+      say("me", text);
+      setDraft(text);
+      setInput("");
+      setStep("contact");
+      await reply(ASK_CONTACT);
+      inputRef.current?.focus({ preventScroll: true });
       return;
     }
-    setPhase("sending");
+
+    const contact = check.value;
+    say("me", contact);
+    setInput("");
+    setTouched(false);
+    setStep("sending");
+    setTyping(true);
     try {
-      await sendMessage(message.trim(), contact.trim());
-      setSentTo(check.value);
-      setMessage("");
-      setContact("");
-      setContactTouched(false);
-      setPhase("sent");
+      await sendMessage(draft, contact);
+      await reply(`Got it. I’ll get back to you at ${contact}. Talk soon!`);
+      setStep("sent");
     } catch {
-      setPhase("error");
+      await reply(`Hmm, that didn’t go through. Press send to try again, or email me at ${site.email}.`, true);
+      setInput(contact);
+      setStep("contact");
     }
   };
 
-  const onKeyDown = (event: KeyboardEvent) => {
-    if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
+  const onKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    // Chat convention: Enter sends, Shift+Enter makes a new line.
+    if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) {
       event.preventDefault();
       submit();
     }
+  };
+
+  const restart = () => {
+    setBubbles([]);
+    setDraft("");
+    setStep("message");
+    setTyping(true);
+    window.setTimeout(() => {
+      setTyping(false);
+      say("bot", "Anything else? I’m listening.");
+      inputRef.current?.focus({ preventScroll: true });
+    }, TYPING_MS);
+  };
+
+  const editMessage = () => {
+    // Drop the question and the visitor's message, and put the text back.
+    setBubbles((b) => b.slice(0, -2));
+    setInput(draft);
+    setStep("message");
+    setTouched(false);
+    inputRef.current?.focus({ preventScroll: true });
   };
 
   return (
     <motion.div
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       className={cn(
-        "relative w-full max-w-[600px] overflow-hidden text-left text-ink",
+        "relative flex w-full max-w-[600px] flex-col overflow-hidden text-left text-ink",
         bare
           ? "rounded-2xl"
-          : "rounded-[28px] border border-rule bg-paper/85 shadow-[0_40px_90px_-50px_rgba(23,20,15,0.55)] backdrop-blur-md",
+          : "rounded-[28px] border border-rule bg-paper/90 shadow-[0_40px_90px_-50px_rgba(40,30,120,0.55)] backdrop-blur-md",
         className
       )}
       initial={bare ? false : { opacity: 0, y: 24, filter: "blur(6px)" }}
-      layout
-      transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.35, layout: MORPH }}
+      transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.3 }}
     >
-      <AnimatePresence initial={false} mode="popLayout">
-        {phase === "sent" ? (
-          <motion.div
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            className="flex flex-col items-center px-8 py-12 text-center"
-            exit={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
-            initial={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
-            key="sent"
-            role="status"
-            transition={{ duration: 0.4, ease: EASE_OUT }}
-          >
-            <svg aria-hidden className="size-14 text-signal" fill="none" viewBox="0 0 56 56">
-              <motion.circle
-                animate={{ scale: 1, opacity: 0.14 }}
-                cx="28"
-                cy="28"
-                fill="currentColor"
-                initial={{ scale: 0.4, opacity: 0 }}
-                r="28"
-                style={{ transformOrigin: "28px 28px" }}
-                transition={POP}
-              />
-              <motion.path
-                animate={{ pathLength: 1 }}
-                d="M18 29 25 36 39 21"
-                initial={{ pathLength: 0 }}
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="3"
-                transition={{ duration: 0.45, ease: EASE_OUT, delay: 0.15 }}
-              />
-            </svg>
-            <h3 className="mt-6 font-display text-4xl">Message sent</h3>
-            <p className="mt-3 max-w-sm text-ink-soft">
-              Thank you! I’ll get back to you at <span className="font-mono text-ink">{sentTo}</span>.
-            </p>
-            <button
-              className="mt-8 h-11 rounded-full border border-ink/15 px-5 text-sm transition-colors hover:border-signal hover:text-signal"
-              onClick={() => {
-                setPhase("idle");
-                requestAnimationFrame(() => textRef.current?.focus());
-              }}
-              type="button"
+      <div className="flex items-center gap-3 border-rule border-b px-5 py-4">
+        <span className="relative size-10 shrink-0">
+          <Image alt="" className="rounded-full object-cover grayscale" fill sizes="40px" src={`${BASE}/about/sudabeh.webp`} />
+          <span className="absolute -right-0.5 -bottom-0.5 size-3 rounded-full border-2 border-paper bg-signal" />
+        </span>
+        <div className="min-w-0">
+          <p className="font-semibold leading-tight">{site.name}</p>
+          <p className="truncate text-ink-soft text-xs">Product designer · replies personally</p>
+        </div>
+      </div>
+
+      <div
+        aria-live="polite"
+        className="flex max-h-[380px] min-h-[220px] flex-col gap-2.5 overflow-y-auto overscroll-contain px-5 py-5"
+        ref={scrollRef}
+      >
+        <AnimatePresence initial={false}>
+          {bubbles.map((b) => (
+            <motion.div
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              className={cn(
+                "max-w-[85%] whitespace-pre-wrap break-words rounded-2xl px-4 py-2.5 leading-relaxed",
+                b.from === "me"
+                  ? "self-end rounded-br-md bg-signal text-white"
+                  : b.error
+                    ? "rounded-bl-md bg-destructive/10 text-destructive"
+                    : "rounded-bl-md bg-paper-2"
+              )}
+              initial={{ opacity: 0, y: 10, scale: 0.96 }}
+              key={b.id}
+              style={{ originX: b.from === "me" ? 1 : 0, originY: 1 }}
+              transition={POP}
             >
-              Write another message
-            </button>
-          </motion.div>
-        ) : (
-          <motion.form
+              {b.text}
+            </motion.div>
+          ))}
+          {typing && <Typing key="typing" />}
+        </AnimatePresence>
+
+        {step === "message" && bubbles.length === 1 && !typing && input === "" && (
+          <motion.div
             animate={{ opacity: 1 }}
-            aria-label="Write me a message"
-            exit={{ opacity: 0, filter: "blur(4px)" }}
+            className="mt-1 flex flex-wrap gap-2"
             initial={{ opacity: 0 }}
-            key="form"
-            noValidate
-            onSubmit={submit}
-            transition={{ duration: 0.25, ease: EASE_OUT }}
+            transition={{ delay: 0.2 }}
           >
-            <div className="flex items-center justify-between gap-4 px-6 pt-5">
-              <span className="eyebrow">To · {site.shortName}</span>
-              <LengthRing length={length} />
-            </div>
-
-            <label className="sr-only" htmlFor={`${id}-message`}>
-              Your message, at least {MIN_LENGTH} characters
-            </label>
-            <textarea
-              className="block max-h-[320px] min-h-[136px] w-full resize-none bg-transparent px-6 pt-3 pb-4 font-display text-xl leading-snug outline-none placeholder:text-ink-soft/60 disabled:opacity-60 sm:text-2xl"
-              disabled={phase === "sending"}
-              id={`${id}-message`}
-              onChange={(e) => {
-                setMessage(e.target.value);
-                if (phase === "error") {
-                  setPhase("idle");
-                }
-              }}
-              onKeyDown={onKeyDown}
-              placeholder="Tell me about your product and where it feels tangled…"
-              ref={textRef}
-              rows={3}
-              value={message}
-            />
-
-            <div className="px-3 pb-3 sm:px-4">
-              <div
-                className={cn(
-                  "flex h-14 items-center gap-3 rounded-2xl border bg-paper-2/70 pr-3 pl-2 transition-colors duration-300 focus-within:border-signal",
-                  contactError ? "border-destructive" : "border-rule"
-                )}
+            {STARTERS.map((s) => (
+              <button
+                className="rounded-full border border-rule px-3 py-1.5 text-sm transition-colors hover:border-signal hover:text-signal"
+                key={s}
+                onClick={() => {
+                  setInput(s);
+                  inputRef.current?.focus({ preventScroll: true });
+                }}
+                type="button"
               >
-                <span className="grid size-10 shrink-0 place-items-center overflow-hidden rounded-xl bg-paper text-ink-soft">
-                  <AnimatePresence initial={false} mode="popLayout">
-                    <motion.span
-                      animate={{ scale: 1, rotate: 0, opacity: 1 }}
-                      className={kind ? "text-signal" : undefined}
-                      exit={{ scale: 0.4, rotate: 30, opacity: 0 }}
-                      initial={{ scale: 0.4, rotate: -30, opacity: 0 }}
-                      key={kind ?? "none"}
-                      transition={POP}
-                    >
-                      <KindIcon className="size-[18px]" strokeWidth={1.75} />
-                    </motion.span>
-                  </AnimatePresence>
-                </span>
-                <label className="sr-only" htmlFor={`${id}-contact`}>
-                  How can I reach you? Email, phone or Telegram ID
-                </label>
-                <input
-                  aria-describedby={contactError ? `${id}-contact-error` : undefined}
-                  aria-invalid={Boolean(contactError)}
-                  autoComplete="email"
-                  className="h-full min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-ink-soft/70 disabled:opacity-60"
-                  disabled={phase === "sending"}
-                  id={`${id}-contact`}
-                  onBlur={() => setContactTouched(contact.trim() !== "")}
-                  onChange={(e) => setContact(e.target.value)}
-                  onKeyDown={onKeyDown}
-                  placeholder="Email, phone or Telegram ID"
-                  value={contact}
-                />
-                <AnimatePresence initial={false}>
-                  {kind && check.valid ? (
-                    <motion.span
-                      animate={{ opacity: 1, x: 0 }}
-                      className="shrink-0 rounded-full bg-blush px-2.5 py-1 font-mono text-[10px] text-signal uppercase tracking-[0.08em]"
-                      exit={{ opacity: 0, x: 8 }}
-                      initial={{ opacity: 0, x: 8 }}
-                      key={kind}
-                      transition={POP}
-                    >
-                      {KINDS[kind].label}
-                    </motion.span>
-                  ) : null}
-                </AnimatePresence>
-              </div>
-              <AnimatePresence initial={false}>
-                {contactError || check.suggestion ? (
-                  <motion.p
-                    animate={{ height: "auto", opacity: 1 }}
-                    className={cn("overflow-hidden px-2 text-sm", contactError ? "text-destructive" : "text-ink-soft")}
-                    exit={{ height: 0, opacity: 0 }}
-                    id={`${id}-contact-error`}
-                    initial={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25, ease: EASE_OUT }}
-                  >
-                    <span className="block pt-2">
-                      {contactError ?? (
-                        <>
-                          Did you mean{" "}
-                          <button
-                            className="font-mono text-signal underline underline-offset-2"
-                            onClick={() => setContact(check.suggestion ?? contact)}
-                            type="button"
-                          >
-                            {check.suggestion}
-                          </button>
-                          ?
-                        </>
-                      )}
-                    </span>
-                  </motion.p>
-                ) : null}
-              </AnimatePresence>
-            </div>
+                {s}
+              </button>
+            ))}
+          </motion.div>
+        )}
 
-            <div className="flex items-center justify-between gap-4 border-rule border-t bg-paper-2/40 px-6 py-4">
-              <AnimatePresence initial={false} mode="popLayout">
-                {phase === "error" ? (
-                  <motion.p
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-destructive text-sm"
-                    initial={{ opacity: 0, y: 6 }}
-                    key="error"
-                    role="alert"
+        {step === "contact" && !typing && (
+          <button className="self-end text-ink-soft text-xs underline-offset-2 hover:text-signal hover:underline" onClick={editMessage} type="button">
+            Edit my message
+          </button>
+        )}
+      </div>
+
+      {step === "sent" ? (
+        <div className="border-rule border-t px-5 py-4">
+          <button
+            className="h-11 w-full rounded-full border border-ink/15 text-sm transition-colors hover:border-signal hover:text-signal"
+            onClick={restart}
+            type="button"
+          >
+            Write another message
+          </button>
+        </div>
+      ) : (
+        <form className="border-rule border-t px-3 pt-3 pb-3 sm:px-4" noValidate onSubmit={submit}>
+          <div
+            className={cn(
+              "flex items-end gap-2 rounded-3xl border bg-paper-2/60 py-1.5 pr-1.5 pl-3 transition-colors focus-within:border-signal",
+              contactError ? "border-destructive" : "border-rule"
+            )}
+          >
+            {step !== "message" && (
+              <span className="mb-1.5 grid size-8 shrink-0 place-items-center overflow-hidden rounded-full bg-paper text-ink-soft">
+                <AnimatePresence initial={false} mode="popLayout">
+                  <motion.span
+                    animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                    className={check.valid ? "text-signal" : undefined}
+                    exit={{ scale: 0.4, rotate: 30, opacity: 0 }}
+                    initial={{ scale: 0.4, rotate: -30, opacity: 0 }}
+                    key={check.kind ?? "none"}
                     transition={POP}
                   >
-                    Couldn’t send it. Try again, or email{" "}
-                    <a className="underline underline-offset-2" href={`mailto:${site.email}`}>
-                      {site.email}
-                    </a>
-                  </motion.p>
-                ) : (
-                  <motion.span
-                    animate={{ opacity: 1 }}
-                    className="hidden items-center gap-1 text-ink-soft text-xs sm:flex"
-                    initial={{ opacity: 0 }}
-                    key="hint"
-                  >
-                    <kbd className="rounded border border-rule bg-paper px-1.5 font-sans text-[11px]">{shortcut}</kbd>
-                    <kbd className="rounded border border-rule bg-paper px-1.5 font-sans text-[11px]">↵</kbd>
-                    <span className="ml-1">to send</span>
+                    <KindIcon className="size-4" strokeWidth={1.75} />
                   </motion.span>
-                )}
-              </AnimatePresence>
-
-              <motion.button
-                aria-disabled={!ready}
-                className={cn(
-                  "group relative ml-auto inline-flex h-12 shrink-0 items-center gap-2 overflow-hidden rounded-full px-6 font-medium transition-colors duration-300",
-                  ready ? "bg-ink text-paper" : "cursor-not-allowed bg-ink/10 text-ink-soft"
-                )}
-                disabled={phase === "sending"}
-                type="submit"
-                whileTap={ready ? { scale: 0.97 } : undefined}
-              >
-                {/* Signal fill sweeps up on hover, like the social tiles below. */}
-                {ready ? (
-                  <span
-                    aria-hidden
-                    className="absolute inset-0 origin-bottom scale-y-0 bg-signal transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-y-100"
-                  />
-                ) : null}
-                <span className="relative">{phase === "sending" ? "Sending…" : "Send message"}</span>
+                </AnimatePresence>
+              </span>
+            )}
+            <label className="sr-only" htmlFor={`${id}-input`}>
+              {step === "message" ? "Your message" : "Your email, phone or Telegram username"}
+            </label>
+            <textarea
+              aria-describedby={contactError ? `${id}-error` : undefined}
+              aria-invalid={Boolean(contactError)}
+              autoComplete={step === "message" ? "off" : "email"}
+              className="max-h-40 min-h-[44px] flex-1 resize-none bg-transparent py-2.5 text-base leading-snug outline-none placeholder:text-ink-soft/70 disabled:opacity-60"
+              disabled={step === "sending"}
+              id={`${id}-input`}
+              onBlur={() => setTouched(true)}
+              onChange={(e) => {
+                setInput(e.target.value);
+                if (step === "contact") setTouched(false);
+              }}
+              onKeyDown={onKeyDown}
+              placeholder={step === "message" ? "Write your message…" : "Email, phone or @telegram"}
+              ref={inputRef}
+              rows={1}
+              value={input}
+            />
+            <AnimatePresence initial={false}>
+              {step === "contact" && check.valid && check.kind && (
                 <motion.span
-                  animate={phase === "sending" ? { x: 24, y: -24, opacity: 0 } : { x: 0, y: 0, opacity: 1 }}
-                  className="relative transition-transform duration-500 group-hover:rotate-45"
-                  transition={{ duration: 0.4, ease: EASE_OUT }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="mb-3 hidden shrink-0 rounded-full bg-blush px-2.5 py-1 font-mono text-[10px] text-signal uppercase tracking-[0.08em] sm:inline"
+                  exit={{ opacity: 0, x: 8 }}
+                  initial={{ opacity: 0, x: 8 }}
+                  transition={POP}
                 >
-                  <ArrowUpRight className="size-4" />
+                  {KINDS[check.kind].label}
                 </motion.span>
-              </motion.button>
-            </div>
-          </motion.form>
-        )}
-      </AnimatePresence>
+              )}
+            </AnimatePresence>
+            <motion.button
+              aria-label="Send"
+              className={cn(
+                "grid size-11 shrink-0 place-items-center rounded-full transition-colors duration-300",
+                canSend ? "bg-signal text-white" : "bg-ink/10 text-ink-soft"
+              )}
+              disabled={step === "sending"}
+              type="submit"
+              whileTap={canSend ? { scale: 0.9 } : undefined}
+            >
+              <ArrowUp className="size-5" />
+            </motion.button>
+          </div>
+          <AnimatePresence initial={false}>
+            {(contactError || check.suggestion) && step === "contact" && (
+              <motion.p
+                animate={{ height: "auto", opacity: 1 }}
+                className={cn("overflow-hidden px-3 text-sm", contactError ? "text-destructive" : "text-ink-soft")}
+                exit={{ height: 0, opacity: 0 }}
+                id={`${id}-error`}
+                initial={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25, ease: EASE_OUT }}
+              >
+                <span className="block pt-2">
+                  {contactError ?? (
+                    <>
+                      Did you mean{" "}
+                      <button
+                        className="font-mono text-signal underline underline-offset-2"
+                        onClick={() => setInput(check.suggestion ?? input)}
+                        type="button"
+                      >
+                        {check.suggestion}
+                      </button>
+                      ?
+                    </>
+                  )}
+                </span>
+              </motion.p>
+            )}
+          </AnimatePresence>
+          <p className="hidden px-3 pt-2 text-[11px] text-ink-soft sm:block">Enter to send · Shift + Enter for a new line</p>
+        </form>
+      )}
     </motion.div>
   );
 }

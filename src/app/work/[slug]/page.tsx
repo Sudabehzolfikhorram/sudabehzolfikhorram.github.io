@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Breadcrumb, MoreProjects, ScreensNote } from "@/components/case/blocks";
+import { BriefLayout } from "@/components/case/layouts/brief";
 import { DuoLayout } from "@/components/case/layouts/duo";
 import { EditorialLayout } from "@/components/case/layouts/editorial";
 import { JourneyLayout } from "@/components/case/layouts/journey";
@@ -17,6 +18,7 @@ const layouts: Record<Layout, (p: { cs: CaseStudy }) => React.ReactNode> = {
   editorial: EditorialLayout,
   system: SystemLayout,
   novin: NovinLayout,
+  brief: BriefLayout,
 };
 
 export function generateStaticParams() {

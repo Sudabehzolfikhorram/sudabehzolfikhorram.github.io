@@ -25,7 +25,7 @@
  */
 
 var TO = "sudabeh.a.zolfikhorram@gmail.com";
-var MIN_LENGTH = 10;
+var MIN_LENGTH = 1;
 var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function doPost(e) {

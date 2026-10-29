@@ -21,7 +21,7 @@ const Chapter = ({ n, label, title, children, dark }: { n: string; label: string
       <p className={cn("font-mono text-[0.78rem] uppercase tracking-[0.06em]", dark ? "text-[#7b9efe]" : "text-ink-soft")}>
         <span className={dark ? "text-white" : "text-signal"}>{n}</span> — {label}
       </p>
-      <h2 className="mt-4 font-display text-4xl leading-[1.05] sm:text-6xl">{title}</h2>
+      <h2 className="mt-4 font-display text-4xl leading-[1.05] sm:text-5xl">{title}</h2>
     </div>
     {children && <div className={cn("self-end leading-relaxed lg:col-span-4 lg:col-start-9", dark ? "text-white/70" : "text-ink-soft")}>{children}</div>}
   </Reveal>
@@ -187,7 +187,7 @@ export function NovinLayout({ cs }: { cs: CaseStudy }) {
                 <span className="size-1.5 animate-pulse rounded-full bg-[#2fb350]" /> {cs.status}
               </span>
             </div>
-            <h1 className="mt-8 font-display text-[clamp(3.5rem,11vw,10rem)] uppercase leading-[0.9]">Novin Host</h1>
+            <h1 className="mt-8 font-display text-[clamp(2.75rem,7vw,5rem)] uppercase leading-[0.9]">Novin Host</h1>
             <p className="mt-6 max-w-3xl font-display text-2xl text-white/85 leading-snug sm:text-4xl">
               A redesign you’re not supposed to notice. Until you try to buy something.
             </p>
@@ -230,7 +230,7 @@ export function NovinLayout({ cs }: { cs: CaseStudy }) {
             ["24/7", "technical support promised on every service"],
           ].map(([v, l]) => (
             <RevealItem className="bg-paper p-7" key={l}>
-              <p className="font-display text-6xl leading-none">{v}</p>
+              <p className="font-display text-5xl leading-none">{v}</p>
               <p className="mt-4 text-ink-soft text-sm leading-snug">{l}</p>
             </RevealItem>
           ))}
@@ -243,7 +243,7 @@ export function NovinLayout({ cs }: { cs: CaseStudy }) {
         <div className={wrap}>
           <Reveal>
             <p className="font-mono text-[#7b9efe] text-[0.78rem] uppercase tracking-[0.06em]"><span className="text-white">02</span> — The brief</p>
-            <blockquote className="mt-8 max-w-5xl font-display text-[clamp(2.2rem,5.5vw,4.75rem)] leading-[1.05]">
+            <blockquote className="mt-8 max-w-5xl font-display text-[clamp(1.9rem,4vw,3rem)] leading-[1.05]">
               “Make it modern. But don’t let our customers feel{" "}
               <span className="relative inline-block">
                 Novin Host

@@ -7,7 +7,7 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 import type { ScreenId } from "@/components/case/mockups";
 
-export type Layout = "split" | "duo" | "journey" | "editorial" | "system" | "novin";
+export type Layout = "split" | "duo" | "journey" | "editorial" | "system" | "novin" | "brief";
 
 export type CaseStudy = {
   slug: string;
@@ -25,8 +25,16 @@ export type CaseStudy = {
   links?: { label: string; href: string }[];
   /** A coded mockup, or a real image (path under /public). */
   cover: ScreenId | { image: string; alt: string };
-  /** A finished project thumbnail from Figma; fills the card edge to edge when set. */
+  /** A finished project thumbnail; fills the card edge to edge when set. */
   thumbnail?: { image: string; alt: string };
+  /** Lead projects, shown large on the home and work pages. */
+  featured?: boolean;
+  /** A short distinction shown on the card, e.g. an award. */
+  badge?: string;
+  /** For short "brief" pages: a few titled paragraphs instead of a full case study. */
+  story?: { title: string; body: string }[];
+  /** A full case study is still being written. */
+  comingSoon?: boolean;
   context: string;
   /** What the work covered. */
   scope: string[];
@@ -39,7 +47,7 @@ export type CaseStudy = {
   products?: { name: string; body: string; points: string[]; screen: ScreenId; link?: string }[];
 };
 
-export const caseStudies: CaseStudy[] = [
+const all: CaseStudy[] = [
   {
     slug: "novinhost",
     name: "Novin Host",
@@ -67,45 +75,54 @@ export const caseStudies: CaseStudy[] = [
     facts: [],
   },
   {
-    slug: "leili",
-    name: "Leili",
-    layout: "split",
-    hue: "#3d5a80",
-    tagline: "Designing a structured evaluation experience for two very different ways of working.",
+    slug: "atlas",
+    name: "Atlas",
+    layout: "brief",
+    hue: "#3b35b5",
+    featured: true,
+    tagline: "From a desktop build to AIx2 Atlas, a live enterprise web platform.",
     summary:
-      "Leili is an evaluation and inspection management platform for admins who set up and oversee evaluations on desktop, and inspectors who complete them in the field on mobile.",
-    category: "B2B SaaS · Inspection platform",
-    status: "Product design case study",
-    meta: {
-      role: "Product Designer",
-      engagement: "Redesign of an existing MVP",
-      platform: "Web (admin) · Mobile (inspector)",
-      tools: ["Figma", "FigJam"],
-    },
-    cover: "leili-admin-home",
-    context:
-      "The workflow existed as checklist-based inspection work before the product. The design challenge was to turn that paper-born workflow and an early digital MVP into a clearer product experience for both roles.",
-    scope: [
-      "Admins plan and monitor evaluation activity",
-      "Inspectors open assigned work, answer questions, review progress and submit",
-      "One shared evaluation structure from setup to submission",
+      "Atlas is AIx2’s enterprise platform. It began as AIx2 Enterprise Twin, a Windows desktop build, and became the web platform now live at aix2atlas.com.",
+    category: "Enterprise AI platform",
+    status: "Live",
+    meta: { role: "Product Designer", engagement: "Product design", platform: "Web", tools: ["Figma"] },
+    links: [{ label: "aix2atlas.com", href: "https://aix2atlas.com/" }],
+    cover: { image: `${BASE}/work/atlas/thumb.svg`, alt: "Atlas: a globe of connected nodes, an enterprise twin in sync" },
+    thumbnail: { image: `${BASE}/work/atlas/thumb.svg`, alt: "Atlas: a globe of connected nodes, an enterprise twin in sync" },
+    context: "",
+    scope: [],
+    highlights: [],
+    screens: [],
+    facts: [],
+    story: [
+      { title: "Where it started", body: "AIx2 Enterprise Twin, a Windows desktop build." },
+      { title: "Where it landed", body: "Atlas, the web platform live at aix2atlas.com." },
     ],
-    highlights: [
-      { title: "One system, two work modes", body: "The same evaluation structure runs from the administrator’s setup work through the inspector’s focused execution." },
-      { title: "Flexible question model", body: "An adaptable evaluation structure that holds different question types while keeping the inspector’s task focused and clear." },
-      { title: "Completion states", body: "Progress, review and submit-warning states so inspectors always know what’s left before they submit." },
+    comingSoon: true,
+  },
+  {
+    slug: "access",
+    name: "Access",
+    layout: "brief",
+    hue: "#5a46e0",
+    badge: "Winner · Tehran Design Week",
+    tagline: "An access and meeting-management product, awarded at Tehran Design Week.",
+    summary:
+      "Access brings doors, meeting rooms and the people who use them into one flow. The project won at Tehran Design Week.",
+    category: "Access management · Web & mobile",
+    status: "Award-winning",
+    meta: { role: "Product Designer", engagement: "Product design", platform: "Web & mobile", tools: ["Figma"] },
+    cover: { image: `${BASE}/work/access/thumb.svg`, alt: "Access: a fingerprint and a booked meeting-room card" },
+    thumbnail: { image: `${BASE}/work/access/thumb.svg`, alt: "Access: a fingerprint and a booked meeting-room card" },
+    context: "",
+    scope: [],
+    highlights: [],
+    screens: [],
+    facts: [],
+    story: [
+      { title: "Recognition", body: "Winner at Tehran Design Week." },
     ],
-    screens: [
-      { id: "leili-admin-home", title: "Admin home", caption: "A planning and monitoring surface for the people responsible for evaluation structure and activity." },
-      { id: "leili-builder", title: "Evaluation creation", caption: "Creating an evaluation step by step: details, questions, assignment." },
-      { id: "leili-inspector-list", title: "Inspector: evaluation list", caption: "Opening assigned evaluations and continuing incomplete work." },
-      { id: "leili-question", title: "Inspector: question", caption: "Answering one question at a time, whatever its type." },
-      { id: "leili-review", title: "Inspector: review & submit", caption: "Reviewing completion, with a warning before submitting incomplete work." },
-    ],
-    facts: [
-      { value: "2", label: "Work contexts: setup & oversight, field execution" },
-      { value: "1", label: "Shared evaluation structure across both roles" },
-    ],
+    comingSoon: true,
   },
   {
     slug: "azman",
@@ -173,8 +190,9 @@ export const caseStudies: CaseStudy[] = [
     slug: "tamdid",
     name: "Tamdid",
     layout: "journey",
+    featured: true,
     hue: "#c4572b",
-    tagline: "A fintech app for smart subscription and wallet management.",
+    tagline: "Subscriptions, wallet and payments in one app, with a little game that keeps people on top of their renewals.",
     summary:
       "Tamdid helps people keep their subscriptions under control: see every renewal, pay from a wallet, and stay motivated with gamification. I designed the product and its custom design system.",
     category: "Fintech · Mobile app",
@@ -210,14 +228,15 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: "novaday",
-    name: "Novaday",
+    slug: "kudos",
+    name: "Kudos",
     layout: "duo",
-    hue: "#4a4fb0",
-    tagline: "Two B2B products, one Tailwind-based design system.",
+    hue: "#e08a1e",
+    featured: true,
+    tagline: "An employee recognition platform whose admin side had to keep up with the team behind it.",
     summary:
-      "At Novaday I designed two B2B products, Kudos and Remeet, on a Tailwind-based design system to improve consistency and streamline admin workflows.",
-    category: "B2B SaaS · Admin & access",
+      "Kudos helps companies recognise and reward their people. At Novaday I designed its B2B admin panel on a Tailwind-based design system, documented every flow and page’s logic for engineering, and also designed Remeet, the team’s access and meeting product.",
+    category: "B2B SaaS · Employee recognition",
     period: { start: "2024-09", end: "2025-06" },
     status: "Shipped",
     meta: {
@@ -232,6 +251,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "remeet.ir", href: "https://remeet.ir/" },
     ],
     cover: "kudos-panel",
+    thumbnail: { image: `${BASE}/work/kudos/thumb.svg`, alt: "Kudos: a recognition card and a leaderboard of the most recognised teams" },
     context:
       "Two products for business customers, built by the same team. A shared, Tailwind-based design system kept them consistent and made admin workflows faster to design and build.",
     scope: ["Kudos admin panel", "Remeet web & mobile", "Flow and page-logic documentation", "Close work with PM and QA"],
@@ -307,7 +327,38 @@ export const caseStudies: CaseStudy[] = [
       { value: "Designed", label: "Design completed; in development" },
     ],
   },
+  {
+    slug: "nanvanamak",
+    name: "Nan va Namak",
+    layout: "brief",
+    hue: "#b5702a",
+    badge: "The turning point",
+    tagline: "A startup of our own. It didn’t launch, and it made me a product designer.",
+    summary:
+      "Nan va Namak was meant to be our own startup: a cooking platform for web, tablet and mobile that we planned to launch ourselves. I designed its interface with a focus on accessibility, usability and clear content discovery.",
+    category: "Cooking platform · Web, tablet, mobile",
+    period: { start: "2024-06", end: "2024-09" },
+    status: "Didn’t launch",
+    meta: { role: "UI/UX Designer", engagement: "Own startup", platform: "Web, tablet & mobile", tools: ["Figma", "FigJam"] },
+    links: [{ label: "Dribbble shot", href: "https://dribbble.com/shots/26277570-Cooking-Platform-Desktop-Experience" }],
+    cover: { image: `${BASE}/work/nanvanamak/thumb.svg`, alt: "Nan va Namak: a loaf of bread and a salt shaker" },
+    thumbnail: { image: `${BASE}/work/nanvanamak/thumb.svg`, alt: "Nan va Namak: a loaf of bread and a salt shaker" },
+    context: "",
+    scope: [],
+    highlights: [],
+    screens: [],
+    facts: [],
+    story: [
+      { title: "The plan", body: "Build and launch a product of our own, not a client brief. I designed the experience across web, tablet and mobile, with accessibility and easy recipe discovery at its core." },
+      { title: "What happened", body: "It never launched. We came out of it with a lot of experience and no product." },
+      { title: "Why it matters", body: "Owning the whole product, not just its screens, showed me where I wanted to go. It’s the project that moved me from UI/UX specialist toward product design." },
+    ],
+  },
 ];
+
+// The order projects appear in: the three lead projects, then the rest.
+const ORDER = ["tamdid", "kudos", "atlas", "access", "azman", "novinhost", "kaaryar", "nanvanamak"];
+export const caseStudies = [...all].sort((a, b) => ORDER.indexOf(a.slug) - ORDER.indexOf(b.slug));
 
 export const getCaseStudy = (slug: string) => caseStudies.find((c) => c.slug === slug);
 

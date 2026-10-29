@@ -1,58 +1,97 @@
+import { ArrowDownToLine } from "lucide-react";
+import Link from "next/link";
 import SlideTextButton from "@/components/kokonutui/slide-text-button";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { Capabilities } from "@/components/site/capabilities";
 import { CtaBand } from "@/components/site/cta-band";
 import { Hero } from "@/components/site/hero";
-import { ProcessSteps } from "@/components/site/process-steps";
-import { Stats } from "@/components/site/stats";
-import { WorkList } from "@/components/site/work-list";
-import { principles } from "@/lib/content";
+import { ProjectCard } from "@/components/site/project-card";
+import { Proof } from "@/components/site/proof";
+import { UntangleStory } from "@/components/site/untangle-story";
+import { caseStudies } from "@/lib/case-studies";
+import { site } from "@/lib/content";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
+  const featured = caseStudies.filter((c) => c.featured);
+
   return (
     <>
       <Hero />
-      <Stats />
-      <Capabilities />
 
+      {/* The work comes first: it's what a recruiter came for. */}
       <section className="mx-auto max-w-[1240px] px-4 py-24 sm:px-8">
         <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="eyebrow">04 — Selected work</p>
-            <h2 className="mt-4 font-display text-5xl leading-[1.02] tracking-tight">
-              Projects with <em className="text-signal">clarity.</em>
+            <p className="eyebrow">Selected work</p>
+            <h2 className="mt-4 max-w-xl font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.05]">
+              Three products, <em className="text-signal">untangled.</em>
             </h2>
           </div>
           <SlideTextButton
             animateIn={false}
             className="rounded-full border-ink/20 text-ink"
             href="/work"
-            hoverText="Open the index →"
-            text="All work"
+            hoverText={`See all ${caseStudies.length} →`}
+            text="All projects"
             variant="ghost"
           />
         </Reveal>
-        <WorkList />
+        <RevealGroup className="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2" stagger={0.1}>
+          {featured.map((cs, i) => (
+            <RevealItem className={cn(i === 0 && "md:col-span-2")} key={cs.slug}>
+              <ProjectCard cs={cs} size={i === 0 ? "lg" : "md"} />
+            </RevealItem>
+          ))}
+        </RevealGroup>
       </section>
 
-      <ProcessSteps />
+      <UntangleStory />
+
+      <section className="mx-auto max-w-[1240px] px-4 py-24 sm:px-8">
+        <Reveal className="mb-10">
+          <p className="eyebrow">In numbers</p>
+          <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.05]">
+            Small numbers, <em className="text-signal">all real.</em>
+          </h2>
+        </Reveal>
+        <Proof />
+      </section>
 
       <section className="border-rule border-t">
-        <div className="mx-auto max-w-[1240px] px-4 py-24 sm:px-8">
-          <Reveal>
-            <p className="eyebrow">06 — Principles</p>
-            <h2 className="mt-4 max-w-2xl font-display text-5xl leading-[1.02] tracking-tight">
-              I design the thinking <em className="text-signal">behind</em> the product.
+        <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-24 sm:px-8 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5">
+            <p className="eyebrow">About</p>
+            <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.05]">
+              Law degree, <em className="text-signal">designer’s habits.</em>
             </h2>
           </Reveal>
-          <RevealGroup className="mt-14 grid gap-px overflow-hidden rounded-lg border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-4" stagger={0.05}>
-            {principles.map((p) => (
-              <RevealItem className="bg-paper p-6" key={p.title}>
-                <h3 className="font-medium">{p.title}</h3>
-                <p className="mt-2 text-ink-soft text-sm leading-relaxed">{p.body}</p>
-              </RevealItem>
-            ))}
-          </RevealGroup>
+          <Reveal className="lg:col-span-6 lg:col-start-7" delay={0.1}>
+            <p className="text-lg leading-relaxed">
+              I studied law while designing my first products. Both come down to the same job: rules people have to
+              live with, made easy to understand.
+            </p>
+            <p className="mt-4 text-ink-soft leading-relaxed">
+              Today I’m a product designer at Algonet, working on dashboards, operational tools and a design system.
+              Out of curiosity I’ve also made brand identities, logos and environmental graphics, but products are
+              where I do my best work.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                className="inline-flex h-10 items-center rounded-full bg-ink px-5 font-medium text-paper text-sm transition-colors hover:bg-signal hover:text-white"
+                href="/about"
+              >
+                More about me →
+              </Link>
+              <a
+                className="inline-flex h-10 items-center gap-2 rounded-full border border-ink/15 px-5 font-medium text-sm transition-colors hover:border-signal hover:text-signal"
+                download
+                href={site.resume}
+              >
+                <ArrowDownToLine className="size-4" />
+                Download CV
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 

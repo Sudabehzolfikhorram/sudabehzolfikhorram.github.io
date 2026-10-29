@@ -7,7 +7,9 @@ export const site = {
   role: "Product Designer",
   intro:
     "I’m Sudabeh, an AI-enabled Product Designer turning complex workflows into clear, thoughtful and user-friendly digital experiences.",
+  url: "https://sudabehzolfikhorram.github.io",
   location: "Tehran, Iran · Open to remote",
+  resume: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/Sudabeh-Zolfi-Khorram-Resume.pdf`,
   email: "sudabeh.a.zolfikhorram@gmail.com",
   contactFallback: "mailto:sudabeh.a.zolfikhorram@gmail.com",
   // Web app URL of the Google Apps Script in docs/contact-form.gs, which
@@ -22,72 +24,36 @@ export const site = {
   ],
 };
 
-export const stats = [
-  { value: "18", suffix: "+", label: "Projects completed" },
-  { value: "4", suffix: "yr+", label: "Years in product & UI/UX" },
-  { value: "13", suffix: "+", label: "Happy clients" },
-];
-
-export const capabilities = [
+// Home page: how a tangled product becomes a clear one, in four steps.
+export const untangleSteps = [
   {
-    title: "Product UX & Flows",
-    tag: "Structure",
-    body: "Structuring complex workflows into clear, usable journeys that help users move through the product with confidence.",
+    verb: "Listen",
+    title: "Find the real brief",
+    body: "I start with the people who use and build the product, and collect every rule, role and edge case before deciding anything. The real problem is rarely the one in the request.",
   },
   {
-    title: "Dashboard & SaaS Design",
-    tag: "Data",
-    body: "Designing data-heavy dashboards and B2B product interfaces that are easier to scan, understand, and use.",
+    verb: "Map",
+    title: "Draw the journeys before the screens",
+    body: "Scattered findings become flows: who does what, in which order, and where it breaks. Teams can see the product’s logic before a single pixel is polished.",
   },
   {
-    title: "AI-enabled Design Workflow",
-    tag: "Method",
-    body: "Using AI to explore faster, organize ideas better, and support smarter design decisions without losing human judgment.",
-  },
-];
-
-export const process = [
-  {
-    short: "Brief",
-    title: "Finding the Real Brief",
-    body: "Every project starts differently. I look at goals, constraints, existing flows, and hidden friction first, especially in redesigns where the real problem is rarely only visual.",
+    verb: "Systemise",
+    title: "Build the spine",
+    body: "Components, tokens and states that every screen shares, so the product stays consistent as it grows. I’ve built custom design systems for Algonet, Tamdid and Studio Kaaryar.",
   },
   {
-    short: "Research",
-    title: "Looking Outside the Room",
-    body: "Benchmarks, competitor analysis, product audits, and AI-assisted exploration to understand better patterns. Not to copy them, but to make sharper decisions.",
-  },
-  {
-    short: "Structure",
-    title: "Making Sense of the Mess",
-    body: "Before polished UI, I map flows, content, states, and rough wireframes so the product has a clear structure before it becomes beautiful.",
-  },
-  {
-    short: "Direction",
-    title: "Giving Direction",
-    body: "I shape the mood, layout, UX writing, and visual language based on the brand, product needs, and the kind of trust the experience should create.",
-  },
-  {
-    short: "System",
-    title: "Designing the Spine",
-    body: "Components, patterns, responsive states, and design systems that help the product stay consistent as it grows. Never isolated screens.",
-  },
-  {
-    short: "Handoff",
-    title: "Closing the Gap",
-    body: "Handoff notes, states, and edge cases for developers, then a review of the build and refined details after the design moves into production.",
+    verb: "Ship",
+    title: "Hand off, then check the build",
+    body: "Documented flows, page logic and edge cases for engineering, then a review of what got built. AI speeds up the exploring and writing; the decisions stay human.",
   },
 ];
 
-export const principles = [
-  { title: "Beyond the Brief", body: "Finding the real problem behind the request, not just redesigning the surface." },
-  { title: "AI With Judgment", body: "Using AI to explore, compare, write, and move faster without outsourcing product thinking." },
-  { title: "Logic Into Journeys", body: "Turning complex product behavior into flows teams can understand and improve." },
-  { title: "Ambiguity Into Direction", body: "Turning early ideas, scattered decisions, and complex flows into a clear structure the team can build from." },
-  { title: "Systems Over Screens", body: "Connecting flows, rules, states, and patterns before screens multiply." },
-  { title: "Teams, Not Just Users", body: "Balancing user needs, business goals, and development realities so the product moves in one clear direction." },
-  { title: "One Logic, Many Surfaces", body: "Keeping mobile, web, tablet, and desktop connected to the same product logic." },
-  { title: "Buildable by Design", body: "Documenting states, decisions, and edge cases so design moves smoothly into development." },
+// Facts that can be checked against the resume, not vanity numbers.
+export const proof = [
+  { value: 4, suffix: "+", label: "Years designing products", note: "Since 2021" },
+  { value: 10, suffix: "", label: "Teams and products", note: "Fintech to ERP" },
+  { value: 3, suffix: "", label: "Custom design systems", note: "Algonet, Tamdid, Kaaryar" },
+  { value: 1, suffix: "", label: "Design award", note: "Tehran Design Week" },
 ];
 
 export type Role = {
@@ -103,6 +69,8 @@ export type Role = {
   caseStudy?: string;
   /** Live product or shot, if public. */
   link?: { label: string; href: string };
+  /** Logo under /public/logos; roles without one show their initials. */
+  logo?: string;
 };
 
 export const experience: Role[] = [
@@ -118,25 +86,25 @@ export const experience: Role[] = [
     about: "Designing complex B2B and internal product experiences across dashboards, operational tools and system-level workflows. Built a custom design system with reusable, production-ready components with product and engineering.",
   },
   {
-    company: "AzMan", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-10", end: null,
+    company: "AzMan", logo: "azman", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-10", end: null,
     about: "Designing three products, AzMan, Hamgam Saz and an ERP, each with distinct workflows across service, operations and personnel management.",
     caseStudy: "azman",
   },
   {
-    company: "Studio Kaaryar", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-09", end: "2026-01",
+    company: "Studio Kaaryar", logo: "kaaryar", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-09", end: "2026-01",
     about: "Redesigned the full website for a social-impact design studio: information architecture, visual storytelling, accessibility, and a custom design system. Design completed; in development.",
     caseStudy: "kaaryar",
     link: { label: "studio.kaaryar.ir", href: "https://studio.kaaryar.ir/" },
   },
   {
-    company: "Tamdid", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-08", end: "2026-06",
+    company: "Tamdid", logo: "tamdid", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-08", end: "2026-06",
     about: "Designed a fintech product for smart subscription and wallet management, covering payments, wallets and gamification, with a custom design system. Design completed; in development.",
     caseStudy: "tamdid",
   },
   {
     company: "Novaday", title: "Product Designer", type: "Full-time", mode: "Hybrid", start: "2024-09", end: "2025-06",
     about: "Designed two B2B products, Kudos and Remeet, on a Tailwind-based design system to improve consistency and streamline admin workflows.",
-    caseStudy: "novaday",
+    caseStudy: "kudos",
     link: { label: "novaday.ir", href: "https://novaday.ir/" },
   },
   {
@@ -147,6 +115,7 @@ export const experience: Role[] = [
   {
     company: "Nan va Namak", title: "UI/UX Designer", type: "Project-based", mode: "Remote", start: "2024-06", end: "2024-09",
     about: "Designed a responsive cooking platform for web, mobile and tablet, focused on accessibility, usability and clear content discovery.",
+    caseStudy: "nanvanamak",
     link: { label: "Dribbble shot", href: "https://dribbble.com/shots/26277570-Cooking-Platform-Desktop-Experience" },
   },
   {
@@ -166,5 +135,38 @@ export function formatMonth(ym: string | null) {
   const [y, m] = ym.split("-").map(Number);
   return `${MONTHS[m - 1]} ${y}`;
 }
+
+/** "1 yr 3 mos" between two YYYY-MM months, counting both ends; open-ended runs to today. */
+export function duration(start: string, end: string | null) {
+  const [sy, sm] = start.split("-").map(Number);
+  const now = new Date();
+  const [ey, em] = end ? end.split("-").map(Number) : [now.getFullYear(), now.getMonth() + 1];
+  const months = Math.max(1, (ey - sy) * 12 + (em - sm) + 1);
+  const y = Math.floor(months / 12);
+  const m = months % 12;
+  return [y && `${y} yr${y > 1 ? "s" : ""}`, m && `${m} mo${m > 1 ? "s" : ""}`].filter(Boolean).join(" ");
+}
+
+// From the resume, for the career page (and for ATS parsers reading it).
+export const skills = [
+  "Product strategy", "UX research & testing", "User flows", "Information architecture", "Dashboard UX",
+  "Responsive web & mobile", "Design systems", "Interaction design", "Wireframing & prototyping", "Visual design", "AI-assisted design",
+];
+export const tools = [
+  "Figma", "FigJam", "Framer", "Notion", "ChatGPT", "Claude", "Google AI Studio", "Lovable", "NotebookLM",
+  "Microsoft Clarity", "GA4", "Adobe Illustrator", "ClickUp", "Slack",
+];
+export const education = [{ title: "Bachelor of Law", place: "Payame Noor University (PNU)", years: "2021 – 2024" }];
+export const courses = [
+  { title: "Product Design Specialist", place: "Amanj" },
+  { title: "Google UX Design", place: "Coursera" },
+  { title: "Gamification", place: "University of Pennsylvania, Coursera" },
+  { title: "UI Design Specialist", place: "7Learn" },
+  { title: "HTML & CSS for Designers", place: "Amanj" },
+];
+export const languages = [
+  { name: "Persian", level: "Native" },
+  { name: "English", level: "Intermediate · working proficiency" },
+];
 
 export const formatRange = (start: string, end: string | null) => `${formatMonth(start)} – ${formatMonth(end)}`;

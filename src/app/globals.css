@@ -8,10 +8,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-montserrat);
+  --font-sans: var(--font-jakarta);
   --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-bricolage);
-  --font-heading: var(--font-bricolage);
+  --font-display: var(--font-jakarta);
+  --font-heading: var(--font-jakarta);
 
   /* Site palette */
   --color-paper: var(--paper);
@@ -21,6 +21,7 @@
   --color-rule: var(--rule);
   --color-signal: var(--signal);
   --color-blush: var(--blush);
+  --color-glow: var(--glow);
 
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
@@ -68,13 +69,15 @@
 }
 
 :root {
-  --paper: #f4f1ea;
-  --paper-2: #ebe6db;
-  --ink: #17140f;
-  --ink-soft: #6b6458;
-  --rule: #d6cfc1;
-  --signal: #0f7a80;
-  --blush: #d7ebe9;
+  /* Cool paper and ink with an indigo-violet signal. */
+  --paper: #f7f6fb;
+  --paper-2: #eeecf7;
+  --ink: #15142b;
+  --ink-soft: #5d5b78;
+  --rule: #dddbec;
+  --signal: #5a46e0;
+  --blush: #e9e5ff;
+  --glow: #8f7cff;
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -116,28 +119,30 @@
   --chart-marker-border: var(--rule);
   --chart-marker-foreground: var(--ink);
   --chart-label: var(--ink-soft);
-  --chart-scale-01: #e8f3f2;
-  --chart-scale-02: #c3e0de;
-  --chart-scale-03: #8cc3c0;
-  --chart-scale-04: #4c9ea0;
+  --chart-scale-01: #eeebff;
+  --chart-scale-02: #d4ccff;
+  --chart-scale-03: #ab9dff;
+  --chart-scale-04: #7f6cf0;
   --chart-scale-05: var(--signal);
   --chart-scale-pattern-color: var(--paper-2);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #13110e;
-    --paper-2: #1d1a16;
-    --ink: #ece6da;
-    --ink-soft: #9c9384;
-    --rule: #34302a;
-    --signal: #4cc2bd;
-    --blush: #12302f;
-    --popover: #1d1a16;
-    --chart-scale-01: #142624;
-    --chart-scale-02: #1b3d3b;
-    --chart-scale-03: #26605d;
-    --chart-scale-04: #34908b;
+    /* Deep navy rather than black: easier on the eyes and lets violet glow. */
+    --paper: #0a0f1f;
+    --paper-2: #111831;
+    --ink: #e9ebf8;
+    --ink-soft: #a0a8c8;
+    --rule: #232c4a;
+    --signal: #a596ff;
+    --blush: #1d1a48;
+    --glow: #6b58ff;
+    --popover: #111831;
+    --chart-scale-01: #16173a;
+    --chart-scale-02: #25235c;
+    --chart-scale-03: #3c3590;
+    --chart-scale-04: #6455d6;
   }
 }
 
@@ -151,12 +156,13 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "cv11", "ss03";
+    /* Decorative glows may bleed past the edge; never let them cause sideways scroll. */
+    overflow-x: clip;
     line-height: 1.6;
   }
   ::selection {
     background: var(--signal);
-    color: var(--paper);
+    color: #fff;
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
@@ -164,7 +170,7 @@
   }
 }
 
-/* Bricolage has no italic: emphasis in titles is carried by colour, not slant. */
+/* Emphasis in titles is carried by colour, not slant. */
 .font-display em,
 .font-display.em,
 h1 em,
@@ -172,8 +178,8 @@ h2 em {
   font-style: normal;
 }
 .font-display {
-  font-optical-sizing: auto;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  letter-spacing: -0.035em;
 }
 
 /* Mono eyebrow used above every section heading. */
