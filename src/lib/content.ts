@@ -13,7 +13,7 @@ export const site = {
   // Web app URL of the Google Apps Script in docs/contact-form.gs, which
   // emails contact messages to Sudabeh. Empty falls back to opening the
   // visitor's mail app.
-  contactEndpoint: "",
+  contactEndpoint: "https://script.google.com/macros/s/AKfycbyNUnvUJUsH6wB81ULdBtibH3JAYypTpneB99kbQeDg8AzMCD0NH602HnhqP71L3D7R/exec",
   socials: [
     { label: "LinkedIn", handle: "sudabehzolfikhorram2001", href: "https://www.linkedin.com/in/sudabehzolfikhorram2001/" },
     { label: "Dribbble", handle: "SudabehZolfikhorram", href: "https://dribbble.com/SudabehZolfikhorram" },
