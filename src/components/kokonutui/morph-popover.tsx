@@ -30,6 +30,11 @@ import {
 } from "react";
 import { cn } from "@/lib/utils";
 
+export interface MorphContact {
+  name: string;
+  email: string;
+}
+
 export interface MorphPopoverProps {
   /** The button's label, which slides up to become the panel's title. */
   label?: string;
@@ -38,7 +43,9 @@ export interface MorphPopoverProps {
   /** Shown in the small pill after sending. */
   sentLabel?: string;
   /** Called with the text. A promise keeps the panel in its sending state. */
-  onSubmit?: (value: string) => void | Promise<void>;
+  onSubmit?: (value: string, contact: MorphContact) => void | Promise<void>;
+  /** Asks for the sender's name and email above the message. */
+  withContact?: boolean;
   /** Which edge the panel grows from. */
   align?: "start" | "end";
   /** Panel width in px. */
@@ -58,6 +65,7 @@ const pretendSend = () =>
   });
 const BUTTON_HEIGHT = 36;
 const APPLE_PLATFORM = /Mac|iPhone|iPad/;
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const isMac = () =>
   typeof navigator !== "undefined" && APPLE_PLATFORM.test(navigator.platform);
 
@@ -110,6 +118,7 @@ export default function MorphPopover({
   placeholder = "What would make this better?",
   sentLabel = "Thanks!",
   onSubmit = pretendSend,
+  withContact = false,
   align = "start",
   width = 340,
   className,
@@ -117,14 +126,19 @@ export default function MorphPopover({
   const id = useId();
   const [phase, setPhase] = useState<Phase>("idle");
   const [value, setValue] = useState("");
+  const [contact, setContact] = useState<MorphContact>({ name: "", email: "" });
   const [shortcut, setShortcut] = useState("Ctrl");
   const [size, setSize] = useState<{ idle: number; sent: number } | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
   const idleSizer = useRef<HTMLSpanElement>(null);
   const sentSizer = useRef<HTMLSpanElement>(null);
   const wasOpen = useRef(false);
   const expanded = phase === "open" || phase === "sending";
+  const contactValid =
+    !withContact || (contact.name.trim() !== "" && EMAIL.test(contact.email.trim()));
+  const canSend = value.trim() !== "" && contactValid;
 
   useEffect(() => {
     if (isMac()) {
@@ -153,7 +167,7 @@ export default function MorphPopover({
   // Focus follows the shape: into the field on open, back to the button after.
   useEffect(() => {
     if (phase === "open") {
-      textareaRef.current?.focus({ preventScroll: true });
+      (withContact ? nameRef : textareaRef).current?.focus({ preventScroll: true });
       wasOpen.current = true;
     } else if (phase === "idle" && wasOpen.current) {
       wasOpen.current = false;
@@ -162,7 +176,7 @@ export default function MorphPopover({
         ?.querySelector<HTMLButtonElement>("button[aria-haspopup]")
         ?.focus({ preventScroll: true });
     }
-  }, [phase]);
+  }, [phase, withContact]);
 
   useEffect(() => {
     if (phase !== "sent") {
@@ -189,19 +203,20 @@ export default function MorphPopover({
     async (event?: FormEvent) => {
       event?.preventDefault();
       const text = value.trim();
-      if (!text || phase !== "open") {
+      if (!canSend || phase !== "open") {
         return;
       }
       setPhase("sending");
       try {
-        await onSubmit(text);
+        await onSubmit(text, { name: contact.name.trim(), email: contact.email.trim() });
         setValue("");
+        setContact({ name: "", email: "" });
         setPhase("sent");
       } catch {
         setPhase("open");
       }
     },
-    [onSubmit, phase, value]
+    [canSend, contact, onSubmit, phase, value]
   );
 
   const handleKeyDown = useCallback(
@@ -325,6 +340,38 @@ export default function MorphPopover({
                     initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
                     transition={{ ...FADE, delay: 0.08 }}
                   >
+                    {withContact ? (
+                      <div className="mx-3.5 mt-2 grid grid-cols-2 gap-2">
+                        <label className="sr-only" htmlFor={`${id}-name`}>
+                          Your name
+                        </label>
+                        <input
+                          autoComplete="name"
+                          className="h-8 w-full rounded-lg border border-zinc-200 bg-transparent px-2.5 text-sm outline-none placeholder:text-zinc-400 focus:border-zinc-400 disabled:opacity-60 dark:border-zinc-700 dark:placeholder:text-zinc-500 dark:focus:border-zinc-500"
+                          disabled={phase === "sending"}
+                          id={`${id}-name`}
+                          onChange={(event) => setContact((c) => ({ ...c, name: event.target.value }))}
+                          placeholder="Your name"
+                          ref={nameRef}
+                          required
+                          value={contact.name}
+                        />
+                        <label className="sr-only" htmlFor={`${id}-email`}>
+                          Your email
+                        </label>
+                        <input
+                          autoComplete="email"
+                          className="h-8 w-full rounded-lg border border-zinc-200 bg-transparent px-2.5 text-sm outline-none placeholder:text-zinc-400 focus:border-zinc-400 disabled:opacity-60 dark:border-zinc-700 dark:placeholder:text-zinc-500 dark:focus:border-zinc-500"
+                          disabled={phase === "sending"}
+                          id={`${id}-email`}
+                          onChange={(event) => setContact((c) => ({ ...c, email: event.target.value }))}
+                          placeholder="Your email"
+                          required
+                          type="email"
+                          value={contact.email}
+                        />
+                      </div>
+                    ) : null}
                     <label className="sr-only" htmlFor={`${id}-text`}>
                       {placeholder}
                     </label>
@@ -349,7 +396,7 @@ export default function MorphPopover({
                       </span>
                       <button
                         className="flex h-7 items-center gap-1.5 rounded-lg bg-zinc-900 px-3 font-medium text-white text-xs transition-colors duration-150 hover:bg-zinc-800 disabled:cursor-not-allowed disabled:bg-zinc-300 dark:bg-white dark:text-zinc-900 dark:disabled:bg-zinc-700 dark:disabled:text-zinc-400 dark:hover:bg-zinc-200"
-                        disabled={!value.trim() || phase === "sending"}
+                        disabled={!canSend || phase === "sending"}
                         type="submit"
                       >
                         {phase === "sending" ? <Spinner /> : null}
