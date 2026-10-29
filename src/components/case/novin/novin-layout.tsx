@@ -13,7 +13,7 @@ import { BeforeAfter, type Hotspot, Hotspots, type PageTab, PageSwitcher, TwinSc
 import { ReadingProgress } from "./reading-progress";
 
 const vazir = Vazirmatn({ subsets: ["arabic", "latin"], weight: ["400", "500", "700"] });
-const IMG = "/work/novinhost";
+const IMG = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/work/novinhost`;
 
 const Chapter = ({ n, label, title, children, dark }: { n: string; label: string; title: React.ReactNode; children?: React.ReactNode; dark?: boolean }) => (
   <Reveal className="grid gap-6 lg:grid-cols-12">

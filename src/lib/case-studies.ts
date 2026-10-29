@@ -54,7 +54,7 @@ export const caseStudies: CaseStudy[] = [
       tools: ["Figma"],
     },
     links: [{ label: "Current site: novinhost.org", href: "https://www.novinhost.org/" }],
-    cover: { image: "/work/novinhost/after-hero.webp", alt: "Redesigned Novin Host homepage hero with a live network status card" },
+    cover: { image: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/work/novinhost/after-hero.webp`, alt: "Redesigned Novin Host homepage hero with a live network status card" },
     context:
       "The brief: make the site modern and easier to use, but don’t let existing customers feel that Novin Host has changed.",
     scope: ["Homepage", "VPS", "Dedicated", "Colocation", "Hosting", "Domains", "Novin Plus", "About", "Contact", "Knowledge base", "Article"],
