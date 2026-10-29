@@ -10,6 +10,10 @@ export const site = {
   location: "Tehran, Iran · Open to remote",
   email: "sudabeh.a.zolfikhorram@gmail.com",
   contactFallback: "mailto:sudabeh.a.zolfikhorram@gmail.com",
+  // Formspree form ID (the part after /f/ in the form's endpoint). Messages
+  // from the contact popover are emailed to the address on that form.
+  // Empty falls back to opening the visitor's mail app.
+  formspreeId: "",
   socials: [
     { label: "LinkedIn", handle: "sudabehzolfikhorram2001", href: "https://www.linkedin.com/in/sudabehzolfikhorram2001/" },
     { label: "Dribbble", handle: "SudabehZolfikhorram", href: "https://dribbble.com/SudabehZolfikhorram" },
