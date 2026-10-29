@@ -1,3 +1,5 @@
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 // Case studies. Leili's text comes from its Framer case study; the others are
 // written only from Sudabeh's resume (V2.8): no invented research or metrics.
 // Product screens are coded, illustrative recreations (see mockups.tsx) until
@@ -23,6 +25,8 @@ export type CaseStudy = {
   links?: { label: string; href: string }[];
   /** A coded mockup, or a real image (path under /public). */
   cover: ScreenId | { image: string; alt: string };
+  /** A finished project thumbnail from Figma; fills the card edge to edge when set. */
+  thumbnail?: { image: string; alt: string };
   context: string;
   /** What the work covered. */
   scope: string[];
@@ -121,6 +125,7 @@ export const caseStudies: CaseStudy[] = [
       tools: ["Figma", "FigJam"],
     },
     cover: "azman-request",
+    thumbnail: { image: `${BASE}/work/azman/thumb.webp`, alt: "ERP AzMan: product thumbnail with the AzMan mark" },
     context:
       "Three products with very different jobs: one connects customers with service providers, one keeps call follow-ups traceable, and one manages people, permissions and paperwork inside the organisation. Each needed its own clear structure.",
     scope: [
@@ -182,6 +187,7 @@ export const caseStudies: CaseStudy[] = [
       tools: ["Figma", "FigJam"],
     },
     cover: "tamdid-home",
+    thumbnail: { image: `${BASE}/work/tamdid/thumb.webp`, alt: "Tamdid: the product’s Persian wordmark" },
     context:
       "Subscriptions renew quietly and payments are scattered across cards and services. Tamdid brings subscriptions, wallet and payments into one place, and uses gamification to make staying on top of them feel rewarding.",
     scope: ["Subscriptions overview & renewals", "Wallet & top-ups", "Payments", "Gamification", "Custom design system"],
@@ -280,6 +286,7 @@ export const caseStudies: CaseStudy[] = [
     },
     links: [{ label: "studio.kaaryar.ir", href: "https://studio.kaaryar.ir/" }],
     cover: "kaaryar-home",
+    thumbnail: { image: `${BASE}/work/kaaryar/thumb.webp`, alt: "Studio Kaaryar redesign: the studio’s K mark in green and orange" },
     context:
       "A studio whose work has social impact needs a website that tells those stories clearly and is accessible to everyone. The redesign covered the whole site, from structure to visual language.",
     scope: ["Information architecture", "Visual storytelling", "Accessibility", "Clarity of content", "Custom design system"],

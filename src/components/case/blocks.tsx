@@ -47,6 +47,20 @@ export function ScreensNote() {
 
 /** The project thumbnail: its key screen on a tinted ground. */
 export function Cover({ cs, className, compact }: { cs: CaseStudy; className?: string; compact?: boolean }) {
+  if (cs.thumbnail) {
+    // A finished thumbnail is already composed, so it fills the card as is.
+    return (
+      <div className={cn("relative aspect-[16/10] overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-rule", className)}>
+        <Image
+          alt={cs.thumbnail.alt}
+          className="h-full w-full object-cover"
+          fill
+          sizes={compact ? "(min-width: 768px) 50vw, 100vw" : "100vw"}
+          src={cs.thumbnail.image}
+        />
+      </div>
+    );
+  }
   if (typeof cs.cover === "object") {
     // Real design work: the image itself, in a browser-like frame.
     return (
