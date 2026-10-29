@@ -30,11 +30,6 @@ import {
 } from "react";
 import { cn } from "@/lib/utils";
 
-export interface MorphContact {
-  name: string;
-  email: string;
-}
-
 export interface MorphPopoverProps {
   /** The button's label, which slides up to become the panel's title. */
   label?: string;
@@ -42,10 +37,17 @@ export interface MorphPopoverProps {
   placeholder?: string;
   /** Shown in the small pill after sending. */
   sentLabel?: string;
-  /** Called with the text. A promise keeps the panel in its sending state. */
-  onSubmit?: (value: string, contact: MorphContact) => void | Promise<void>;
-  /** Asks for the sender's name and email above the message. */
-  withContact?: boolean;
+  /**
+   * Called with the text (and the contact, when asked for). A promise keeps
+   * the panel in its sending state; a rejection reopens it with the text kept.
+   */
+  onSubmit?: (value: string, contact: string) => void | Promise<void>;
+  /** Fewest characters the message needs before it can be sent. */
+  minLength?: number;
+  /** Adds a field under the message for how to reach the sender. */
+  contactPlaceholder?: string;
+  /** Whether the contact field's value is usable. */
+  validateContact?: (value: string) => boolean;
   /** Which edge the panel grows from. */
   align?: "start" | "end";
   /** Panel width in px. */
@@ -65,7 +67,6 @@ const pretendSend = () =>
   });
 const BUTTON_HEIGHT = 36;
 const APPLE_PLATFORM = /Mac|iPhone|iPad/;
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const isMac = () =>
   typeof navigator !== "undefined" && APPLE_PLATFORM.test(navigator.platform);
 
@@ -118,7 +119,9 @@ export default function MorphPopover({
   placeholder = "What would make this better?",
   sentLabel = "Thanks!",
   onSubmit = pretendSend,
-  withContact = false,
+  minLength = 1,
+  contactPlaceholder,
+  validateContact = (v) => v !== "",
   align = "start",
   width = 340,
   className,
@@ -126,19 +129,20 @@ export default function MorphPopover({
   const id = useId();
   const [phase, setPhase] = useState<Phase>("idle");
   const [value, setValue] = useState("");
-  const [contact, setContact] = useState<MorphContact>({ name: "", email: "" });
+  const [contact, setContact] = useState("");
   const [shortcut, setShortcut] = useState("Ctrl");
   const [size, setSize] = useState<{ idle: number; sent: number } | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const nameRef = useRef<HTMLInputElement>(null);
   const idleSizer = useRef<HTMLSpanElement>(null);
   const sentSizer = useRef<HTMLSpanElement>(null);
   const wasOpen = useRef(false);
   const expanded = phase === "open" || phase === "sending";
-  const contactValid =
-    !withContact || (contact.name.trim() !== "" && EMAIL.test(contact.email.trim()));
-  const canSend = value.trim() !== "" && contactValid;
+  const withContact = contactPlaceholder !== undefined;
+  const textLength = value.trim().length;
+  const textValid = textLength >= minLength;
+  const contactValid = !withContact || validateContact(contact.trim());
+  const canSend = textValid && contactValid;
 
   useEffect(() => {
     if (isMac()) {
@@ -167,7 +171,7 @@ export default function MorphPopover({
   // Focus follows the shape: into the field on open, back to the button after.
   useEffect(() => {
     if (phase === "open") {
-      (withContact ? nameRef : textareaRef).current?.focus({ preventScroll: true });
+      textareaRef.current?.focus({ preventScroll: true });
       wasOpen.current = true;
     } else if (phase === "idle" && wasOpen.current) {
       wasOpen.current = false;
@@ -176,7 +180,7 @@ export default function MorphPopover({
         ?.querySelector<HTMLButtonElement>("button[aria-haspopup]")
         ?.focus({ preventScroll: true });
     }
-  }, [phase, withContact]);
+  }, [phase]);
 
   useEffect(() => {
     if (phase !== "sent") {
@@ -202,15 +206,14 @@ export default function MorphPopover({
   const submit = useCallback(
     async (event?: FormEvent) => {
       event?.preventDefault();
-      const text = value.trim();
       if (!canSend || phase !== "open") {
         return;
       }
       setPhase("sending");
       try {
-        await onSubmit(text, { name: contact.name.trim(), email: contact.email.trim() });
+        await onSubmit(value.trim(), contact.trim());
         setValue("");
-        setContact({ name: "", email: "" });
+        setContact("");
         setPhase("sent");
       } catch {
         setPhase("open");
@@ -340,38 +343,6 @@ export default function MorphPopover({
                     initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
                     transition={{ ...FADE, delay: 0.08 }}
                   >
-                    {withContact ? (
-                      <div className="mx-3.5 mt-2 grid grid-cols-2 gap-2">
-                        <label className="sr-only" htmlFor={`${id}-name`}>
-                          Your name
-                        </label>
-                        <input
-                          autoComplete="name"
-                          className="h-8 w-full rounded-lg border border-zinc-200 bg-transparent px-2.5 text-sm outline-none placeholder:text-zinc-400 focus:border-zinc-400 disabled:opacity-60 dark:border-zinc-700 dark:placeholder:text-zinc-500 dark:focus:border-zinc-500"
-                          disabled={phase === "sending"}
-                          id={`${id}-name`}
-                          onChange={(event) => setContact((c) => ({ ...c, name: event.target.value }))}
-                          placeholder="Your name"
-                          ref={nameRef}
-                          required
-                          value={contact.name}
-                        />
-                        <label className="sr-only" htmlFor={`${id}-email`}>
-                          Your email
-                        </label>
-                        <input
-                          autoComplete="email"
-                          className="h-8 w-full rounded-lg border border-zinc-200 bg-transparent px-2.5 text-sm outline-none placeholder:text-zinc-400 focus:border-zinc-400 disabled:opacity-60 dark:border-zinc-700 dark:placeholder:text-zinc-500 dark:focus:border-zinc-500"
-                          disabled={phase === "sending"}
-                          id={`${id}-email`}
-                          onChange={(event) => setContact((c) => ({ ...c, email: event.target.value }))}
-                          placeholder="Your email"
-                          required
-                          type="email"
-                          value={contact.email}
-                        />
-                      </div>
-                    ) : null}
                     <label className="sr-only" htmlFor={`${id}-text`}>
                       {placeholder}
                     </label>
@@ -384,16 +355,38 @@ export default function MorphPopover({
                       ref={textareaRef}
                       value={value}
                     />
+                    {withContact ? (
+                      <div className="px-3.5 pb-3">
+                        <label className="sr-only" htmlFor={`${id}-contact`}>
+                          {contactPlaceholder}
+                        </label>
+                        <input
+                          aria-invalid={contact.trim() !== "" && !contactValid}
+                          className="h-9 w-full rounded-lg border border-zinc-200 bg-transparent px-2.5 text-sm outline-none placeholder:text-zinc-400 focus:border-zinc-400 disabled:opacity-60 aria-[invalid=true]:border-red-400 dark:border-zinc-700 dark:placeholder:text-zinc-500 dark:focus:border-zinc-500"
+                          disabled={phase === "sending"}
+                          id={`${id}-contact`}
+                          onChange={(event) => setContact(event.target.value)}
+                          placeholder={contactPlaceholder}
+                          value={contact}
+                        />
+                      </div>
+                    ) : null}
                     <div className="flex items-center justify-between gap-3 border-zinc-100 border-t bg-zinc-50/70 px-3 py-2 dark:border-zinc-800 dark:bg-zinc-950/40">
-                      <span className="flex items-center gap-1 text-xs text-zinc-400 dark:text-zinc-500">
-                        <kbd className="rounded border border-zinc-200 bg-white px-1 font-sans text-[11px] text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
-                          {shortcut}
-                        </kbd>
-                        <kbd className="rounded border border-zinc-200 bg-white px-1 font-sans text-[11px] text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
-                          ↵
-                        </kbd>
-                        <span className="ml-1">to send</span>
-                      </span>
+                      {textLength > 0 && !textValid ? (
+                        <span aria-live="polite" className="text-xs text-zinc-400 tabular-nums dark:text-zinc-500">
+                          {textLength}/{minLength} characters min
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-1 text-xs text-zinc-400 dark:text-zinc-500">
+                          <kbd className="rounded border border-zinc-200 bg-white px-1 font-sans text-[11px] text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
+                            {shortcut}
+                          </kbd>
+                          <kbd className="rounded border border-zinc-200 bg-white px-1 font-sans text-[11px] text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
+                            ↵
+                          </kbd>
+                          <span className="ml-1">to send</span>
+                        </span>
+                      )}
                       <button
                         className="flex h-7 items-center gap-1.5 rounded-lg bg-zinc-900 px-3 font-medium text-white text-xs transition-colors duration-150 hover:bg-zinc-800 disabled:cursor-not-allowed disabled:bg-zinc-300 dark:bg-white dark:text-zinc-900 dark:disabled:bg-zinc-700 dark:disabled:text-zinc-400 dark:hover:bg-zinc-200"
                         disabled={!canSend || phase === "sending"}
