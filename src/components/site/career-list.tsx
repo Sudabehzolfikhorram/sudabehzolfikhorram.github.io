@@ -65,7 +65,7 @@ export function CareerList() {
                 aria-hidden
                 className={cn(
                   "grid size-9 place-items-center rounded-full border border-rule transition-all duration-300 group-hover:border-signal",
-                  isOpen && "rotate-45 border-signal bg-signal text-white"
+                  isOpen && "rotate-45 border-signal bg-signal text-on-signal"
                 )}
               >
                 <Plus className="size-4" />
@@ -94,7 +94,7 @@ export function CareerList() {
                       <div className="flex flex-wrap gap-2">
                         {r.cases?.map((c) => (
                           <Link
-                            className="inline-flex items-center gap-1 rounded-full bg-ink px-3.5 py-1.5 text-paper text-sm transition-colors hover:bg-signal hover:text-white"
+                            className="inline-flex items-center gap-1 rounded-full bg-ink px-3.5 py-1.5 text-paper text-sm transition-colors hover:bg-signal hover:text-on-signal"
                             href={`/work/${c.slug}`}
                             key={c.slug}
                           >

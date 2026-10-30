@@ -2,7 +2,7 @@ import { ArrowDownToLine, Lightbulb, PenTool, Sprout } from "lucide-react";
 import type { Metadata } from "next";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { CareerList, ToolMarquee } from "@/components/site/career-list";
-import { courses, education, experience, languages, site, skillGroups, tools } from "@/lib/content";
+import { experience, site, skillGroups, tools } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Career · Sudabeh",
@@ -64,52 +64,22 @@ export default function ExperiencePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[1240px] gap-10 px-4 py-20 sm:px-8 lg:grid-cols-12">
-        <Reveal className="grid gap-8 sm:grid-cols-3 lg:col-span-7">
-          <div>
-            <h2 className="eyebrow">Education</h2>
-            {education.map((e) => (
-              <p className="mt-3" key={e.title}>
-                <span className="font-medium">{e.title}</span>
-                <br />
-                <span className="text-ink-soft text-sm">{e.place}</span>
-              </p>
-            ))}
+      {/* Education, courses and languages live in the CV; here, just the way to it. */}
+      <section className="mx-auto max-w-[1240px] px-4 py-20 sm:px-8">
+        <Reveal className="relative flex flex-col items-start gap-6 overflow-hidden rounded-3xl bg-ink p-8 text-paper sm:flex-row sm:items-center sm:justify-between sm:p-10 dark:bg-paper-2 dark:text-ink">
+          <div aria-hidden className="pointer-events-none absolute -right-20 -bottom-24 size-72 rounded-full bg-glow/40 blur-[90px]" />
+          <div className="relative">
+            <p className="font-display text-2xl leading-tight sm:text-3xl">Education, courses and languages?</p>
+            <p className="mt-2 text-paper/70 dark:text-ink-soft">All in the CV, on one page, easy to forward.</p>
           </div>
-          <div>
-            <h2 className="eyebrow">Courses</h2>
-            <ul className="mt-3 grid gap-1.5 text-sm">
-              {courses.map((c) => (
-                <li key={c.title}>
-                  {c.title} <span className="text-ink-soft">· {c.place}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 className="eyebrow">Languages</h2>
-            <ul className="mt-3 grid gap-1.5 text-sm">
-              {languages.map((l) => (
-                <li key={l.name}>
-                  {l.name} <span className="text-ink-soft">· {l.level}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
-        <Reveal className="lg:col-span-4 lg:col-start-9" delay={0.1}>
-          <div className="rounded-3xl bg-ink p-7 text-paper dark:bg-paper-2 dark:text-ink">
-            <p className="font-display text-2xl leading-tight">Prefer it on one page?</p>
-            <p className="mt-2 text-paper/70 text-sm dark:text-ink-soft">The same story as a PDF, easy to forward.</p>
-            <a
-              className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-paper px-5 font-medium text-ink text-sm transition-colors hover:bg-signal hover:text-white dark:bg-ink dark:text-paper"
-              download
-              href={site.resume}
-            >
-              <ArrowDownToLine className="size-4" />
-              Download CV
-            </a>
-          </div>
+          <a
+            className="relative inline-flex h-12 shrink-0 items-center gap-2 rounded-full bg-paper px-6 font-medium text-ink transition-colors hover:bg-signal hover:text-on-signal dark:bg-ink dark:text-paper"
+            download
+            href={site.resume}
+          >
+            <ArrowDownToLine className="size-4" />
+            Download CV
+          </a>
         </Reveal>
       </section>
     </>

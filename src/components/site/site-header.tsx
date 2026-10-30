@@ -51,7 +51,7 @@ export function SiteHeader() {
             title="Download my CV (PDF)"
           >
             CV
-            <span className="grid size-7 place-items-center overflow-hidden rounded-full bg-signal text-white">
+            <span className="grid size-7 place-items-center overflow-hidden rounded-full bg-signal text-on-signal">
               <ArrowDownToLine className="size-3.5 transition-transform duration-300 group-hover:translate-y-0.5" />
             </span>
           </a>

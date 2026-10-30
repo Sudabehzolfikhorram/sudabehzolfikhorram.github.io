@@ -190,7 +190,7 @@ export function ContactComposer({
                       aria-pressed={on}
                       className={cn(
                         "relative rounded-full border px-3.5 py-1.5 text-sm transition-colors",
-                        on ? "border-signal text-white" : "border-rule hover:border-signal hover:text-signal"
+                        on ? "border-signal text-on-signal" : "border-rule hover:border-signal hover:text-signal"
                       )}
                       key={t}
                       onClick={() => setTopic(on ? "" : t)}

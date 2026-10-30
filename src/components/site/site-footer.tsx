@@ -37,7 +37,7 @@ export function SiteFooter() {
           </nav>
         )}
       </div>
-      <div className="mx-auto flex max-w-[1240px] justify-between px-4 pb-8 font-mono text-[0.7rem] text-ink-soft uppercase tracking-[0.08em] sm:px-8">
+      <div className="mx-auto flex max-w-[1240px] flex-col gap-1 px-4 pb-24 sm:flex-row sm:justify-between font-mono text-[0.7rem] text-ink-soft uppercase tracking-[0.08em] sm:px-8">
         <span>© 2026 Sudabeh Zolfi Khorram</span>
         <span>Designed with intent</span>
       </div>

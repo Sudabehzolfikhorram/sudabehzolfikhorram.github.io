@@ -78,7 +78,7 @@ export type Role = {
 // From the resume and Sudabeh's own account of each role.
 export const experience: Role[] = [
   {
-    company: "Novin Host", title: "Product Designer", start: "2026-06", end: null,
+    company: "Novin Host", logo: "novinhost", title: "Product Designer", start: "2026-06", end: null,
     summary: "Redesigning a 15-year-old hosting brand.",
     about: "A redesign that makes Novin Host feel current and easier to choose from, without customers feeling it changed. The main pages are done; the rest is in progress.",
     cases: [{ slug: "novinhost", label: "Novin Host" }],

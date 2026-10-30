@@ -274,7 +274,7 @@ export function Hero() {
                     <rect className="fill-paper-2" height={40} rx={10} width={352} x={104} y={202 + r * 48} />
                     <rect className={r === 0 ? "fill-signal" : "fill-blush"} height={24} rx={7} width={24} x={113} y={210 + r * 48} />
                     <g
-                      className={r === 0 ? "stroke-white" : "stroke-signal"}
+                      className={r === 0 ? "stroke-on-signal" : "stroke-signal"}
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -291,7 +291,7 @@ export function Hero() {
                     </text>
                     <rect className={r === 0 ? "fill-signal" : "fill-rule"} height={20} rx={10} width={58} x={388} y={212 + r * 48} />
                     <text
-                      className={r === 0 ? "fill-white text-[10px]" : "fill-ink-soft text-[10px]"}
+                      className={r === 0 ? "fill-on-signal text-[10px]" : "fill-ink-soft text-[10px]"}
                       dominantBaseline="central"
                       textAnchor="middle"
                       x={417}

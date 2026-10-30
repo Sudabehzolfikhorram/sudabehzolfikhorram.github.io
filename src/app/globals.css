@@ -22,6 +22,7 @@
   --color-signal: var(--signal);
   --color-blush: var(--blush);
   --color-glow: var(--glow);
+  --color-on-signal: var(--on-signal);
 
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
@@ -78,6 +79,8 @@
   --signal: #5a46e0;
   --blush: #e9e5ff;
   --glow: #8f7cff;
+  /* Text and icons on a signal background: white on the dark violet, navy on the light one. */
+  --on-signal: #ffffff;
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -138,6 +141,7 @@
     --signal: #a596ff;
     --blush: #1d1a48;
     --glow: #6b58ff;
+    --on-signal: #0a0f1f;
     --popover: #111831;
     --chart-scale-01: #16173a;
     --chart-scale-02: #25235c;
@@ -162,7 +166,7 @@
   }
   ::selection {
     background: var(--signal);
-    color: #fff;
+    color: var(--on-signal);
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {

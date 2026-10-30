@@ -18,7 +18,7 @@ export function ProjectCard({ cs, size = "md", className }: { cs: CaseStudy; siz
           <h3 className="mt-3 font-display text-4xl transition-colors group-hover:text-signal sm:text-5xl">{cs.name}</h3>
           <p className="mt-4 text-xl leading-snug">{cs.tagline}</p>
           <p className="mt-4 text-ink-soft leading-relaxed">{cs.status}</p>
-          <span className="mt-8 inline-flex h-11 items-center gap-2 rounded-full bg-ink px-5 font-medium text-paper text-sm transition-colors group-hover:bg-signal group-hover:text-white">
+          <span className="mt-8 inline-flex h-11 items-center gap-2 rounded-full bg-ink px-5 font-medium text-paper text-sm transition-colors group-hover:bg-signal group-hover:text-on-signal">
             Read the case study
             <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:rotate-45" />
           </span>
@@ -50,7 +50,7 @@ export function ProjectCard({ cs, size = "md", className }: { cs: CaseStudy; siz
         </div>
         <span
           aria-hidden
-          className="mt-6 grid size-10 shrink-0 place-items-center rounded-full border border-rule transition-all duration-300 group-hover:rotate-45 group-hover:border-signal group-hover:bg-signal group-hover:text-white"
+          className="mt-6 grid size-10 shrink-0 place-items-center rounded-full border border-rule transition-all duration-300 group-hover:rotate-45 group-hover:border-signal group-hover:bg-signal group-hover:text-on-signal"
         >
           <ArrowUpRight className="size-4" />
         </span>

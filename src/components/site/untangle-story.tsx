@@ -97,7 +97,7 @@ function Visual({ step }: { step: number }) {
           />
           <motion.text
             animate={{ opacity: step <= 1 ? 1 : 0 }}
-            className={cn("text-[11px]", i === 0 ? "fill-white" : "fill-ink")}
+            className={cn("text-[11px]", i === 0 ? "fill-on-signal" : "fill-ink")}
             initial={false}
             transition={{ duration: 0.3 }}
             x={10}
