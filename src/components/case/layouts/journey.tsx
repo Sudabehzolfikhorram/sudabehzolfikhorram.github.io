@@ -1,33 +1,64 @@
-// Tamdid: a mobile product, so the page is a storyboard you scroll through,
-// from the home screen to paying a renewal and earning rewards.
+// Tamdid: a fintech product designed mobile first, then for the web. The page
+// leads with the real phone screens, then shows the web version in light and
+// dark, compared with a slider.
+import Image from "next/image";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import type { CaseStudy } from "@/lib/case-studies";
 import { cn } from "@/lib/utils";
+import { BeforeAfter } from "../novin/interactive";
 import { CaseTitle, Facts, MetaGrid, Scope, SectionHead, wrap } from "../blocks";
 import { Screen } from "../mockups";
-import { StoryRail } from "../story-rail";
+
+type Shot = NonNullable<CaseStudy["gallery"]>[number];
+
+/** A real screen in a simple phone frame. */
+function Phone({ shot, className, priority }: { shot: Shot; className?: string; priority?: boolean }) {
+  return (
+    <figure className={className}>
+      <div className="overflow-hidden rounded-[2rem] border-[6px] border-ink bg-ink shadow-[0_40px_80px_-40px_rgb(0_0_0/0.5)]">
+        <Image alt={shot.alt} className="block h-auto w-full" height={shot.height} priority={priority} sizes="(min-width: 640px) 280px, 62vw" src={shot.image} width={shot.width} />
+      </div>
+      {shot.label && <figcaption className="eyebrow mt-3 text-center">{shot.label}</figcaption>}
+    </figure>
+  );
+}
 
 export function JourneyLayout({ cs }: { cs: CaseStudy }) {
-  const [left, center, right] = [cs.screens[1].id, cs.screens[0].id, cs.screens[4].id];
+  const phones = cs.gallery?.filter((g) => g.device === "phone") ?? [];
+  const web = cs.gallery?.filter((g) => g.device === "web") ?? [];
+  const [center, left, right] = phones;
+
   return (
     <>
-      <section className="overflow-hidden pt-12" style={{ background: `color-mix(in oklab, ${cs.hue} 12%, var(--paper))` }}>
+      <section className="overflow-hidden pt-12 pb-20" style={{ background: `color-mix(in oklab, ${cs.hue} 10%, var(--paper))` }}>
         <Reveal className={cn(wrap, "text-center")}>
-          <p className="eyebrow">{cs.category} · {cs.status}</p>
-          <CaseTitle className="mt-5" cs={cs} size="xl" />
-          <p className="mx-auto mt-6 max-w-2xl font-display text-2xl leading-snug sm:text-3xl">{cs.tagline}</p>
+          <p className="eyebrow">{cs.category}</p>
+          <CaseTitle className="mt-4" cs={cs} size="xl" />
+          <p className="mx-auto mt-5 max-w-2xl text-xl leading-snug sm:text-2xl">{cs.tagline}</p>
         </Reveal>
-        {/* Three phones fanned out. */}
-        <div className="mx-auto mt-16 flex max-w-4xl items-end justify-center gap-4 px-4 sm:gap-8">
-          <Reveal className="hidden w-1/4 translate-y-16 -rotate-6 sm:block" delay={0.15}>
-            <Screen hue={cs.hue} id={left} />
-          </Reveal>
-          <Reveal className="w-[62%] translate-y-6 sm:w-1/3" delay={0.05}>
-            <Screen hue={cs.hue} id={center} />
-          </Reveal>
-          <Reveal className="hidden w-1/4 translate-y-16 rotate-6 sm:block" delay={0.25}>
-            <Screen hue={cs.hue} id={right} />
-          </Reveal>
+        {/* Three real phones, fanned out. */}
+        <div className="mx-auto mt-14 flex max-w-4xl items-start justify-center gap-4 px-4 sm:gap-8">
+          {center ? (
+            <>
+              {left && (
+                <Reveal className="hidden w-1/4 translate-y-12 -rotate-6 sm:block" delay={0.15}>
+                  <Phone shot={left} />
+                </Reveal>
+              )}
+              <Reveal className="w-[62%] sm:w-1/3" delay={0.05}>
+                <Phone priority shot={center} />
+              </Reveal>
+              {right && (
+                <Reveal className="hidden w-1/4 translate-y-12 rotate-6 sm:block" delay={0.25}>
+                  <Phone shot={right} />
+                </Reveal>
+              )}
+            </>
+          ) : (
+            <Reveal className="w-[62%] sm:w-1/3">
+              <Screen hue={cs.hue} id={cs.screens[0].id} />
+            </Reveal>
+          )}
         </div>
       </section>
 
@@ -39,8 +70,8 @@ export function JourneyLayout({ cs }: { cs: CaseStudy }) {
       <section className="border-rule border-t py-24">
         <div className={cn(wrap, "grid gap-14 lg:grid-cols-12")}>
           <Reveal className="lg:col-span-7">
-            <p className="eyebrow"><span className="text-signal">01</span> — The idea</p>
-            <p className="mt-6 font-display text-3xl leading-snug sm:text-4xl">{cs.context}</p>
+            <p className="eyebrow">The idea</p>
+            <p className="mt-6 font-display text-2xl leading-snug sm:text-3xl">{cs.context}</p>
           </Reveal>
           <Reveal className="self-end lg:col-span-4 lg:col-start-9" delay={0.1}>
             <p className="eyebrow mb-4">What I designed</p>
@@ -51,12 +82,12 @@ export function JourneyLayout({ cs }: { cs: CaseStudy }) {
 
       <section className="bg-paper-2/60 py-24">
         <div className={wrap}>
-          <SectionHead label="Key areas" n="02" title="Subscriptions, wallet, motivation." />
+          <SectionHead label="Key areas" n="01" title="Subscriptions, wallet, motivation." />
           <RevealGroup className="mt-14 grid gap-4 md:grid-cols-3">
             {cs.highlights.map((it, i) => (
               <RevealItem className="rounded-2xl border border-rule bg-paper p-7" key={it.title}>
                 <p className="font-mono text-ink-soft text-xs">0{i + 1}</p>
-                <p className="mt-6 font-display text-3xl leading-tight">{it.title}</p>
+                <p className="mt-6 font-display text-2xl leading-tight">{it.title}</p>
                 <p className="mt-4 text-ink-soft leading-relaxed">{it.body}</p>
               </RevealItem>
             ))}
@@ -64,21 +95,36 @@ export function JourneyLayout({ cs }: { cs: CaseStudy }) {
         </div>
       </section>
 
-      <section className="pt-24">
-        <div className={wrap}>
-          <SectionHead label="The flow" n="03" title="From renewal reminder to reward.">
-            <p className="hidden md:block">Keep scrolling: the flow moves sideways.</p>
-            <p className="md:hidden">Swipe through the flow.</p>
-          </SectionHead>
-        </div>
-        <div className="mt-12">
-          <StoryRail cs={cs} />
-        </div>
-      </section>
+      {web.length >= 2 && (
+        <section className="py-24">
+          <div className={cn(wrap, "grid gap-10 lg:grid-cols-12")}>
+            <Reveal className="lg:col-span-4">
+              <SectionHead label="Mobile first, then web" n="02" title="Same product, bigger canvas." />
+              <p className="mt-6 text-ink-soft leading-relaxed">
+                Tamdid started on mobile. The web version came later and reuses the same system: the wallet, quick actions
+                and league move to a side panel, and transactions get a full table. Drag to compare the light and dark themes.
+              </p>
+            </Reveal>
+            <Reveal className="lg:col-span-8" delay={0.1}>
+              <BeforeAfter
+                accent={cs.hue}
+                after={web[1].image}
+                afterAlt={web[1].alt}
+                afterLabel="Dark"
+                before={web[0].image}
+                beforeAlt={web[0].alt}
+                beforeLabel="Light"
+                height={web[0].height}
+                width={web[0].width}
+              />
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       <section className="border-rule border-t py-24">
         <div className={wrap}>
-          <SectionHead label="Where it stands" n="04" title="Designed, now in development." />
+          <SectionHead label="Where it stands" n="03" title="Designed solo, now in development." />
           <Facts className="mt-12" cs={cs} />
         </div>
       </section>

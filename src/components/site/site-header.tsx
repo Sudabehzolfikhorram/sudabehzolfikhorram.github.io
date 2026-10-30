@@ -45,12 +45,15 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <MorphicNavbar className="-mx-1 px-0" items={NAV} />
           <a
-            className="hidden h-9 items-center gap-1.5 rounded-full border border-rule px-3.5 text-sm transition-colors hover:border-signal hover:text-signal sm:inline-flex"
+            className="group hidden h-9 items-center gap-2 rounded-full border border-rule pr-1 pl-3.5 text-sm transition-colors hover:border-signal sm:inline-flex"
             download
             href={site.resume}
+            title="Download my CV (PDF)"
           >
-            <ArrowDownToLine className="size-4" />
             CV
+            <span className="grid size-7 place-items-center overflow-hidden rounded-full bg-signal text-white">
+              <ArrowDownToLine className="size-3.5 transition-transform duration-300 group-hover:translate-y-0.5" />
+            </span>
           </a>
         </div>
       </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowDownToLine } from "lucide-react";
 import {
   createDrawable,
   createTimeline,
@@ -13,6 +12,7 @@ import {
 import { useEffect, useRef } from "react";
 import SlideTextButton from "@/components/kokonutui/slide-text-button";
 import { site } from "@/lib/content";
+import { MessageSheet } from "./message-sheet";
 
 /**
  * Signature animation, told in three labelled acts so it reads without a
@@ -38,6 +38,23 @@ const TANGLE =
 const STRAIGHT = "M30 60 C 120 60, 200 60, 280 60 S 440 60, 530 60";
 
 const INPUTS = ["6 user roles", "Edge cases", "Legacy flow", "Stakeholder notes", "Permissions", "Payments"];
+
+// 16 × 16 line icons, one per input, drawn in the signal colour.
+const ICONS = [
+  <g key="users"><circle cx="6" cy="5" r="2.5" /><path d="M1.5 13.5c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4" /><circle cx="11.5" cy="5.5" r="2" /><path d="M11.5 9.5c2 .2 3.3 1.6 3.3 4" /></g>,
+  <g key="alert"><path d="M8 2 15 14H1Z" /><path d="M8 6.5v3.2M8 12v.1" /></g>,
+  <g key="flow"><circle cx="4" cy="3" r="1.8" /><circle cx="4" cy="13" r="1.8" /><circle cx="12" cy="5" r="1.8" /><path d="M4 4.8v6.4M12 6.8c0 3-8 1.8-8 4.4" /></g>,
+  <g key="note"><rect height="12" rx="2" width="12" x="2" y="2" /><path d="M5 6h6M5 9h4" /></g>,
+  <g key="lock"><rect height="7" rx="1.5" width="10" x="3" y="7" /><path d="M5 7V5a3 3 0 0 1 6 0v2" /></g>,
+  <g key="card"><rect height="9" rx="1.5" width="13" x="1.5" y="3.5" /><path d="M1.5 7h13M4 10.5h3" /></g>,
+];
+const ROW_ICONS = [
+  <path d="m3 13 1-3 7-7 2 2-7 7Z" key="pen" />,
+  <path d="M4.5 12h7a3 3 0 0 0 .3-6 4 4 0 0 0-7.6 1A2.5 2.5 0 0 0 4.5 12Z" key="cloud" />,
+  <g key="music"><path d="M6 12V4l7-1.5V10" /><circle cx="4.3" cy="12" r="1.8" /><circle cx="11.3" cy="10.5" r="1.8" /></g>,
+];
+// Where the screen sits, so the inputs can fold into its middle.
+const SCREEN_MID: [number, number] = [280, 235];
 const CHIP = { w: 150, h: 34 };
 // Final, ordered spot of each input (3 × 2 grid under the straight line).
 const gridAt = (i: number): [number, number] => [40 + (i % 3) * 165, 92 + Math.floor(i / 3) * 46];
@@ -67,6 +84,7 @@ export function Hero() {
       // The markup is drawn in its final state: show it and skip the show.
       $<SVGPathElement>("[data-thread]").forEach((l) => l.setAttribute("d", STRAIGHT));
       utils.set($("[data-chip]"), { opacity: 0 });
+      utils.set($("[data-ripple]"), { opacity: 0 });
       utils.set($("[data-act]"), { opacity: 1 });
       reveal();
       return;
@@ -92,6 +110,9 @@ export function Hero() {
     utils.set(screenParts, { opacity: 0, translateY: 8 });
     utils.set(acts, { opacity: 0.35 });
     utils.set($("[data-caption]"), { opacity: 0 });
+    utils.set($("[data-spark]"), { scale: 0, opacity: 0 });
+    utils.set($("[data-cursor]"), { opacity: 0, translateX: 90, translateY: 100 });
+    utils.set($("[data-ripple]"), { opacity: 0 });
     reveal();
 
     const tl = createTimeline({ defaults: { ease: "outExpo" } })
@@ -110,10 +131,28 @@ export function Hero() {
       // 03 Clarity
       .add(acts[1], { opacity: 0.35, duration: 300 }, T.clarity)
       .add(acts[2], { opacity: 1, duration: 300 }, T.clarity)
-      .add(chips, { translateY: 120, scale: 0.6, opacity: 0, duration: 700, delay: stagger(50), ease: "inBack(1.4)" }, T.clarity)
-      .add($("[data-screen]"), { opacity: 1, translateY: 0, scale: 1, duration: 900 }, T.clarity + 350)
-      .add(screenParts, { opacity: 1, translateY: 0, duration: 600, delay: stagger(80) }, T.clarity + 650)
-      .add($("[data-caption]"), { opacity: 1, duration: 600 }, T.clarity + 1100);
+      // Each input folds into the middle of the screen, then the screen takes its place.
+      .add(
+        chips,
+        {
+          translateX: (_?: unknown, i = 0) => SCREEN_MID[0] - (gridAt(i)[0] + CHIP.w / 2),
+          translateY: (_?: unknown, i = 0) => SCREEN_MID[1] - (gridAt(i)[1] + CHIP.h / 2),
+          scale: 0.3,
+          opacity: 0,
+          duration: 600,
+          delay: stagger(40),
+          ease: "inQuad",
+        },
+        T.clarity
+      )
+      .add($("[data-screen]"), { opacity: 1, translateY: 0, scale: 1, duration: 900 }, T.clarity + 450)
+      .add(screenParts, { opacity: 1, translateY: 0, duration: 600, delay: stagger(80) }, T.clarity + 700)
+      .add($("[data-caption]"), { opacity: 1, duration: 600 }, T.clarity + 1100)
+      .add($("[data-spark]"), { scale: 1, opacity: 1, duration: 600, delay: stagger(120), ease: "outBack(2.2)" }, T.clarity + 1200)
+      // A cursor glides in and presses "Review": the screen is usable, not just pretty.
+      .add($("[data-cursor]"), { opacity: 1, translateX: 0, translateY: 0, duration: 900, ease: "outQuart" }, T.clarity + 1300)
+      .add($("[data-cursor]"), { scale: [1, 0.82, 1], duration: 320, ease: "inOutQuad" }, T.clarity + 2250)
+      .add($("[data-ripple]"), { r: [2, 22], opacity: [0.55, 0], duration: 650, ease: "outQuad" }, T.clarity + 2300);
 
     tlRef.current = tl;
     return () => {
@@ -161,16 +200,20 @@ export function Hero() {
               className="rounded-full bg-ink px-7 text-paper hover:bg-ink/90 md:min-w-48 dark:bg-ink dark:text-paper dark:hover:bg-ink/90"
               href="/work"
               hoverText="Tamdid, Kudos, Atlas →"
-              text="See the work"
+              text="See my work"
             />
-            <a
-              className="inline-flex h-10 items-center gap-2 rounded-full border border-ink/15 px-5 font-medium text-sm transition-colors hover:border-signal hover:text-signal"
-              download
-              href={site.resume}
+            {/* Same slide-up label as the work button, but it opens the message form. */}
+            <MessageSheet
+              className="group relative inline-flex h-10 items-center justify-center overflow-hidden rounded-full border border-ink/20 px-7 font-medium transition-colors hover:border-signal md:min-w-48"
+              unstyled
             >
-              <ArrowDownToLine className="size-4" />
-              Download CV
-            </a>
+              <span className="grid justify-items-center transition-transform duration-200 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:-translate-y-full group-focus-visible:-translate-y-full motion-reduce:transition-none">
+                <span className="col-start-1 row-start-1 transition-opacity duration-200 group-hover:opacity-0">Bring me a tangle</span>
+                <span aria-hidden className="col-start-1 row-start-1 translate-y-full text-signal opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                  Say hello →
+                </span>
+              </span>
+            </MessageSheet>
           </div>
         </div>
 
@@ -196,8 +239,10 @@ export function Hero() {
                 return (
                   <g data-chip="" key={label} style={{ transformBox: "fill-box", transformOrigin: "center" }}>
                     <rect className="fill-paper stroke-rule" height={CHIP.h} rx={CHIP.h / 2} width={CHIP.w} x={x} y={y} />
-                    <circle className="fill-signal" cx={x + 18} cy={y + CHIP.h / 2} r={4} />
-                    <text className="fill-ink text-[13px]" dominantBaseline="central" x={x + 30} y={y + CHIP.h / 2}>
+                    <g className="stroke-signal" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" transform={`translate(${x + 11} ${y + 9})`}>
+                      {ICONS[i]}
+                    </g>
+                    <text className="fill-ink text-[13px]" dominantBaseline="central" x={x + 34} y={y + CHIP.h / 2}>
                       {label}
                     </text>
                   </g>
@@ -227,7 +272,17 @@ export function Hero() {
                 ].map(([name, meta], r) => (
                   <g data-screen-part="" key={name}>
                     <rect className="fill-paper-2" height={40} rx={10} width={352} x={104} y={202 + r * 48} />
-                    <rect className={r === 0 ? "fill-signal" : "fill-blush"} height={22} rx={7} width={22} x={114} y={211 + r * 48} />
+                    <rect className={r === 0 ? "fill-signal" : "fill-blush"} height={24} rx={7} width={24} x={113} y={210 + r * 48} />
+                    <g
+                      className={r === 0 ? "stroke-white" : "stroke-signal"}
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
+                      transform={`translate(${117} ${214 + r * 48}) scale(1)`}
+                    >
+                      {ROW_ICONS[r]}
+                    </g>
                     <text className="fill-ink text-[12px]" x={146} y={219 + r * 48}>
                       {name}
                     </text>
@@ -250,6 +305,31 @@ export function Hero() {
               <text className="fill-ink-soft font-mono text-[11px] uppercase tracking-wider" data-caption="" textAnchor="end" x={530} y={42}>
                 6 inputs → 1 clear flow
               </text>
+              {/* Finishing touches: sparkles, and a cursor that actually uses the screen. */}
+              {[
+                [500, 96, 1],
+                [56, 330, 0.7],
+                [512, 340, 0.55],
+              ].map(([x, y, k]) => (
+                <path
+                  className="fill-signal"
+                  d="M0 -12 3.2 -3.2 12 0 3.2 3.2 0 12 -3.2 3.2 -12 0 -3.2 -3.2Z"
+                  data-spark=""
+                  key={`${x}-${y}`}
+                  style={{ transformBox: "fill-box", transformOrigin: "center" }}
+                  transform={`translate(${x} ${y}) scale(${k})`}
+                />
+              ))}
+              <circle className="fill-signal" cx={417} cy={222} data-ripple="" r={18} />
+              <g data-cursor="" style={{ transformBox: "fill-box", transformOrigin: "top left" }}>
+                <path
+                  className="fill-ink stroke-paper"
+                  d="M0 0 0 17 4.6 12.8 7.6 19.6 10.4 18.4 7.4 11.6 13.4 11.4Z"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  transform="translate(424 226)"
+                />
+              </g>
             </svg>
           </div>
           <figcaption className="eyebrow mt-3 flex items-center justify-between px-2" id="hero-fig">

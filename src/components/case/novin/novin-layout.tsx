@@ -403,8 +403,8 @@ export function NovinLayout({ cs }: { cs: CaseStudy }) {
               </RevealItem>
             ))}
           </RevealGroup>
-          <div className="mt-16 grid gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-8">
+          <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-12">
+            <div className="min-w-0 lg:col-span-8">
               <p className="font-mono text-[#7b9efe] text-[0.75rem] uppercase">Type · Vazir FD for Persian, Montserrat for Latin</p>
               <div className="mt-4 divide-y divide-white/10 border-white/10 border-y" dir="rtl">
                 {typeScale.map((t) => (

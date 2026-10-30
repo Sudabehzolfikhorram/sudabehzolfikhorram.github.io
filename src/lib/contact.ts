@@ -1,5 +1,5 @@
-// Sending contact messages, shared by the contact page composer and the
-// message popover.
+// Validating and sending contact messages, shared by the contact page and the
+// message dialog.
 import { parsePhoneNumberFromString } from "libphonenumber-js/max";
 import { site } from "@/lib/content";
 
@@ -180,27 +180,63 @@ export function checkContact(raw: string): ContactCheck {
   };
 }
 
+export type Outgoing = { message: string; contact: string; topic: string };
+
+/**
+ * A short ID per browser (e.g. V-7K2Q), kept in localStorage, so messages from
+ * the same visitor can be told apart from everyone else's. Falls back to a
+ * fresh ID when storage is blocked.
+ */
+export function visitorId() {
+  const make = () => {
+    const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+    const bytes = crypto.getRandomValues(new Uint8Array(4));
+    return `V-${Array.from(bytes, (b) => alphabet[b % alphabet.length]).join("")}`;
+  };
+  try {
+    const saved = localStorage.getItem("visitor-id");
+    if (saved) return saved;
+    const id = make();
+    localStorage.setItem("visitor-id", id);
+    return id;
+  } catch {
+    return make();
+  }
+}
+
 /** Opens the visitor's mail app with their message addressed to Sudabeh. */
-export function sendByEmail(message: string, contact: string) {
-  const subject = encodeURIComponent(SUBJECT);
-  const body = encodeURIComponent(`${message}\n\nReach me at: ${contact}`);
+export function sendByEmail({ message, contact, topic }: Outgoing) {
+  const subject = encodeURIComponent(topic ? `${SUBJECT} · ${topic}` : SUBJECT);
+  const body = encodeURIComponent(contact ? `${message}\n\nReach me at: ${contact}` : message);
   window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
 }
 
-/** Posts the message to the Apps Script endpoint, which emails it to Sudabeh. Throws on failure. */
-export async function sendToInbox(message: string, contact: string) {
+async function post(payload: Record<string, string>) {
   // text/plain keeps this a simple request, so the browser skips a CORS preflight Apps Script can't answer.
   const res = await fetch(site.contactEndpoint, {
     method: "POST",
     headers: { "Content-Type": "text/plain;charset=utf-8" },
-    body: JSON.stringify({ message, contact, page: window.location.href }),
+    body: JSON.stringify(payload),
   });
-  const data = (await res.json().catch(() => null)) as { ok?: boolean } | null;
-  if (!res.ok || !data?.ok) {
+  const data = (await res.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
+  return { ok: res.ok && Boolean(data?.ok), error: data?.error };
+}
+
+/** Posts one self-contained message to the Apps Script endpoint, which emails it to Sudabeh. Throws on failure. */
+export async function sendToInbox({ message, contact, topic }: Outgoing) {
+  const id = visitorId();
+  const payload = { message, contact, topic, id, page: window.location.href };
+  let result = await post(payload);
+  if (!result.ok && result.error === "invalid" && !contact) {
+    // An older deployment of the script still requires a contact: say so
+    // explicitly, and carry the ID and topic in the text, rather than drop the message.
+    result = await post({ ...payload, contact: `none (visitor ${id})`, message: `[${topic || "Message"} · ${id}]\n\n${message}` });
+  }
+  if (!result.ok) {
     throw new Error("Message was not delivered");
   }
 }
 
 export const viaInbox = Boolean(site.contactEndpoint);
 const send = viaInbox ? sendToInbox : sendByEmail;
-export const sendMessage = (message: string, contact: string) => send(message, checkContact(contact).value || contact);
+export const sendMessage = (out: Outgoing) => send({ ...out, contact: out.contact ? checkContact(out.contact).value : "" });

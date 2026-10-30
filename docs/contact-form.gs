@@ -32,27 +32,33 @@ function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);
     var message = String(data.message || "").trim().slice(0, 5000);
+    // Optional: visitors may just want to ask something without saying who they are.
     var contact = String(data.contact || "").trim().slice(0, 200);
+    var id = String(data.id || "").replace(/[^A-Z0-9-]/gi, "").slice(0, 16) || "unknown";
+    var topic = String(data.topic || "").trim().slice(0, 60);
     var page = String(data.page || "").slice(0, 300);
-    if (message.length < MIN_LENGTH || !contact) {
+    if (message.length < MIN_LENGTH) {
       return reply({ ok: false, error: "invalid" });
     }
 
     var body =
       "New message from your portfolio\n\n" +
       message +
-      "\n\n— Reach them at: " + contact +
-      "\nSent from: " + page;
+      "\n\n— Topic: " + (topic || "not chosen") +
+      "\n— Reach them at: " + (contact || "no contact left") +
+      "\n— Visitor: " + id + " (same ID = same browser)" +
+      "\n— Sent from: " + page;
     var options = { name: "Portfolio contact" };
     // An email contact becomes the reply-to, so hitting Reply answers the visitor.
     if (EMAIL.test(contact)) {
       options.replyTo = contact;
     }
-    MailApp.sendEmail(TO, "Portfolio message from " + contact, body, options);
+    var subject = "Portfolio · " + (topic || "Message") + " · " + id + (contact ? " · " + contact : "");
+    MailApp.sendEmail(TO, subject, body, options);
 
     // The email is the source of truth; a Telegram hiccup must not fail the send.
     try {
-      notifyTelegram(message, contact);
+      notifyTelegram(message, contact, id, topic);
     } catch (err) {
       console.error("Telegram notification failed: " + err);
     }
@@ -62,7 +68,7 @@ function doPost(e) {
   }
 }
 
-function notifyTelegram(message, contact) {
+function notifyTelegram(message, contact, id, topic) {
   var props = PropertiesService.getScriptProperties();
   var token = (props.getProperty("TELEGRAM_TOKEN") || "").trim();
   var chatId = props.getProperty("TELEGRAM_CHAT_ID");
@@ -70,9 +76,9 @@ function notifyTelegram(message, contact) {
     return;
   }
   var text =
-    "📬 <b>New message from your portfolio</b>\n\n" +
+    "📬 <b>" + escapeHtml(topic || "New message") + "</b> · <code>" + escapeHtml(id) + "</code>\n\n" +
     escapeHtml(message) +
-    "\n\n<b>Reach them at:</b> " + contactLink(contact);
+    "\n\n<b>Reach them at:</b> " + (contact ? contactLink(contact) : "<i>no contact left</i>");
   sendTelegram(token, chatId, text);
 }
 

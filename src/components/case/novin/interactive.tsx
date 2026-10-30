@@ -18,6 +18,9 @@ export function BeforeAfter({
   height,
   beforeLabel = "Before · live site",
   afterLabel = "After · redesign",
+  beforeAlt = "The current Novin Host homepage",
+  afterAlt = "The redesigned Novin Host homepage",
+  accent = "#214bbd",
 }: {
   before: string;
   after: string;
@@ -25,6 +28,10 @@ export function BeforeAfter({
   height: number;
   beforeLabel?: string;
   afterLabel?: string;
+  beforeAlt?: string;
+  afterAlt?: string;
+  /** Colour of the "after" label. */
+  accent?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const pos = useMotionValue(50);
@@ -72,15 +79,15 @@ export function BeforeAfter({
       ref={ref}
       style={{ aspectRatio: `${width} / ${height}` }}
     >
-      <Image alt="The current Novin Host homepage" className="absolute inset-0 h-full w-full object-cover" draggable={false} fill priority sizes="100vw" src={before} />
+      <Image alt={beforeAlt} className="absolute inset-0 h-full w-full object-cover" draggable={false} fill priority sizes="100vw" src={before} />
       <motion.div className="absolute inset-0" style={{ clipPath: clip }}>
-        <Image alt="The redesigned Novin Host homepage" className="h-full w-full object-cover" draggable={false} fill priority sizes="100vw" src={after} />
+        <Image alt={afterAlt} className="h-full w-full object-cover" draggable={false} fill priority sizes="100vw" src={after} />
       </motion.div>
 
       <span className="pointer-events-none absolute top-4 left-4 rounded-full bg-black/70 px-3 py-1.5 font-mono text-[0.7rem] text-white uppercase tracking-[0.06em] backdrop-blur">
         {beforeLabel}
       </span>
-      <span className="pointer-events-none absolute top-4 right-4 rounded-full bg-[#214bbd] px-3 py-1.5 font-mono text-[0.7rem] text-white uppercase tracking-[0.06em]">
+      <span className="pointer-events-none absolute top-4 right-4 rounded-full px-3 py-1.5 font-mono text-[0.7rem] text-white uppercase tracking-[0.06em]" style={{ background: accent }}>
         {afterLabel}
       </span>
 
@@ -90,7 +97,7 @@ export function BeforeAfter({
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={value}
-        aria-valuetext={`${value}% showing the live site`}
+        aria-valuetext={`${value}% showing ${beforeLabel}`}
         className="absolute top-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-[#11215d] shadow-xl outline-none ring-[#7b9efe] focus-visible:ring-4"
         onKeyDown={onKey}
         role="slider"
@@ -204,19 +211,24 @@ export function Hotspots({
 export function TwinScroll({
   left,
   right,
+  accent = "#214bbd",
 }: {
   left: { src: string; label: string; height: number };
   right: { src: string; label: string; height: number };
+  /** Colour of the right-hand label. */
+  accent?: string;
 }) {
   const [playing, setPlaying] = useState(false);
-  const frame = (side: typeof left, tone: string) => (
+  const frame = (side: typeof left, tone: string, toneColor?: string) => (
     <figure>
       <div className="overflow-hidden rounded-xl bg-white shadow-[0_30px_60px_-30px_rgb(0_0_0/0.45)] ring-1 ring-black/10">
         <div className="flex items-center gap-1.5 border-zinc-200 border-b bg-zinc-100 px-3 py-2">
           <span className="size-2.5 rounded-full bg-zinc-300" />
           <span className="size-2.5 rounded-full bg-zinc-300" />
           <span className="size-2.5 rounded-full bg-zinc-300" />
-          <span className={cn("ml-3 rounded-md px-2 py-0.5 font-mono text-[10px] text-white", tone)}>{side.label}</span>
+          <span className={cn("ml-3 rounded-md px-2 py-0.5 font-mono text-[10px] text-white", tone)} style={toneColor ? { background: toneColor } : undefined}>
+            {side.label}
+          </span>
         </div>
         <div className="relative h-[520px] overflow-hidden">
           <div
@@ -246,7 +258,7 @@ export function TwinScroll({
       </div>
       <div className="grid gap-6 md:grid-cols-2">
         {frame(left, "bg-zinc-500")}
-        {frame(right, "bg-[#214bbd]")}
+        {frame(right, "", accent)}
       </div>
     </div>
   );
@@ -257,7 +269,7 @@ export function TwinScroll({
 export type PageTab = { id: string; label: string; src: string; width: number; height: number; notes: string[] };
 
 /** Tabs that swap the page shown in a browser frame, with notes beside it. */
-export function PageSwitcher({ pages }: { pages: PageTab[] }) {
+export function PageSwitcher({ pages, accent = "#11215d", altSuffix = "page, redesigned" }: { pages: PageTab[]; accent?: string; altSuffix?: string }) {
   const [id, setId] = useState(pages[0].id);
   const page = pages.find((p) => p.id === id) ?? pages[0];
   return (
@@ -272,7 +284,7 @@ export function PageSwitcher({ pages }: { pages: PageTab[] }) {
             role="tab"
             type="button"
           >
-            {p.id === id && <motion.span className="absolute inset-0 rounded-full bg-[#11215d]" layoutId="page-tab" transition={{ type: "spring", stiffness: 420, damping: 34 }} />}
+            {p.id === id && <motion.span className="absolute inset-0 rounded-full" layoutId="page-tab" style={{ background: accent }} transition={{ type: "spring", stiffness: 420, damping: 34 }} />}
             <span className="relative">{p.label}</span>
           </button>
         ))}
@@ -287,7 +299,7 @@ export function PageSwitcher({ pages }: { pages: PageTab[] }) {
           <div className="relative max-h-[640px] overflow-y-auto">
             <AnimatePresence initial={false} mode="wait">
               <motion.div animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} initial={{ opacity: 0, y: 10 }} key={page.id} transition={{ duration: 0.25 }}>
-                <Image alt={`${page.label} page, redesigned`} className="block h-auto w-full" height={page.height} sizes="(min-width: 1024px) 60vw, 100vw" src={page.src} width={page.width} />
+                <Image alt={`${page.label} ${altSuffix}`} className="block h-auto w-full" height={page.height} sizes="(min-width: 1024px) 60vw, 100vw" src={page.src} width={page.width} />
               </motion.div>
             </AnimatePresence>
           </div>

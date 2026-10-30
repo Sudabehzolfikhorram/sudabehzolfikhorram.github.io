@@ -2,7 +2,7 @@
 
 import { MessageSquare, X } from "lucide-react";
 import { AnimatePresence, motion, type PanInfo, useDragControls } from "motion/react";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { type ReactNode, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import { ContactComposer } from "./contact-composer";
@@ -11,11 +11,21 @@ const SHEET = { type: "spring", duration: 0.5, bounce: 0.12 } as const;
 const noop = () => () => {};
 
 /**
- * A pill that opens the chat composer: a bottom sheet on phones (drag it
+ * A button that opens the message form: a bottom sheet on phones (drag it
  * down to close) and a centred dialog on larger screens. Tapping outside or
  * pressing Escape closes either.
  */
-export function MessageSheet({ className }: { className?: string }) {
+export function MessageSheet({
+  className,
+  children,
+  unstyled = false,
+}: {
+  className?: string;
+  /** The button's content; defaults to an icon and "Write me a message". */
+  children?: ReactNode;
+  /** Drop the default pill styling, for callers that style the button themselves. */
+  unstyled?: boolean;
+}) {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   // Only the handle drags, so the fields inside keep their own touch gestures.
@@ -51,15 +61,19 @@ export function MessageSheet({ className }: { className?: string }) {
         aria-expanded={open}
         aria-haspopup="dialog"
         className={cn(
-          "inline-flex h-12 items-center gap-2.5 rounded-full bg-paper px-6 font-medium text-ink transition-transform active:scale-[0.97]",
+          !unstyled && "inline-flex h-12 items-center gap-2.5 rounded-full bg-paper px-6 font-medium text-ink transition-transform active:scale-[0.97]",
           className
         )}
         onClick={() => setOpen(true)}
         ref={triggerRef}
         type="button"
       >
-        <MessageSquare className="size-4 text-ink-soft" strokeWidth={1.75} />
-        Write me a message
+        {children ?? (
+          <>
+            <MessageSquare className="size-4 text-ink-soft" strokeWidth={1.75} />
+            Write me a message
+          </>
+        )}
       </button>
 
       {mounted

@@ -1,184 +1,117 @@
-import { ArrowDownToLine, ArrowUpRight } from "lucide-react";
+import { ArrowDownToLine, Lightbulb, PenTool, Sprout } from "lucide-react";
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
-import {
-  courses,
-  duration,
-  education,
-  experience,
-  formatMonth,
-  languages,
-  type Role,
-  site,
-  skills,
-  tools,
-} from "@/lib/content";
-import { cn } from "@/lib/utils";
+import { CareerList, ToolMarquee } from "@/components/site/career-list";
+import { courses, education, experience, languages, site, skillGroups, tools } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Career · Sudabeh",
   description: "Sudabeh Zolfi Khorram’s career as a product designer: roles, products, skills, tools and education.",
 };
 
-const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const initials = (name: string) =>
-  name
-    .split(/\s+/)
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-
-function Logo({ role }: { role: Role }) {
-  return (
-    <span className="relative z-10 grid size-14 shrink-0 place-items-center overflow-hidden rounded-2xl border border-rule bg-white shadow-sm">
-      {role.logo ? (
-        <Image alt={`${role.company} logo`} className="object-contain p-2" fill sizes="56px" src={`${BASE}/logos/${role.logo}.webp`} />
-      ) : (
-        <span className="font-display text-lg text-zinc-700">{initials(role.company)}</span>
-      )}
-    </span>
-  );
-}
-
-function Tags({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div>
-      <h2 className="eyebrow">{title}</h2>
-      <ul className="mt-4 flex flex-wrap gap-2">
-        {items.map((t) => (
-          <li className="rounded-full border border-rule bg-paper px-3 py-1 text-sm" key={t}>
-            {t}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+const groupIcons = [Lightbulb, PenTool, Sprout];
 
 export default function ExperiencePage() {
   return (
-    <section className="mx-auto max-w-[1240px] px-4 pt-16 pb-28 sm:px-8">
-      <Reveal className="grid gap-6 pb-16 lg:grid-cols-12">
-        <div className="lg:col-span-7">
-          <p className="eyebrow">Career</p>
-          <h1 className="mt-4 font-display text-[clamp(2.4rem,5vw,4rem)] leading-[1.02]">
-            {experience.length} teams, <em className="text-signal">one direction.</em>
-          </h1>
-        </div>
-        <div className="self-end lg:col-span-4 lg:col-start-9">
-          <p className="text-ink-soft">
-            From educational content to fintech, ERP and enterprise platforms, each role moved me closer to owning the
-            whole product, not just its screens.
+    <>
+      <section className="mx-auto max-w-[1240px] px-4 pt-16 pb-20 sm:px-8">
+        <Reveal className="grid gap-6 pb-12 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <p className="eyebrow">Career</p>
+            <h1 className="mt-4 font-display text-[clamp(2.4rem,5vw,4rem)] leading-[1.02]">
+              {experience.length} teams, <em className="text-signal">one direction.</em>
+            </h1>
+          </div>
+          <p className="max-w-md self-end text-ink-soft lg:col-span-4 lg:col-start-9">
+            From exam-prep content to fintech, ERP and enterprise AI. Open any role for the story.
           </p>
-          <a
-            className="mt-6 inline-flex h-10 items-center gap-2 rounded-full bg-ink px-5 font-medium text-paper text-sm transition-colors hover:bg-signal hover:text-white"
-            download
-            href={site.resume}
-          >
-            <ArrowDownToLine className="size-4" />
-            Download CV (PDF)
-          </a>
-        </div>
-      </Reveal>
+        </Reveal>
+        <Reveal>
+          <CareerList />
+        </Reveal>
+      </section>
 
-      <div className="grid gap-16 lg:grid-cols-12">
-        {/* One continuous line: the logos sit on it like stops. */}
-        <RevealGroup as="ol" className="relative lg:col-span-8" stagger={0.05}>
-          <span aria-hidden className="absolute top-7 bottom-7 left-7 w-px bg-rule" />
-          {experience.map((r) => (
-            <RevealItem as="li" className="relative grid grid-cols-[3.5rem_1fr] gap-5 pb-12 last:pb-0" key={r.company}>
-              <Logo role={r} />
-              <div className="min-w-0 pt-1">
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <h3 className="font-semibold text-xl">
-                    {r.company}
-                    {!r.end && (
-                      <span className="ml-3 inline-flex items-center gap-1.5 rounded-full bg-blush px-2 py-0.5 align-middle font-medium font-mono text-[11px] text-signal uppercase">
-                        <span className="size-1.5 rounded-full bg-signal" /> Now
-                      </span>
-                    )}
-                  </h3>
-                  <p className="font-mono text-ink-soft text-sm tabular-nums">
-                    {formatMonth(r.start)} – {formatMonth(r.end)} · {duration(r.start, r.end)}
-                  </p>
-                </div>
-                <p className="mt-1 text-ink-soft">
-                  {[r.title, r.type, r.mode].filter(Boolean).join(" · ")}
-                </p>
-                <p className="mt-3 max-w-2xl leading-relaxed">{r.about}</p>
-                {(r.caseStudy || r.link) && (
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {r.caseStudy && (
-                      <Link
-                        className="inline-flex items-center gap-1 rounded-full bg-ink px-3.5 py-1.5 text-paper text-sm transition-colors hover:bg-signal hover:text-white"
-                        href={`/work/${r.caseStudy}`}
-                      >
-                        Case study <ArrowUpRight className="size-3.5" />
-                      </Link>
-                    )}
-                    {r.link && (
-                      <a
-                        className="rounded-full border border-ink/15 px-3.5 py-1.5 text-sm transition-colors hover:border-signal hover:text-signal"
-                        href={r.link.href}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        {r.link.label} ↗
-                      </a>
-                    )}
-                  </div>
-                )}
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
-
-        <aside className="grid content-start gap-10 lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
+      <section className="border-rule border-y bg-paper-2/40">
+        <div className="mx-auto max-w-[1240px] px-4 py-20 sm:px-8">
           <Reveal>
-            <Tags items={skills} title="Skills" />
+            <p className="eyebrow">Toolkit</p>
+            <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3rem)] leading-[1.05]">
+              How I think, make <em className="text-signal">and scale.</em>
+            </h2>
           </Reveal>
-          <Reveal>
-            <Tags items={tools} title="Tools" />
-          </Reveal>
-          <Reveal className={cn("grid gap-8 rounded-3xl border border-rule bg-paper-2/50 p-6")}>
-            <div>
-              <h2 className="eyebrow">Education</h2>
-              {education.map((e) => (
-                <p className="mt-3" key={e.title}>
-                  <span className="font-medium">{e.title}</span>
-                  <br />
-                  <span className="text-ink-soft text-sm">
-                    {e.place} · {e.years}
+          <RevealGroup className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3" stagger={0.08}>
+            {skillGroups.map((g, i) => {
+              const Icon = groupIcons[i];
+              return (
+                <RevealItem className="rounded-3xl border border-rule bg-paper p-6" key={g.title}>
+                  <span className="grid size-10 place-items-center rounded-xl bg-blush text-signal">
+                    <Icon className="size-5" />
                   </span>
-                </p>
-              ))}
-            </div>
-            <div>
-              <h2 className="eyebrow">Courses</h2>
-              <ul className="mt-3 grid gap-2 text-sm">
-                {courses.map((c) => (
-                  <li key={c.title}>
-                    <span className="font-medium">{c.title}</span> <span className="text-ink-soft">· {c.place}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h2 className="eyebrow">Languages</h2>
-              <ul className="mt-3 grid gap-1 text-sm">
-                {languages.map((l) => (
-                  <li key={l.name}>
-                    <span className="font-medium">{l.name}</span> <span className="text-ink-soft">· {l.level}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                  <h3 className="mt-5 font-semibold text-lg">{g.title}</h3>
+                  <ul className="mt-3 grid gap-1.5 text-ink-soft">
+                    {g.items.map((s) => (
+                      <li key={s}>{s}</li>
+                    ))}
+                  </ul>
+                </RevealItem>
+              );
+            })}
+          </RevealGroup>
+          <Reveal className="mt-12">
+            <p className="eyebrow mb-4">Tools I work in</p>
+            <ToolMarquee tools={tools} />
           </Reveal>
-        </aside>
-      </div>
-    </section>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-[1240px] gap-10 px-4 py-20 sm:px-8 lg:grid-cols-12">
+        <Reveal className="grid gap-8 sm:grid-cols-3 lg:col-span-7">
+          <div>
+            <h2 className="eyebrow">Education</h2>
+            {education.map((e) => (
+              <p className="mt-3" key={e.title}>
+                <span className="font-medium">{e.title}</span>
+                <br />
+                <span className="text-ink-soft text-sm">{e.place}</span>
+              </p>
+            ))}
+          </div>
+          <div>
+            <h2 className="eyebrow">Courses</h2>
+            <ul className="mt-3 grid gap-1.5 text-sm">
+              {courses.map((c) => (
+                <li key={c.title}>
+                  {c.title} <span className="text-ink-soft">· {c.place}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2 className="eyebrow">Languages</h2>
+            <ul className="mt-3 grid gap-1.5 text-sm">
+              {languages.map((l) => (
+                <li key={l.name}>
+                  {l.name} <span className="text-ink-soft">· {l.level}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+        <Reveal className="lg:col-span-4 lg:col-start-9" delay={0.1}>
+          <div className="rounded-3xl bg-ink p-7 text-paper dark:bg-paper-2 dark:text-ink">
+            <p className="font-display text-2xl leading-tight">Prefer it on one page?</p>
+            <p className="mt-2 text-paper/70 text-sm dark:text-ink-soft">The same story as a PDF, easy to forward.</p>
+            <a
+              className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-paper px-5 font-medium text-ink text-sm transition-colors hover:bg-signal hover:text-white dark:bg-ink dark:text-paper"
+              download
+              href={site.resume}
+            >
+              <ArrowDownToLine className="size-4" />
+              Download CV
+            </a>
+          </div>
+        </Reveal>
+      </section>
+    </>
   );
 }

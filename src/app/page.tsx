@@ -7,6 +7,7 @@ import { Hero } from "@/components/site/hero";
 import { ProjectCard } from "@/components/site/project-card";
 import { Proof } from "@/components/site/proof";
 import { UntangleStory } from "@/components/site/untangle-story";
+import { WhatIDo } from "@/components/site/what-i-do";
 import { caseStudies } from "@/lib/case-studies";
 import { site } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -45,13 +46,30 @@ export default function Home() {
         </RevealGroup>
       </section>
 
+      <section className="border-rule border-t">
+        <div className="mx-auto max-w-[1240px] px-4 py-24 sm:px-8">
+          <Reveal className="mb-10 grid gap-6 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <p className="eyebrow">What I do</p>
+              <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.05]">
+                The whole product, <em className="text-signal">not just its screens.</em>
+              </h2>
+            </div>
+            <p className="max-w-md self-end text-ink-soft lg:col-span-4 lg:col-start-9">
+              Fintech, B2B SaaS, ERP and enterprise AI: products with many roles, rules and edge cases.
+            </p>
+          </Reveal>
+          <WhatIDo />
+        </div>
+      </section>
+
       <UntangleStory />
 
       <section className="mx-auto max-w-[1240px] px-4 py-24 sm:px-8">
         <Reveal className="mb-10">
-          <p className="eyebrow">In numbers</p>
+          <p className="eyebrow">By the numbers</p>
           <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.05]">
-            Small numbers, <em className="text-signal">all real.</em>
+            Proof, <em className="text-signal">not adjectives.</em>
           </h2>
         </Reveal>
         <Proof />
@@ -67,13 +85,11 @@ export default function Home() {
           </Reveal>
           <Reveal className="lg:col-span-6 lg:col-start-7" delay={0.1}>
             <p className="text-lg leading-relaxed">
-              I studied law while designing my first products. Both come down to the same job: rules people have to
-              live with, made easy to understand.
+              The same term I started my law degree, I started designing. A startup of our own that never launched
+              turned a UI designer into a product designer.
             </p>
             <p className="mt-4 text-ink-soft leading-relaxed">
-              Today I’m a product designer at Algonet, working on dashboards, operational tools and a design system.
-              Out of curiosity I’ve also made brand identities, logos and environmental graphics, but products are
-              where I do my best work.
+              Today I design Atlas at Algonet, an AI platform that reads how a company really works.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link

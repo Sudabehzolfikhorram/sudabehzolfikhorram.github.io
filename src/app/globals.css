@@ -208,3 +208,10 @@ h2 em {
     opacity: 0.04;
   }
 }
+
+/* Tool marquee on the career page: each row is two copies sliding one width. */
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}

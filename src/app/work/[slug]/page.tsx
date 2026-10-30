@@ -5,6 +5,7 @@ import { BriefLayout } from "@/components/case/layouts/brief";
 import { DuoLayout } from "@/components/case/layouts/duo";
 import { EditorialLayout } from "@/components/case/layouts/editorial";
 import { JourneyLayout } from "@/components/case/layouts/journey";
+import { KaaryarLayout } from "@/components/case/layouts/kaaryar";
 import { SplitLayout } from "@/components/case/layouts/split";
 import { SystemLayout } from "@/components/case/layouts/system";
 import { NovinLayout } from "@/components/case/novin/novin-layout";
@@ -19,6 +20,7 @@ const layouts: Record<Layout, (p: { cs: CaseStudy }) => React.ReactNode> = {
   system: SystemLayout,
   novin: NovinLayout,
   brief: BriefLayout,
+  kaaryar: KaaryarLayout,
 };
 
 export function generateStaticParams() {
@@ -37,8 +39,9 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
   return (
     <>
       <Breadcrumb cs={cs} />
-      {typeof cs.cover !== "object" && <ScreensNote />}
       <Body cs={cs} />
+      {/* Honest, but at the end: it shouldn't be the first thing anyone reads. */}
+      {typeof cs.cover !== "object" && !cs.gallery && <ScreensNote />}
       <MoreProjects cs={cs} />
     </>
   );
