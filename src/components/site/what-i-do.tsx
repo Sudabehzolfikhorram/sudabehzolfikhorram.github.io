@@ -24,8 +24,8 @@ const art: Record<string, ReactNode> = {
   // A design system: parts that line up on hover.
   systems: (
     <svg aria-hidden className="h-16 w-28" fill="none" viewBox="0 0 112 64">
-      <rect className="fill-signal transition-transform duration-500 group-hover:translate-x-1" height="14" rx="7" width="40" x="8" y="10" />
-      <rect className={cn("fill-blush", R)} height="14" rx="7" width="30" x="54" y="10" />
+      <rect className="fill-sky transition-transform duration-500 group-hover:translate-x-1" height="14" rx="7" width="40" x="8" y="10" />
+      <rect className={cn("fill-sky-soft", R)} height="14" rx="7" width="30" x="54" y="10" />
       <rect className={cn("fill-paper-2 transition-transform duration-500 group-hover:-translate-x-1", R)} height="22" rx="6" width="46" x="8" y="32" />
       <rect className={cn("fill-paper-2 transition-transform delay-75 duration-500 group-hover:translate-y-[-2px]", R)} height="22" rx="6" width="46" x="60" y="32" />
     </svg>
@@ -34,11 +34,11 @@ const art: Record<string, ReactNode> = {
   research: (
     <svg aria-hidden className="h-16 w-28" fill="none" viewBox="0 0 112 64">
       {[20, 34, 26, 44, 30].map((h, i) => (
-        <rect className={i === 3 ? "fill-signal" : "fill-blush"} height={h} key={h + i} rx="3" width="12" x={10 + i * 18} y={56 - h} />
+        <rect className={i === 3 ? "fill-gold" : "fill-gold-soft"} height={h} key={h + i} rx="3" width="12" x={10 + i * 18} y={56 - h} />
       ))}
       <g className="transition-transform duration-700 group-hover:translate-x-9">
-        <circle className={cn(S, "fill-paper/60")} cx="30" cy="22" r="12" strokeWidth="2.5" />
-        <path className={S} d="m39 31 8 8" strokeLinecap="round" strokeWidth="3" />
+        <circle className="fill-paper/60 stroke-ink" cx="30" cy="22" r="12" strokeWidth="2.5" />
+        <path className="stroke-ink" d="m39 31 8 8" strokeLinecap="round" strokeWidth="3" />
       </g>
     </svg>
   ),
@@ -54,6 +54,15 @@ const art: Record<string, ReactNode> = {
     </svg>
   ),
 };
+
+// Each tile takes on its own accent on hover: violet, blue, gold, violet.
+const tones: Record<string, { tile: string; art: string }> = {
+  flows: { tile: "hover:border-signal/50", art: "group-hover:bg-blush" },
+  systems: { tile: "hover:border-sky/50", art: "group-hover:bg-sky-soft" },
+  research: { tile: "hover:border-gold/50", art: "group-hover:bg-gold-soft" },
+  ai: { tile: "hover:border-signal/50", art: "group-hover:bg-blush" },
+};
+const dots: Record<string, string> = { flows: "bg-signal", systems: "bg-sky", research: "bg-gold", ai: "bg-signal" };
 
 const items = [
   {
@@ -82,9 +91,12 @@ export function WhatIDo() {
   return (
     <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" stagger={0.07}>
       {items.map((it) => (
-        <RevealItem className="group flex flex-col rounded-3xl border border-rule bg-paper p-6 transition-colors duration-300 hover:border-signal/50" key={it.key}>
-          <div className="grid h-24 place-items-center rounded-2xl bg-paper-2/70">{art[it.key]}</div>
-          <h3 className="mt-6 font-semibold text-lg">{it.title}</h3>
+        <RevealItem className={cn("group flex flex-col rounded-3xl border border-rule bg-paper p-6 transition-colors duration-300", tones[it.key].tile)} key={it.key}>
+          <div className={cn("grid h-24 place-items-center rounded-2xl bg-paper-2/70 transition-colors duration-500", tones[it.key].art)}>{art[it.key]}</div>
+          <h3 className="mt-6 flex items-center gap-2 font-semibold text-lg">
+            <span aria-hidden className={cn("size-1.5 rounded-full opacity-40 transition-opacity duration-300 group-hover:opacity-100", dots[it.key])} />
+            {it.title}
+          </h3>
           <p className="mt-2 text-ink-soft text-sm leading-relaxed">{it.body}</p>
         </RevealItem>
       ))}

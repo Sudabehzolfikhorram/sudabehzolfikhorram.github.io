@@ -10,7 +10,7 @@ import { site } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 /**
- * One short form, sent in one go: an optional topic, the message, and an
+ * One short form, sent in one go: the message and an
  * optional way to reply. Every submission is complete on its own, so
  * messages from different visitors can never get mixed up, and nothing is
  * lost when someone doesn't leave a contact.
@@ -20,7 +20,6 @@ type Phase = "idle" | "sending" | "sent" | "error";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const POP: Transition = { type: "spring", stiffness: 520, damping: 34 };
-const TOPICS = ["Hiring", "A project", "A question", "Just saying hi"];
 
 const KINDS: Record<ContactKind, { label: string; Icon: typeof Mail }> = {
   email: { label: "Email", Icon: Mail },
@@ -39,7 +38,6 @@ export function ContactComposer({
   autoFocus?: boolean;
 }) {
   const id = useId();
-  const [topic, setTopic] = useState("");
   const [message, setMessage] = useState("");
   const [contact, setContact] = useState("");
   const [contactTouched, setContactTouched] = useState(false);
@@ -79,11 +77,10 @@ export function ContactComposer({
     }
     setPhase("sending");
     try {
-      await sendMessage({ message: message.trim(), contact: contactEmpty ? "" : contact.trim(), topic });
+      await sendMessage({ message: message.trim(), contact: contactEmpty ? "" : contact.trim(), topic: "Contact form" });
       setSentTo(contactEmpty ? "" : check.value);
       setMessage("");
       setContact("");
-      setTopic("");
       setContactTouched(false);
       setPhase("sent");
     } catch {
@@ -178,32 +175,6 @@ export function ContactComposer({
             noValidate
             onSubmit={submit}
           >
-            <fieldset>
-              <legend className="mb-2 font-medium text-sm">
-                What’s it about? <span className="font-normal text-ink-soft">Optional</span>
-              </legend>
-              <div className="flex flex-wrap gap-2">
-                {TOPICS.map((t) => {
-                  const on = topic === t;
-                  return (
-                    <button
-                      aria-pressed={on}
-                      className={cn(
-                        "relative rounded-full border px-3.5 py-1.5 text-sm transition-colors",
-                        on ? "border-signal text-on-signal" : "border-rule hover:border-signal hover:text-signal"
-                      )}
-                      key={t}
-                      onClick={() => setTopic(on ? "" : t)}
-                      type="button"
-                    >
-                      {on && <motion.span className="absolute inset-0 rounded-full bg-signal" layoutId={`${id}-topic`} transition={POP} />}
-                      <span className="relative">{t}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </fieldset>
-
             <div>
               <label className="mb-2 block font-medium text-sm" htmlFor={`${id}-message`}>
                 Your message
@@ -228,7 +199,7 @@ export function ContactComposer({
             <div>
               <label className="mb-2 flex items-baseline justify-between gap-3 font-medium text-sm" htmlFor={`${id}-contact`}>
                 <span>
-                  How can I reach you? <span className="font-normal text-ink-soft">Optional</span>
+                  Where can I reply?
                 </span>
               </label>
               <div
@@ -252,7 +223,7 @@ export function ContactComposer({
                   </AnimatePresence>
                 </span>
                 <input
-                  aria-describedby={`${id}-contact-help`}
+                  aria-describedby={contactError || check.suggestion ? `${id}-contact-help` : undefined}
                   aria-invalid={Boolean(contactError)}
                   autoComplete="email"
                   className="h-full min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-ink-soft/70 disabled:opacity-60"
@@ -277,9 +248,9 @@ export function ContactComposer({
                   )}
                 </AnimatePresence>
               </div>
-              <p className={cn("mt-2 text-sm", contactError ? "text-destructive" : "text-ink-soft")} id={`${id}-contact-help`}>
-                {contactError ??
-                  (check.suggestion ? (
+              {(contactError || check.suggestion) && (
+                <p className={cn("mt-2 text-sm", contactError ? "text-destructive" : "text-ink-soft")} id={`${id}-contact-help`}>
+                  {contactError ?? (
                     <>
                       Did you mean{" "}
                       <button className="font-mono text-signal underline underline-offset-2" onClick={() => setContact(check.suggestion ?? contact)} type="button">
@@ -287,10 +258,9 @@ export function ContactComposer({
                       </button>
                       ?
                     </>
-                  ) : (
-                    "Just asking something? Leave it empty. I only need it to reply."
-                  ))}
-              </p>
+                  )}
+                </p>
+              )}
             </div>
 
             <AnimatePresence initial={false}>
@@ -312,7 +282,6 @@ export function ContactComposer({
             </AnimatePresence>
 
             <div className="flex items-center justify-between gap-4 border-rule border-t pt-4">
-              <span className="hidden text-ink-soft text-xs sm:inline">Ctrl / ⌘ + Enter to send</span>
               <motion.button
                 aria-disabled={!ready}
                 className={cn(

@@ -1,8 +1,9 @@
-// AzMan: three products, told as a long-form article with one chapter per
-// product. Reading column, chapter rail, figures that break out of the column.
+// Long-form article: reading column, chapter rail, figures that break out of
+// the column. Used by AzMan's three products, each on its own page.
+import Link from "next/link";
 import ScrollIndex from "@/components/kokonutui/scroll-index";
 import { Reveal } from "@/components/motion/reveal";
-import type { CaseStudy } from "@/lib/case-studies";
+import { type CaseStudy, getCaseStudy } from "@/lib/case-studies";
 import { cn } from "@/lib/utils";
 import { CaseTitle, Facts, Figure, periodLabel, wrap } from "../blocks";
 import { Screen, type ScreenId } from "../mockups";
@@ -26,10 +27,34 @@ export function EditorialLayout({ cs }: { cs: CaseStudy }) {
             <span className="eyebrow sm:ml-auto">{periodLabel(cs)} · {cs.status}</span>
           </div>
           <CaseTitle className="mt-10" cs={cs} size="xl" />
-          <p className="mt-8 max-w-4xl font-display text-3xl leading-snug sm:text-[2.6rem]">{cs.tagline}</p>
+          <p className="mt-8 max-w-4xl font-display text-2xl leading-snug sm:text-[2.6rem]">{cs.tagline}</p>
           <p className="mt-8 font-mono text-[0.8rem] text-ink-soft">
             By Sudabeh · {cs.meta.role} · {cs.meta.engagement} · {cs.meta.platform}
           </p>
+          {cs.family && (
+            <nav aria-label={`${cs.family.label} products`} className="mt-6 flex flex-wrap items-center gap-2">
+              <span className="eyebrow mr-1">{cs.family.label} family</span>
+              {cs.family.slugs.map((slug) => {
+                const sib = getCaseStudy(slug);
+                if (!sib) return null;
+                const here = slug === cs.slug;
+                return (
+                  <Link
+                    aria-current={here ? "page" : undefined}
+                    className={cn(
+                      "rounded-full border px-3.5 py-1.5 text-sm transition-colors",
+                      here ? "border-[var(--p)] bg-[color-mix(in_oklab,var(--p)_14%,transparent)]" : "border-rule hover:border-signal hover:text-signal"
+                    )}
+                    href={`/work/${slug}`}
+                    key={slug}
+                    style={{ ["--p" as string]: sib.hue }}
+                  >
+                    {sib.name}
+                  </Link>
+                );
+              })}
+            </nav>
+          )}
         </Reveal>
       </header>
 
@@ -73,7 +98,7 @@ export function EditorialLayout({ cs }: { cs: CaseStudy }) {
               </div>
             ))}
 
-            <Chapter title="Across all three">
+            <Chapter title={cs.products ? "Across all three" : "Key decisions"}>
               {cs.highlights.map((h) => (
                 <p key={h.title}>
                   <strong className="font-semibold">{h.title}.</strong> {h.body}
@@ -81,8 +106,8 @@ export function EditorialLayout({ cs }: { cs: CaseStudy }) {
               ))}
             </Chapter>
 
-            <Chapter title="Where it stands">
-              <p>The work is ongoing. Here’s the shape of it so far.</p>
+            <Chapter title="At a glance">
+              <p>The shape of the project, in a few facts.</p>
             </Chapter>
             <div className="mt-8 lg:-mx-20">
               <Facts cs={cs} />

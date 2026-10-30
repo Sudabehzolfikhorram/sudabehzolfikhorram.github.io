@@ -123,7 +123,7 @@ function Step({ i, onEnter, active }: { i: number; onEnter: (i: number) => void;
   return (
     <li className="flex min-h-[48vh] flex-col justify-center py-8 lg:min-h-[70vh]" ref={ref}>
       <motion.div animate={{ opacity: active ? 1 : 0.35 }} transition={{ duration: 0.4 }}>
-        <p className="font-mono text-signal text-sm">
+        <p className="font-mono text-gold text-sm">
           0{i + 1} · {s.verb}
         </p>
         <h3 className="mt-3 font-display text-3xl sm:text-4xl">{s.title}</h3>
@@ -150,7 +150,7 @@ export function UntangleStory() {
             <Visual step={step} />
             <div className="mt-3 flex gap-1.5" aria-hidden>
               {untangleSteps.map((s, i) => (
-                <span className={cn("h-1 flex-1 rounded-full transition-colors duration-500", i <= step ? "bg-signal" : "bg-rule")} key={s.verb} />
+                <span className={cn("h-1 flex-1 rounded-full transition-colors duration-500", i < step ? "bg-signal" : i === step ? "bg-gold" : "bg-rule")} key={s.verb} />
               ))}
             </div>
           </div>

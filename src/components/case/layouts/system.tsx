@@ -57,10 +57,10 @@ export function SystemLayout({ cs }: { cs: CaseStudy }) {
 
       <div className={wrap}><MetaGrid className="border-rule border-t pt-8 pb-20" cs={cs} /></div>
 
-      <section className="bg-ink py-24 text-paper">
+      <section className="bg-night py-24 text-on-night">
         <div className={cn(wrap, "grid gap-12 lg:grid-cols-12")}>
           <Reveal className="lg:col-span-4">
-            <p className="eyebrow !text-paper/60"><span className="text-signal">01</span> — The brief</p>
+            <p className="eyebrow !text-on-night/60"><span className="text-signal">01</span> — The brief</p>
             <p className="mt-6 font-display text-5xl leading-none">Full site.</p>
           </Reveal>
           <Reveal className="self-end lg:col-span-7 lg:col-start-6" delay={0.1}>

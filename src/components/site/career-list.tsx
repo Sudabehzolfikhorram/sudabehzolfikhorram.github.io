@@ -1,6 +1,17 @@
 "use client";
 
-import { ArrowUpRight, Plus } from "lucide-react";
+import {
+  ArrowUpRight,
+  ChefHat,
+  GraduationCap,
+  type LucideIcon,
+  Megaphone,
+  MousePointerClick,
+  Plus,
+  Printer,
+  Sparkles,
+  UsersRound,
+} from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,32 +21,58 @@ import { experience, formatMonth, type Role } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const initials = (name: string) =>
-  name
-    .split(/\s+/)
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
 
+// Until their logo files arrive, these roles show a quiet icon for their field instead of initials.
+const FIELD: Record<string, LucideIcon> = {
+  Algonet: Sparkles,
+  Novaday: UsersRound,
+  ChapAgha: Printer,
+  "Nan va Namak": ChefHat,
+  Jaygah: Megaphone,
+  "Alla Online School": GraduationCap,
+};
+
+/** One colour at rest (ink, or white in dark mode); the brand's own colours come through on hover. */
 function Logo({ role }: { role: Role }) {
+  const Icon = FIELD[role.company];
   return (
-    <span className="relative grid size-12 shrink-0 place-items-center overflow-hidden rounded-2xl border border-rule bg-white transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-3">
+    <span className="relative grid size-12 shrink-0 place-items-center rounded-2xl border border-rule transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-3">
       {role.logo ? (
-        <Image alt={`${role.company} logo`} className="object-contain p-1.5" fill sizes="48px" src={`${BASE}/logos/${role.logo}.webp`} />
+        <Image
+          alt={`${role.company} logo`}
+          className="object-contain p-2 opacity-80 transition-[filter,opacity] duration-500 [filter:brightness(0)] group-hover:opacity-100 group-hover:[filter:none] dark:[filter:brightness(0)_invert(1)]"
+          fill
+          sizes="48px"
+          src={`${BASE}/logos/${role.logo}.webp`}
+        />
       ) : (
-        <span className="font-display text-base text-zinc-700">{initials(role.company)}</span>
+        Icon && <Icon aria-hidden className="size-5 text-ink-soft transition-colors duration-500 group-hover:text-signal" strokeWidth={1.6} />
       )}
     </span>
   );
 }
+
+const TOOL_LOGO: Record<string, string> = {
+  "Figma & FigJam": "figma",
+  Framer: "framer",
+  Notion: "notion",
+  ChatGPT: "chatgpt",
+  Claude: "claude",
+  "Google AI Studio": "aistudio",
+  Lovable: "lovable",
+  NotebookLM: "notebooklm",
+  GA4: "ga4",
+  "Adobe Illustrator": "illustrator",
+  ClickUp: "clickup",
+  Slack: "slack",
+};
 
 /**
  * Every role on one line: logo, company, title and dates. Open a row for the
  * story and the case studies, so the page stays quiet until you ask.
  */
 export function CareerList() {
-  const [open, setOpen] = useState<string | null>(experience[1]?.company ?? null);
+  const [open, setOpen] = useState<string | null>(experience[0]?.company ?? null);
   return (
     <ol className="border-rule border-t">
       {experience.map((r) => {
@@ -143,8 +180,12 @@ export function ToolMarquee({ tools }: { tools: string[] }) {
             >
               {row.map((t) => (
                 <li className="flex items-center gap-2 whitespace-nowrap rounded-full border border-rule bg-paper px-4 py-2" key={t}>
-                  <span aria-hidden className="grid size-6 place-items-center rounded-full bg-blush font-semibold text-[11px] text-signal">
-                    {t[0]}
+                  <span aria-hidden className="grid size-7 place-items-center rounded-full bg-white ring-1 ring-black/5">
+                    {TOOL_LOGO[t] ? (
+                      <Image alt="" className="size-4 object-contain" height={16} src={`${BASE}/tools/${TOOL_LOGO[t]}.svg`} width={16} />
+                    ) : (
+                      <MousePointerClick className="size-3.5 text-zinc-600" />
+                    )}
                   </span>
                   {t}
                 </li>

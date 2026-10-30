@@ -2,7 +2,7 @@
 
 import { animate, AnimatePresence, motion, useInView, useMotionValue, useTransform } from "motion/react";
 import Image from "next/image";
-import { type KeyboardEvent, type PointerEvent, useEffect, useRef, useState } from "react";
+import { type KeyboardEvent, type PointerEvent, useEffect, useId, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 /* ───────────── Before / after slider ───────────── */
@@ -269,8 +269,21 @@ export function TwinScroll({
 export type PageTab = { id: string; label: string; src: string; width: number; height: number; notes: string[] };
 
 /** Tabs that swap the page shown in a browser frame, with notes beside it. */
-export function PageSwitcher({ pages, accent = "#11215d", altSuffix = "page, redesigned" }: { pages: PageTab[]; accent?: string; altSuffix?: string }) {
+export function PageSwitcher({
+  pages,
+  accent,
+  altSuffix = "page, redesigned",
+  tall = false,
+}: {
+  pages: PageTab[];
+  /** Tab colour; defaults to the site's violet. */
+  accent?: string;
+  altSuffix?: string;
+  /** A taller window, for long pages worth scrolling through. */
+  tall?: boolean;
+}) {
   const [id, setId] = useState(pages[0].id);
+  const tabId = useId();
   const page = pages.find((p) => p.id === id) ?? pages[0];
   return (
     <div>
@@ -278,13 +291,23 @@ export function PageSwitcher({ pages, accent = "#11215d", altSuffix = "page, red
         {pages.map((p) => (
           <button
             aria-selected={p.id === id}
-            className={cn("relative rounded-full px-4 py-2 text-sm transition-colors", p.id === id ? "text-white" : "text-ink hover:bg-paper")}
+            className={cn(
+              "relative rounded-full px-4 py-2 text-sm transition-colors",
+              p.id === id ? (accent ? "text-white" : "text-on-signal") : "text-ink hover:bg-paper"
+            )}
             key={p.id}
             onClick={() => setId(p.id)}
             role="tab"
             type="button"
           >
-            {p.id === id && <motion.span className="absolute inset-0 rounded-full" layoutId="page-tab" style={{ background: accent }} transition={{ type: "spring", stiffness: 420, damping: 34 }} />}
+            {p.id === id && (
+              <motion.span
+                className={cn("absolute inset-0 rounded-full", !accent && "bg-signal")}
+                layoutId={`page-tab-${tabId}`}
+                style={accent ? { background: accent } : undefined}
+                transition={{ type: "spring", stiffness: 420, damping: 34 }}
+              />
+            )}
             <span className="relative">{p.label}</span>
           </button>
         ))}
@@ -296,7 +319,7 @@ export function PageSwitcher({ pages, accent = "#11215d", altSuffix = "page, red
             <span className="size-2.5 rounded-full bg-zinc-300" />
             <span className="size-2.5 rounded-full bg-zinc-300" />
           </div>
-          <div className="relative max-h-[640px] overflow-y-auto">
+          <div className={cn("relative overflow-y-auto overscroll-contain", tall ? "max-h-[min(78vh,880px)]" : "max-h-[640px]")}>
             <AnimatePresence initial={false} mode="wait">
               <motion.div animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} initial={{ opacity: 0, y: 10 }} key={page.id} transition={{ duration: 0.25 }}>
                 <Image alt={`${page.label} ${altSuffix}`} className="block h-auto w-full" height={page.height} sizes="(min-width: 1024px) 60vw, 100vw" src={page.src} width={page.width} />

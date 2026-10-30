@@ -9,12 +9,14 @@ import { Screen, type ScreenId } from "../mockups";
 export function DuoLayout({ cs }: { cs: CaseStudy }) {
   return (
     <>
-      <section className="bg-ink pt-14 pb-48 text-paper">
-        <div className={wrap}>
+      <section className="relative overflow-hidden bg-night pt-14 pb-48 text-on-night">
+        {/* A faint glow in the product's own colour; the page stays dark in dark mode. */}
+        <div aria-hidden className="absolute -top-40 right-0 h-[420px] w-[720px] rounded-full opacity-[0.18] blur-[120px]" style={{ background: cs.hue }} />
+        <div className={cn(wrap, "relative")}>
           <Reveal>
-            <p className="eyebrow !text-paper/60">{cs.category} · {periodLabel(cs)}</p>
+            <p className="eyebrow !text-on-night/60">{cs.category} · {periodLabel(cs)}</p>
             <CaseTitle className="mt-5" cs={cs} />
-            <p className="mt-6 max-w-3xl font-display text-2xl leading-snug text-paper/85 sm:text-4xl">{cs.tagline}</p>
+            <p className="mt-6 max-w-3xl font-display text-2xl text-on-night/85 leading-snug sm:text-4xl">{cs.tagline}</p>
           </Reveal>
           <Facts className="mt-14" cs={cs} invert />
         </div>

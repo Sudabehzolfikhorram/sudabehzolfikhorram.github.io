@@ -50,7 +50,7 @@ export const untangleSteps = [
 
 // Facts that can be checked against the resume, not vanity numbers.
 export const proof = [
-  { value: 4, suffix: "+", label: "Years designing products", note: "Since 2021" },
+  { value: 5, suffix: "+", label: "Years designing products", note: "Since 2021" },
   { value: 10, suffix: "", label: "Teams and products", note: "Fintech to ERP" },
   { value: 3, suffix: "", label: "Custom design systems", note: "Algonet, Tamdid, Kaaryar" },
   { value: 1, suffix: "", label: "Design award", note: "Tehran Design Week" },
@@ -71,19 +71,12 @@ export type Role = {
   cases?: { slug: string; label: string }[];
   /** Live product or shot, if public. */
   link?: { label: string; href: string };
-  /** Logo under /public/logos; roles without one show their initials. */
+  /** Logo under /public/logos (transparent); roles without one show a quiet icon for their field. */
   logo?: string;
 };
 
 // From the resume and Sudabeh's own account of each role.
 export const experience: Role[] = [
-  {
-    company: "Novin Host", logo: "novinhost", title: "Product Designer", start: "2026-06", end: null,
-    summary: "Redesigning a 15-year-old hosting brand.",
-    about: "A redesign that makes Novin Host feel current and easier to choose from, without customers feeling it changed. The main pages are done; the rest is in progress.",
-    cases: [{ slug: "novinhost", label: "Novin Host" }],
-    link: { label: "novinhost.org", href: "https://www.novinhost.org/" },
-  },
   {
     company: "Algonet", title: "Product Designer", type: "Full-time", mode: "On-site", start: "2026-04", end: null,
     summary: "Atlas: an AI platform that reads how a company really works.",
@@ -94,7 +87,18 @@ export const experience: Role[] = [
     company: "AzMan", logo: "azman", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-10", end: null,
     summary: "Three connected products: a marketplace, a field tool and the ERP behind them.",
     about: "AzMan is the marketplace where customers find services. Hamgam Saz is the tool the field experts work and communicate in. The ERP runs both, from roles and permissions to contracts and documents.",
-    cases: [{ slug: "azman", label: "AzMan" }],
+    cases: [
+      { slug: "azman", label: "AzMan" },
+      { slug: "azman-erp", label: "ERP" },
+      { slug: "hamgam", label: "Hamgam Saz" },
+    ],
+  },
+  {
+    company: "Novin Host", logo: "novinhost", title: "Product Designer", start: "2026-06", end: null,
+    summary: "Redesigning a 15-year-old hosting brand.",
+    about: "A redesign that makes Novin Host feel current and easier to choose from, without customers feeling it changed. The main pages are done; the rest is in progress.",
+    cases: [{ slug: "novinhost", label: "Novin Host" }],
+    link: { label: "novinhost.org", href: "https://www.novinhost.org/" },
   },
   {
     company: "Studio Kaaryar", logo: "kaaryar", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-09", end: "2026-01",
@@ -165,7 +169,7 @@ export const skillGroups = [
 ];
 
 export const tools = [
-  "Figma", "FigJam", "Framer", "Notion", "ChatGPT", "Claude", "Google AI Studio", "Lovable", "NotebookLM",
+  "Figma & FigJam", "Framer", "Notion", "ChatGPT", "Claude", "Google AI Studio", "Lovable", "NotebookLM",
   "Microsoft Clarity", "GA4", "Adobe Illustrator", "ClickUp", "Slack",
 ];
 export const education = [{ title: "Bachelor of Law", place: "Payame Noor University (PNU)", years: "2021 – 2024" }];

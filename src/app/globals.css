@@ -23,6 +23,14 @@
   --color-blush: var(--blush);
   --color-glow: var(--glow);
   --color-on-signal: var(--on-signal);
+  /* Complementary accents, used sparingly: a warm gold and a soft blue. */
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-sky: var(--sky);
+  --color-sky-soft: var(--sky-soft);
+  /* A surface that stays dark in both themes, for bands and heroes. */
+  --color-night: var(--night);
+  --color-on-night: var(--on-night);
 
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
@@ -81,6 +89,12 @@
   --glow: #8f7cff;
   /* Text and icons on a signal background: white on the dark violet, navy on the light one. */
   --on-signal: #ffffff;
+  --gold: #b4832a;
+  --gold-soft: #f7eedb;
+  --sky: #2f6bd8;
+  --sky-soft: #e4edfd;
+  --night: #0e1430;
+  --on-night: #eef0fb;
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -142,6 +156,12 @@
     --blush: #1d1a48;
     --glow: #6b58ff;
     --on-signal: #0a0f1f;
+    --gold: #e2b860;
+    --gold-soft: #241f14;
+    --sky: #82a8ff;
+    --sky-soft: #13203f;
+    --night: #121a36;
+    --on-night: #eef0fb;
     --popover: #111831;
     --chart-scale-01: #16173a;
     --chart-scale-02: #25235c;
@@ -151,6 +171,11 @@
 }
 
 @layer base {
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
   * {
     @apply border-border outline-ring/50;
   }
@@ -217,5 +242,43 @@ h2 em {
 @keyframes marquee {
   to {
     transform: translateX(-100%);
+  }
+}
+
+/* Peek lens: a round window (about 5 cm across) that brings a blurred screen into focus. */
+@property --lens-r {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+.peek-stage {
+  --lens-x: 50%;
+  --lens-y: 50%;
+  --lens-r: 0px;
+  transition: --lens-r 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.peek-stage[data-peeking] {
+  --lens-r: 95px;
+}
+@media (max-width: 640px) {
+  .peek-stage[data-peeking] {
+    --lens-r: 70px;
+  }
+}
+.peek-focus {
+  -webkit-mask-image: radial-gradient(circle var(--lens-r) at var(--lens-x) var(--lens-y), #000 97%, transparent 100%);
+  mask-image: radial-gradient(circle var(--lens-r) at var(--lens-x) var(--lens-y), #000 97%, transparent 100%);
+}
+.peek-ring {
+  width: calc(var(--lens-r) * 2);
+  height: calc(var(--lens-r) * 2);
+  transform: translate(calc(var(--lens-x) - var(--lens-r)), calc(var(--lens-y) - var(--lens-r)));
+  box-shadow:
+    0 0 0 2px color-mix(in oklab, var(--signal) 75%, transparent),
+    0 18px 40px -16px rgba(20, 15, 60, 0.55);
+}
+@media (prefers-reduced-motion: reduce) {
+  .peek-stage {
+    transition: none;
   }
 }

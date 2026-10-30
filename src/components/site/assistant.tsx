@@ -50,7 +50,6 @@ const UI: Record<Lang, Record<string, string>> = {
     lang: "فارسی",
   },
   fa: {
-    open: "از من بپرسید",
     title: "درباره‌ی سودابه بپرسید",
     subtitle: "دستیار · پاسخ از روی رزومه",
     hello: "سلام! من دستیار سودابه هستم. سؤال کوتاهی درباره‌ی کارش بپرسید، فارسی یا انگلیسی. اگر مطمئن نباشم، سؤال‌تان را برای خودش می‌فرستم.",
@@ -150,9 +149,10 @@ export function Assistant() {
   const launcherRef = useRef<HTMLButtonElement>(null);
   const t = UI[lang];
 
-  // Restore the conversation for this tab, so moving between pages keeps it.
+  // Moving between pages keeps the conversation; reloading the page starts a fresh one.
   useEffect(() => {
-    const saved = load();
+    const nav = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
+    const saved = nav?.type === "reload" ? null : load();
     const raf = requestAnimationFrame(() => {
       if (saved) {
         setLang(saved.lang);
@@ -160,8 +160,6 @@ export function Assistant() {
         setBubbles(saved.bubbles.map((b) => (b.forward?.state === "sending" ? { ...b, forward: { ...b.forward, state: "offer" } } : b)));
         setForwards(saved.forwards);
         nextId.current = Math.max(0, ...saved.bubbles.map((b) => b.id)) + 1;
-      } else if (navigator.language?.toLowerCase().startsWith("fa")) {
-        setLang("fa");
       }
       setRestored(true);
     });
@@ -277,7 +275,7 @@ export function Assistant() {
         type="button"
       >
         <Sparkles className="size-4" />
-        {t.open}
+        {UI.en.open}
       </button>
 
       {mounted &&

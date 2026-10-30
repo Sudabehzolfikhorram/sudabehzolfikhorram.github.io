@@ -64,17 +64,17 @@ export const intents: Intent[] = [
     strong: ["who is", "who are", "about her", "about you", "introduce", "tell me about", "summary", "what does she do", "what do you do", "what she does", "is she a designer", "are you a designer", "kind of designer", "type of designer", "سودابه کیه", "کی هستی", "معرفی", "درباره", "خلاصه", "معرفی کن", "چیکار میکنی", "چیکار می کنی", "چکار میکنی", "چه کاره", "چکاره", "کارت چیه", "کارش چیه", "طراحی چی"],
     weak: ["sudabeh", "سودابه"],
     answer: {
-      en: "Sudabeh Zolfi Khorram is a product designer in Tehran, open to remote work. For 4+ years she’s designed B2B and B2C products, fintech, operational tools and complex systems, from the first flow to developer handoff.",
-      fa: "سودابه ذولفی‌خرم پروداکت دیزاینر ساکن تهران است و برای کار ریموت آماده است. بیش از ۴ سال است که محصولات B2B و B2C، فین‌تک، ابزارهای عملیاتی و سیستم‌های پیچیده را از اولین فلو تا تحویل به توسعه‌دهنده طراحی می‌کند.",
+      en: "Sudabeh Zolfi Khorram is a product designer in Tehran, open to remote work. For 5+ years she’s designed B2B and B2C products, fintech, operational tools and complex systems, from the first flow to developer handoff.",
+      fa: "سودابه ذولفی‌خرم پروداکت دیزاینر ساکن تهران است و برای کار ریموت آماده است. بیش از ۵ سال است که محصولات B2B و B2C، فین‌تک، ابزارهای عملیاتی و سیستم‌های پیچیده را از اولین فلو تا تحویل به توسعه‌دهنده طراحی می‌کند.",
     },
   },
   {
     id: "role",
-    strong: ["current job", "currently", "where do you work", "where does she work", "what company", "which company", "current role", "right now", "nowadays", "الان کجا", "فعلا کجا", "کجا کار", "شغل فعلی", "الان چیکار", "الان چیکار میکنی", "مشغول", "مشغول چه", "working on", "busy with", "these days", "این روزها", "این روزا", "روی چی کار"],
+    strong: ["current job", "currently", "where do you work", "where does she work", "what company", "which company", "current role", "right now", "nowadays", "الان کجا", "فعلا کجا", "کجا کار", "شغل فعلی", "latest project", "last project", "recent project", "current project", "last company", "latest company", "current company", "current employer", "آخرین پروژه", "آخرین شرکت", "پروژه فعلی", "شرکت فعلی", "پروژه الان", "الان چیکار", "الان چیکار میکنی", "مشغول", "مشغول چه", "working on", "busy with", "these days", "این روزها", "این روزا", "روی چی کار"],
     weak: ["algonet", "الگونت", "job", "شغل"],
     answer: {
-      en: "She’s a full-time product designer at Algonet, designing Atlas, an AI platform that analyses how a company works. She’s also designing three products for AzMan and redesigning Novin Host’s website.",
-      fa: "الان پروداکت دیزاینر تمام‌وقت در الگونت است و روی اطلس کار می‌کند؛ پلتفرمی با هوش مصنوعی که نحوه‌ی کار یک شرکت را تحلیل می‌کند. هم‌زمان سه محصول ازمان و ریدیزاین سایت نوین هاست را هم طراحی می‌کند.",
+      en: "She’s a full-time product designer at Algonet, where she designs Atlas, an AI platform that analyses how a company works.",
+      fa: "الان پروداکت دیزاینر تمام‌وقت در الگونت است و آنجا اطلس را طراحی می‌کند؛ پلتفرمی با هوش مصنوعی که نحوه‌ی کار یک شرکت را تحلیل می‌کند.",
     },
   },
   {
@@ -82,8 +82,8 @@ export const intents: Intent[] = [
     strong: ["years of experience", "how many years", "how long", "how much experience", "your experience", "work experience", "experienced", "senior", "junior", "سابقه", "چند سال", "تجربه کاری", "سابقه کار", "sabeghe", "chand sal", "tajrobe"],
     weak: ["experience", "تجربه"],
     answer: {
-      en: "4+ years in product and UI/UX design, across 10 teams and products, from fintech to ERP and enterprise AI.",
-      fa: "بیش از ۴ سال سابقه در پروداکت و UI/UX دیزاین، در ۱۰ تیم و محصول؛ از فین‌تک تا ERP و هوش مصنوعی سازمانی.",
+      en: "5+ years in product and UI/UX design, across 10 teams and products, from fintech to ERP and enterprise AI.",
+      fa: "بیش از ۵ سال سابقه در پروداکت و UI/UX دیزاین، در ۱۰ تیم و محصول؛ از فین‌تک تا ERP و هوش مصنوعی سازمانی.",
     },
   },
   {
@@ -98,8 +98,8 @@ export const intents: Intent[] = [
     id: "remote",
     strong: ["remote", "work from home", "wfh", "hybrid", "on-site", "onsite", "office", "ریموت", "دورکاری", "دور کاری", "حضوری", "هیبرید", "از راه دور", "دفتر"],
     answer: {
-      en: "Yes, she’s open to remote work. She has worked remote, hybrid and on-site before: remote for Tamdid, AzMan and Studio Kaaryar, hybrid at Novaday, on-site at Algonet.",
-      fa: "بله، برای کار ریموت آماده است. تجربه‌ی هر سه حالت را دارد: ریموت در تمدید، ازمان و کاریار استودیو، هیبرید در نوادی و حضوری در الگونت.",
+      en: "Yes. She’s open to remote work and has delivered projects remotely, such as Tamdid and Studio Kaaryar.",
+      fa: "بله. برای کار ریموت آماده است و پروژه‌هایی مثل تمدید و کاریار استودیو را به‌صورت ریموت انجام داده.",
     },
   },
   {
@@ -115,8 +115,8 @@ export const intents: Intent[] = [
     id: "freelance",
     strong: ["freelance", "freelancer", "project based", "project-based", "contract", "part time", "part-time", "full time", "full-time", "فریلنس", "پروژه ای", "پروژه‌ای", "پاره وقت", "پاره‌وقت", "تمام وقت", "تمام‌وقت", "قرارداد"],
     answer: {
-      en: "She has done both: full-time roles (Algonet, Novaday) and project-based work (Tamdid, AzMan, Studio Kaaryar). For a specific arrangement, I can pass your question on.",
-      fa: "هر دو را تجربه کرده: نقش‌های تمام‌وقت (الگونت، نوادی) و پروژه‌ای (تمدید، ازمان، کاریار استودیو). برای یک نوع همکاری مشخص، می‌توانم سؤال‌تان را برایش بفرستم.",
+      en: "She has done both: full-time roles (Algonet, Novaday) and project-based work (Tamdid, Studio Kaaryar). For a specific arrangement, I can pass your question on.",
+      fa: "هر دو را تجربه کرده: نقش‌های تمام‌وقت (الگونت، نوادی) و پروژه‌ای (تمدید، کاریار استودیو). برای یک نوع همکاری مشخص، می‌توانم سؤال‌تان را برایش بفرستم.",
     },
     forward: true,
   },
@@ -174,7 +174,7 @@ export const intents: Intent[] = [
   },
   {
     id: "languages",
-    strong: ["english", "language", "languages", "speak", "persian", "farsi", "ielts", "toefl", "انگلیسی", "زبان", "فارسی", "مکالمه", "زبانت", "zaban"],
+    strong: ["english", "language", "languages", "speak", "persian", "farsi", "ielts", "toefl", "آیلتس", "تافل", "انگلیسی", "زبان", "فارسی", "مکالمه", "زبانت", "zaban"],
     answer: {
       en: "Persian is her native language; her English is intermediate, at working proficiency.",
       fa: "فارسی زبان مادری‌اش است و انگلیسی‌اش در سطح متوسط، در حد کاری (Working Proficiency) است.",
@@ -257,7 +257,7 @@ export const intents: Intent[] = [
   },
   {
     id: "process",
-    strong: ["process", "how do you work", "how does she work", "workflow", "approach", "method", "handoff", "روند", "پروسه", "فرایند", "فرآیند", "چطور کار", "روش کار", "هندآف", "تحویل"],
+    strong: ["process", "how do you work", "how does she work", "workflow", "approach", "method", "handoff", "working style", "work style", "سبک کار", "روند", "پروسه", "فرایند", "فرآیند", "چطور کار", "روش کار", "هندآف", "تحویل"],
     answer: {
       en: "Four steps: listen (find the real brief), map the journeys before the screens, systemise (components and states), then hand off and check the build.",
       fa: "چهار مرحله: شنیدن و پیدا کردن مسئله‌ی واقعی، کشیدن فلوها قبل از صفحه‌ها، ساختن سیستم (کامپوننت‌ها و استیت‌ها)، و در آخر تحویل به توسعه و بررسی خروجی.",
@@ -327,8 +327,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["azman", "hamgam", "hamgam saz", "ازمان", "همگام ساز", "همگام‌ساز", "همگام"],
     answer: {
-      en: "AzMan is three connected products: the AzMan marketplace for customers, Hamgam Saz for the field experts and their communication, and the ERP that runs both. Sudabeh designs all three.",
-      fa: "ازمان سه محصول به هم پیوسته است: مارکت‌پلیس ازمان برای مشتری‌ها، همگام‌ساز برای کارشناسان و ارتباطاتشان، و ERP که هر دو را مدیریت می‌کند. سودابه هر سه را طراحی می‌کند.",
+      en: "AzMan is three connected products: the AzMan marketplace for customers, Hamgam Saz for the field experts and their communication, and the ERP that runs both. Sudabeh is the designer behind all three.",
+      fa: "ازمان سه محصول به هم پیوسته است: مارکت‌پلیس ازمان برای مشتری‌ها، همگام‌ساز برای کارشناسان و ارتباطاتشان، و ERP که هر دو را مدیریت می‌کند. طراح هر سه محصول سودابه است.",
     },
     link: { href: "/work/azman", label: { en: "AzMan case study", fa: "کیس استادی ازمان" } },
   },
@@ -347,8 +347,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["novin", "novin host", "novinhost", "hosting", "نوین", "نوین هاست", "هاستینگ"],
     answer: {
-      en: "Novin Host is a 15-year-old hosting brand. She’s redesigning its website to feel current and easier to choose from; the main pages are done and the rest is in progress.",
-      fa: "نوین هاست یک برند هاستینگ با ۱۵ سال سابقه است. سودابه در حال ریدیزاین سایتش است تا به‌روزتر و انتخاب در آن راحت‌تر باشد؛ صفحات اصلی تمام شده و بقیه در حال انجام است.",
+      en: "Novin Host is a 15-year-old hosting brand. She redesigned its website to feel current and make choosing a plan easier, without losing the customers who already know their way around.",
+      fa: "نوین هاست یک برند هاستینگ با ۱۵ سال سابقه است. سودابه سایتش را ریدیزاین کرد تا به‌روزتر باشد و انتخاب سرویس راحت‌تر شود، بدون اینکه مشتری‌های قدیمی راهشان را گم کنند.",
     },
     link: { href: "/work/novinhost", label: { en: "Novin Host case study", fa: "کیس استادی نوین هاست" } },
   },
@@ -367,8 +367,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["algonet", "الگونت"],
     answer: {
-      en: "At Algonet (full-time, on-site) she designs Atlas, dashboards and operational tools, and built a custom design system. She also shaped Algonet’s visual identity: logo, pattern and brochure.",
-      fa: "در الگونت (تمام‌وقت، حضوری) روی اطلس، داشبوردها و ابزارهای عملیاتی کار می‌کند و دیزاین سیستم اختصاصی ساخته. هویت بصری الگونت هم کار اوست: لوگو، پترن و بروشور.",
+      en: "At Algonet (full-time) she designs Atlas, dashboards and operational tools, and built a custom design system. She also shaped Algonet’s visual identity: logo, pattern and brochure.",
+      fa: "در الگونت (تمام‌وقت) روی اطلس، داشبوردها و ابزارهای عملیاتی کار می‌کند و دیزاین سیستم اختصاصی ساخته. هویت بصری الگونت هم کار اوست: لوگو، پترن و بروشور.",
     },
   },
   {
@@ -382,17 +382,71 @@ export const intents: Intent[] = [
   },
   {
     id: "branding",
-    strong: ["branding", "brand", "logo", "visual identity", "identity", "graphic design", "environmental", "illustration", "برندینگ", "برند", "لوگو", "هویت بصری", "گرافیک", "بروشور", "پترن"],
+    strong: ["branding", "brand", "logo", "visual identity", "identity", "graphic design", "environmental", "برندینگ", "برند", "لوگو", "هویت بصری", "گرافیک", "بروشور", "پترن"],
     answer: {
       en: "Out of curiosity, yes: she shaped Algonet’s visual identity (logo, pattern, brochure) and has done campaign visuals. Product design is still her main craft.",
       fa: "از سر کنجکاوی، بله: هویت بصری الگونت (لوگو، پترن، بروشور) کار اوست و تجربه‌ی طراحی کمپین هم دارد. ولی تخصص اصلی‌اش پروداکت دیزاین است.",
     },
   },
 
+  {
+    id: "industries",
+    strong: ["industries", "industry", "domains", "domain", "sectors", "sector", "fields", "صنعت", "صنایع", "حوزه ها", "چه حوزه", "چه زمینه"],
+    answer: {
+      en: "Fintech (Tamdid), HR tech (Kudos), workplace access (Remeet), enterprise AI (Atlas), a services marketplace with its ERP (AzMan), web hosting (Novin Host), a social-impact studio (Kaaryar), online printing (ChapAgha), education (Alla) and food (Nan va Namak).",
+      fa: "فین‌تک (تمدید)، منابع انسانی (کودوس)، مدیریت دسترسی (ریمیت)، هوش مصنوعی سازمانی (اطلس)، مارکت‌پلیس خدمات و ERP آن (ازمان)، هاستینگ (نوین هاست)، استودیوی اجتماعی (کاریار)، چاپ آنلاین (چاپ آقا)، آموزش (آلا) و آشپزی (نان و نمک).",
+    },
+  },
+  {
+    id: "audience",
+    strong: ["b2c", "b2b", "consumer", "consumers", "end users", "enterprise", "saas", "مصرف کننده", "کاربر نهایی", "سازمانی"],
+    answer: {
+      en: "Both. Consumer-facing: Tamdid, AzMan’s marketplace and Nan va Namak. Business and internal tools: Atlas, Kudos, Remeet and AzMan’s ERP.",
+      fa: "هر دو. محصولات مصرف‌کننده: تمدید، مارکت‌پلیس ازمان و نان و نمک. ابزارهای سازمانی و داخلی: اطلس، کودوس، ریمیت و ERP ازمان.",
+    },
+  },
+  {
+    id: "leadership",
+    strong: ["lead designer", "design lead", "led a team", "led a design team", "lead a design team", "lead designers", "lead a team", "led the team", "team lead", "manage designers", "managed designers", "management", "mentor", "mentored", "mentoring", "مدیریت تیم", "لید", "سرپرست", "منتور", "منتورینگ"],
+    forward: true,
+    answer: {
+      en: "Her CV lists product designer roles, not a team-lead title, and I’d rather not guess about leading or mentoring. I can ask her directly.",
+      fa: "در رزومه‌اش نقش‌ها پروداکت دیزاینر است، نه لید تیم؛ و درباره‌ی مدیریت یا منتورینگ نمی‌خواهم حدس بزنم. می‌توانم مستقیم از خودش بپرسم.",
+    },
+  },
+  {
+    id: "leaving",
+    strong: ["leave algonet", "leaving algonet", "why leave", "why is she leaving", "why does she want to leave", "why is she looking", "looking for a new job", "why change", "چرا میخواد بره", "بیاد بیرون", "بره بیرون", "ترک کنه", "چرا دنبال کار"],
+    forward: true,
+    answer: {
+      en: "That’s one for Sudabeh to answer herself. I can send her your question.",
+      fa: "این را بهتر است خود سودابه جواب بدهد. می‌توانم سؤال‌تان را برایش بفرستم.",
+    },
+  },
+  {
+    id: "inquiry",
+    strong: ["for my startup", "for my company", "for my business", "for my project", "my website", "my app", "my product", "how much for", "how much would", "how long does a project", "how long will", "how long would", "timeline", "quote", "estimate", "nda", "برای استارتاپم", "برای شرکتم", "برای کسب و کارم", "پروژه من", "سایت من", "اپ من", "چقدر طول", "زمان تحویل", "هزینه طراحی", "چقدر هزینه", "قرارداد عدم افشا", "عدم افشا"],
+    forward: true,
+    answer: {
+      en: "For a new project, scope, price and timing depend on the details, so Sudabeh answers those herself. Add a line about the project and I’ll send it to her.",
+      fa: "برای یک پروژه‌ی جدید، محدوده، هزینه و زمان به جزئیات بستگی دارد و خود سودابه جواب می‌دهد. یک خط درباره‌ی پروژه بنویسید تا برایش بفرستم.",
+    },
+  },
+  {
+    id: "story",
+    strong: ["failure", "mistake", "biggest challenge", "challenging", "hardest", "difficult project", "results", "impact", "metrics", "kpi", "numbers", "colleagues", "references", "reference", "recommendation", "philosophy", "سخت ترین", "چالش", "شکست", "اشتباه", "نتیجه", "نتایج", "دستاورد", "توصیه نامه", "رفرنس", "معرف کاری", "همکاراش", "فلسفه"],
+    forward: true,
+    answer: {
+      en: "That deserves a real story from her, not a summary from me. The case studies cover some of it; for the rest, I can send your question to Sudabeh.",
+      fa: "جواب این سؤال یک داستان واقعی از خود اوست، نه خلاصه‌ای از من. بخشی از آن در کیس استادی‌ها هست؛ برای بقیه، می‌توانم سؤال‌تان را برای سودابه بفرستم.",
+    },
+    link: { href: "/work", label: { en: "Case studies", fa: "کیس استادی‌ها" } },
+  },
+
   // Getting in touch
   {
     id: "contact",
-    strong: ["contact", "email", "e-mail", "phone", "number", "call", "telegram", "linkedin", "reach", "talk to her", "talk to sudabeh", "get in touch", "ایمیل", "تماس", "شماره", "تلفن", "تلگرام", "لینکدین", "ارتباط", "صحبت کنم", "پیام بدم"],
+    strong: ["contact", "email", "e-mail", "phone", "number", "call", "telegram", "linkedin", "reach", "talk to her", "talk to sudabeh", "get in touch", "book an interview", "schedule an interview", "job interview", "interview her", "book a call", "schedule a call", "video call", "set up a meeting", "مصاحبه کاری", "دعوت به مصاحبه", "تماس تصویری", "جلسه آنلاین", "ایمیل", "تماس", "شماره", "تلفن", "تلگرام", "لینکدین", "ارتباط", "صحبت کنم", "پیام بدم"],
     answer: {
       en: "Email sudabeh.a.zolfikhorram@gmail.com, or Telegram @sudabehzolfikhorram. Her phone number is in her CV. You can also leave a message here and I’ll send it to her.",
       fa: "ایمیل: sudabeh.a.zolfikhorram@gmail.com یا تلگرام: ‎@sudabehzolfikhorram. شماره تلفنش در رزومه هست. می‌توانید همین‌جا هم پیام بگذارید تا برایش بفرستم.",
@@ -444,8 +498,9 @@ export function normalize(text: string) {
 // Pre-normalised keywords, so matching is a few substring checks per intent.
 const compiled = intents.map((it) => ({
   it,
-  strong: it.strong.map((k) => normalize(k)),
-  weak: (it.weak ?? []).map((k) => normalize(k)),
+  // Spellings that normalise to the same text («پروژه‌ای», «پروژه ای») count once.
+  strong: [...new Set(it.strong.map((k) => normalize(k)))],
+  weak: [...new Set((it.weak ?? []).map((k) => normalize(k)))],
 }));
 
 /** Whole-word (or whole-phrase) match; short English words must match exactly, longer ones may take a suffix (projects → project). */
@@ -463,6 +518,9 @@ function hit(text: string, key: string) {
 export type Match = { intent: Intent; score: number };
 
 const SMALL_TALK = ["greet", "thanks"];
+// Questions about the visitor's own project or about leaving a job always go to Sudabeh, even when a
+// project name appears too ("a site for my startup", "why leave Algonet").
+const OVERRIDE = ["inquiry", "leaving"];
 // Broad intents that shouldn't be tacked onto a more specific answer.
 const GENERIC = ["who", "projects", "greet", "thanks", "bye"];
 
@@ -487,6 +545,8 @@ export function match(question: string): Match[] {
   const specific = asked.some((m) => !GENERIC.includes(m.intent.id) && m.score >= 2);
   if (specific && asked[0]?.intent.id === "who") asked.splice(0, 1);
   const ranked = asked.length > 0 ? asked : scored;
+  const override = ranked.find((m) => OVERRIDE.includes(m.intent.id));
+  if (override) return [override];
   const [first, second] = ranked;
   if (first.score < 2 && ranked.length > 1) return [];
   // A second answer only when the question clearly asks two things, and never on top of a named project.

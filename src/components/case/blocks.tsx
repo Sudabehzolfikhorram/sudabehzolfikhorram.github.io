@@ -123,13 +123,13 @@ export function MetaGrid({ cs, className }: { cs: CaseStudy; className?: string 
 export function SectionHead({ n, label, title, children, className }: { n: string; label: string; title: ReactNode; children?: ReactNode; className?: string }) {
   return (
     <Reveal className={cn("grid gap-6 lg:grid-cols-12", className)}>
-      <div className="lg:col-span-6">
+      <div className={children ? "lg:col-span-7" : "lg:col-span-10"}>
         <p className="eyebrow">
           <span className="text-signal">{n}</span> — {label}
         </p>
-        <h2 className="mt-4 font-display text-4xl leading-[1.05] sm:text-5xl">{title}</h2>
+        <h2 className="mt-4 text-balance font-display text-[clamp(2rem,3.8vw,3rem)] leading-[1.05]">{title}</h2>
       </div>
-      {children && <div className="self-end text-ink-soft leading-relaxed lg:col-span-5 lg:col-start-8">{children}</div>}
+      {children && <div className="self-end text-ink-soft leading-relaxed lg:col-span-4 lg:col-start-9">{children}</div>}
     </Reveal>
   );
 }
@@ -182,15 +182,15 @@ export function Facts({ cs, className, invert }: { cs: CaseStudy; className?: st
     <RevealGroup
       className={cn(
         "grid gap-px overflow-hidden rounded-xl",
-        invert ? "bg-paper/15" : "bg-rule",
+        invert ? "bg-on-night/15" : "bg-rule",
         cs.facts.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3",
         className,
       )}
     >
       {cs.facts.map((o) => (
-        <RevealItem className={cn("p-7", invert ? "bg-ink" : "bg-paper")} key={o.label}>
+        <RevealItem className={cn("p-7", invert ? "bg-night" : "bg-paper")} key={o.label}>
           <p className="font-display text-4xl leading-none sm:text-5xl">{o.value}</p>
-          <p className={cn("mt-4 max-w-[16rem] text-sm leading-snug", invert ? "text-paper/70" : "text-ink-soft")}>{o.label}</p>
+          <p className={cn("mt-4 max-w-[16rem] text-sm leading-snug", invert ? "text-on-night/70" : "text-ink-soft")}>{o.label}</p>
         </RevealItem>
       ))}
     </RevealGroup>

@@ -52,7 +52,7 @@ export default function Home() {
             <div className="lg:col-span-7">
               <p className="eyebrow">What I do</p>
               <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.05]">
-                The whole product, <em className="text-signal">not just its screens.</em>
+                Four things I bring <em className="text-signal">to a product team.</em>
               </h2>
             </div>
             <p className="max-w-md self-end text-ink-soft lg:col-span-4 lg:col-start-9">
@@ -69,7 +69,7 @@ export default function Home() {
         <Reveal className="mb-10">
           <p className="eyebrow">By the numbers</p>
           <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.05]">
-            Proof, <em className="text-signal">not adjectives.</em>
+            A track record, <em className="text-signal">in numbers.</em>
           </h2>
         </Reveal>
         <Proof />

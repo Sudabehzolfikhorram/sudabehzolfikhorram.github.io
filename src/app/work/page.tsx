@@ -3,16 +3,15 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { CtaBand } from "@/components/site/cta-band";
 import { ProjectCard } from "@/components/site/project-card";
 import { caseStudies } from "@/lib/case-studies";
-import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Work · Sudabeh",
-  description: "Case studies: Tamdid, Kudos, Atlas, Access, AzMan, Novin Host, Studio Kaaryar and Nan va Namak.",
+  description: "Case studies: Atlas, Tamdid, Kudos, Remeet, AzMan, Novin Host, Studio Kaaryar and Nan va Namak.",
 };
 
 export default function WorkPage() {
-  const featured = caseStudies.filter((c) => c.featured);
-  const more = caseStudies.filter((c) => !c.featured);
+  // One lead project, then everything else at the same size, so the whole list is visible at a glance.
+  const [lead, ...rest] = caseStudies;
 
   return (
     <>
@@ -25,25 +24,21 @@ export default function WorkPage() {
             </h1>
           </div>
           <p className="max-w-md self-end text-ink-soft lg:col-span-4 lg:col-start-9">
-            Fintech, B2B SaaS, enterprise and operational tools. Three lead projects first, then the rest of the story.
+            Enterprise AI, fintech, B2B SaaS and operational tools. The current lead project first, then every case study.
           </p>
         </Reveal>
 
-        <p className="eyebrow mb-6">Lead projects</p>
-        <RevealGroup className="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2" stagger={0.1}>
-          {featured.map((cs, i) => (
-            <RevealItem className={cn(i === 0 && "md:col-span-2")} key={cs.slug}>
-              <ProjectCard cs={cs} size={i === 0 ? "lg" : "md"} />
-            </RevealItem>
-          ))}
-        </RevealGroup>
-
-        <Reveal className="mt-28 mb-8 flex flex-wrap items-end justify-between gap-4 border-rule border-t pt-10">
-          <h2 className="font-display text-3xl sm:text-4xl">More projects</h2>
-          <p className="max-w-sm text-ink-soft text-sm">An award winner, three products for AzMan, two redesigns, and the startup that changed my direction.</p>
+        <p className="eyebrow mb-6">Lead project</p>
+        <Reveal>
+          <ProjectCard cs={lead} size="lg" />
         </Reveal>
-        <RevealGroup className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
-          {more.map((cs) => (
+
+        <Reveal className="mt-24 mb-8 flex flex-wrap items-end justify-between gap-4 border-rule border-t pt-10">
+          <h2 className="font-display text-3xl sm:text-4xl">All projects</h2>
+          <p className="max-w-sm text-ink-soft text-sm">Fintech, HR, an award winner, AzMan’s three products, two redesigns and the startup that changed my direction.</p>
+        </Reveal>
+        <RevealGroup className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
+          {rest.map((cs) => (
             <RevealItem key={cs.slug}>
               <ProjectCard cs={cs} size="sm" />
             </RevealItem>

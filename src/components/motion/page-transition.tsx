@@ -19,7 +19,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
       {isNavigation && (
         <motion.div
           aria-hidden
-          className="pointer-events-none fixed inset-0 z-50 origin-top bg-ink"
+          className="pointer-events-none fixed inset-0 z-50 origin-top bg-night"
           initial={{ scaleY: 1 }}
           animate={{ scaleY: 0 }}
           transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}

@@ -1,10 +1,13 @@
-import { ArrowDownToLine } from "lucide-react";
+import { ArrowDownToLine, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
-import Image from "next/image";
-import { Reveal } from "@/components/motion/reveal";
+import Link from "next/link";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { AboutPortrait, Untangling } from "@/components/site/about-hero";
 import { CareerStory } from "@/components/site/career-story";
 import { CtaBand } from "@/components/site/cta-band";
 import { MessageSheet } from "@/components/site/message-sheet";
+import { ProjectCard } from "@/components/site/project-card";
+import { caseStudies } from "@/lib/case-studies";
 import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -12,8 +15,6 @@ export const metadata: Metadata = {
   description:
     "Sudabeh Zolfi Khorram: product designer in Tehran, open to remote. A law graduate who designs fintech, B2B and enterprise AI products, with AI as a thinking partner.",
 };
-
-const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export default function AboutPage() {
   return (
@@ -27,6 +28,7 @@ export default function AboutPage() {
           <p className="mt-6 max-w-md text-lg text-ink-soft leading-relaxed">
             Product designer in Tehran, open to remote. Law graduate by degree, untangler by habit.
           </p>
+          <Untangling />
           <div className="mt-8 flex flex-wrap gap-3">
             <MessageSheet
               className="inline-flex h-10 items-center rounded-full bg-ink px-5 font-medium text-paper text-sm transition-colors hover:bg-signal hover:text-on-signal"
@@ -46,22 +48,7 @@ export default function AboutPage() {
         </Reveal>
 
         <Reveal className="relative lg:col-span-5 lg:col-start-8" delay={0.15}>
-          <div aria-hidden className="absolute -inset-6 -z-10 rounded-[40px] bg-glow/20 blur-3xl" />
-          <div className="relative overflow-hidden rounded-[32px] border border-rule">
-            <Image
-              alt="Sudabeh Zolfi Khorram, smiling, sitting at a desk"
-              className="h-auto w-full grayscale"
-              height={596}
-              priority
-              sizes="(min-width: 1024px) 40vw, 100vw"
-              src={`${BASE}/about/sudabeh.webp`}
-              width={688}
-            />
-          </div>
-          <div className="absolute -bottom-5 left-5 rounded-2xl border border-rule bg-paper px-4 py-3 shadow-lg sm:left-8">
-            <p className="font-mono text-[11px] text-ink-soft uppercase tracking-wider">Now</p>
-            <p className="font-medium text-sm">Designing Atlas at Algonet</p>
-          </div>
+          <AboutPortrait />
         </Reveal>
       </section>
 
@@ -83,6 +70,34 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* The story ends where the work begins. */}
+      <section className="mx-auto max-w-[1240px] px-4 py-24 sm:px-8">
+        <Reveal className="mb-10 flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <p className="eyebrow">Next chapter</p>
+            <h2 className="mt-4 max-w-2xl font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.05]">
+              That’s the story. <em className="text-signal">Here’s the work.</em>
+            </h2>
+          </div>
+          <Link
+            className="group inline-flex h-11 items-center gap-2 rounded-full border border-ink/15 px-5 font-medium text-sm transition-colors hover:border-signal hover:text-signal"
+            href="/work"
+          >
+            All {caseStudies.length} projects
+            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </Reveal>
+        <RevealGroup className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
+          {caseStudies
+            .filter((c) => c.featured)
+            .map((cs) => (
+              <RevealItem key={cs.slug}>
+                <ProjectCard cs={cs} size="sm" />
+              </RevealItem>
+            ))}
+        </RevealGroup>
       </section>
 
       <CtaBand />

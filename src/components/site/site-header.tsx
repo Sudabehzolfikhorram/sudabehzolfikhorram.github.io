@@ -35,7 +35,7 @@ export function SiteHeader() {
           </Link>
           <a
             aria-label="Download resume (PDF)"
-            className="grid size-9 place-items-center rounded-full border border-rule text-ink-soft sm:hidden"
+            className="grid size-9 place-items-center rounded-full text-ink-soft sm:hidden"
             download
             href={site.resume}
           >
@@ -45,15 +45,13 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <MorphicNavbar className="-mx-1 px-0" items={NAV} />
           <a
-            className="group hidden h-9 items-center gap-2 rounded-full border border-rule pr-1 pl-3.5 text-sm transition-colors hover:border-signal sm:inline-flex"
+            className="group hidden h-9 items-center gap-1.5 rounded-full px-3 text-ink-soft text-sm transition-colors hover:text-ink sm:inline-flex"
             download
             href={site.resume}
             title="Download my CV (PDF)"
           >
             CV
-            <span className="grid size-7 place-items-center overflow-hidden rounded-full bg-signal text-on-signal">
-              <ArrowDownToLine className="size-3.5 transition-transform duration-300 group-hover:translate-y-0.5" />
-            </span>
+            <ArrowDownToLine className="size-3.5 transition-transform duration-300 group-hover:translate-y-0.5" />
           </a>
         </div>
       </div>

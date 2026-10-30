@@ -9,6 +9,7 @@ import type { CaseStudy } from "@/lib/case-studies";
 import { cn } from "@/lib/utils";
 import { CaseTitle, hueVars, MetaGrid, SectionHead, wrap } from "../blocks";
 import { PageSwitcher, type PageTab } from "../novin/interactive";
+import { IPhone } from "../phone";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const img = (name: string) => `${BASE}/work/kaaryar/${name}.webp`;
@@ -103,13 +104,25 @@ const finalPages: PageTab[] = [
 export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
   return (
     <div style={hueVars(cs)}>
-      {/* Hero: the final site, desktop and mobile, on the studio's green. */}
-      <section className="relative overflow-hidden bg-[var(--p)] pt-14 text-white">
-        <div aria-hidden className="absolute -top-24 -right-24 size-[420px] rounded-full opacity-90 blur-[100px]" style={{ background: ORANGE }} />
+      {/* Hero: the final site, desktop and mobile, in the portfolio's navy; the studio's orange only as a faint circle. */}
+      <section className="relative overflow-hidden bg-[#0e1430] pt-14 text-white">
+        <div aria-hidden className="absolute -top-40 left-1/3 h-[420px] w-[760px] rounded-full bg-[#5a46e0]/35 blur-[120px]" />
+        <div aria-hidden className="absolute -top-24 -right-24 size-[380px] rounded-full opacity-[0.12] blur-[90px]" style={{ background: ORANGE }} />
         <Reveal className={cn(wrap, "relative")}>
-          <p className="font-mono text-white/70 text-xs uppercase tracking-[0.08em]">{cs.category}</p>
+          <p className="font-mono text-white/60 text-xs uppercase tracking-[0.08em]">{cs.category}</p>
           <CaseTitle className="mt-4 text-white" cs={cs} size="xl" />
           <p className="mt-5 max-w-2xl text-white/85 text-xl leading-snug sm:text-2xl">{cs.tagline}</p>
+          {cs.links?.map((l) => (
+            <a
+              className="mt-7 inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-sm text-white transition-colors hover:border-white/50"
+              href={l.href}
+              key={l.href}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <span className="size-1.5 rounded-full bg-[#2fb350]" /> {l.label} ↗
+            </a>
+          ))}
         </Reveal>
         <div className={cn(wrap, "relative mt-14 grid grid-cols-12 items-end gap-4")}>
           <Reveal className="col-span-12 sm:col-span-9" delay={0.1}>
@@ -126,9 +139,12 @@ export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
             </div>
           </Reveal>
           <Reveal className="col-span-3 hidden translate-y-8 sm:block" delay={0.2}>
-            <div className="overflow-hidden rounded-[1.75rem] border-[6px] border-zinc-900 bg-zinc-900 shadow-2xl">
-              <div className="relative aspect-[375/760] overflow-hidden">
-                <Image alt="Studio Kaaryar home page on mobile" className="object-cover object-top" fill sizes="20vw" src={img("home-mobile")} />
+            <div className="rounded-[2.2rem] bg-gradient-to-b from-zinc-500 via-zinc-800 to-zinc-700 p-[2px] shadow-2xl">
+              <div className="rounded-[2.1rem] bg-black p-[7px]">
+                <div className="relative aspect-[375/760] overflow-hidden rounded-[1.7rem] bg-white">
+                  <span aria-hidden className="absolute top-2 left-1/2 z-10 h-4 w-14 -translate-x-1/2 rounded-full bg-black" />
+                  <Image alt="Studio Kaaryar home page on mobile" className="object-cover object-top pt-6" fill sizes="20vw" src={img("home-mobile")} />
+                </div>
               </div>
             </div>
           </Reveal>
@@ -144,7 +160,7 @@ export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
         <Reveal className="lg:col-span-6">
           <p className="eyebrow">The studio</p>
           <p className="mt-5 font-display text-2xl leading-snug sm:text-3xl">{cs.context}</p>
-          <blockquote className="mt-8 border-[var(--p)] border-l-4 pl-5 text-ink-soft italic">
+          <blockquote className="mt-8 border-signal border-l-4 pl-5 text-ink-soft italic">
             “Kaaryar teaches; Kaaryar Studio gives that learning real work to do.”
             <span className="mt-1 block font-mono text-xs not-italic">From the studio’s own copy</span>
           </blockquote>
@@ -168,7 +184,7 @@ export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
           <RevealGroup as="ol" className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5" stagger={0.07}>
             {steps.map(({ icon: Icon, title, body }, i) => (
               <RevealItem as="li" className="relative rounded-2xl border border-rule bg-paper p-6" key={title}>
-                <span className="grid size-10 place-items-center rounded-xl bg-[color-mix(in_oklab,var(--p)_14%,transparent)] text-[var(--p)] dark:text-[color-mix(in_oklab,var(--p)_40%,white)]">
+                <span className="grid size-10 place-items-center rounded-xl bg-blush text-signal">
                   <Icon className="size-5" />
                 </span>
                 <p className="mt-5 font-mono text-ink-soft text-xs">0{i + 1}</p>
@@ -185,7 +201,7 @@ export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
         <div className={wrap}>
           <SectionHead label="From lo-fi to final" n="02" title="The same page, three times." />
           <Reveal className="mt-10">
-            <PageSwitcher accent={cs.hue} altSuffix="stage of the Studio Kaaryar home page" pages={fidelity} />
+            <PageSwitcher altSuffix="stage of the Studio Kaaryar home page" pages={fidelity} />
           </Reveal>
         </div>
       </section>
@@ -231,27 +247,23 @@ export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
         <div className={wrap}>
           <SectionHead label="The pages" n="04" title="Four pages, one job each." />
           <Reveal className="mt-10">
-            <PageSwitcher accent={cs.hue} altSuffix="page of the redesigned Studio Kaaryar site" pages={finalPages} />
+            <PageSwitcher altSuffix="page of the redesigned Studio Kaaryar site" pages={finalPages} tall />
           </Reveal>
         </div>
       </section>
 
       {/* Mobile. */}
-      <section className="border-rule border-t bg-[color-mix(in_oklab,var(--p)_8%,var(--paper))] py-24">
-        <div className={cn(wrap, "grid items-center gap-12 lg:grid-cols-12")}>
-          <Reveal className="lg:col-span-5">
-            <SectionHead label="Mobile" n="05" title="Same story, one thumb." />
-            <p className="mt-6 text-ink-soft leading-relaxed">
-              Every section was designed for 375 pixels too: services stack into cards, the project carousel becomes a swipe, and
-              the call to action stays within reach. Scroll the phone to read the whole page.
+      <section className="relative overflow-hidden border-rule border-t bg-paper-2/50 py-24">
+        <div aria-hidden className="absolute top-1/2 right-[12%] size-[420px] -translate-y-1/2 rounded-full bg-glow/20 blur-[110px]" />
+        <div className={cn(wrap, "relative")}>
+          <SectionHead label="Mobile" n="05" title="Same story, one thumb.">
+            <p>
+              Every section was designed for 375 pixels too: services stack into cards, the project carousel becomes a swipe,
+              and the call to action stays within reach. Scroll the phone to read the whole page.
             </p>
-          </Reveal>
-          <Reveal className="lg:col-span-4 lg:col-start-8" delay={0.1}>
-            <div className="mx-auto w-[280px] overflow-hidden rounded-[2rem] border-[6px] border-zinc-900 bg-zinc-900 shadow-2xl">
-              <div className="h-[560px] overflow-y-auto overscroll-contain bg-white">
-                <Image alt="The full Studio Kaaryar home page on mobile" className="block h-auto w-full" height={3852} sizes="280px" src={img("home-mobile")} width={375} />
-              </div>
-            </div>
+          </SectionHead>
+          <Reveal className="mt-14" delay={0.1}>
+            <IPhone alt="The full Studio Kaaryar home page on mobile" height={3852} src={img("home-mobile")} width={375} />
           </Reveal>
         </div>
       </section>

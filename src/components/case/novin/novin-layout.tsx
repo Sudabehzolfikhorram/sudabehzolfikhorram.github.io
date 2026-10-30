@@ -206,14 +206,6 @@ export function NovinLayout({ cs }: { cs: CaseStudy }) {
               </div>
             ))}
           </dl>
-
-          <Reveal className="mt-14">
-            <BeforeAfter after={`${IMG}/after-hero.webp`} before={`${IMG}/before-hero.webp`} height={900} width={1440} />
-            <p className="mt-4 flex flex-wrap items-center justify-between gap-2 font-mono text-[0.75rem] text-white/60">
-              <span>Drag the handle, or focus it and use ← →.</span>
-              <span>Same logo. Same navy. Same words. A different experience.</span>
-            </p>
-          </Reveal>
         </div>
       </section>
 
@@ -236,6 +228,23 @@ export function NovinLayout({ cs }: { cs: CaseStudy }) {
           ))}
         </RevealGroup>
         <p className="mt-4 font-mono text-[0.72rem] text-ink-soft">Figures from novinhost.org, October 2026.</p>
+      </section>
+
+      {/* 01b — The redesign in one drag, once the context is clear. */}
+      <section className="relative overflow-hidden bg-[#070e2b] py-24 text-white">
+        <div aria-hidden className="absolute -bottom-40 left-1/2 h-[420px] w-[900px] -translate-x-1/2 rounded-full bg-[#214bbd]/30 blur-[120px]" />
+        <div className={cn(wrap, "relative")}>
+          <Chapter dark label="Before / after" n="01b" title="Same logo, same navy, same words.">
+            <p>Drag the handle across the first screen a customer sees, today and redesigned.</p>
+          </Chapter>
+          <Reveal className="mt-12">
+            <BeforeAfter after={`${IMG}/after-hero.webp`} before={`${IMG}/before-hero.webp`} height={900} width={1440} />
+            <p className="mt-4 flex flex-wrap items-center justify-between gap-2 font-mono text-[0.75rem] text-white/60">
+              <span>Drag the handle, or focus it and use ← →.</span>
+              <span>A different experience.</span>
+            </p>
+          </Reveal>
+        </div>
       </section>
 
       {/* 02 — The brief: the tension the whole project resolves. */}
@@ -442,7 +451,7 @@ export function NovinLayout({ cs }: { cs: CaseStudy }) {
             <p>The product pages are where customers decide. Each one opens by saying what the page is for, then gives a single place to compare.</p>
           </Chapter>
           <div className="mt-12">
-            <PageSwitcher pages={pages} />
+            <PageSwitcher accent="#11215d" pages={pages} />
           </div>
         </div>
       </section>
