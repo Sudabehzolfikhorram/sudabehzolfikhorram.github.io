@@ -338,12 +338,12 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 > **What did she do at Novaday?**  
 > At Novaday (full-time, hybrid) she designed Kudos, an HR platform, and Remeet, an award-winning access system, on a Tailwind-based design system, with benchmarks, competitor analysis and usability testing.
 
-### 47. دریبل داره؟
+### 47. بیهنس یا مدیوم داره؟
 
-نمونه‌کارهای کوتاهش در دریبل (dribbble.com/SudabehZolfikhorram) و اینستاگرام (‎@sudabehzolfi.design) است. کیس استادی‌های کامل در همین سایت است.
+نمونه‌کارهای کوتاهش در دریبل (dribbble.com/SudabehZolfikhorram) و بیهنس (behance.net/sudabehzolfikh) است و در مدیوم هم می‌نویسد (medium.com/@sudabeh.a.zolfikhorram). کیس استادی‌های کامل در همین سایت است.
 
-> **Is she on Dribbble?**  
-> Her shots are on Dribbble (dribbble.com/SudabehZolfikhorram) and Instagram (@sudabehzolfi.design). The full case studies are on this site.
+> **Is she on Behance or Medium?**  
+> Her shots are on Dribbble (dribbble.com/SudabehZolfikhorram) and Behance (behance.net/sudabehzolfikh), and she writes on Medium (medium.com/@sudabeh.a.zolfikhorram). The full case studies are on this site.
 
 ## همکاری و ارتباط
 
@@ -363,89 +363,96 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 ### 50. ریموت کار میکنه؟
 
-بله. برای کار ریموت آماده است و پروژه‌هایی مثل تمدید و کاریار استودیو را به‌صورت ریموت انجام داده.
+بله، دنبال کار ریموت است و پروژه‌هایی مثل تمدید و کاریار استودیو را به‌صورت ریموت انجام داده.
 
 > **Does she work remotely?**  
-> Yes. She’s open to remote work and has delivered projects remotely, such as Tamdid and Studio Kaaryar.
+> Yes, remote is what she’s looking for. She has delivered projects remotely, such as Tamdid and Studio Kaaryar.
 
-### 51. آماده‌ی کار جدید هست؟  ‎📨
+### 51. کار حضوری انجام میده؟
 
-برای نقش‌های جدید پروداکت دیزاین، به‌صورت ریموت، آماده است. برای زمان شروع و مدت اطلاع قبلی بهتر است مستقیم از خودش بپرسید؛ سؤال‌تان را برایش فرستادم.
+دنبال کار حضوری نیست. ریموت، تمام‌وقت، پاره‌وقت یا پروژه‌ای، همه برایش اوکی است.
 
-> **Is she open to new roles?**  
-> She’s open to new product design roles, remote. For start dates and notice period, it’s best to ask her directly: I’ve sent your question to her.
+> **Can she work on-site?**  
+> She isn’t looking for on-site work. Remote, full-time, part-time or project-based all work for her.
 
-### 52. پروژه‌ای هم کار میکنه؟  ‎📨
+### 52. کی می‌تونه شروع کنه؟
 
-هر دو را تجربه کرده: نقش‌های تمام‌وقت (الگونت، نوادی) و پروژه‌ای (تمدید، کاریار استودیو). برای یک نوع همکاری مشخص، سؤال‌تان را برایش فرستادم.
+همین الان می‌تواند شروع کند. ریموت، تمام‌وقت، پاره‌وقت یا پروژه‌ای، همه برایش اوکی است؛ فقط دنبال کار حضوری نیست. نوع شرکت هم فرقی نمی‌کند، از استارتاپ تا تیم‌های بزرگ.
+
+> **When can she start?**  
+> She can start right away. Remote, full-time, part-time or project-based all work for her; the one thing she isn’t looking for is on-site work. Any kind of company is fine, from startups to large teams.
+
+### 53. پروژه‌ای هم کار میکنه؟
+
+ریموت، تمام‌وقت، پاره‌وقت یا پروژه‌ای، همه برایش اوکی است؛ فقط دنبال کار حضوری نیست. تجربه‌ی هر دو را دارد: نقش‌های تمام‌وقت (الگونت، نوادی) و پروژه‌ای (تمدید، کاریار استودیو).
 
 > **Does she freelance?**  
-> She has done both: full-time roles (Algonet, Novaday) and project-based work (Tamdid, Studio Kaaryar). For a specific arrangement, I’ve passed your question on.
+> Remote, full-time, part-time or project-based: all of them work for her. The one thing she isn’t looking for is on-site work. She has done both full-time roles (Algonet, Novaday) and project-based work (Tamdid, Studio Kaaryar).
 
-### 53. حقوق درخواستیش چقدره؟  ‎📨
+### 54. حقوق درخواستیش چقدره؟  ‎📨
 
-این به نقش و حجم کار بستگی دارد و بهتر است خود سودابه جواب بدهد. سؤال‌تان را برایش فرستادم.
+به پروژه بستگی دارد؛ ترجیح می‌دهد اول درباره‌ی پروژه با هم صحبت کنید و بعد قیمت بدهد. سؤال‌تان را برایش فرستادم.
 
 > **What's her salary expectation?**  
-> That depends on the role and scope, so it’s a question for Sudabeh herself. I’ve sent it to her.
+> That depends on the project, so she’d rather talk it through with you first and then give you a price. I’ve sent your question to her.
 
-### 54. حاضره مهاجرت کنه؟  ‎📨
+### 55. حاضره مهاجرت کنه؟
 
-رزومه درباره‌ی مهاجرت یا ویزا چیزی نمی‌گوید و نمی‌خواهم حدس بزنم. سؤال‌تان را برایش فرستادم.
+قصد مهاجرت دارد و فعلاً ویزا ندارد.
 
 > **Would she relocate?**  
-> The CV doesn’t cover relocation or visas, so I’d rather not guess. I’ve sent your question to her.
+> She’s planning to relocate, and doesn’t have a visa yet.
 
-### 55. طراحی سایت برای استارتاپم چقدر هزینه داره؟  ‎📨
+### 56. طراحی سایت برای استارتاپم چقدر هزینه داره؟  ‎📨
 
 به بریف بستگی دارد. سودابه اول آن را کامل بررسی می‌کند و بعد زمان‌بندی و هزینه را برایتان می‌فرستد. پیام‌تان را برایش فرستادم؛ یک راه ارتباطی بگذارید تا جواب بدهد.
 
 > **How much for a website for my startup?**  
 > It depends on the brief. Sudabeh reads it properly first, then sends you a timeline and a quote. I’ve passed your message on to her; leave a contact below so she can reply.
 
-### 56. چرا میخواد از الگونت بیاد بیرون؟  ‎📨
+### 57. چرا میخواد از الگونت بیاد بیرون؟  ‎📨
 
 این را بهتر است خود سودابه جواب بدهد. سؤال‌تان را برایش فرستادم.
 
 > **Why does she want to leave Algonet?**  
 > That’s one for Sudabeh to answer herself. I’ve sent her your question.
 
-### 57. مدیریت تیم داشته؟
+### 58. مدیریت تیم داشته؟
 
 هنوز نه به‌عنوان عنوان شغلی: نقش‌هایش تا الان پروداکت دیزاینر بوده و اغلب تنها طراح محصول. قدم بعدی‌ای که دوست دارد لید شدن است و بخش مدیریتی کار را هم دوست دارد.
 
 > **Has she led a design team?**  
 > Not yet as a title: her roles so far have been product designer, often the only designer on the product. Leading is where she wants to go next, and she enjoys the management side of the work.
 
-### 58. توصیه‌نامه داره؟  ‎📨
+### 59. توصیه‌نامه داره؟  ‎📨
 
 این را بهتر است خود سودابه جواب بدهد. سؤال‌تان را برایش فرستادم.
 
 > **Can she provide references?**  
 > That one is best answered by Sudabeh herself. I’ve sent her your question.
 
-### 59. با کارفرمای خارجی کار کرده؟
+### 60. با کارفرمای خارجی کار کرده؟
 
 هنوز با کارفرمای خارجی کار نکرده. محصول انگلیسی و چندزبانه، مثل ریمیت، طراحی کرده و برای کار در تیم بین‌المللی آماده است.
 
 > **Has she worked with international clients?**  
 > Not with a client abroad yet. She has designed products in English and multilingual ones, like Remeet, and she’s ready for an international team.
 
-### 60. آخر هفته‌ها کار میکنه؟
+### 61. آخر هفته‌ها کار میکنه؟
 
 ساکن تهران است (UTC+3:30) و می‌تواند ساعت کاری‌اش را با تیم‌هایی در منطقه‌های زمانی دیگر، حتی آمریکا، هماهنگ کند. اگر پروژه لازم داشته باشد آخر هفته‌ها هم کار می‌کند.
 
 > **Can she work in US time zones?**  
 > She’s in Tehran (UTC+3:30) and can line up her hours with teams in other time zones, US hours included. She works weekends too when a project needs it.
 
-### 61. قرارداد عدم افشا امضا میکنه؟
+### 62. قرارداد عدم افشا امضا میکنه؟
 
 بله، قرارداد عدم افشا امضا می‌کند. کار محرمانه، مثل اطلس، محرمانه می‌ماند.
 
 > **Does she sign NDAs?**  
 > Yes, she signs NDAs. Confidential work, like Atlas, stays confidential.
 
-### 62. میشه طراحی‌های اطلس رو ببینم؟  ‎📨
+### 63. میشه طراحی‌های اطلس رو ببینم؟  ‎📨
 
 اطلس هنوز در حال توسعه است، برای همین در سایت تار مانده. سودابه خوشحال می‌شود آن را به‌صورت خصوصی، مثلاً در جلسه‌ی مصاحبه، نشان‌تان بدهد. به او خبر دادم که می‌خواهید ببینیدش.
 
@@ -454,14 +461,14 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 ## سؤال‌هایی که جواب نمی‌دهد
 
-### 63. چند سالشه؟
+### 64. چند سالشه؟
 
 من فقط درباره‌ی کارش اطلاعات دارم و سؤال‌های شخصی را به خودش می‌سپارم. درباره‌ی پروژه‌ها یا مهارت‌هایش خوشحال می‌شوم بگویم.
 
 > **How old is she?**  
 > I only know about her work, so I’ll leave personal questions to her. Happy to tell you about her projects or skills.
 
-### 64. گربه دوست داره؟  ‎📨
+### 65. گربه دوست داره؟  ‎📨
 
 از جواب این سؤال مطمئن نیستم و نمی‌خواهم حدس بزنم. برای همین سؤال‌تان را برای خود سودابه فرستادم تا خودش جواب بدهد.
 

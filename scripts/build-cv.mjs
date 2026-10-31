@@ -20,6 +20,8 @@ const contact = [
   { label: "sudabehzolfikhorram.github.io", href: SITE, strong: true },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/sudabehzolfikhorram2001/" },
   { label: "Telegram", href: "https://t.me/sudabehzolfikhorram" },
+  { label: "Behance", href: "https://www.behance.net/sudabehzolfikh" },
+  { label: "Medium", href: "https://medium.com/@sudabeh.a.zolfikhorram" },
   { label: "Instagram", href: "https://www.instagram.com/sudabehzolfi.design" },
 ];
 
@@ -200,8 +202,8 @@ h1 { font-size: 21pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1;
 .role { margin-top: 1.6mm; font-size: 10.5pt; font-weight: 600; color: var(--signal); }
 .role span { font-size: 8.4pt; font-weight: 500; color: var(--soft); }
 .summary { margin-top: 2.2mm; max-width: 176mm; font-size: 8.3pt; line-height: 1.4; }
-.contact { margin-top: 2.8mm; display: flex; flex-wrap: wrap; gap: 0.6mm 0; font-size: 7.7pt; color: var(--soft); }
-.contact > * + *::before { content: "·"; margin: 0 2.2mm; color: var(--rule); }
+.contact { margin-top: 2.6mm; display: flex; flex-wrap: wrap; gap: 0.6mm 0; font-size: 7.3pt; color: var(--soft); }
+.contact > * + *::before { content: "·"; margin: 0 1.6mm; color: var(--rule); }
 .contact .strong { color: var(--signal); font-weight: 600; }
 .grid { display: grid; grid-template-columns: 47mm 1fr; grid-template-areas: "side main"; column-gap: 6mm; padding-top: 3.6mm; min-height: 0; }
 main { grid-area: main; }

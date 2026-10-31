@@ -96,36 +96,42 @@ export const intents: Intent[] = [
   },
   {
     id: "remote",
-    strong: ["remote", "work from home", "wfh", "hybrid", "on-site", "onsite", "office", "ریموت", "دورکاری", "دور کاری", "حضوری", "هیبرید", "از راه دور", "دفتر"],
+    strong: ["remote", "work from home", "wfh", "hybrid", "ریموت", "دورکاری", "دور کاری", "هیبرید", "از راه دور"],
     answer: {
-      en: "Yes. She’s open to remote work and has delivered projects remotely, such as Tamdid and Studio Kaaryar.",
-      fa: "بله. برای کار ریموت آماده است و پروژه‌هایی مثل تمدید و کاریار استودیو را به‌صورت ریموت انجام داده.",
+      en: "Yes, remote is what she’s looking for. She has delivered projects remotely, such as Tamdid and Studio Kaaryar.",
+      fa: "بله، دنبال کار ریموت است و پروژه‌هایی مثل تمدید و کاریار استودیو را به‌صورت ریموت انجام داده.",
     },
   },
   {
     id: "availability",
-    strong: ["available", "availability", "open to work", "hiring", "looking for a job", "open to new", "job offer", "can we hire", "hire her", "hire you", "start date", "can you start", "can she start", "notice period", "when can", "آزاد", "در دسترس", "دنبال کار", "استخدام", "شروع همکاری", "کی میتونی", "از کی", "پیشنهاد کاری", "کار جدید", "آماده کار", "آماده‌ی کار", "آماده همکاری", "آماده‌ی همکاری", "موقعیت شغلی", "فرصت شغلی", "جویای کار", "new role", "new job", "looking for work", "estekhdam"],
+    strong: ["what kind of role", "type of role", "kind of job", "kind of work", "what kind of company", "type of company", "kind of company", "company size", "notice period", "start right away", "start immediately", "چه نوع همکاری", "نوع همکاری", "چه شرکتی", "نوع شرکت", "چه نوع شرکت", "کی میتونه شروع", "کی می‌تونه شروع", "کی شروع", "شروع کنه", "زمان شروع", "available", "availability", "open to work", "hiring", "looking for a job", "open to new", "job offer", "can we hire", "hire her", "hire you", "start date", "can you start", "can she start", "notice period", "when can", "آزاد", "در دسترس", "دنبال کار", "استخدام", "شروع همکاری", "کی میتونی", "از کی", "پیشنهاد کاری", "کار جدید", "آماده کار", "آماده‌ی کار", "آماده همکاری", "آماده‌ی همکاری", "موقعیت شغلی", "فرصت شغلی", "جویای کار", "new role", "new job", "looking for work", "estekhdam"],
     answer: {
-      en: "She’s open to new product design roles, remote. For start dates and notice period, it’s best to ask her directly: I’ve sent your question to her.",
-      fa: "برای نقش‌های جدید پروداکت دیزاین، به‌صورت ریموت، آماده است. برای زمان شروع و مدت اطلاع قبلی بهتر است مستقیم از خودش بپرسید؛ سؤال‌تان را برایش فرستادم.",
+      en: "She can start right away. Remote, full-time, part-time or project-based all work for her; the one thing she isn’t looking for is on-site work. Any kind of company is fine, from startups to large teams.",
+      fa: "همین الان می‌تواند شروع کند. ریموت، تمام‌وقت، پاره‌وقت یا پروژه‌ای، همه برایش اوکی است؛ فقط دنبال کار حضوری نیست. نوع شرکت هم فرقی نمی‌کند، از استارتاپ تا تیم‌های بزرگ.",
     },
-    forward: true,
+  },
+  {
+    id: "onsite",
+    strong: ["on-site", "on site", "onsite", "in office", "in the office", "office", "office based", "come to the office", "حضوری", "از دفتر", "دفتر کار"],
+    answer: {
+      en: "She isn’t looking for on-site work. Remote, full-time, part-time or project-based all work for her.",
+      fa: "دنبال کار حضوری نیست. ریموت، تمام‌وقت، پاره‌وقت یا پروژه‌ای، همه برایش اوکی است.",
+    },
   },
   {
     id: "freelance",
     strong: ["freelance", "freelancer", "project based", "project-based", "contract", "part time", "part-time", "full time", "full-time", "فریلنس", "پروژه ای", "پروژه‌ای", "پاره وقت", "پاره‌وقت", "تمام وقت", "تمام‌وقت", "قرارداد"],
     answer: {
-      en: "She has done both: full-time roles (Algonet, Novaday) and project-based work (Tamdid, Studio Kaaryar). For a specific arrangement, I’ve passed your question on.",
-      fa: "هر دو را تجربه کرده: نقش‌های تمام‌وقت (الگونت، نوادی) و پروژه‌ای (تمدید، کاریار استودیو). برای یک نوع همکاری مشخص، سؤال‌تان را برایش فرستادم.",
+      en: "Remote, full-time, part-time or project-based: all of them work for her. The one thing she isn’t looking for is on-site work. She has done both full-time roles (Algonet, Novaday) and project-based work (Tamdid, Studio Kaaryar).",
+      fa: "ریموت، تمام‌وقت، پاره‌وقت یا پروژه‌ای، همه برایش اوکی است؛ فقط دنبال کار حضوری نیست. تجربه‌ی هر دو را دارد: نقش‌های تمام‌وقت (الگونت، نوادی) و پروژه‌ای (تمدید، کاریار استودیو).",
     },
-    forward: true,
   },
   {
     id: "salary",
     strong: ["salary", "rate", "rates", "price", "pricing", "cost", "how much do you charge", "hourly", "ساعتی", "ریت ساعتی", "budget", "expected salary", "حقوق درخواستی", "حقوق چقدر", "چقدر حقوق", "حقوقت", "حقوق ماهانه", "حقوق انتظاری", "انتظار حقوق", "میزان حقوق", "دستمزد", "قیمت", "هزینه", "ریت", "بودجه", "hoghoogh"],
     answer: {
-      en: "That depends on the role and scope, so it’s a question for Sudabeh herself. I’ve sent it to her.",
-      fa: "این به نقش و حجم کار بستگی دارد و بهتر است خود سودابه جواب بدهد. سؤال‌تان را برایش فرستادم.",
+      en: "That depends on the project, so she’d rather talk it through with you first and then give you a price. I’ve sent your question to her.",
+      fa: "به پروژه بستگی دارد؛ ترجیح می‌دهد اول درباره‌ی پروژه با هم صحبت کنید و بعد قیمت بدهد. سؤال‌تان را برایش فرستادم.",
     },
     forward: true,
   },
@@ -133,10 +139,9 @@ export const intents: Intent[] = [
     id: "relocation",
     strong: ["relocate", "relocation", "move abroad", "visa", "work permit", "move to", "مهاجرت", "ریلوکیشن", "جابجایی", "ویزا", "اقامت"],
     answer: {
-      en: "The CV doesn’t cover relocation or visas, so I’d rather not guess. I’ve sent your question to her.",
-      fa: "رزومه درباره‌ی مهاجرت یا ویزا چیزی نمی‌گوید و نمی‌خواهم حدس بزنم. سؤال‌تان را برایش فرستادم.",
+      en: "She’s planning to relocate, and doesn’t have a visa yet.",
+      fa: "قصد مهاجرت دارد و فعلاً ویزا ندارد.",
     },
-    forward: true,
   },
   {
     id: "personal",
@@ -158,7 +163,7 @@ export const intents: Intent[] = [
   },
   {
     id: "lawToDesign",
-    strong: ["why design", "why law", "background", "از حقوق", "حقوق به", "حقوق اومد", "سمت دیزاین", "سمت طراحی", "پیشینه", "پیش زمینه", "law to design", "from law", "switch", "career change", "how did you start", "how did she start", "become a designer", "got into design", "چرا دیزاین", "چرا حقوق", "تغییر مسیر", "چطور دیزاینر", "از کجا شروع", "چجوری شروع"],
+    strong: ["why design", "why law", "background", "از حقوق", "حقوق به", "حقوق اومد", "سمت دیزاین", "سمت طراحی", "پیشینه", "پیش زمینه", "law to design", "from law", "switch", "career change", "how did you start", "how did she start", "become a designer", "got into design", "چرا دیزاین", "چرا حقوق", "تغییر مسیر", "چطور دیزاینر", "چجوری دیزاینر", "چطوری دیزاینر", "دیزاینر شد", "از کجا شروع", "چجوری شروع"],
     answer: {
       en: "The term she started her law degree, she also started designing learning content for an exam-prep school. UI/UX pulled her in, and Nan va Namak, a startup she built with friends, turned her into a product designer. Law left a useful habit: reading dense rules and making them clear.",
       fa: "همان ترمی که حقوق را شروع کرد، طراحی محتوای آموزشی برای یک مؤسسه‌ی کنکور را هم شروع کرد. کم‌کم جذب UI/UX شد و نان و نمک، استارتاپی که با دوستانش ساختند، او را به پروداکت دیزاین رساند. از حقوق یک عادت مفید مانده: خواندن قوانین پیچیده و ساده کردن‌شان.",
@@ -567,10 +572,10 @@ export const intents: Intent[] = [
   },
   {
     id: "dribbble",
-    strong: ["dribbble", "behance", "instagram", "shots", "دریبل", "بیهنس", "اینستاگرام"],
+    strong: ["medium", "article", "articles", "blog", "portfolio links", "مدیوم", "مقاله", "وبلاگ", "dribbble", "behance", "instagram", "shots", "دریبل", "بیهنس", "اینستاگرام"],
     answer: {
-      en: "Her shots are on Dribbble (dribbble.com/SudabehZolfikhorram) and Instagram (@sudabehzolfi.design). The full case studies are on this site.",
-      fa: "نمونه‌کارهای کوتاهش در دریبل (dribbble.com/SudabehZolfikhorram) و اینستاگرام (‎@sudabehzolfi.design) است. کیس استادی‌های کامل در همین سایت است.",
+      en: "Her shots are on Dribbble (dribbble.com/SudabehZolfikhorram) and Behance (behance.net/sudabehzolfikh), and she writes on Medium (medium.com/@sudabeh.a.zolfikhorram). The full case studies are on this site.",
+      fa: "نمونه‌کارهای کوتاهش در دریبل (dribbble.com/SudabehZolfikhorram) و بیهنس (behance.net/sudabehzolfikh) است و در مدیوم هم می‌نویسد (medium.com/@sudabeh.a.zolfikhorram). کیس استادی‌های کامل در همین سایت است.",
     },
   },
 ];

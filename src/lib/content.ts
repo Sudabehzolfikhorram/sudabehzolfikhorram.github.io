@@ -19,6 +19,8 @@ export const site = {
   socials: [
     { label: "LinkedIn", handle: "sudabehzolfikhorram2001", href: "https://www.linkedin.com/in/sudabehzolfikhorram2001/" },
     { label: "Dribbble", handle: "SudabehZolfikhorram", href: "https://dribbble.com/SudabehZolfikhorram" },
+    { label: "Behance", handle: "sudabehzolfikh", href: "https://www.behance.net/sudabehzolfikh" },
+    { label: "Medium", handle: "@sudabeh.a.zolfikhorram", href: "https://medium.com/@sudabeh.a.zolfikhorram" },
     { label: "Instagram", handle: "@sudabehzolfi.design", href: "https://www.instagram.com/sudabehzolfi.design" },
     { label: "Telegram", handle: "@sudabehzolfikhorram", href: "https://t.me/sudabehzolfikhorram" },
   ],
