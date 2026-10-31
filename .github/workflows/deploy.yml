@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: pages
@@ -41,5 +42,17 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # While Settings → Pages → Source is "Deploy from a branch", GitHub also runs its own
+      # "pages build and deployment", which publishes the README. Wait for it, so this deploy lands last.
+      - name: Wait for GitHub's branch build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 60); do
+            pending=$(gh run list -R "$GITHUB_REPOSITORY" --commit "$GITHUB_SHA" --json name,status \
+              -q '[.[] | select(.name == "pages build and deployment" and .status != "completed")] | length')
+            if [ "$pending" = "0" ]; then break; fi
+            echo "Waiting for the branch build to finish…"; sleep 10
+          done
       - id: deployment
         uses: actions/deploy-pages@v4
