@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { type PointerEvent, type ReactNode, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { MacBook } from "./devices";
 
 export type PeekShot = { label: string; image?: string; width?: number; height?: number };
 
@@ -57,18 +58,8 @@ export function PeekLens({ shots, fallback }: { shots: PeekShot[]; fallback: Rea
         </div>
       )}
 
-      <div className="overflow-hidden rounded-2xl border border-rule bg-paper shadow-[0_40px_90px_-50px_rgba(40,30,120,0.55)]">
-        {/* Browser chrome, without the real address: the live product needs a login. */}
-        <div className="flex items-center gap-2 border-rule border-b bg-paper-2/70 px-4 py-2.5">
-          <span className="flex gap-1.5" aria-hidden>
-            <span className="size-2.5 rounded-full bg-rule" />
-            <span className="size-2.5 rounded-full bg-rule" />
-            <span className="size-2.5 rounded-full bg-rule" />
-          </span>
-          <span className="mx-auto flex items-center gap-1.5 rounded-full bg-paper px-3 py-0.5 font-mono text-[11px] text-ink-soft">
-            <span className="size-1.5 rounded-full bg-gold" /> atlas · in development
-          </span>
-        </div>
+      {/* On a MacBook, without the real address: the live product needs a login. */}
+      <MacBook screenClassName="bg-paper-2">
 
         <div
           aria-label="A blurred preview of Atlas. Move over it to bring a small circle into focus."
@@ -118,8 +109,13 @@ export function PeekLens({ shots, fallback }: { shots: PeekShot[]; fallback: Rea
             )}
           </AnimatePresence>
         </div>
-      </div>
-      {!shot?.image && <p className="mt-3 text-ink-soft text-xs">An illustration stands in here until the real screens are added.</p>}
+      </MacBook>
+      <p className="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-ink-soft text-xs">
+        <span className="flex items-center gap-1.5 font-mono">
+          <span className="size-1.5 rounded-full bg-signal" /> atlas · in development
+        </span>
+        {!shot?.image && <span>An illustration stands in until the real screens are added.</span>}
+      </p>
     </div>
   );
 }

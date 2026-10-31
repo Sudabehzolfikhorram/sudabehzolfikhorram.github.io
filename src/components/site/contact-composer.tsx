@@ -7,6 +7,7 @@ import { type FormEvent, type KeyboardEvent, useEffect, useId, useLayoutEffect, 
 import { EASE_OUT } from "@/components/motion/reveal";
 import { type ContactKind, checkContact, sendMessage } from "@/lib/contact";
 import { site } from "@/lib/content";
+import { isTouchFirst } from "@/lib/use-scroll-lock";
 import { cn } from "@/lib/utils";
 
 /**
@@ -52,7 +53,8 @@ export function ContactComposer({
   const KindIcon = check.kind ? KINDS[check.kind].Icon : AtSign;
 
   useEffect(() => {
-    if (!autoFocus) return;
+    // On phones, focusing opens the keyboard and shoves the page around; let people tap when ready.
+    if (!autoFocus || isTouchFirst()) return;
     // After a sheet's slide-in, so the keyboard doesn't fight the animation.
     const t = window.setTimeout(() => messageRef.current?.focus({ preventScroll: true }), 350);
     return () => window.clearTimeout(t);

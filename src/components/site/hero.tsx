@@ -166,7 +166,7 @@ export function Hero() {
     <section className="relative overflow-hidden">
       {/* Quiet backdrop: a soft violet glow and a faint dot grid that fades out. */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 right-[-10%] size-[640px] rounded-full bg-glow/25 blur-[120px] dark:bg-glow/20" />
+        <div className="absolute -top-72 right-[-20%] size-[960px] bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--glow)_28%,transparent),transparent)]" />
         <div className="absolute inset-0 bg-[radial-gradient(var(--rule)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:radial-gradient(ellipse_at_70%_40%,black,transparent_70%)] opacity-70" />
       </div>
 

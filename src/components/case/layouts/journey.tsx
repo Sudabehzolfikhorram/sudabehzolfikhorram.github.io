@@ -1,23 +1,21 @@
 // Tamdid: a fintech product designed mobile first, then for the web. The page
 // leads with the real phone screens, then shows the web version in light and
 // dark, compared with a slider.
-import Image from "next/image";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import type { CaseStudy } from "@/lib/case-studies";
 import { cn } from "@/lib/utils";
+import { IPhoneShot } from "../devices";
 import { BeforeAfter } from "../novin/interactive";
 import { CaseTitle, Facts, MetaGrid, Scope, SectionHead, wrap } from "../blocks";
 import { Screen } from "../mockups";
 
 type Shot = NonNullable<CaseStudy["gallery"]>[number];
 
-/** A real screen in a simple phone frame. */
+/** A real screen in an iPhone. */
 function Phone({ shot, className, priority }: { shot: Shot; className?: string; priority?: boolean }) {
   return (
     <figure className={className}>
-      <div className="overflow-hidden rounded-[2rem] border-[6px] border-ink bg-ink shadow-[0_40px_80px_-40px_rgb(0_0_0/0.5)]">
-        <Image alt={shot.alt} className="block h-auto w-full" height={shot.height} priority={priority} sizes="(min-width: 640px) 280px, 62vw" src={shot.image} width={shot.width} />
-      </div>
+      <IPhoneShot alt={shot.alt} height={shot.height} priority={priority} sizes="(min-width: 640px) 280px, 62vw" src={shot.image} width={shot.width} />
       {shot.label && <figcaption className="eyebrow mt-3 text-center">{shot.label}</figcaption>}
     </figure>
   );

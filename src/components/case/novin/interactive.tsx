@@ -4,6 +4,7 @@ import { animate, AnimatePresence, motion, useInView, useMotionValue, useTransfo
 import Image from "next/image";
 import { type KeyboardEvent, type PointerEvent, useEffect, useId, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { MacBook } from "../devices";
 
 /* ───────────── Before / after slider ───────────── */
 
@@ -65,8 +66,9 @@ export function BeforeAfter({
   };
 
   return (
+    <MacBook>
     <div
-      className="relative cursor-ew-resize touch-pan-y select-none overflow-hidden rounded-2xl bg-black shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)] ring-1 ring-white/10"
+      className="relative cursor-ew-resize touch-pan-y select-none overflow-hidden bg-black"
       onPointerDown={(e) => {
         dragging.current = true;
         e.currentTarget.setPointerCapture(e.pointerId);
@@ -109,6 +111,7 @@ export function BeforeAfter({
         </svg>
       </motion.button>
     </div>
+    </MacBook>
   );
 }
 
@@ -122,7 +125,7 @@ export function Hotspots({
   alt,
   width,
   height,
-  points,
+  points: rawPoints,
   tone = "blue",
 }: {
   src: string;
@@ -132,13 +135,16 @@ export function Hotspots({
   points: Hotspot[];
   tone?: "blue" | "red";
 }) {
+  // Numbered the way the eye reads the screen: top to bottom, then right to left (RTL pages).
+  const points = [...rawPoints].sort((a, b) => a.y - b.y || b.x - a.x);
   const [active, setActive] = useState(0);
   const dot = tone === "red" ? "bg-[#e5484d]" : "bg-[#214bbd]";
   const ring = tone === "red" ? "ring-[#e5484d]/30" : "ring-[#7b9efe]/40";
 
   return (
     <div className="grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
-      <div className="relative overflow-hidden rounded-2xl shadow-[0_30px_60px_-30px_rgb(0_0_0/0.45)] ring-1 ring-black/10" style={{ aspectRatio: `${width} / ${height}` }}>
+      <MacBook>
+      <div className="relative overflow-hidden" style={{ aspectRatio: `${width} / ${height}` }}>
         <Image alt={alt} className="object-cover" fill sizes="(min-width: 1024px) 60vw, 100vw" src={src} />
         {points.map((p, i) => (
           <button
@@ -168,6 +174,7 @@ export function Hotspots({
           </button>
         ))}
       </div>
+      </MacBook>
 
       <ol className="space-y-2">
         {points.map((p, i) => (
@@ -312,21 +319,17 @@ export function PageSwitcher({
           </button>
         ))}
       </div>
-      <div className="mt-8 grid gap-10 lg:grid-cols-[1.7fr_1fr] lg:items-start">
-        <div className="overflow-hidden rounded-xl bg-white shadow-[0_30px_60px_-30px_rgb(0_0_0/0.45)] ring-1 ring-black/10">
-          <div className="flex items-center gap-1.5 border-zinc-200 border-b bg-zinc-100 px-3 py-2">
-            <span className="size-2.5 rounded-full bg-zinc-300" />
-            <span className="size-2.5 rounded-full bg-zinc-300" />
-            <span className="size-2.5 rounded-full bg-zinc-300" />
-          </div>
-          <div className={cn("relative overflow-y-auto overscroll-contain", tall ? "max-h-[min(78vh,880px)]" : "max-h-[640px]")}>
+      <div className={cn("mt-8 grid gap-10 lg:items-start", tall ? "lg:grid-cols-[2.3fr_1fr]" : "lg:grid-cols-[1.7fr_1fr]")}>
+        <MacBook>
+          {/* Scroll the page inside the screen. */}
+          <div className="relative aspect-[16/10] overflow-y-auto overscroll-contain">
             <AnimatePresence initial={false} mode="wait">
               <motion.div animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} initial={{ opacity: 0, y: 10 }} key={page.id} transition={{ duration: 0.25 }}>
                 <Image alt={`${page.label} ${altSuffix}`} className="block h-auto w-full" height={page.height} sizes="(min-width: 1024px) 60vw, 100vw" src={page.src} width={page.width} />
               </motion.div>
             </AnimatePresence>
           </div>
-        </div>
+        </MacBook>
         <AnimatePresence mode="wait">
           <motion.ul animate={{ opacity: 1 }} className="space-y-4" exit={{ opacity: 0 }} initial={{ opacity: 0 }} key={page.id}>
             {page.notes.map((n, i) => (

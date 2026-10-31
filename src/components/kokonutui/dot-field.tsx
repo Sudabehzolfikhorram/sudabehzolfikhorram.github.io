@@ -32,7 +32,8 @@ const NOISE_SPEED = 0.07;
 // The noise is sampled on every third dot and blended in between.
 const TONE_STEP = 3;
 // The idle drift is slow; a frame every 33ms is plenty for it.
-const IDLE_FRAME_MS = 33;
+// The idle drift is slow; 15 frames a second is plenty and keeps scrolling smooth.
+const IDLE_FRAME_MS = 66;
 // The membrane. Each dot is pulled back to its rest point (ANCHOR), towards
 // its four neighbours (COUPLING, which makes a disturbance travel as a wave)
 // and loses speed to DAMPING. Units are per second squared.
@@ -476,8 +477,10 @@ export default function DotField({
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
+    // Phones: fewer, larger-spaced dots and no idle drift; the field only moves when touched.
+    const touch = window.matchMedia("(pointer: coarse)").matches;
     const noise = createNoise(seed);
-    const gap = Math.max(6, spacing);
+    const gap = Math.max(6, spacing) * (touch ? 1.4 : 1);
     const size = { width: 0, height: 0, color: "" };
     let field = createField(0, 0, gap);
 
@@ -502,7 +505,7 @@ export default function DotField({
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, touch ? 1.5 : 2);
       size.width = rect.width;
       size.height = rect.height;
       canvas.width = Math.round(size.width * dpr);
@@ -557,6 +560,10 @@ export default function DotField({
       // The drift alone gets about 30 frames a second; a wake gets every one.
       if (wasAwake || toneDue) {
         draw(ctx, field, size, wasAwake);
+      }
+      // On touch screens the field rests between touches instead of drifting.
+      if (touch && !awake) {
+        return;
       }
       raf = requestAnimationFrame(frame);
     };

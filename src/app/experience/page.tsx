@@ -67,7 +67,7 @@ export default function ExperiencePage() {
       {/* Education, courses and languages live in the CV; here, just the way to it. */}
       <section className="mx-auto max-w-[1240px] px-4 py-20 sm:px-8">
         <Reveal className="relative flex flex-col items-start gap-6 overflow-hidden rounded-3xl bg-ink p-8 text-paper sm:flex-row sm:items-center sm:justify-between sm:p-10 dark:bg-paper-2 dark:text-ink">
-          <div aria-hidden className="pointer-events-none absolute -right-20 -bottom-24 size-72 rounded-full bg-glow/40 blur-[90px]" />
+          <div aria-hidden className="pointer-events-none absolute -right-40 -bottom-48 size-[480px] bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--glow)_42%,transparent),transparent)]" />
           <div className="relative">
             <p className="font-display text-2xl leading-tight sm:text-3xl">Education, courses and languages?</p>
             <p className="mt-2 text-paper/70 dark:text-ink-soft">All in the CV, on one page, easy to forward.</p>

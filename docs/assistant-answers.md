@@ -5,7 +5,7 @@
 
 **برای اصلاح:** شماره‌ی هر جواب را با متن درست بفرستید.
 
-- 📨 یعنی دستیار بعد از جواب پیشنهاد می‌کند سؤال برای سودابه فرستاده شود (ایمیل + تلگرام، با راه ارتباطی اختیاری).
+- 📨 یعنی این سؤال خودکار برای سودابه فرستاده می‌شود (ایمیل + تلگرام) و دستیار فقط می‌پرسد جواب می‌خواهند یا نه. بقیه‌ی گفتگو هم وقتی پنل بسته شود یا صفحه را ترک کنند برایش می‌رود.
 - 🔗 یعنی یک لینک (کیس استادی، صفحه یا رزومه) هم کنار جواب می‌آید.
 
 ## احوال‌پرسی و شروع گفتگو
@@ -91,10 +91,10 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 ### 12. انگلیسی بلده؟
 
-فارسی زبان مادری‌اش است و انگلیسی‌اش در سطح متوسط، در حد کاری (Working Proficiency) است.
+فارسی زبان مادری‌اش است و انگلیسی‌اش در سطح متوسط و در حد کاری است. مدرک آیلتس یا تافل ندارد، ولی در کار به انگلیسی ارتباط برقرار می‌کند.
 
 > **Does she speak English?**  
-> Persian is her native language; her English is intermediate, at working proficiency.
+> Persian is her native language and her English is intermediate, at working proficiency. She doesn’t hold an IELTS or TOEFL certificate, but she works and communicates in English.
 
 ## مهارت‌ها و نحوه‌ی کار
 
@@ -107,10 +107,10 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 ### 14. با چه ابزارهایی کار میکنه؟
 
-هر روز با فیگما و فیگ‌جم کار می‌کند؛ به‌علاوه‌ی Framer، Notion، Adobe Illustrator، ClickUp و Slack. برای آنالیتیکس Microsoft Clarity و GA4، و برای هوش مصنوعی ChatGPT، Claude، Google AI Studio، Lovable و NotebookLM.
+هر روز با فیگما و فیگ‌جم کار می‌کند؛ به‌علاوه‌ی Framer، Notion، Adobe Illustrator، ClickUp و Slack. برای آنالیتیکس Microsoft Clarity و GA4، و برای هوش مصنوعی ChatGPT، Claude، Google AI Studio، Lovable و NotebookLM. برای تست با Maze و Hotjar هم کار کرده. با Sketch و Webflow کار نکرده و Adobe XD هم دیگر پشتیبانی نمی‌شود.
 
 > **What tools does she use?**  
-> Figma and FigJam every day, plus Framer, Notion, Adobe Illustrator, ClickUp and Slack. For analytics, Microsoft Clarity and GA4. For AI: ChatGPT, Claude, Google AI Studio, Lovable and NotebookLM.
+> Figma and FigJam every day, plus Framer, Notion, Adobe Illustrator, ClickUp and Slack. For analytics, Microsoft Clarity and GA4. For AI: ChatGPT, Claude, Google AI Studio, Lovable and NotebookLM. She has also used Maze and Hotjar for testing. No Sketch or Webflow, and Adobe XD has been discontinued.
 
 ### 15. فرایند طراحیش چطوریه؟
 
@@ -196,86 +196,149 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 > **Has she designed for B2C?**  
 > Both. Consumer-facing: Tamdid, AzMan’s marketplace and Nan va Namak. Business and internal tools: Atlas, Kudos, Remeet and AzMan’s ERP.
 
+### 27. تست A/B انجام داده؟
+
+بله، A/B تست اجرا کرده؛ در کنار تست یوزبیلیتی و آنالیتیکس با Hotjar، Maze، Microsoft Clarity و GA4.
+
+> **Has she run A/B tests?**  
+> Yes, she has run A/B tests, alongside usability testing and analytics with Hotjar, Maze, Microsoft Clarity and GA4.
+
+### 28. یو ایکس رایتینگ هم انجام میده؟
+
+بله، یو‌ایکس رایتینگ را خودش و به‌عنوان بخشی از طراحی انجام می‌دهد: لیبل‌ها، حالت‌های خالی، پیام‌های خطا و کلماتی که به تصمیم کاربر کمک می‌کنند.
+
+> **Does she write UX copy?**  
+> Yes, she writes UX copy herself, as part of the design: labels, empty states, errors and the words that help people decide.
+
+### 29. یو ایکس آدیت انجام میده؟  ‎🔗 کیس استادی نوین هاست
+
+بله، یو‌ایکس آدیت از تخصص‌هایش است. کیس استادی نوین هاست با همین شروع می‌شود: بررسی هیوریستیک سایت فعلی قبل از هر ریدیزاینی.
+
+> **Does she do UX audits?**  
+> Yes, UX audits are one of her specialties. The Novin Host case study opens with one: a heuristic review of the live site before any redesign.
+
+### 30. دسترس پذیری رو رعایت میکنه؟
+
+بله. با در نظر گرفتن دسترس‌پذیری طراحی می‌کند و کنتراست، خوانایی و حالت‌ها را با چند ابزار هوش مصنوعی چک می‌کند تا چیزی از قلم نیفتد.
+
+> **Does she design for accessibility?**  
+> Yes. She designs with accessibility in mind, and checks contrast, readability and states with several AI tools, so nothing gets missed.
+
+### 31. موشن دیزاین کار میکنه؟
+
+نه به‌صورت تخصصی: موشن دیزاین کار نمی‌کند. وقتی پروژه به ویژوال یا تصویرسازی نیاز داشته باشد، با کمک ابزارهای هوش مصنوعی آن را می‌سازد.
+
+> **Does she do motion design?**  
+> Not as a specialist: she doesn’t do motion design. When a project needs visuals or illustrations, she creates them with the help of AI tools.
+
+### 32. ورکشاپ برگزار کرده؟
+
+هنوز نه، ورکشاپ برگزار نکرده. همکاری‌اش روزمره و کنار مدیر محصول، تیم فنی و QA بوده.
+
+> **Has she run workshops?**  
+> Not yet: she hasn’t run workshops. Her collaboration has been day to day, side by side with PMs, engineers and QA.
+
+### 33. فلسفه‌ی طراحیش چیه؟
+
+طراحی باید هم‌زمان برای دو نفر کار کند: کاربری که می‌خواهد کار برایش ساده باشد، و کسب‌وکاری که باید به نتیجه برسد. وقتی هر دو راضی باشند و خودش هم از مسیر لذت برده باشد، کار درست انجام شده.
+
+> **What's her design philosophy?**  
+> A design has to work for two people at once: the user, who needs it to be easy, and the business, which needs it to deliver. When both are happy, and she enjoyed the way there, the job is done right.
+
+### 34. سخت‌ترین پروژه‌اش چی بوده؟
+
+هر پروژه‌ای سختی خودش را دارد، برای همین یکی را انتخاب نمی‌کند. چیزی که بیشتر از همه محکش می‌زند فشار زمانی شدید است، مثل اطلس که تیمش در دو سه روز بالا آورد. با یک برنامه‌ی دقیق، هوش مصنوعی به‌عنوان همراه و کلی پشتکار از پسش برمی‌آید.
+
+> **What's the hardest part of her work?**  
+> Every project has its hard part, so she won’t pick just one. What tests her most is extreme time pressure, like Atlas, which her team took live in two to three days. She gets through it with a tight plan, AI as a partner and plenty of persistence.
+
+### 35. نتیجه‌ی کارهاش چی بوده؟
+
+روشن‌ترینش کودوس است: با شرکت‌های واقعی در حال استفاده است و به گفته‌ی خودش حدود ۵۰۰ نفر کاربرش هستند. ریمیت در هفته‌ی دیزاین تهران برنده شد، اطلس در دو سه روز از بریف به نسخه‌ی لایو رسید و تمدید در حال توسعه است.
+
+> **What results has her work had?**  
+> Kudos is the clearest one: it’s live with real companies, and by her count around 500 people use it. Remeet won at Tehran Design Week, Atlas went from brief to live in two to three days, and Tamdid is in development.
+
 ## پروژه‌ها و شرکت‌ها
 
-### 27. نمونه کارهاش رو ببینم  ‎🔗 همه‌ی پروژه‌ها
+### 36. نمونه کارهاش رو ببینم  ‎🔗 همه‌ی پروژه‌ها
 
-پروژه‌های اصلی: تمدید (فین‌تک)، کودوس (پلتفرم منابع انسانی) و اطلس (هوش مصنوعی سازمانی). به‌علاوه ریمیت که جایزه گرفته، سه محصول ازمان، نوین هاست، کاریار استودیو و نان و نمک.
+پروژه‌های اصلی: اطلس (هوش مصنوعی سازمانی)، تمدید (فین‌تک) و کودوس (پلتفرم منابع انسانی). به‌علاوه ریمیت که جایزه گرفته، سه محصول ازمان، نوین هاست، کاریار استودیو و نان و نمک.
 
 > **Can I see her work?**  
-> Lead projects: Tamdid (fintech), Kudos (HR platform) and Atlas (enterprise AI). Also Remeet, an award winner, AzMan’s three products, Novin Host, Studio Kaaryar and Nan va Namak.
+> Lead projects: Atlas (enterprise AI), Tamdid (fintech) and Kudos (HR platform). Also Remeet, an award winner, AzMan’s three products, Novin Host, Studio Kaaryar and Nan va Namak.
 
-### 28. تمدید چیه؟  ‎🔗 کیس استادی تمدید
+### 37. تمدید چیه؟  ‎🔗 کیس استادی تمدید
 
 تمدید یک محصول فین‌تک برای اشتراک‌ها، کیف پول و پرداخت است، همراه با گیمیفیکیشن. سودابه به‌تنهایی طراحی‌اش کرد؛ اول موبایل و بعد وب، با دیزاین سیستم اختصاصی. الان در مرحله‌ی توسعه است.
 
 > **What is Tamdid?**  
 > Tamdid is a fintech product for subscriptions, a wallet and payments, with gamification. Sudabeh designed it alone, mobile first and then web, with its own design system. It’s now in development.
 
-### 29. کودوس چیه؟  ‎🔗 کیس استادی کودوس
+### 38. کودوس چیه؟  ‎🔗 کیس استادی کودوس
 
-کودوس یک پلتفرم منابع انسانی و تعامل کارکنان است. در نوادی پنل ادمینش را روی دیزاین سیستم مبتنی بر Tailwind طراحی کرد، فلوها و منطق صفحات را برای تیم فنی مستند کرد و نزدیک با PM و QA کار کرد.
+کودوس یک پلتفرم منابع انسانی و تعامل کارکنان است. در نوادی پنل ادمینش را روی دیزاین سیستم مبتنی بر Tailwind طراحی کرد، فلوها و منطق صفحات را برای تیم فنی مستند کرد و نزدیک با PM و QA کار کرد. کودوس با شرکت‌های واقعی در حال استفاده است و به گفته‌ی خودش حدود ۵۰۰ نفر کاربرش هستند.
 
 > **What is Kudos?**  
-> Kudos is an HR and employee-engagement platform. At Novaday she designed its admin panel on a Tailwind-based system, documented flows and page logic for engineers, and worked closely with PM and QA.
+> Kudos is an HR and employee-engagement platform. At Novaday she designed its admin panel on a Tailwind-based system, documented flows and page logic for engineers, and worked closely with PM and QA. Kudos is live with real companies, and by her count around 500 people use it.
 
-### 30. ریمیت چیه؟  ‎🔗 درباره‌ی ریمیت
+### 39. ریمیت چیه؟  ‎🔗 درباره‌ی ریمیت
 
 ریمیت (که اول اسمش اکسس بود) یک سیستم چندزبانه‌ی مدیریت دسترسی و جلسات با ورود اثر انگشت و RFID و همگام با Outlook است. سودابه آن را در نوادی طراحی کرد و در هفته‌ی دیزاین تهران برنده شد.
 
 > **What is Remeet?**  
 > Remeet (first called Access) is a multilingual access and meeting system with fingerprint and RFID check-in and Outlook sync. Sudabeh designed it at Novaday, and it won at Tehran Design Week.
 
-### 31. اطلس چیه؟  ‎🔗 درباره‌ی اطلس
+### 40. اطلس چیه؟  ‎🔗 درباره‌ی اطلس
 
 اطلس یک پلتفرم هوش مصنوعی است که سودابه در الگونت طراحی می‌کند. ایمیل‌ها، چت‌ها و فرایندهای یک شرکت را تحلیل می‌کند، مسیر واقعی کارها را نشان می‌دهد و مسیر ساده‌تری پیشنهاد می‌دهد. در حال توسعه است و بخشی از آن تار نمایش داده شده.
 
 > **What is Atlas?**  
 > Atlas is an AI platform she designs at Algonet. It analyses a company’s emails, chats and workflows, maps how work really moves, and suggests a simpler process. It’s in development, so parts are shown blurred.
 
-### 32. ازمان چیه؟  ‎🔗 کیس استادی ازمان
+### 41. ازمان چیه؟  ‎🔗 کیس استادی ازمان
 
 ازمان سه محصول به هم پیوسته است: مارکت‌پلیس ازمان برای مشتری‌ها، همگام‌ساز برای کارشناسان و ارتباطاتشان، و ERP که هر دو را مدیریت می‌کند. طراح هر سه محصول سودابه است.
 
 > **What is AzMan?**  
 > AzMan is three connected products: the AzMan marketplace for customers, Hamgam Saz for the field experts and their communication, and the ERP that runs both. Sudabeh is the designer behind all three.
 
-### 33. درباره کاریار بگو  ‎🔗 کیس استادی کاریار
+### 42. درباره کاریار بگو  ‎🔗 کیس استادی کاریار
 
 کاریار استودیو فارغ‌التحصیلان دوره‌های کاریار را روی پروژه‌های واقعی می‌برد. سودابه سایت چهارصفحه‌ای‌اش را با محدودیت‌های جدی کارفرما، عمداً ساده، روی یک دیزاین سیستم کوچک ریدیزاین کرد.
 
 > **Tell me about Kaaryar**  
 > Studio Kaaryar puts graduates of Kaaryar’s training on real client projects. Sudabeh redesigned its four-page website, deliberately simple, within tight client constraints, on a small design system.
 
-### 34. توی نوین هاست چیکار کرده؟  ‎🔗 کیس استادی نوین هاست
+### 43. توی نوین هاست چیکار کرده؟  ‎🔗 کیس استادی نوین هاست
 
 نوین هاست یک برند هاستینگ با ۱۵ سال سابقه است. سودابه سایتش را ریدیزاین کرد تا به‌روزتر باشد و انتخاب سرویس راحت‌تر شود، بدون اینکه مشتری‌های قدیمی راهشان را گم کنند.
 
 > **What did she do at Novin Host?**  
 > Novin Host is a 15-year-old hosting brand. She redesigned its website to feel current and make choosing a plan easier, without losing the customers who already know their way around.
 
-### 35. نان و نمک چی بود؟  ‎🔗 داستانش
+### 44. نان و نمک چی بود؟  ‎🔗 داستانش
 
 نان و نمک یک پلتفرم آشپزی بود که سودابه و چند دوستش می‌خواستند لانچ کنند. او و یک طراح دیگر آن را از ایده تا اجرا برای وب، تبلت و موبایل طراحی کردند. لانچ نشد، ولی همان‌جا بود که پروداکت دیزاینر شد.
 
 > **What was Nan va Namak?**  
 > Nan va Namak was a cooking platform she and a few friends set out to launch. She and another designer took it from idea to execution across web, tablet and mobile. It didn’t launch, but it’s where she became a product designer.
 
-### 36. توی الگونت چیکار میکنه؟
+### 45. توی الگونت چیکار میکنه؟
 
 در الگونت (تمام‌وقت) روی اطلس، داشبوردها و ابزارهای عملیاتی کار می‌کند و دیزاین سیستم اختصاصی ساخته. هویت بصری الگونت هم کار اوست: لوگو، پترن و بروشور.
 
 > **What does she do at Algonet?**  
 > At Algonet (full-time) she designs Atlas, dashboards and operational tools, and built a custom design system. She also shaped Algonet’s visual identity: logo, pattern and brochure.
 
-### 37. توی نوادی چیکار کرده؟
+### 46. توی نوادی چیکار کرده؟
 
 در نوادی (تمام‌وقت، هیبرید) کودوس، یک پلتفرم منابع انسانی، و ریمیت، سیستم دسترسی برنده‌ی جایزه، را روی دیزاین سیستم مبتنی بر Tailwind طراحی کرد؛ همراه با بنچمارک، تحلیل رقبا و تست یوزبیلیتی.
 
 > **What did she do at Novaday?**  
 > At Novaday (full-time, hybrid) she designed Kudos, an HR platform, and Remeet, an award-winning access system, on a Tailwind-based design system, with benchmarks, competitor analysis and usability testing.
 
-### 38. دریبل داره؟
+### 47. دریبل داره؟
 
 نمونه‌کارهای کوتاهش در دریبل (dribbble.com/SudabehZolfikhorram) و اینستاگرام (‎@sudabehzolfi.design) است. کیس استادی‌های کامل در همین سایت است.
 
@@ -284,98 +347,126 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 ## همکاری و ارتباط
 
-### 39. چطور باهاش در تماس باشم؟  ‎📨
+### 48. چطور باهاش در تماس باشم؟
 
-ایمیل: sudabeh.a.zolfikhorram@gmail.com یا تلگرام: ‎@sudabehzolfikhorram. شماره تلفنش در رزومه هست. می‌توانید همین‌جا هم پیام بگذارید تا برایش بفرستم.
+ایمیل: sudabeh.a.zolfikhorram@gmail.com یا تلگرام: ‎@sudabehzolfikhorram. لینکدین هم دارد: linkedin.com/in/sudabehzolfikhorram2001. شماره تلفنش در رزومه هست. یا همین‌جا پیام‌تان را بنویسید تا برایش بفرستم.
 
 > **How can I contact her?**  
-> Email sudabeh.a.zolfikhorram@gmail.com, or Telegram @sudabehzolfikhorram. Her phone number is in her CV. You can also leave a message here and I’ll send it to her.
+> Email sudabeh.a.zolfikhorram@gmail.com, or Telegram @sudabehzolfikhorram. She’s on LinkedIn too: linkedin.com/in/sudabehzolfikhorram2001. Her phone number is in her CV. Or just write your message here and I’ll pass it on.
 
-### 40. رزومه‌ش رو می‌خوام  ‎🔗 دانلود رزومه (PDF)
+### 49. رزومه‌ش رو می‌خوام  ‎🔗 دانلود رزومه (PDF)
 
 رزومه‌اش به‌صورت PDF اینجاست. اگر چیزی که دنبالش هستید در آن نبود، از من بپرسید.
 
 > **Can I get her CV?**  
 > Here’s her CV as a PDF. If something you’re looking for isn’t in it, just ask me.
 
-### 41. ریموت کار میکنه؟
+### 50. ریموت کار میکنه؟
 
 بله. برای کار ریموت آماده است و پروژه‌هایی مثل تمدید و کاریار استودیو را به‌صورت ریموت انجام داده.
 
 > **Does she work remotely?**  
 > Yes. She’s open to remote work and has delivered projects remotely, such as Tamdid and Studio Kaaryar.
 
-### 42. آماده‌ی کار جدید هست؟  ‎📨
+### 51. آماده‌ی کار جدید هست؟  ‎📨
 
-برای نقش‌های جدید پروداکت دیزاین، به‌صورت ریموت، آماده است. برای زمان شروع و مدت اطلاع قبلی بهتر است مستقیم از خودش بپرسید؛ می‌توانم سؤال‌تان را برایش بفرستم.
+برای نقش‌های جدید پروداکت دیزاین، به‌صورت ریموت، آماده است. برای زمان شروع و مدت اطلاع قبلی بهتر است مستقیم از خودش بپرسید؛ سؤال‌تان را برایش فرستادم.
 
 > **Is she open to new roles?**  
-> She’s open to new product design roles, remote. For start dates and notice period, it’s best to ask her directly: I can send your question to her.
+> She’s open to new product design roles, remote. For start dates and notice period, it’s best to ask her directly: I’ve sent your question to her.
 
-### 43. پروژه‌ای هم کار میکنه؟  ‎📨
+### 52. پروژه‌ای هم کار میکنه؟  ‎📨
 
-هر دو را تجربه کرده: نقش‌های تمام‌وقت (الگونت، نوادی) و پروژه‌ای (تمدید، کاریار استودیو). برای یک نوع همکاری مشخص، می‌توانم سؤال‌تان را برایش بفرستم.
+هر دو را تجربه کرده: نقش‌های تمام‌وقت (الگونت، نوادی) و پروژه‌ای (تمدید، کاریار استودیو). برای یک نوع همکاری مشخص، سؤال‌تان را برایش فرستادم.
 
 > **Does she freelance?**  
-> She has done both: full-time roles (Algonet, Novaday) and project-based work (Tamdid, Studio Kaaryar). For a specific arrangement, I can pass your question on.
+> She has done both: full-time roles (Algonet, Novaday) and project-based work (Tamdid, Studio Kaaryar). For a specific arrangement, I’ve passed your question on.
 
-### 44. حقوق درخواستیش چقدره؟  ‎📨
+### 53. حقوق درخواستیش چقدره؟  ‎📨
 
-این به نقش و حجم کار بستگی دارد و بهتر است خود سودابه جواب بدهد. می‌توانم سؤال‌تان را برایش بفرستم.
+این به نقش و حجم کار بستگی دارد و بهتر است خود سودابه جواب بدهد. سؤال‌تان را برایش فرستادم.
 
 > **What's her salary expectation?**  
-> That depends on the role and scope, so it’s a question for Sudabeh herself. I can send it to her.
+> That depends on the role and scope, so it’s a question for Sudabeh herself. I’ve sent it to her.
 
-### 45. حاضره مهاجرت کنه؟  ‎📨
+### 54. حاضره مهاجرت کنه؟  ‎📨
 
-رزومه درباره‌ی مهاجرت یا ویزا چیزی نمی‌گوید و نمی‌خواهم حدس بزنم. می‌توانم سؤال‌تان را برایش بفرستم.
+رزومه درباره‌ی مهاجرت یا ویزا چیزی نمی‌گوید و نمی‌خواهم حدس بزنم. سؤال‌تان را برایش فرستادم.
 
 > **Would she relocate?**  
-> The CV doesn’t cover relocation or visas, so I’d rather not guess. I can send your question to her.
+> The CV doesn’t cover relocation or visas, so I’d rather not guess. I’ve sent your question to her.
 
-### 46. طراحی سایت برای استارتاپم چقدر هزینه داره؟  ‎📨
+### 55. طراحی سایت برای استارتاپم چقدر هزینه داره؟  ‎📨
 
-برای یک پروژه‌ی جدید، محدوده، هزینه و زمان به جزئیات بستگی دارد و خود سودابه جواب می‌دهد. یک خط درباره‌ی پروژه بنویسید تا برایش بفرستم.
+به بریف بستگی دارد. سودابه اول آن را کامل بررسی می‌کند و بعد زمان‌بندی و هزینه را برایتان می‌فرستد. پیام‌تان را برایش فرستادم؛ یک راه ارتباطی بگذارید تا جواب بدهد.
 
 > **How much for a website for my startup?**  
-> For a new project, scope, price and timing depend on the details, so Sudabeh answers those herself. Add a line about the project and I’ll send it to her.
+> It depends on the brief. Sudabeh reads it properly first, then sends you a timeline and a quote. I’ve passed your message on to her; leave a contact below so she can reply.
 
-### 47. چرا میخواد از الگونت بیاد بیرون؟  ‎📨
+### 56. چرا میخواد از الگونت بیاد بیرون؟  ‎📨
 
-این را بهتر است خود سودابه جواب بدهد. می‌توانم سؤال‌تان را برایش بفرستم.
+این را بهتر است خود سودابه جواب بدهد. سؤال‌تان را برایش فرستادم.
 
 > **Why does she want to leave Algonet?**  
-> That’s one for Sudabeh to answer herself. I can send her your question.
+> That’s one for Sudabeh to answer herself. I’ve sent her your question.
 
-### 48. مدیریت تیم داشته؟  ‎📨
+### 57. مدیریت تیم داشته؟
 
-در رزومه‌اش نقش‌ها پروداکت دیزاینر است، نه لید تیم؛ و درباره‌ی مدیریت یا منتورینگ نمی‌خواهم حدس بزنم. می‌توانم مستقیم از خودش بپرسم.
+هنوز نه به‌عنوان عنوان شغلی: نقش‌هایش تا الان پروداکت دیزاینر بوده و اغلب تنها طراح محصول. قدم بعدی‌ای که دوست دارد لید شدن است و بخش مدیریتی کار را هم دوست دارد.
 
 > **Has she led a design team?**  
-> Her CV lists product designer roles, not a team-lead title, and I’d rather not guess about leading or mentoring. I can ask her directly.
+> Not yet as a title: her roles so far have been product designer, often the only designer on the product. Leading is where she wants to go next, and she enjoys the management side of the work.
 
-### 49. سخت‌ترین پروژه‌اش چی بوده؟  ‎📨 · 🔗 کیس استادی‌ها
+### 58. توصیه‌نامه داره؟  ‎📨
 
-جواب این سؤال یک داستان واقعی از خود اوست، نه خلاصه‌ای از من. بخشی از آن در کیس استادی‌ها هست؛ برای بقیه، می‌توانم سؤال‌تان را برای سودابه بفرستم.
+این را بهتر است خود سودابه جواب بدهد. سؤال‌تان را برایش فرستادم.
 
-> **What was her biggest challenge?**  
-> That deserves a real story from her, not a summary from me. The case studies cover some of it; for the rest, I can send your question to Sudabeh.
+> **Can she provide references?**  
+> That one is best answered by Sudabeh herself. I’ve sent her your question.
+
+### 59. با کارفرمای خارجی کار کرده؟
+
+هنوز با کارفرمای خارجی کار نکرده. محصول انگلیسی و چندزبانه، مثل ریمیت، طراحی کرده و برای کار در تیم بین‌المللی آماده است.
+
+> **Has she worked with international clients?**  
+> Not with a client abroad yet. She has designed products in English and multilingual ones, like Remeet, and she’s ready for an international team.
+
+### 60. آخر هفته‌ها کار میکنه؟
+
+ساکن تهران است (UTC+3:30) و می‌تواند ساعت کاری‌اش را با تیم‌هایی در منطقه‌های زمانی دیگر، حتی آمریکا، هماهنگ کند. اگر پروژه لازم داشته باشد آخر هفته‌ها هم کار می‌کند.
+
+> **Can she work in US time zones?**  
+> She’s in Tehran (UTC+3:30) and can line up her hours with teams in other time zones, US hours included. She works weekends too when a project needs it.
+
+### 61. قرارداد عدم افشا امضا میکنه؟
+
+بله، قرارداد عدم افشا امضا می‌کند. کار محرمانه، مثل اطلس، محرمانه می‌ماند.
+
+> **Does she sign NDAs?**  
+> Yes, she signs NDAs. Confidential work, like Atlas, stays confidential.
+
+### 62. میشه طراحی‌های اطلس رو ببینم؟  ‎📨
+
+اطلس هنوز در حال توسعه است، برای همین در سایت تار مانده. سودابه خوشحال می‌شود آن را به‌صورت خصوصی، مثلاً در جلسه‌ی مصاحبه، نشان‌تان بدهد. به او خبر دادم که می‌خواهید ببینیدش.
+
+> **Can I see the Atlas designs?**  
+> Atlas is still in development, so it stays blurred on the site. She’s happy to walk you through it privately, for example in an interview. I’ve let her know you’d like to see it.
 
 ## سؤال‌هایی که جواب نمی‌دهد
 
-### 50. چند سالشه؟
+### 63. چند سالشه؟
 
 من فقط درباره‌ی کارش اطلاعات دارم و سؤال‌های شخصی را به خودش می‌سپارم. درباره‌ی پروژه‌ها یا مهارت‌هایش خوشحال می‌شوم بگویم.
 
 > **How old is she?**  
 > I only know about her work, so I’ll leave personal questions to her. Happy to tell you about her projects or skills.
 
-### 51. گربه دوست داره؟  ‎📨
+### 64. گربه دوست داره؟  ‎📨
 
-از جواب این سؤال مطمئن نیستم و نمی‌خواهم حدس بزنم. می‌توانم سؤال‌تان را برای خود سودابه بفرستم تا خودش جواب بدهد.
+از جواب این سؤال مطمئن نیستم و نمی‌خواهم حدس بزنم. برای همین سؤال‌تان را برای خود سودابه فرستادم تا خودش جواب بدهد.
 
 > **Does she like cats?**  
-> I’m not sure about that one, and I’d rather not guess. I can send your question to Sudabeh so she answers it herself.
+> I’m not sure about that one, and I’d rather not guess. So I’ve sent your question to Sudabeh, and she’ll answer it herself.
 
 ## اگر در رزومه پیدا نکرده باشد
 

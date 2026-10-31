@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { Assistant } from "@/components/site/assistant";
+import { BottomNav } from "@/components/site/bottom-nav";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { Providers } from "@/components/motion/providers";
@@ -15,6 +16,9 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 const description =
   "Sudabeh Zolfi Khorram, product designer for SaaS, fintech and internal tools. Case studies, career and resume. Based in Tehran, open to remote.";
+
+// "cover" lets the phone bottom bar sit above the home indicator via safe-area insets.
+export const viewport: Viewport = { viewportFit: "cover" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -62,6 +66,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <main className="flex-1">{children}</main>
           <SiteFooter />
           <Assistant />
+          <BottomNav />
         </Providers>
       </body>
     </html>

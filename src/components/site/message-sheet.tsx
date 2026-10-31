@@ -4,6 +4,7 @@ import { MessageSquare, X } from "lucide-react";
 import { AnimatePresence, motion, type PanInfo, useDragControls } from "motion/react";
 import { type ReactNode, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
+import { useScrollLock } from "@/lib/use-scroll-lock";
 import { cn } from "@/lib/utils";
 import { ContactComposer } from "./contact-composer";
 
@@ -32,18 +33,16 @@ export function MessageSheet({
   const drag = useDragControls();
   // Portalled to <body> so no transformed ancestor can trap the fixed sheet.
   const mounted = useSyncExternalStore(noop, () => true, () => false);
+  useScrollLock(open);
 
   useEffect(() => {
     if (!open) {
       return;
     }
     const trigger = triggerRef.current;
-    const { overflow } = document.body.style;
-    document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     document.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = overflow;
       document.removeEventListener("keydown", onKey);
       trigger?.focus({ preventScroll: true });
     };

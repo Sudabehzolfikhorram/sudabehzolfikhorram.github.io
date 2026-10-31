@@ -88,7 +88,7 @@ export const intents: Intent[] = [
   },
   {
     id: "location",
-    strong: ["where are you", "where is she", "where do you live", "where does she live", "where she lives", "live in", "based", "location", "city", "country", "timezone", "time zone", "iran", "tehran", "کجا هستی", "کجایی", "کجا زندگی", "شهر", "تهران", "ایران", "منطقه زمانی", "ساعت کاری", "kojaei"],
+    strong: ["where are you", "where is she", "where do you live", "where does she live", "where she lives", "live in", "based", "location", "city", "country", "iran", "tehran", "کجا هستی", "کجایی", "کجا زندگی", "شهر", "تهران", "ایران", "kojaei"],
     answer: {
       en: "She’s based in Tehran, Iran (UTC+3:30) and open to remote work.",
       fa: "ساکن تهران است (به وقت ایران، UTC+3:30) و برای همکاری ریموت آماده است.",
@@ -106,8 +106,8 @@ export const intents: Intent[] = [
     id: "availability",
     strong: ["available", "availability", "open to work", "hiring", "looking for a job", "open to new", "job offer", "can we hire", "hire her", "hire you", "start date", "can you start", "can she start", "notice period", "when can", "آزاد", "در دسترس", "دنبال کار", "استخدام", "شروع همکاری", "کی میتونی", "از کی", "پیشنهاد کاری", "کار جدید", "آماده کار", "آماده‌ی کار", "آماده همکاری", "آماده‌ی همکاری", "موقعیت شغلی", "فرصت شغلی", "جویای کار", "new role", "new job", "looking for work", "estekhdam"],
     answer: {
-      en: "She’s open to new product design roles, remote. For start dates and notice period, it’s best to ask her directly: I can send your question to her.",
-      fa: "برای نقش‌های جدید پروداکت دیزاین، به‌صورت ریموت، آماده است. برای زمان شروع و مدت اطلاع قبلی بهتر است مستقیم از خودش بپرسید؛ می‌توانم سؤال‌تان را برایش بفرستم.",
+      en: "She’s open to new product design roles, remote. For start dates and notice period, it’s best to ask her directly: I’ve sent your question to her.",
+      fa: "برای نقش‌های جدید پروداکت دیزاین، به‌صورت ریموت، آماده است. برای زمان شروع و مدت اطلاع قبلی بهتر است مستقیم از خودش بپرسید؛ سؤال‌تان را برایش فرستادم.",
     },
     forward: true,
   },
@@ -115,17 +115,17 @@ export const intents: Intent[] = [
     id: "freelance",
     strong: ["freelance", "freelancer", "project based", "project-based", "contract", "part time", "part-time", "full time", "full-time", "فریلنس", "پروژه ای", "پروژه‌ای", "پاره وقت", "پاره‌وقت", "تمام وقت", "تمام‌وقت", "قرارداد"],
     answer: {
-      en: "She has done both: full-time roles (Algonet, Novaday) and project-based work (Tamdid, Studio Kaaryar). For a specific arrangement, I can pass your question on.",
-      fa: "هر دو را تجربه کرده: نقش‌های تمام‌وقت (الگونت، نوادی) و پروژه‌ای (تمدید، کاریار استودیو). برای یک نوع همکاری مشخص، می‌توانم سؤال‌تان را برایش بفرستم.",
+      en: "She has done both: full-time roles (Algonet, Novaday) and project-based work (Tamdid, Studio Kaaryar). For a specific arrangement, I’ve passed your question on.",
+      fa: "هر دو را تجربه کرده: نقش‌های تمام‌وقت (الگونت، نوادی) و پروژه‌ای (تمدید، کاریار استودیو). برای یک نوع همکاری مشخص، سؤال‌تان را برایش فرستادم.",
     },
     forward: true,
   },
   {
     id: "salary",
-    strong: ["salary", "rate", "rates", "price", "pricing", "cost", "how much do you charge", "hourly", "budget", "expected salary", "حقوق درخواستی", "حقوق چقدر", "چقدر حقوق", "حقوقت", "حقوق ماهانه", "حقوق انتظاری", "انتظار حقوق", "میزان حقوق", "دستمزد", "قیمت", "هزینه", "ریت", "بودجه", "hoghoogh"],
+    strong: ["salary", "rate", "rates", "price", "pricing", "cost", "how much do you charge", "hourly", "ساعتی", "ریت ساعتی", "budget", "expected salary", "حقوق درخواستی", "حقوق چقدر", "چقدر حقوق", "حقوقت", "حقوق ماهانه", "حقوق انتظاری", "انتظار حقوق", "میزان حقوق", "دستمزد", "قیمت", "هزینه", "ریت", "بودجه", "hoghoogh"],
     answer: {
-      en: "That depends on the role and scope, so it’s a question for Sudabeh herself. I can send it to her.",
-      fa: "این به نقش و حجم کار بستگی دارد و بهتر است خود سودابه جواب بدهد. می‌توانم سؤال‌تان را برایش بفرستم.",
+      en: "That depends on the role and scope, so it’s a question for Sudabeh herself. I’ve sent it to her.",
+      fa: "این به نقش و حجم کار بستگی دارد و بهتر است خود سودابه جواب بدهد. سؤال‌تان را برایش فرستادم.",
     },
     forward: true,
   },
@@ -133,8 +133,8 @@ export const intents: Intent[] = [
     id: "relocation",
     strong: ["relocate", "relocation", "move abroad", "visa", "work permit", "move to", "مهاجرت", "ریلوکیشن", "جابجایی", "ویزا", "اقامت"],
     answer: {
-      en: "The CV doesn’t cover relocation or visas, so I’d rather not guess. I can send your question to her.",
-      fa: "رزومه درباره‌ی مهاجرت یا ویزا چیزی نمی‌گوید و نمی‌خواهم حدس بزنم. می‌توانم سؤال‌تان را برایش بفرستم.",
+      en: "The CV doesn’t cover relocation or visas, so I’d rather not guess. I’ve sent your question to her.",
+      fa: "رزومه درباره‌ی مهاجرت یا ویزا چیزی نمی‌گوید و نمی‌خواهم حدس بزنم. سؤال‌تان را برایش فرستادم.",
     },
     forward: true,
   },
@@ -176,8 +176,8 @@ export const intents: Intent[] = [
     id: "languages",
     strong: ["english", "language", "languages", "speak", "persian", "farsi", "ielts", "toefl", "آیلتس", "تافل", "انگلیسی", "زبان", "فارسی", "مکالمه", "زبانت", "zaban"],
     answer: {
-      en: "Persian is her native language; her English is intermediate, at working proficiency.",
-      fa: "فارسی زبان مادری‌اش است و انگلیسی‌اش در سطح متوسط، در حد کاری (Working Proficiency) است.",
+      en: "Persian is her native language and her English is intermediate, at working proficiency. She doesn’t hold an IELTS or TOEFL certificate, but she works and communicates in English.",
+      fa: "فارسی زبان مادری‌اش است و انگلیسی‌اش در سطح متوسط و در حد کاری است. مدرک آیلتس یا تافل ندارد، ولی در کار به انگلیسی ارتباط برقرار می‌کند.",
     },
   },
 
@@ -192,10 +192,10 @@ export const intents: Intent[] = [
   },
   {
     id: "tools",
-    strong: ["tools", "tool", "software", "figma", "framer", "figjam", "illustrator", "notion", "clickup", "analytics", "clarity", "ga4", "ابزار", "ابزارها", "نرم افزار", "نرم‌افزار", "فیگما", "فریمر", "abzar"],
+    strong: ["tools", "tool", "software", "figma", "framer", "sketch", "adobe xd", "webflow", "maze", "hotjar", "اسکچ", "وب فلو", "هات جار", "figjam", "illustrator", "notion", "clickup", "analytics", "clarity", "ga4", "ابزار", "ابزارها", "نرم افزار", "نرم‌افزار", "فیگما", "فریمر", "abzar"],
     answer: {
-      en: "Figma and FigJam every day, plus Framer, Notion, Adobe Illustrator, ClickUp and Slack. For analytics, Microsoft Clarity and GA4. For AI: ChatGPT, Claude, Google AI Studio, Lovable and NotebookLM.",
-      fa: "هر روز با فیگما و فیگ‌جم کار می‌کند؛ به‌علاوه‌ی Framer، Notion، Adobe Illustrator، ClickUp و Slack. برای آنالیتیکس Microsoft Clarity و GA4، و برای هوش مصنوعی ChatGPT، Claude، Google AI Studio، Lovable و NotebookLM.",
+      en: "Figma and FigJam every day, plus Framer, Notion, Adobe Illustrator, ClickUp and Slack. For analytics, Microsoft Clarity and GA4. For AI: ChatGPT, Claude, Google AI Studio, Lovable and NotebookLM. She has also used Maze and Hotjar for testing. No Sketch or Webflow, and Adobe XD has been discontinued.",
+      fa: "هر روز با فیگما و فیگ‌جم کار می‌کند؛ به‌علاوه‌ی Framer، Notion، Adobe Illustrator، ClickUp و Slack. برای آنالیتیکس Microsoft Clarity و GA4، و برای هوش مصنوعی ChatGPT، Claude، Google AI Studio، Lovable و NotebookLM. برای تست با Maze و Hotjar هم کار کرده. با Sketch و Webflow کار نکرده و Adobe XD هم دیگر پشتیبانی نمی‌شود.",
     },
   },
   {
@@ -277,8 +277,8 @@ export const intents: Intent[] = [
     id: "projects",
     strong: ["projects", "project", "portfolio", "work samples", "your work", "her work", "see your work", "case studies", "case study", "previous work", "پروژه", "پروژه ها", "پروژه‌ها", "نمونه کار", "نمونه‌کار", "پورتفولیو", "کیس استادی", "nemoone kar"],
     answer: {
-      en: "Lead projects: Tamdid (fintech), Kudos (HR platform) and Atlas (enterprise AI). Also Remeet, an award winner, AzMan’s three products, Novin Host, Studio Kaaryar and Nan va Namak.",
-      fa: "پروژه‌های اصلی: تمدید (فین‌تک)، کودوس (پلتفرم منابع انسانی) و اطلس (هوش مصنوعی سازمانی). به‌علاوه ریمیت که جایزه گرفته، سه محصول ازمان، نوین هاست، کاریار استودیو و نان و نمک.",
+      en: "Lead projects: Atlas (enterprise AI), Tamdid (fintech) and Kudos (HR platform). Also Remeet, an award winner, AzMan’s three products, Novin Host, Studio Kaaryar and Nan va Namak.",
+      fa: "پروژه‌های اصلی: اطلس (هوش مصنوعی سازمانی)، تمدید (فین‌تک) و کودوس (پلتفرم منابع انسانی). به‌علاوه ریمیت که جایزه گرفته، سه محصول ازمان، نوین هاست، کاریار استودیو و نان و نمک.",
     },
     link: { href: "/work", label: { en: "See all projects", fa: "همه‌ی پروژه‌ها" } },
   },
@@ -297,8 +297,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["kudos", "کودوس"],
     answer: {
-      en: "Kudos is an HR and employee-engagement platform. At Novaday she designed its admin panel on a Tailwind-based system, documented flows and page logic for engineers, and worked closely with PM and QA.",
-      fa: "کودوس یک پلتفرم منابع انسانی و تعامل کارکنان است. در نوادی پنل ادمینش را روی دیزاین سیستم مبتنی بر Tailwind طراحی کرد، فلوها و منطق صفحات را برای تیم فنی مستند کرد و نزدیک با PM و QA کار کرد.",
+      en: "Kudos is an HR and employee-engagement platform. At Novaday she designed its admin panel on a Tailwind-based system, documented flows and page logic for engineers, and worked closely with PM and QA. Kudos is live with real companies, and by her count around 500 people use it.",
+      fa: "کودوس یک پلتفرم منابع انسانی و تعامل کارکنان است. در نوادی پنل ادمینش را روی دیزاین سیستم مبتنی بر Tailwind طراحی کرد، فلوها و منطق صفحات را برای تیم فنی مستند کرد و نزدیک با PM و QA کار کرد. کودوس با شرکت‌های واقعی در حال استفاده است و به گفته‌ی خودش حدود ۵۰۰ نفر کاربرش هستند.",
     },
     link: { href: "/work/kudos", label: { en: "Kudos case study", fa: "کیس استادی کودوس" } },
   },
@@ -408,10 +408,9 @@ export const intents: Intent[] = [
   {
     id: "leadership",
     strong: ["lead designer", "design lead", "led a team", "led a design team", "lead a design team", "lead designers", "lead a team", "led the team", "team lead", "manage designers", "managed designers", "management", "mentor", "mentored", "mentoring", "مدیریت تیم", "لید", "سرپرست", "منتور", "منتورینگ"],
-    forward: true,
     answer: {
-      en: "Her CV lists product designer roles, not a team-lead title, and I’d rather not guess about leading or mentoring. I can ask her directly.",
-      fa: "در رزومه‌اش نقش‌ها پروداکت دیزاینر است، نه لید تیم؛ و درباره‌ی مدیریت یا منتورینگ نمی‌خواهم حدس بزنم. می‌توانم مستقیم از خودش بپرسم.",
+      en: "Not yet as a title: her roles so far have been product designer, often the only designer on the product. Leading is where she wants to go next, and she enjoys the management side of the work.",
+      fa: "هنوز نه به‌عنوان عنوان شغلی: نقش‌هایش تا الان پروداکت دیزاینر بوده و اغلب تنها طراح محصول. قدم بعدی‌ای که دوست دارد لید شدن است و بخش مدیریتی کار را هم دوست دارد.",
     },
   },
   {
@@ -419,28 +418,133 @@ export const intents: Intent[] = [
     strong: ["leave algonet", "leaving algonet", "why leave", "why is she leaving", "why does she want to leave", "why is she looking", "looking for a new job", "why change", "چرا میخواد بره", "بیاد بیرون", "بره بیرون", "ترک کنه", "چرا دنبال کار"],
     forward: true,
     answer: {
-      en: "That’s one for Sudabeh to answer herself. I can send her your question.",
-      fa: "این را بهتر است خود سودابه جواب بدهد. می‌توانم سؤال‌تان را برایش بفرستم.",
+      en: "That’s one for Sudabeh to answer herself. I’ve sent her your question.",
+      fa: "این را بهتر است خود سودابه جواب بدهد. سؤال‌تان را برایش فرستادم.",
     },
   },
   {
     id: "inquiry",
-    strong: ["for my startup", "for my company", "for my business", "for my project", "my website", "my app", "my product", "how much for", "how much would", "how long does a project", "how long will", "how long would", "timeline", "quote", "estimate", "nda", "برای استارتاپم", "برای شرکتم", "برای کسب و کارم", "پروژه من", "سایت من", "اپ من", "چقدر طول", "زمان تحویل", "هزینه طراحی", "چقدر هزینه", "قرارداد عدم افشا", "عدم افشا"],
+    strong: ["for my startup", "for my company", "for my business", "for my project", "my website", "my app", "my product", "how much for", "how much would", "how long does a project", "how long will", "how long would", "timeline", "quote", "estimate", "برای استارتاپم", "برای شرکتم", "برای کسب و کارم", "پروژه من", "سایت من", "اپ من", "چقدر طول", "زمان تحویل", "هزینه طراحی", "چقدر هزینه"],
     forward: true,
     answer: {
-      en: "For a new project, scope, price and timing depend on the details, so Sudabeh answers those herself. Add a line about the project and I’ll send it to her.",
-      fa: "برای یک پروژه‌ی جدید، محدوده، هزینه و زمان به جزئیات بستگی دارد و خود سودابه جواب می‌دهد. یک خط درباره‌ی پروژه بنویسید تا برایش بفرستم.",
+      en: "It depends on the brief. Sudabeh reads it properly first, then sends you a timeline and a quote. I’ve passed your message on to her; leave a contact below so she can reply.",
+      fa: "به بریف بستگی دارد. سودابه اول آن را کامل بررسی می‌کند و بعد زمان‌بندی و هزینه را برایتان می‌فرستد. پیام‌تان را برایش فرستادم؛ یک راه ارتباطی بگذارید تا جواب بدهد.",
     },
   },
   {
     id: "story",
-    strong: ["failure", "mistake", "biggest challenge", "challenging", "hardest", "difficult project", "results", "impact", "metrics", "kpi", "numbers", "colleagues", "references", "reference", "recommendation", "philosophy", "سخت ترین", "چالش", "شکست", "اشتباه", "نتیجه", "نتایج", "دستاورد", "توصیه نامه", "رفرنس", "معرف کاری", "همکاراش", "فلسفه"],
+    strong: ["failure", "mistake", "colleagues", "references", "reference", "recommendation", "شکست", "اشتباه", "توصیه نامه", "رفرنس", "معرف کاری", "همکاراش"],
     forward: true,
     answer: {
-      en: "That deserves a real story from her, not a summary from me. The case studies cover some of it; for the rest, I can send your question to Sudabeh.",
-      fa: "جواب این سؤال یک داستان واقعی از خود اوست، نه خلاصه‌ای از من. بخشی از آن در کیس استادی‌ها هست؛ برای بقیه، می‌توانم سؤال‌تان را برای سودابه بفرستم.",
+      en: "That one is best answered by Sudabeh herself. I’ve sent her your question.",
+      fa: "این را بهتر است خود سودابه جواب بدهد. سؤال‌تان را برایش فرستادم.",
     },
-    link: { href: "/work", label: { en: "Case studies", fa: "کیس استادی‌ها" } },
+  },
+  {
+    id: "challenge",
+    strong: ["hardest", "biggest challenge", "challenge", "challenging", "difficult project", "toughest", "pressure", "سخت ترین", "چالش", "سختی", "فشار"],
+    answer: {
+      en: "Every project has its hard part, so she won’t pick just one. What tests her most is extreme time pressure, like Atlas, which her team took live in two to three days. She gets through it with a tight plan, AI as a partner and plenty of persistence.",
+      fa: "هر پروژه‌ای سختی خودش را دارد، برای همین یکی را انتخاب نمی‌کند. چیزی که بیشتر از همه محکش می‌زند فشار زمانی شدید است، مثل اطلس که تیمش در دو سه روز بالا آورد. با یک برنامه‌ی دقیق، هوش مصنوعی به‌عنوان همراه و کلی پشتکار از پسش برمی‌آید.",
+    },
+  },
+  {
+    id: "results",
+    strong: ["results", "impact", "metrics", "kpi", "numbers", "how many users", "outcome", "outcomes", "نتیجه", "نتایج", "دستاورد", "چند کاربر", "تعداد کاربر"],
+    answer: {
+      en: "Kudos is the clearest one: it’s live with real companies, and by her count around 500 people use it. Remeet won at Tehran Design Week, Atlas went from brief to live in two to three days, and Tamdid is in development.",
+      fa: "روشن‌ترینش کودوس است: با شرکت‌های واقعی در حال استفاده است و به گفته‌ی خودش حدود ۵۰۰ نفر کاربرش هستند. ریمیت در هفته‌ی دیزاین تهران برنده شد، اطلس در دو سه روز از بریف به نسخه‌ی لایو رسید و تمدید در حال توسعه است.",
+    },
+  },
+  {
+    id: "philosophy",
+    strong: ["philosophy", "principle", "principles", "what makes good design", "good design", "design values", "approach to design", "فلسفه", "اصول طراحی", "طراحی خوب"],
+    answer: {
+      en: "A design has to work for two people at once: the user, who needs it to be easy, and the business, which needs it to deliver. When both are happy, and she enjoyed the way there, the job is done right.",
+      fa: "طراحی باید هم‌زمان برای دو نفر کار کند: کاربری که می‌خواهد کار برایش ساده باشد، و کسب‌وکاری که باید به نتیجه برسد. وقتی هر دو راضی باشند و خودش هم از مسیر لذت برده باشد، کار درست انجام شده.",
+    },
+  },
+  {
+    id: "hours",
+    strong: ["time zone", "timezone", "time zones", "overlap", "us hours", "european hours", "working hours", "weekend", "weekends", "hours", "تایم زون", "منطقه زمانی", "ساعت کاری", "آخر هفته", "تعطیلات"],
+    answer: {
+      en: "She’s in Tehran (UTC+3:30) and can line up her hours with teams in other time zones, US hours included. She works weekends too when a project needs it.",
+      fa: "ساکن تهران است (UTC+3:30) و می‌تواند ساعت کاری‌اش را با تیم‌هایی در منطقه‌های زمانی دیگر، حتی آمریکا، هماهنگ کند. اگر پروژه لازم داشته باشد آخر هفته‌ها هم کار می‌کند.",
+    },
+  },
+  {
+    id: "nda",
+    strong: ["nda", "ndas", "non disclosure", "non-disclosure", "confidentiality agreement", "عدم افشا", "قرارداد محرمانگی", "محرمانگی"],
+    answer: {
+      en: "Yes, she signs NDAs. Confidential work, like Atlas, stays confidential.",
+      fa: "بله، قرارداد عدم افشا امضا می‌کند. کار محرمانه، مثل اطلس، محرمانه می‌ماند.",
+    },
+  },
+  {
+    id: "confidential",
+    strong: ["see atlas", "atlas designs", "confidential", "private work", "password", "under nda", "show me atlas", "کار محرمانه", "طراحی های اطلس", "دیدن اطلس"],
+    forward: true,
+    answer: {
+      en: "Atlas is still in development, so it stays blurred on the site. She’s happy to walk you through it privately, for example in an interview. I’ve let her know you’d like to see it.",
+      fa: "اطلس هنوز در حال توسعه است، برای همین در سایت تار مانده. سودابه خوشحال می‌شود آن را به‌صورت خصوصی، مثلاً در جلسه‌ی مصاحبه، نشان‌تان بدهد. به او خبر دادم که می‌خواهید ببینیدش.",
+    },
+  },
+  {
+    id: "motion",
+    strong: ["motion design", "motion", "animation", "animations", "illustration", "illustrations", "موشن", "انیمیشن", "ایلاستریشن", "تصویرسازی"],
+    answer: {
+      en: "Not as a specialist: she doesn’t do motion design. When a project needs visuals or illustrations, she creates them with the help of AI tools.",
+      fa: "نه به‌صورت تخصصی: موشن دیزاین کار نمی‌کند. وقتی پروژه به ویژوال یا تصویرسازی نیاز داشته باشد، با کمک ابزارهای هوش مصنوعی آن را می‌سازد.",
+    },
+  },
+  {
+    id: "testing",
+    strong: ["a/b", "ab test", "ab testing", "a b test", "split test", "experiment", "experiments", "تست ای بی", "ای بی تست", "آزمایش"],
+    answer: {
+      en: "Yes, she has run A/B tests, alongside usability testing and analytics with Hotjar, Maze, Microsoft Clarity and GA4.",
+      fa: "بله، A/B تست اجرا کرده؛ در کنار تست یوزبیلیتی و آنالیتیکس با Hotjar، Maze، Microsoft Clarity و GA4.",
+    },
+  },
+  {
+    id: "uxwriting",
+    strong: ["ux copy", "ux writing", "microcopy", "copywriting", "write copy", "writes copy", "content design", "یو ایکس رایتینگ", "یو ایکس کپی", "متن نویسی", "کپی رایتینگ"],
+    answer: {
+      en: "Yes, she writes UX copy herself, as part of the design: labels, empty states, errors and the words that help people decide.",
+      fa: "بله، یو‌ایکس رایتینگ را خودش و به‌عنوان بخشی از طراحی انجام می‌دهد: لیبل‌ها، حالت‌های خالی، پیام‌های خطا و کلماتی که به تصمیم کاربر کمک می‌کنند.",
+    },
+  },
+  {
+    id: "audit",
+    strong: ["ux audit", "audit", "heuristic", "heuristics", "review my product", "review my site", "expert review", "آدیت", "ممیزی", "بررسی محصول", "بررسی سایت", "هیوریستیک"],
+    answer: {
+      en: "Yes, UX audits are one of her specialties. The Novin Host case study opens with one: a heuristic review of the live site before any redesign.",
+      fa: "بله، یو‌ایکس آدیت از تخصص‌هایش است. کیس استادی نوین هاست با همین شروع می‌شود: بررسی هیوریستیک سایت فعلی قبل از هر ریدیزاینی.",
+    },
+    link: { href: "/work/novinhost", label: { en: "Novin Host case study", fa: "کیس استادی نوین هاست" } },
+  },
+  {
+    id: "accessibility",
+    strong: ["accessibility", "accessible", "wcag", "a11y", "contrast", "screen reader", "دسترس پذیری", "دسترسی پذیری", "اکسسیبیلیتی", "کنتراست"],
+    answer: {
+      en: "Yes. She designs with accessibility in mind, and checks contrast, readability and states with several AI tools, so nothing gets missed.",
+      fa: "بله. با در نظر گرفتن دسترس‌پذیری طراحی می‌کند و کنتراست، خوانایی و حالت‌ها را با چند ابزار هوش مصنوعی چک می‌کند تا چیزی از قلم نیفتد.",
+    },
+  },
+  {
+    id: "workshop",
+    strong: ["workshop", "workshops", "facilitate", "facilitation", "design sprint", "ورکشاپ", "کارگاه"],
+    answer: {
+      en: "Not yet: she hasn’t run workshops. Her collaboration has been day to day, side by side with PMs, engineers and QA.",
+      fa: "هنوز نه، ورکشاپ برگزار نکرده. همکاری‌اش روزمره و کنار مدیر محصول، تیم فنی و QA بوده.",
+    },
+  },
+  {
+    id: "international",
+    strong: ["international clients", "international client", "foreign clients", "foreign client", "clients abroad", "international team", "global clients", "کارفرمای خارجی", "مشتری خارجی", "تیم خارجی", "شرکت خارجی"],
+    answer: {
+      en: "Not with a client abroad yet. She has designed products in English and multilingual ones, like Remeet, and she’s ready for an international team.",
+      fa: "هنوز با کارفرمای خارجی کار نکرده. محصول انگلیسی و چندزبانه، مثل ریمیت، طراحی کرده و برای کار در تیم بین‌المللی آماده است.",
+    },
   },
 
   // Getting in touch
@@ -448,10 +552,9 @@ export const intents: Intent[] = [
     id: "contact",
     strong: ["contact", "email", "e-mail", "phone", "number", "call", "telegram", "linkedin", "reach", "talk to her", "talk to sudabeh", "get in touch", "book an interview", "schedule an interview", "job interview", "interview her", "book a call", "schedule a call", "video call", "set up a meeting", "مصاحبه کاری", "دعوت به مصاحبه", "تماس تصویری", "جلسه آنلاین", "ایمیل", "تماس", "شماره", "تلفن", "تلگرام", "لینکدین", "ارتباط", "صحبت کنم", "پیام بدم"],
     answer: {
-      en: "Email sudabeh.a.zolfikhorram@gmail.com, or Telegram @sudabehzolfikhorram. Her phone number is in her CV. You can also leave a message here and I’ll send it to her.",
-      fa: "ایمیل: sudabeh.a.zolfikhorram@gmail.com یا تلگرام: ‎@sudabehzolfikhorram. شماره تلفنش در رزومه هست. می‌توانید همین‌جا هم پیام بگذارید تا برایش بفرستم.",
+      en: "Email sudabeh.a.zolfikhorram@gmail.com, or Telegram @sudabehzolfikhorram. She’s on LinkedIn too: linkedin.com/in/sudabehzolfikhorram2001. Her phone number is in her CV. Or just write your message here and I’ll pass it on.",
+      fa: "ایمیل: sudabeh.a.zolfikhorram@gmail.com یا تلگرام: ‎@sudabehzolfikhorram. لینکدین هم دارد: linkedin.com/in/sudabehzolfikhorram2001. شماره تلفنش در رزومه هست. یا همین‌جا پیام‌تان را بنویسید تا برایش بفرستم.",
     },
-    forward: true,
   },
   {
     id: "cv",
@@ -520,7 +623,7 @@ export type Match = { intent: Intent; score: number };
 const SMALL_TALK = ["greet", "thanks"];
 // Questions about the visitor's own project or about leaving a job always go to Sudabeh, even when a
 // project name appears too ("a site for my startup", "why leave Algonet").
-const OVERRIDE = ["inquiry", "leaving"];
+const OVERRIDE = ["inquiry", "leaving", "confidential"];
 // Broad intents that shouldn't be tacked onto a more specific answer.
 const GENERIC = ["who", "projects", "greet", "thanks", "bye"];
 
@@ -541,9 +644,10 @@ export function match(question: string): Match[] {
   if (scored.length === 0) return [];
   // Greetings and thanks only count when nothing else was asked ("hi, what tools do you use?").
   const asked = scored.filter((m) => !SMALL_TALK.includes(m.intent.id));
-  // The general intro gives way to a specific topic ("tell me about your experience").
+  // A general answer (the intro, the project list) gives way to a specific topic ("tell me about
+  // your experience", "metrics from her projects").
   const specific = asked.some((m) => !GENERIC.includes(m.intent.id) && m.score >= 2);
-  if (specific && asked[0]?.intent.id === "who") asked.splice(0, 1);
+  if (specific && asked[0] && ["who", "projects"].includes(asked[0].intent.id)) asked.splice(0, 1);
   const ranked = asked.length > 0 ? asked : scored;
   const override = ranked.find((m) => OVERRIDE.includes(m.intent.id));
   if (override) return [override];
@@ -570,8 +674,8 @@ export type Reply = {
 };
 
 const FALLBACK: Record<Lang, string> = {
-  en: "I’m not sure about that one, and I’d rather not guess. I can send your question to Sudabeh so she answers it herself.",
-  fa: "از جواب این سؤال مطمئن نیستم و نمی‌خواهم حدس بزنم. می‌توانم سؤال‌تان را برای خود سودابه بفرستم تا خودش جواب بدهد.",
+  en: "I’m not sure about that one, and I’d rather not guess. So I’ve sent your question to Sudabeh, and she’ll answer it herself.",
+  fa: "از جواب این سؤال مطمئن نیستم و نمی‌خواهم حدس بزنم. برای همین سؤال‌تان را برای خود سودابه فرستادم تا خودش جواب بدهد.",
 };
 const MISSING: Record<Lang, string> = {
   en: "Fair point, it’s not obvious in the CV. ",

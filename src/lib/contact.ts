@@ -237,6 +237,20 @@ export async function sendToInbox({ message, contact, topic }: Outgoing) {
   }
 }
 
+/**
+ * Fire-and-forget delivery for when the page may be closing (sendBeacon survives unload).
+ * Carries a placeholder contact so even an older script deployment accepts it.
+ */
+export function sendInBackground({ message, topic }: Outgoing) {
+  if (!site.contactEndpoint) return;
+  const id = visitorId();
+  const payload = JSON.stringify({ message, contact: `none (visitor ${id})`, topic, id, page: window.location.href });
+  const blob = new Blob([payload], { type: "text/plain;charset=utf-8" });
+  if (!navigator.sendBeacon?.(site.contactEndpoint, blob)) {
+    void fetch(site.contactEndpoint, { method: "POST", body: blob, keepalive: true, headers: { "Content-Type": "text/plain;charset=utf-8" } }).catch(() => {});
+  }
+}
+
 export const viaInbox = Boolean(site.contactEndpoint);
 const send = viaInbox ? sendToInbox : sendByEmail;
 export const sendMessage = (out: Outgoing) => send({ ...out, contact: out.contact ? checkContact(out.contact).value : "" });

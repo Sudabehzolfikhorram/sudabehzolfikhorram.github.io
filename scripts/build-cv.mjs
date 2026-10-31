@@ -188,7 +188,7 @@ const html = `<!doctype html>
 @font-face { font-family: Jakarta; src: url("${font("@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2")}") format("woff2"); font-weight: 200 800; }
 @font-face { font-family: GeistMono; src: url("${font("@fontsource/geist-mono/files/geist-mono-latin-400-normal.woff2")}") format("woff2"); font-weight: 400; }
 @page { size: A4; margin: 0; }
-:root { --ink: #15142b; --soft: #5d5b78; --rule: #dddbec; --signal: #5a46e0; --blush: #efecff; --gold: #b4832a; }
+:root { --ink: #15142b; --soft: #5d5b78; --rule: #dddbec; --signal: #5a46e0; --blush: #efecff; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { width: 210mm; height: 297mm; }
 body { font-family: Jakarta, sans-serif; color: var(--ink); font-size: 7.8pt; line-height: 1.31; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -207,7 +207,7 @@ h1 { font-size: 21pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1;
 main { grid-area: main; }
 aside { grid-area: side; align-self: start; padding-right: 5mm; border-right: 1px solid var(--rule); }
 .label { font-family: GeistMono, monospace; font-size: 6.9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--signal); display: flex; align-items: center; gap: 1.6mm; }
-.label::before { content: ""; width: 3mm; height: 0.5mm; background: var(--gold); border-radius: 1px; }
+.label::before { content: ""; width: 3mm; height: 0.5mm; background: #c9c2ff; border-radius: 1px; }
 aside section + section { margin-top: 3.4mm; }
 aside ul { list-style: none; margin-top: 1.6mm; }
 aside li { padding: 0.3mm 0; }

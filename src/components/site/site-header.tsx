@@ -13,8 +13,8 @@ const NAV = {
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-rule/70 border-b bg-paper/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-[1240px] flex-col items-start gap-1 px-4 py-2 sm:h-16 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-8 sm:py-0">
+    <header className="sticky top-0 z-40 border-rule/70 border-b bg-paper sm:bg-paper/80 sm:backdrop-blur-md">
+      <div className="mx-auto flex h-14 max-w-[1240px] items-center justify-between gap-4 px-4 sm:h-16 sm:px-8">
         <div className="flex w-full items-center justify-between sm:w-auto">
           <Link className="group flex items-center gap-2.5 font-display text-xl leading-none" href="/">
             {/* Monogram: a loose stroke that settles into a straight one on hover. */}
@@ -42,7 +42,8 @@ export function SiteHeader() {
             <ArrowDownToLine className="size-4" />
           </a>
         </div>
-        <div className="flex items-center gap-3">
+        {/* Phones get the bottom bar instead. */}
+        <div className="hidden items-center gap-3 sm:flex">
           <MorphicNavbar className="-mx-1 px-0" items={NAV} />
           <a
             className="group hidden h-9 items-center gap-1.5 rounded-full px-3 text-ink-soft text-sm transition-colors hover:text-ink sm:inline-flex"

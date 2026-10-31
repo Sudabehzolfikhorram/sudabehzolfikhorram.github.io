@@ -9,7 +9,7 @@ import type { CaseStudy } from "@/lib/case-studies";
 import { cn } from "@/lib/utils";
 import { CaseTitle, hueVars, MetaGrid, SectionHead, wrap } from "../blocks";
 import { PageSwitcher, type PageTab } from "../novin/interactive";
-import { IPhone } from "../phone";
+import { IPhone, IPhoneFrame, MacBook } from "../devices";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const img = (name: string) => `${BASE}/work/kaaryar/${name}.webp`;
@@ -106,8 +106,8 @@ export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
     <div style={hueVars(cs)}>
       {/* Hero: the final site, desktop and mobile, in the portfolio's navy; the studio's orange only as a faint circle. */}
       <section className="relative overflow-hidden bg-[#0e1430] pt-14 text-white">
-        <div aria-hidden className="absolute -top-40 left-1/3 h-[420px] w-[760px] rounded-full bg-[#5a46e0]/35 blur-[120px]" />
-        <div aria-hidden className="absolute -top-24 -right-24 size-[380px] rounded-full opacity-[0.12] blur-[90px]" style={{ background: ORANGE }} />
+        <div aria-hidden className="absolute -top-64 left-1/4 h-[700px] w-[1100px] bg-[radial-gradient(closest-side,rgb(90_70_224/0.38),transparent)]" />
+        <div aria-hidden className="absolute -top-40 -right-40 size-[620px] opacity-[0.14]" style={{ background: `radial-gradient(closest-side, ${ORANGE}, transparent)` }} />
         <Reveal className={cn(wrap, "relative")}>
           <p className="font-mono text-white/60 text-xs uppercase tracking-[0.08em]">{cs.category}</p>
           <CaseTitle className="mt-4 text-white" cs={cs} size="xl" />
@@ -124,29 +124,20 @@ export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
             </a>
           ))}
         </Reveal>
-        <div className={cn(wrap, "relative mt-14 grid grid-cols-12 items-end gap-4")}>
+        <div className={cn(wrap, "relative mt-14 grid grid-cols-12 items-end gap-4 pb-14")}>
           <Reveal className="col-span-12 sm:col-span-9" delay={0.1}>
-            <div className="overflow-hidden rounded-t-2xl bg-white shadow-[0_40px_80px_-30px_rgb(0_0_0/0.5)]">
-              <div className="flex items-center gap-1.5 border-zinc-200 border-b bg-zinc-100 px-3 py-2">
-                {[0, 1, 2].map((d) => (
-                  <span className="size-2.5 rounded-full bg-zinc-300" key={d} />
-                ))}
-                <span className="ml-3 truncate rounded-md bg-white px-2 py-0.5 font-mono text-[10px] text-zinc-500">studio.kaaryar.ir</span>
-              </div>
-              <div className="relative aspect-[1280/760] overflow-hidden">
+            <MacBook>
+              <div className="relative aspect-[16/10] overflow-hidden">
                 <Image alt="Studio Kaaryar home page, redesigned: hero, client logos and services" className="object-cover object-top" fill priority sizes="(min-width: 1024px) 70vw, 100vw" src={img("home")} />
               </div>
-            </div>
+            </MacBook>
           </Reveal>
           <Reveal className="col-span-3 hidden translate-y-8 sm:block" delay={0.2}>
-            <div className="rounded-[2.2rem] bg-gradient-to-b from-zinc-500 via-zinc-800 to-zinc-700 p-[2px] shadow-2xl">
-              <div className="rounded-[2.1rem] bg-black p-[7px]">
-                <div className="relative aspect-[375/760] overflow-hidden rounded-[1.7rem] bg-white">
-                  <span aria-hidden className="absolute top-2 left-1/2 z-10 h-4 w-14 -translate-x-1/2 rounded-full bg-black" />
-                  <Image alt="Studio Kaaryar home page on mobile" className="object-cover object-top pt-6" fill sizes="20vw" src={img("home-mobile")} />
-                </div>
+            <IPhoneFrame className="mx-auto w-[78%]">
+              <div className="relative aspect-[9/19.5]">
+                <Image alt="Studio Kaaryar home page on mobile" className="object-cover object-top pt-[11%]" fill sizes="20vw" src={img("home-mobile")} />
               </div>
-            </div>
+            </IPhoneFrame>
           </Reveal>
         </div>
       </section>
@@ -254,7 +245,7 @@ export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
 
       {/* Mobile. */}
       <section className="relative overflow-hidden border-rule border-t bg-paper-2/50 py-24">
-        <div aria-hidden className="absolute top-1/2 right-[12%] size-[420px] -translate-y-1/2 rounded-full bg-glow/20 blur-[110px]" />
+        <div aria-hidden className="absolute top-1/2 right-[5%] size-[680px] -translate-y-1/2 bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--glow)_22%,transparent),transparent)]" />
         <div className={cn(wrap, "relative")}>
           <SectionHead label="Mobile" n="05" title="Same story, one thumb.">
             <p>

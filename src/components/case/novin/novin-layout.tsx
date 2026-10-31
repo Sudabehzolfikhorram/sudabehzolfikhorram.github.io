@@ -9,6 +9,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import type { CaseStudy } from "@/lib/case-studies";
 import { cn } from "@/lib/utils";
 import { periodLabel, wrap } from "../blocks";
+import { IPhoneShot, MacBook } from "../devices";
 import { BeforeAfter, type Hotspot, Hotspots, type PageTab, PageSwitcher, TwinScroll } from "./interactive";
 import { ReadingProgress } from "./reading-progress";
 
@@ -178,7 +179,7 @@ export function NovinLayout({ cs }: { cs: CaseStudy }) {
           className="absolute inset-0 opacity-[0.12]"
           style={{ backgroundImage: "linear-gradient(#7b9efe 1px, transparent 1px), linear-gradient(90deg, #7b9efe 1px, transparent 1px)", backgroundSize: "64px 64px", maskImage: "radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%)" }}
         />
-        <div aria-hidden className="absolute -top-40 left-1/2 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-[#214bbd]/40 blur-[120px]" />
+        <div aria-hidden className="absolute -top-72 left-1/2 h-[760px] w-[1300px] -translate-x-1/2 bg-[radial-gradient(closest-side,rgb(33_75_189/0.45),transparent)]" />
         <div className={cn(wrap, "relative")}>
           <Reveal>
             <div className="flex flex-wrap items-center gap-3">
@@ -232,7 +233,7 @@ export function NovinLayout({ cs }: { cs: CaseStudy }) {
 
       {/* 01b — The redesign in one drag, once the context is clear. */}
       <section className="relative overflow-hidden bg-[#070e2b] py-24 text-white">
-        <div aria-hidden className="absolute -bottom-40 left-1/2 h-[420px] w-[900px] -translate-x-1/2 rounded-full bg-[#214bbd]/30 blur-[120px]" />
+        <div aria-hidden className="absolute -bottom-72 left-1/2 h-[700px] w-[1300px] -translate-x-1/2 bg-[radial-gradient(closest-side,rgb(33_75_189/0.35),transparent)]" />
         <div className={cn(wrap, "relative")}>
           <Chapter dark label="Before / after" n="01b" title="Same logo, same navy, same words.">
             <p>Drag the handle across the first screen a customer sees, today and redesigned.</p>
@@ -496,11 +497,7 @@ export function NovinLayout({ cs }: { cs: CaseStudy }) {
               { src: "mobile-menu", label: "Redesign · menu", w: 750, h: 1624 },
             ].map((m) => (
               <Reveal className="w-[200px] sm:w-[240px]" key={m.src}>
-                <div className={cn("rounded-[2.4rem] bg-zinc-900 p-2.5 shadow-[0_30px_60px_-20px_rgb(0_0_0/0.4)]", m.dim && "opacity-80 grayscale-[35%]")}>
-                  <div className="overflow-hidden rounded-[1.9rem] bg-white">
-                    <Image alt={m.label} className="block h-auto w-full" height={m.h} sizes="240px" src={`${IMG}/${m.src}.webp`} width={m.w} />
-                  </div>
-                </div>
+                <IPhoneShot alt={m.label} dim={m.dim} height={m.h} sizes="240px" src={`${IMG}/${m.src}.webp`} width={m.w} />
                 <p className="mt-4 text-center font-mono text-[0.75rem] text-ink-soft uppercase">{m.label}</p>
               </Reveal>
             ))}
@@ -521,11 +518,11 @@ export function NovinLayout({ cs }: { cs: CaseStudy }) {
               { src: "after-hero", w: 1440, h: 900, label: "Final", body: "Navy hero kept from today’s site, with a live network status card as proof." },
             ].map((e, i) => (
               <RevealItem key={e.src}>
-                <div className={cn("overflow-hidden rounded-xl ring-1", i === 2 ? "ring-2 ring-[#214bbd]" : "ring-black/10")}>
-                  <div className="relative aspect-[4/3]">
+                <MacBook screenClassName={i === 2 ? "ring-2 ring-[#214bbd]" : undefined}>
+                  <div className="relative aspect-[16/10]">
                     <Image alt={e.label} className="object-cover object-top" fill sizes="(min-width: 768px) 33vw, 100vw" src={`${IMG}/${e.src}.webp`} />
                   </div>
-                </div>
+                </MacBook>
                 <p className="mt-4 flex items-center gap-2 font-medium">
                   {e.label}
                   {i === 2 && <span className="rounded-full bg-[#214bbd] px-2 py-0.5 font-mono text-[0.65rem] text-white uppercase">Chosen</span>}

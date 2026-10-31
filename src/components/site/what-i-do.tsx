@@ -1,68 +1,186 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { motion, useInView, useReducedMotion } from "motion/react";
+import { type PointerEvent, type ReactNode, useRef, useState } from "react";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { cn } from "@/lib/utils";
 
 /**
- * What Sudabeh does, as four tiles. Each tile has a tiny line drawing that
- * comes alive on hover, so the section reads at a glance.
+ * What Sudabeh does, as four cards. Each has a small scene that plays when it
+ * scrolls into view (so phones get it too) and replays on hover; a soft light
+ * follows the pointer across the card.
  */
 
-const S = "stroke-signal";
-const R = "stroke-rule";
+const ease = [0.22, 1, 0.36, 1] as const;
 
-const art: Record<string, ReactNode> = {
-  // A flow: three steps joined by a line that draws itself on hover.
-  flows: (
-    <svg aria-hidden className="h-16 w-28" fill="none" viewBox="0 0 112 64">
-      <path className={cn(S, "[stroke-dasharray:120] [stroke-dashoffset:120] transition-[stroke-dashoffset] duration-700 group-hover:[stroke-dashoffset:0]")} d="M18 32h76" strokeWidth="2" />
-      <path className={R} d="M18 32h76" strokeDasharray="3 4" strokeWidth="2" />
-      {[18, 56, 94].map((x, i) => (
-        <circle className={cn("fill-paper", i === 2 ? "fill-signal stroke-signal" : S)} cx={x} cy={32} key={x} r={8} strokeWidth="2" />
+/** A flow: steps light up one by one while a dot travels the path, ending on a check. */
+function Flows({ play }: { play: number }) {
+  return (
+    <svg aria-hidden className="h-20 w-36" fill="none" key={play} viewBox="0 0 144 80">
+      <path className="stroke-rule" d="M20 50 C 44 50, 48 26, 72 26 S 100 50, 124 50" strokeDasharray="3 5" strokeWidth="2" />
+      <motion.path
+        animate={{ pathLength: 1 }}
+        className="stroke-signal"
+        d="M20 50 C 44 50, 48 26, 72 26 S 100 50, 124 50"
+        initial={{ pathLength: 0 }}
+        strokeLinecap="round"
+        strokeWidth="2.5"
+        transition={{ duration: 1.4, ease }}
+      />
+      {[
+        [20, 50],
+        [72, 26],
+        [124, 50],
+      ].map(([x, y], i) => (
+        <motion.circle
+          animate={{ scale: [0.6, 1.15, 1] }}
+          className={i === 2 ? "fill-signal stroke-signal" : "fill-paper stroke-signal"}
+          cx={x}
+          cy={y}
+          initial={{ scale: 0.6 }}
+          key={x}
+          r="7"
+          strokeWidth="2.5"
+          style={{ transformBox: "fill-box", transformOrigin: "center" }}
+          transition={{ delay: i * 0.6, duration: 0.5, ease }}
+        />
       ))}
-    </svg>
-  ),
-  // A design system: parts that line up on hover.
-  systems: (
-    <svg aria-hidden className="h-16 w-28" fill="none" viewBox="0 0 112 64">
-      <rect className="fill-sky transition-transform duration-500 group-hover:translate-x-1" height="14" rx="7" width="40" x="8" y="10" />
-      <rect className={cn("fill-sky-soft", R)} height="14" rx="7" width="30" x="54" y="10" />
-      <rect className={cn("fill-paper-2 transition-transform duration-500 group-hover:-translate-x-1", R)} height="22" rx="6" width="46" x="8" y="32" />
-      <rect className={cn("fill-paper-2 transition-transform delay-75 duration-500 group-hover:translate-y-[-2px]", R)} height="22" rx="6" width="46" x="60" y="32" />
-    </svg>
-  ),
-  // Research: bars under a magnifier that slides across on hover.
-  research: (
-    <svg aria-hidden className="h-16 w-28" fill="none" viewBox="0 0 112 64">
-      {[20, 34, 26, 44, 30].map((h, i) => (
-        <rect className={i === 3 ? "fill-gold" : "fill-gold-soft"} height={h} key={h + i} rx="3" width="12" x={10 + i * 18} y={56 - h} />
-      ))}
-      <g className="transition-transform duration-700 group-hover:translate-x-9">
-        <circle className="fill-paper/60 stroke-ink" cx="30" cy="22" r="12" strokeWidth="2.5" />
-        <path className="stroke-ink" d="m39 31 8 8" strokeLinecap="round" strokeWidth="3" />
-      </g>
-    </svg>
-  ),
-  // AI as a thinking partner: two speech bubbles, a spark between them.
-  ai: (
-    <svg aria-hidden className="h-16 w-28" fill="none" viewBox="0 0 112 64">
-      <rect className={cn("fill-paper-2", R)} height="22" rx="11" width="54" x="6" y="8" />
-      <rect className="fill-signal" height="22" rx="11" width="46" x="58" y="34" />
-      <path
-        className="fill-signal transition-transform duration-500 [transform-box:fill-box] [transform-origin:center] group-hover:rotate-90 group-hover:scale-125"
-        d="M80 8 82.4 14.6 89 17 82.4 19.4 80 26 77.6 19.4 71 17 77.6 14.6Z"
+      <motion.path
+        animate={{ pathLength: 1, opacity: 1 }}
+        className="stroke-on-signal"
+        d="M120.5 50 l2.5 2.5 l4.5 -5"
+        initial={{ pathLength: 0, opacity: 0 }}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        transition={{ delay: 1.4, duration: 0.35 }}
       />
     </svg>
-  ),
-};
+  );
+}
 
-// Each tile takes on its own accent on hover: violet, blue, gold, violet.
-const tones: Record<string, { tile: string; art: string }> = {
-  flows: { tile: "hover:border-signal/50", art: "group-hover:bg-blush" },
-  systems: { tile: "hover:border-sky/50", art: "group-hover:bg-sky-soft" },
-  research: { tile: "hover:border-gold/50", art: "group-hover:bg-gold-soft" },
-  ai: { tile: "hover:border-signal/50", art: "group-hover:bg-blush" },
-};
-const dots: Record<string, string> = { flows: "bg-signal", systems: "bg-sky", research: "bg-gold", ai: "bg-signal" };
+/** A design system: scattered parts snap into a tidy grid. */
+function Systems({ play }: { play: number }) {
+  const parts = [
+    { x: 14, y: 10, w: 46, h: 14, from: [-18, -12, -14], c: "fill-sky" },
+    { x: 66, y: 10, w: 30, h: 14, from: [16, -16, 12], c: "fill-sky-soft stroke-rule" },
+    { x: 102, y: 10, w: 28, h: 14, from: [22, 10, 18], c: "fill-signal" },
+    { x: 14, y: 32, w: 56, h: 38, from: [-14, 18, 10], c: "fill-paper-2 stroke-rule" },
+    { x: 76, y: 32, w: 54, h: 38, from: [18, 20, -16], c: "fill-paper-2 stroke-rule" },
+  ];
+  return (
+    <svg aria-hidden className="h-20 w-36" fill="none" key={play} viewBox="0 0 144 80">
+      {parts.map((p, i) => (
+        <motion.rect
+          animate={{ x: 0, y: 0, rotate: 0, opacity: 1 }}
+          className={p.c}
+          height={p.h}
+          initial={{ x: p.from[0], y: p.from[1], rotate: p.from[2], opacity: 0.4 }}
+          key={p.x + p.y}
+          rx={i < 3 ? 7 : 6}
+          style={{ transformBox: "fill-box", transformOrigin: "center" }}
+          transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.1 + i * 0.08 }}
+          width={p.w}
+          x={p.x}
+          y={p.y}
+        />
+      ))}
+      <motion.rect
+        animate={{ opacity: [0, 1, 0] }}
+        className="stroke-signal"
+        height="64"
+        initial={{ opacity: 0 }}
+        rx="9"
+        strokeDasharray="4 4"
+        strokeWidth="1.5"
+        transition={{ delay: 0.9, duration: 1.2 }}
+        width="124"
+        x="10"
+        y="8"
+      />
+    </svg>
+  );
+}
+
+/** Research: bars rise, a lens sweeps across and lifts the one that matters. */
+function Research({ play }: { play: number }) {
+  const bars = [22, 34, 26, 48, 30, 18];
+  return (
+    <svg aria-hidden className="h-20 w-36" fill="none" key={play} viewBox="0 0 144 80">
+      {bars.map((h, i) => (
+        <motion.rect
+          animate={{ height: h, y: 72 - h }}
+          className={i === 3 ? "fill-signal" : "fill-blush"}
+          height={0}
+          initial={{ height: 0, y: 72 }}
+          key={h + i}
+          rx="3"
+          transition={{ delay: i * 0.07, duration: 0.6, ease }}
+          width="14"
+          x={12 + i * 21}
+          y={72}
+        />
+      ))}
+      <motion.g animate={{ x: [0, 62, 52] }} initial={{ x: 0 }} transition={{ delay: 0.5, duration: 1.4, ease }}>
+        <circle className="fill-paper/50 stroke-ink" cx="30" cy="24" r="12" strokeWidth="2.5" />
+        <path className="stroke-ink" d="m39 33 8 8" strokeLinecap="round" strokeWidth="3" />
+      </motion.g>
+    </svg>
+  );
+}
+
+/** AI as a partner: a question, a thinking pause, an answer and a spark. */
+function Ai({ play }: { play: number }) {
+  return (
+    <svg aria-hidden className="h-20 w-36" fill="none" key={play} viewBox="0 0 144 80">
+      <motion.rect
+        animate={{ scaleX: 1, opacity: 1 }}
+        className="fill-paper-2 stroke-rule"
+        height="22"
+        initial={{ scaleX: 0.2, opacity: 0 }}
+        rx="11"
+        style={{ transformBox: "fill-box", transformOrigin: "left center" }}
+        transition={{ duration: 0.45, ease }}
+        width="64"
+        x="8"
+        y="8"
+      />
+      {[0, 1, 2].map((i) => (
+        <motion.circle
+          animate={{ opacity: [0, 1, 1, 0], y: [0, -2, 0, 0] }}
+          className="fill-ink-soft"
+          cx={98 + i * 8}
+          cy="47"
+          initial={{ opacity: 0 }}
+          key={i}
+          r="2.5"
+          transition={{ delay: 0.5 + i * 0.12, duration: 0.9, times: [0, 0.3, 0.7, 1] }}
+        />
+      ))}
+      <motion.rect
+        animate={{ scaleX: 1, opacity: 1 }}
+        className="fill-signal"
+        height="22"
+        initial={{ scaleX: 0.2, opacity: 0 }}
+        rx="11"
+        style={{ transformBox: "fill-box", transformOrigin: "right center" }}
+        transition={{ delay: 1.4, duration: 0.45, ease }}
+        width="56"
+        x="80"
+        y="36"
+      />
+      <motion.path
+        animate={{ scale: [0, 1.3, 1], rotate: [0, 90, 90] }}
+        className="fill-sky"
+        d="M112 6 114.4 12.6 121 15 114.4 17.4 112 24 109.6 17.4 103 15 109.6 12.6Z"
+        initial={{ scale: 0 }}
+        style={{ transformBox: "fill-box", transformOrigin: "center" }}
+        transition={{ delay: 1.8, duration: 0.6, ease }}
+      />
+    </svg>
+  );
+}
+
+const SCENES: Record<string, (p: { play: number }) => ReactNode> = { flows: Flows, systems: Systems, research: Research, ai: Ai };
 
 const items = [
   {
@@ -87,17 +205,51 @@ const items = [
   },
 ];
 
+function Card({ it, index }: { it: (typeof items)[number]; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "0px 0px -20% 0px" });
+  const reduce = useReducedMotion();
+  // Each change of `play` remounts the scene, so it runs again from the start.
+  const [play, setPlay] = useState(0);
+  const Scene = SCENES[it.key];
+
+  const onMove = (e: PointerEvent<HTMLDivElement>) => {
+    const el = ref.current;
+    if (!el || e.pointerType !== "mouse") return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    el.style.setProperty("--my", `${e.clientY - r.top}px`);
+  };
+
+  return (
+    <div
+      className="group relative h-full overflow-hidden rounded-3xl border border-rule bg-paper p-6 transition-[border-color,transform] duration-500 hover:-translate-y-1 hover:border-signal/40"
+      onPointerEnter={(e) => e.pointerType === "mouse" && !reduce && setPlay((n) => n + 1)}
+      onPointerMove={onMove}
+      ref={ref}
+    >
+      {/* A soft light under the pointer. */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        style={{ background: "radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), color-mix(in oklab, var(--glow) 16%, transparent), transparent 70%)" }}
+      />
+      <div className="relative grid h-28 place-items-center overflow-hidden rounded-2xl bg-paper-2/70">
+        <span className="absolute top-3 left-3 font-mono text-[10px] text-ink-soft">0{index + 1}</span>
+        {inView || reduce ? <Scene play={play} /> : <span className="h-20 w-36" />}
+      </div>
+      <h3 className="relative mt-6 font-semibold text-lg">{it.title}</h3>
+      <p className="relative mt-2 text-ink-soft text-sm leading-relaxed">{it.body}</p>
+    </div>
+  );
+}
+
 export function WhatIDo() {
   return (
     <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" stagger={0.07}>
-      {items.map((it) => (
-        <RevealItem className={cn("group flex flex-col rounded-3xl border border-rule bg-paper p-6 transition-colors duration-300", tones[it.key].tile)} key={it.key}>
-          <div className={cn("grid h-24 place-items-center rounded-2xl bg-paper-2/70 transition-colors duration-500", tones[it.key].art)}>{art[it.key]}</div>
-          <h3 className="mt-6 flex items-center gap-2 font-semibold text-lg">
-            <span aria-hidden className={cn("size-1.5 rounded-full opacity-40 transition-opacity duration-300 group-hover:opacity-100", dots[it.key])} />
-            {it.title}
-          </h3>
-          <p className="mt-2 text-ink-soft text-sm leading-relaxed">{it.body}</p>
+      {items.map((it, i) => (
+        <RevealItem className="h-full" key={it.key}>
+          <Card index={i} it={it} />
         </RevealItem>
       ))}
     </RevealGroup>

@@ -1,7 +1,7 @@
 "use client";
 
 import { BookOpen, Building2, Compass, GraduationCap, Layers, Rocket, Sparkles, Wallet } from "lucide-react";
-import { motion, useInView, useScroll, useSpring } from "motion/react";
+import { motion, useInView, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { EASE_OUT } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
@@ -58,20 +58,19 @@ const chapters = [
   },
 ];
 
-// A thread that wiggles at the top and settles into a straight line.
+// A thread that wiggles at the top and settles into a straight line (x in px; the svg is 40px wide).
+const threadX = (y: number) => 20 + Math.max(0, 16 * (1 - y / 620)) * Math.sin(y / 18);
 const THREAD = (() => {
   const pts: string[] = [];
-  for (let y = 0; y <= 1000; y += 8) {
-    const amp = Math.max(0, 16 * (1 - y / 620));
-    pts.push(`${(20 + amp * Math.sin(y / 18)).toFixed(1)} ${y}`);
-  }
+  for (let y = 0; y <= 1000; y += 8) pts.push(`${threadX(y).toFixed(1)} ${y}`);
   return `M${pts.join(" L")}`;
 })();
 
 function Chapter({ c, i }: { c: (typeof chapters)[number]; i: number }) {
   const ref = useRef<HTMLLIElement>(null);
-  // Lights up once the chapter reaches the middle of the screen, as the thread does.
-  const reached = useInView(ref, { once: true, margin: "0px 0px -45% 0px" });
+  // Lights up when the chapter crosses the reading line, the same line the thread fills to,
+  // and dims again when you scroll back above it.
+  const reached = useInView(ref, { margin: "0px 0px -45% 0px" });
   const { icon: Icon, label, body } = c;
   return (
     <motion.li
@@ -104,17 +103,39 @@ function Chapter({ c, i }: { c: (typeof chapters)[number]; i: number }) {
   );
 }
 
+// Where reading happens: 55% down the screen. The thread fills exactly to it.
+const LINE = "55%";
+
 export function CareerStory() {
   const ref = useRef<HTMLOListElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 75%", "end 55%"] });
-  const draw = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
+  // 0 when the list's top meets the reading line, 1 when its bottom does: the fill follows the scroll 1:1.
+  const { scrollYProgress } = useScroll({ target: ref, offset: [`start ${LINE}`, `end ${LINE}`] });
+  // Reveal the coloured thread from the top down by height, not by path length, so its tip sits on the line.
+  const clip = useTransform(scrollYProgress, (v) => `inset(0 0 ${(1 - v) * 100}% 0)`);
+  const tip = useTransform(scrollYProgress, (v) => `${v * 100}%`);
+  const tipX = useTransform(scrollYProgress, (v) => `${threadX(v * 1000)}px`);
+  const tipOpacity = useTransform(scrollYProgress, [0, 0.01, 0.99, 1], [0, 1, 1, 0]);
 
   return (
     <ol className="relative" ref={ref}>
       <svg aria-hidden className="absolute top-0 left-0 h-full w-10" fill="none" preserveAspectRatio="none" viewBox="0 0 40 1000">
         <path className="stroke-rule" d={THREAD} strokeWidth="2" vectorEffect="non-scaling-stroke" />
-        <motion.path className="stroke-signal" d={THREAD} strokeLinecap="round" strokeWidth="2.5" style={{ pathLength: draw }} vectorEffect="non-scaling-stroke" />
       </svg>
+      <motion.svg
+        aria-hidden
+        className="absolute top-0 left-0 h-full w-10"
+        fill="none"
+        preserveAspectRatio="none"
+        style={{ clipPath: clip }}
+        viewBox="0 0 40 1000"
+      >
+        <path className="stroke-signal" d={THREAD} strokeLinecap="round" strokeWidth="2.5" vectorEffect="non-scaling-stroke" />
+      </motion.svg>
+      <motion.span
+        aria-hidden
+        className="absolute z-20 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-signal shadow-[0_0_0_5px_color-mix(in_oklab,var(--signal)_20%,transparent)]"
+        style={{ top: tip, left: tipX, opacity: tipOpacity }}
+      />
       {chapters.map((c, i) => (
         <Chapter c={c} i={i} key={c.label} />
       ))}

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { site } from "@/lib/content";
 
+const LINK = "flex min-h-11 items-center hover:text-signal md:min-h-0 md:py-1";
+
 export function SiteFooter() {
   return (
     <footer className="border-rule border-t">
@@ -17,29 +19,40 @@ export function SiteFooter() {
           </a>
           <p className="mt-1 text-ink-soft text-sm">{site.location}</p>
         </div>
-        <nav aria-label="Footer" className="grid content-start gap-2 text-sm">
-          <span className="eyebrow mb-1">Pages</span>
-          <Link className="hover:text-signal" href="/">Hello</Link>
-          <Link className="hover:text-signal" href="/work">Work</Link>
-          <Link className="hover:text-signal" href="/experience">Career</Link>
-          <Link className="hover:text-signal" href="/about">About</Link>
-          <Link className="hover:text-signal" href="/contact">Contact</Link>
-          <a className="hover:text-signal" download href={site.resume}>Resume (PDF) ↓</a>
-        </nav>
-        {site.socials.length > 0 && (
-          <nav aria-label="Social" className="grid content-start gap-2 text-sm">
-            <span className="eyebrow mb-1">Elsewhere</span>
-            {site.socials.map((s) => (
-              <a className="hover:text-signal" href={s.href} key={s.href} rel="noreferrer" target="_blank">
-                {s.label}
-              </a>
+        {/* Two columns on phones, each link a full 44px tap target. */}
+        <div className="grid grid-cols-2 gap-6 md:contents">
+          <nav aria-label="Footer" className="grid content-start text-sm">
+            <span className="eyebrow mb-2">Pages</span>
+            {[
+              ["/", "Hello"],
+              ["/work", "Work"],
+              ["/experience", "Career"],
+              ["/about", "About"],
+              ["/contact", "Contact"],
+            ].map(([href, label]) => (
+              <Link className={LINK} href={href} key={href}>
+                {label}
+              </Link>
             ))}
+            <a className={LINK} download href={site.resume}>
+              Resume (PDF) ↓
+            </a>
           </nav>
-        )}
+          {site.socials.length > 0 && (
+            <nav aria-label="Social" className="grid content-start text-sm">
+              <span className="eyebrow mb-2">Elsewhere</span>
+              {site.socials.map((s) => (
+                <a className={LINK} href={s.href} key={s.href} rel="noreferrer" target="_blank">
+                  {s.label} ↗
+                </a>
+              ))}
+            </nav>
+          )}
+        </div>
       </div>
-      <div className="mx-auto flex max-w-[1240px] flex-col gap-1 px-4 pb-24 sm:flex-row sm:justify-between font-mono text-[0.7rem] text-ink-soft uppercase tracking-[0.08em] sm:px-8">
-        <span>© 2026 Sudabeh Zolfi Khorram</span>
-        <span>Designed with intent</span>
+      {/* Room below for the assistant button and, on phones, the bottom bar. */}
+      <div className="mx-auto max-w-[1240px] px-4 pb-[calc(9.5rem+env(safe-area-inset-bottom))] font-mono text-[0.7rem] text-ink-soft uppercase tracking-[0.08em] sm:px-8 sm:pb-24">
+        © 2026 Sudabeh Zolfi Khorram
       </div>
     </footer>
   );

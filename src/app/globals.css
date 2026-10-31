@@ -23,9 +23,7 @@
   --color-blush: var(--blush);
   --color-glow: var(--glow);
   --color-on-signal: var(--on-signal);
-  /* Complementary accents, used sparingly: a warm gold and a soft blue. */
-  --color-gold: var(--gold);
-  --color-gold-soft: var(--gold-soft);
+  /* A complementary accent, used sparingly: a soft blue. */
   --color-sky: var(--sky);
   --color-sky-soft: var(--sky-soft);
   /* A surface that stays dark in both themes, for bands and heroes. */
@@ -89,8 +87,6 @@
   --glow: #8f7cff;
   /* Text and icons on a signal background: white on the dark violet, navy on the light one. */
   --on-signal: #ffffff;
-  --gold: #b4832a;
-  --gold-soft: #f7eedb;
   --sky: #2f6bd8;
   --sky-soft: #e4edfd;
   --night: #0e1430;
@@ -156,8 +152,6 @@
     --blush: #1d1a48;
     --glow: #6b58ff;
     --on-signal: #0a0f1f;
-    --gold: #e2b860;
-    --gold-soft: #241f14;
     --sky: #82a8ff;
     --sky-soft: #13203f;
     --night: #121a36;
@@ -280,5 +274,15 @@ h2 em {
 @media (prefers-reduced-motion: reduce) {
   .peek-stage {
     transition: none;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
   }
 }

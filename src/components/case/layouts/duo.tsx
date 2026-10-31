@@ -11,7 +11,7 @@ export function DuoLayout({ cs }: { cs: CaseStudy }) {
     <>
       <section className="relative overflow-hidden bg-night pt-14 pb-48 text-on-night">
         {/* A faint glow in the product's own colour; the page stays dark in dark mode. */}
-        <div aria-hidden className="absolute -top-40 right-0 h-[420px] w-[720px] rounded-full opacity-[0.18] blur-[120px]" style={{ background: cs.hue }} />
+        <div aria-hidden className="absolute -top-64 -right-20 h-[700px] w-[1000px] opacity-25" style={{ background: `radial-gradient(closest-side, ${cs.hue}, transparent)` }} />
         <div className={cn(wrap, "relative")}>
           <Reveal>
             <p className="eyebrow !text-on-night/60">{cs.category} · {periodLabel(cs)}</p>

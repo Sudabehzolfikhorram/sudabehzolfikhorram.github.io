@@ -38,7 +38,7 @@ function AtlasIllustration() {
         <div className="grid grid-cols-3 gap-2 sm:gap-3">
           {[
             ["Processes mapped", "w-3/5", "bg-[var(--p)]"],
-            ["Extra steps found", "w-2/5", "bg-gold"],
+            ["Extra steps found", "w-2/5", "bg-sky"],
             ["Average wait", "w-1/2", "bg-sky"],
           ].map(([t, w, c]) => (
             <div className="rounded-xl border border-rule bg-paper p-2.5 sm:p-3" key={t}>
@@ -74,7 +74,7 @@ function AtlasIllustration() {
             {["Auto-approve under budget", "Merge two finance checks", "Notify instead of waiting"].map((t, i) => (
               <div className="rounded-lg border border-rule p-2" key={t}>
                 <p>{t}</p>
-                <span className={cn("mt-1 inline-block rounded-full px-1.5 py-0.5 text-[9px]", i === 0 ? "bg-gold-soft text-gold" : "bg-paper-2 text-ink-soft")}>
+                <span className={cn("mt-1 inline-block rounded-full px-1.5 py-0.5 text-[9px]", i === 0 ? "bg-sky-soft text-sky" : "bg-paper-2 text-ink-soft")}>
                   {i === 0 ? "−1 step" : "Review"}
                 </span>
               </div>
@@ -95,8 +95,8 @@ export function AtlasLayout({ cs }: { cs: CaseStudy }) {
           <p className="eyebrow">{[cs.category, periodLabel(cs)].filter(Boolean).join(" · ")}</p>
           <span className="mt-5 inline-flex items-center gap-2 rounded-full border border-rule px-3 py-1 text-sm">
             <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-gold opacity-70 motion-reduce:animate-none" />
-              <span className="relative inline-flex size-2 rounded-full bg-gold" />
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-signal opacity-60 motion-reduce:animate-none" />
+              <span className="relative inline-flex size-2 rounded-full bg-signal" />
             </span>
             {cs.status}
           </span>

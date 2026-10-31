@@ -54,7 +54,7 @@ export function AboutPortrait() {
   const reduce = useReducedMotion();
   return (
     <div className="relative">
-      <div aria-hidden className="absolute -inset-6 -z-10 rounded-[40px] bg-glow/20 blur-3xl" />
+      <div aria-hidden className="absolute -inset-16 -z-10 bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--glow)_28%,transparent),transparent)]" />
       <motion.div
         animate={{ filter: reduce ? "grayscale(0.25)" : ["grayscale(1)", "grayscale(1)", "grayscale(0.25)"] }}
         className="relative overflow-hidden rounded-[32px] border border-rule"
@@ -95,16 +95,18 @@ export function AboutPortrait() {
 
       {CHIPS.map((c, i) => (
         <motion.span
-          animate={reduce ? { opacity: 1 } : { opacity: 1, y: [0, -6, 0] }}
-          className={`absolute ${c.className} hidden rounded-full border border-rule bg-paper/90 px-3 py-1.5 text-xs shadow-sm backdrop-blur sm:block`}
+          animate={{ opacity: 1 }}
+          className={`absolute ${c.className} hidden sm:block`}
           initial={{ opacity: 0 }}
           key={c.text}
-          transition={{
-            opacity: { delay: 1.2 + i * 0.25, duration: 0.5 },
-            y: { duration: c.d, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: i * 0.8 },
-          }}
+          transition={{ delay: 1.2 + i * 0.25, duration: 0.5 }}
         >
-          {c.text}
+          <span
+            className="block rounded-full border border-rule bg-paper px-3 py-1.5 text-xs shadow-sm motion-safe:animate-[float_var(--d)_ease-in-out_infinite]"
+            style={{ ["--d" as string]: `${c.d}s`, animationDelay: `${i * 0.8}s` }}
+          >
+            {c.text}
+          </span>
         </motion.span>
       ))}
 

@@ -123,7 +123,7 @@ function Step({ i, onEnter, active }: { i: number; onEnter: (i: number) => void;
   return (
     <li className="flex min-h-[48vh] flex-col justify-center py-8 lg:min-h-[70vh]" ref={ref}>
       <motion.div animate={{ opacity: active ? 1 : 0.35 }} transition={{ duration: 0.4 }}>
-        <p className="font-mono text-gold text-sm">
+        <p className="font-mono text-signal text-sm">
           0{i + 1} · {s.verb}
         </p>
         <h3 className="mt-3 font-display text-3xl sm:text-4xl">{s.title}</h3>
@@ -145,12 +145,12 @@ export function UntangleStory() {
       </div>
       <div className="mx-auto grid max-w-[1240px] gap-8 px-4 pb-16 sm:px-8 lg:grid-cols-2 lg:gap-16">
         {/* Sticky on every screen size: on phones it rides above the steps. */}
-        <div className="sticky top-16 z-10 -mx-4 bg-paper/90 px-4 pt-4 pb-2 backdrop-blur-md sm:top-20 lg:top-28 lg:order-2 lg:mx-0 lg:h-fit lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
+        <div className="sticky top-16 z-10 -mx-4 bg-paper/95 px-4 pt-4 pb-2 sm:backdrop-blur-md sm:top-20 lg:top-28 lg:order-2 lg:mx-0 lg:h-fit lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
           <div className="mx-auto max-w-[280px] rounded-3xl border border-rule bg-paper p-3 sm:max-w-[420px] sm:p-4 shadow-[0_30px_80px_-50px_rgba(40,30,120,0.45)] lg:max-w-none lg:p-8">
             <Visual step={step} />
             <div className="mt-3 flex gap-1.5" aria-hidden>
               {untangleSteps.map((s, i) => (
-                <span className={cn("h-1 flex-1 rounded-full transition-colors duration-500", i < step ? "bg-signal" : i === step ? "bg-gold" : "bg-rule")} key={s.verb} />
+                <span className={cn("h-1 flex-1 rounded-full transition-colors duration-500", i <= step ? "bg-signal" : "bg-rule")} key={s.verb} />
               ))}
             </div>
           </div>
