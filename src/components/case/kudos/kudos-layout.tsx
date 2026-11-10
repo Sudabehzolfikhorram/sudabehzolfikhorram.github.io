@@ -11,7 +11,7 @@ import type { CaseStudy } from "@/lib/case-studies";
 import { cn } from "@/lib/utils";
 import { periodLabel, wrap } from "../blocks";
 import { IPhoneShot, MacBook } from "../devices";
-import { type Hotspot, Hotspots, type PageTab, PageSwitcher } from "../novin/interactive";
+import { BeforeAfter, type Hotspot, Hotspots, type PageTab, PageSwitcher } from "../novin/interactive";
 import { ReadingProgress } from "../novin/reading-progress";
 import { type GuideStep, GuideTour, NoteSystem, type NoteType } from "./interactive";
 
@@ -66,15 +66,42 @@ const notes: NoteType[] = [
 ];
 
 const feedPoints: Hotspot[] = [
-  { x: 62, y: 13, title: "Say thanks, post or announce", body: "One composer with three modes: Appreciation, Post and Announcement. Recognition is the first option, not a buried feature." },
-  { x: 86, y: 14, title: "Your balance", body: "Coins and their value in rials, always in the same corner." },
-  { x: 13, y: 20, title: "How are you today?", body: "A mood calendar with an emoji for each day. One tap answers the company’s mood check." },
-  { x: 66, y: 22, title: "Announcements", body: "Company news in a carousel above the feed, so it doesn’t push people’s posts out of sight." },
-  { x: 86, y: 35, title: "Workspace", body: "Shortcuts to top achievers, surveys, events, challenges, the marketplace and albums." },
-  { x: 50, y: 55, title: "Moments of empathy", body: "The feed itself: thank-yous, congratulations and posts from colleagues, with likes and comments." },
-  { x: 86, y: 62, title: "Occasions", body: "Birthdays, new colleagues and work anniversaries: natural moments to say something nice." },
-  { x: 13, y: 82, title: "Someone to thank", body: "Suggested colleagues to appreciate, so nobody has to think of a reason to start." },
+  { x: 90, y: 5, title: "The company, not the vendor", body: "The company’s own logo and name lead the header. Tap the arrow to switch between companies you belong to; the moon switches to dark mode, where the logo sits on a white chip to stay legible." },
+  { x: 64, y: 13, title: "Thank someone first", body: "One composer with three modes: Appreciation, Post and Announcement. Recognition is the first option, not a feature three menus deep." },
+  { x: 88, y: 16, title: "Your balance", body: "Coins and their value in rials. If the company turns rial balances off, that line simply disappears." },
+  { x: 20, y: 25, title: "How are you today?", body: "A month of moods, one emoji per day. Missed days are greyed out, and once the daily limit is reached the badge shows a timer and a tooltip instead." },
+  { x: 50, y: 30, title: "Announcements", body: "Company news in a carousel above the feed, so it never buries people’s posts." },
+  { x: 88, y: 38, title: "Workspace", body: "Every older feature, one tap away: top achievers, surveys, events, challenges, marketplace and albums." },
+  { x: 20, y: 50, title: "Starting soon", body: "Surveys and events that are live or start within 24 hours, live ones first. Anything further out stays off the home screen." },
+  { x: 52, y: 58, title: "Moments of empathy", body: "The feed itself: thank-yous, congratulations and posts from colleagues, with likes and comments." },
+  { x: 88, y: 64, title: "Occasions this month", body: "Birthdays, work anniversaries and new colleagues. Past three people it reads “Roya and 4 others”; with nothing to celebrate, the card hides." },
+  { x: 20, y: 66, title: "Top achievers", body: "Ranked by coins earned, not coins held, so spending your rewards never costs you your place." },
+  { x: 20, y: 83, title: "Someone to thank", body: "The colleagues who’ve had the fewest gift cards from you, starting with your own groups, so recognition reaches the quiet people too." },
+  { x: 88, y: 84, title: "Best sellers", body: "Popular marketplace rewards, each a tap from its details page." },
 ];
+
+// Screens collected per product and area in the competitive analysis (1 = collected).
+const research = {
+  areas: ["Dashboard", "Posts", "Gift cards & rewards", "Marketplace", "Surveys", "Group events", "Other"],
+  rows: [
+    { name: "Motivosity", has: [1, 1, 1, 1, 1, 1, 0] },
+    { name: "Bonusly", has: [1, 1, 1, 1, 0, 0, 0] },
+    { name: "Empuls", has: [1, 1, 1, 1, 1, 1, 1] },
+    { name: "Awardco", has: [1, 1, 1, 1, 0, 0, 1] },
+    { name: "Kudos (Canada)", has: [1, 1, 1, 0, 1, 1, 1] },
+    { name: "WorkTango", has: [1, 1, 1, 0, 1, 0, 1] },
+    { name: "Bucketlist Rewards", has: [1, 1, 1, 1, 0, 0, 0] },
+    { name: "Achievers", has: [1, 1, 1, 1, 0, 0, 1] },
+  ],
+};
+
+const shifts = [
+  { from: "A dashboard of widgets", to: "A feed of people", body: "Version 1 showed rows of surveys, events and cards to look at. Version 2 opens on what colleagues are saying to each other." },
+  { from: "Recognition as one section", to: "Recognition as the first action", body: "Gift cards were one row among four. Now “Appreciation” is the first button on the page." },
+  { from: "Everything, always", to: "Only what’s relevant", body: "Events show up a day before they start, occasions only when there are some, rial balances only if the company uses them." },
+  { from: "Kudos’ brand", to: "The company’s brand", body: "The header now carries each company’s logo and name, and lets people who work for several companies switch between them." },
+];
+
 
 
 const guide: GuideStep[] = [
@@ -108,6 +135,7 @@ const featurePages: PageTab[] = [
   { id: "events", label: "Events", src: `${IMG}/events.webp`, width: 2560, height: 1800, notes: ["Volunteer tasks posted by colleagues, with a coin reward and days left.", "One button to sign up.", "Participants listed, with trophies for those who delivered."] },
   { id: "challenges", label: "Challenges", src: `${IMG}/challenges.webp`, width: 2560, height: 1800, notes: ["Team goals as progress rings, like 120 of 200 survey votes.", "The coin reward is always visible.", "A Claim button appears only when the goal is reached."] },
   { id: "mood", label: "My mood", src: `${IMG}/thermometer-mine.webp`, width: 2684, height: 1800, notes: ["“How are you feeling now?” with a calendar of past answers.", "Today compared with yesterday.", "A personal history with tags, private to the employee."] },
+  { id: "market", label: "Marketplace", src: `${IMG}/market.webp`, width: 2560, height: 1800, notes: ["Rewards from real brands, such as restaurant credit, paid for in coins.", "Each card shows the price, stock and expiry date before you commit.", "Search and filters for when the catalogue grows."] },
   { id: "wallet", label: "Wallet", src: `${IMG}/wallet.webp`, width: 2560, height: 1800, notes: ["Coin and rial balances, and a converter (1 coin = 10,000 rials).", "Request a withdrawal in one step.", "A history of every request: approved, pending or rejected."] },
 ];
 
@@ -115,6 +143,7 @@ const adminPages: PageTab[] = [
   { id: "colleagues", label: "Colleagues", src: `${IMG}/admin-colleagues.webp`, width: 2684, height: 1800, notes: ["Everyone in the company, with their groups, coins and balance.", "A row menu for the four things HR does most: edit, add to a group, adjust coins or balance, remove.", "Add a colleague from the top of the table."] },
   { id: "groups", label: "Groups", src: `${IMG}/admin-groups.webp`, width: 2684, height: 1800, notes: ["Teams such as Technical, Finance, Development and Sales.", "Each group shows its head, its members and what it’s allowed to do.", "Permissions as chips, readable at a glance."] },
   { id: "access", label: "Access", src: `${IMG}/admin-access.webp`, width: 2684, height: 2218, notes: ["About eighteen permissions, from the social feed to the marketplace and medals.", "Grant each one to groups, not people, so access follows the org chart.", "One list to audit who can do what."] },
+  { id: "report", label: "Mood report", src: `${IMG}/reports.webp`, width: 2560, height: 1800, notes: ["Average mood day by day, as a line.", "Participation at a glance: 83% in the sample data.", "Average respondents and answers, so HR knows how much to trust the trend."] },
   { id: "mood", label: "Team mood", src: `${IMG}/admin-thermometer.webp`, width: 2684, height: 2172, notes: ["How the company feels, as a chart over time.", "How many colleagues took part.", "Each answer with its mood, tags and time, for HR to follow up."] },
 ];
 
@@ -187,7 +216,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
         <RevealGroup className="grid gap-px overflow-hidden rounded-2xl border border-rule bg-rule md:grid-cols-3">
           {[
             ["The product", "Employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events, challenges and onboarding in the same place."],
-            ["My role", "Product designer at Novaday: flows, page logic and UI for the employee side and the HR admin, a first-run guide, and the shared design system."],
+            ["My role", "Product designer at Novaday: the redesign from a dashboard to a social network, the employee side and HR admin, a first-run guide, and the shared design system."],
             ["Where it is", "Live, used by real companies. By my count, around 500 people use it."],
           ].map(([k, v]) => (
             <RevealItem className="bg-paper p-7" key={k}>
@@ -230,14 +259,100 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
               </RevealItem>
             ))}
           </RevealGroup>
-          <Reveal className="mt-10 rounded-2xl border border-white/12 p-6">
-            <p className="font-mono text-[#ffb3c0] text-xs uppercase">Research · eight recognition products studied</p>
-            <p className="mt-3 flex flex-wrap gap-2">
-              {["Motivosity", "Kudos (Canada)", "Empuls", "Achievers", "WorkTango", "Awardco", "Bonusly", "Bucketlist Rewards"].map((c) => (
-                <span className="rounded-full bg-white/8 px-3 py-1 text-sm text-white/85" key={c}>{c}</span>
-              ))}
+        </div>
+      </section>
+
+      {/* 03 · The redesign */}
+      <section className="relative overflow-hidden py-28" style={{ background: `color-mix(in oklab, ${C.red} 9%, var(--paper))` }}>
+        <div className={wrap}>
+          <Reveal>
+            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">03</span> · The turning point</p>
+            <p className="mt-8 max-w-5xl font-display text-[clamp(2.2rem,5vw,4rem)] leading-[1.02]">
+              Recognition is social. So the home screen stopped being a <span className="line-through decoration-[#E6294D]/60">dashboard</span> and became a{" "}
+              <span style={{ color: C.red }}>social network</span>.
+            </p>
+            <p className="mt-6 max-w-2xl text-ink-soft text-lg leading-relaxed">
+              Version 1 worked, but it treated a thank-you as one widget among many: something to look at, not something to join. For version 2 I
+              redesigned the home screen around people talking to each other, and moved everything else one tap away.
             </p>
           </Reveal>
+
+          <Reveal className="mt-14">
+            <BeforeAfter
+              accent={C.red}
+              after={`${IMG}/ba-v2.webp`}
+              afterAlt="Kudos version 2: a social feed with a composer, announcements, posts, moods and occasions"
+              afterLabel="v2 · Social"
+              before={`${IMG}/ba-v1.webp`}
+              beforeAlt="Kudos version 1: a dashboard of balances, surveys, events, gift cards and challenge prizes"
+              beforeLabel="v1 · Dashboard"
+              height={1800}
+              width={2560}
+            />
+            <p className="mt-4 font-mono text-[0.75rem] text-ink-soft">Drag the handle, or focus it and use ← →.</p>
+          </Reveal>
+
+          {/* The research that pointed there. */}
+          <div className="mt-20 grid gap-10 lg:grid-cols-12">
+            <Reveal className="lg:col-span-4">
+              <p className="font-mono text-[0.72rem] text-ink-soft uppercase">Competitive analysis</p>
+              <h3 className="mt-3 font-display text-3xl leading-tight">Eight products, seven areas.</h3>
+              <p className="mt-4 text-ink-soft leading-relaxed">
+                I collected screens from eight recognition products, area by area. Every one of them had a place to post and see recognition in
+                public. Only three ran group events. The feed wasn’t a trend to copy; it was the core of the category, and version 1’s home didn’t have one.
+              </p>
+            </Reveal>
+            <Reveal className="overflow-x-auto lg:col-span-8" delay={0.06}>
+              <table className="w-full min-w-[560px] border-separate border-spacing-0 text-sm">
+                <thead>
+                  <tr>
+                    <th className="sticky left-0 bg-transparent p-2 text-left font-normal text-ink-soft" />
+                    {research.areas.map((a) => (
+                      <th className={cn("p-2 text-center font-mono text-[0.68rem] uppercase leading-tight", a === "Posts" ? "text-signal" : "text-ink-soft")} key={a}>{a}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {research.rows.map((r) => (
+                    <tr key={r.name}>
+                      <td className="whitespace-nowrap border-rule border-t py-2.5 pr-3">{r.name}</td>
+                      {r.has.map((h, i) => (
+                        <td className={cn("border-rule border-t p-2 text-center", research.areas[i] === "Posts" && "bg-[#E6294D]/8")} key={`${r.name}-${research.areas[i]}`}>
+                          {h ? <span className="inline-block size-3 rounded-full" style={{ background: research.areas[i] === "Posts" ? C.red : "color-mix(in oklab, var(--ink) 55%, transparent)" }} /> : <span className="text-ink-soft/40">·</span>}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="mt-3 font-mono text-[0.68rem] text-ink-soft">● screens collected for that area · Posts highlighted</p>
+            </Reveal>
+          </div>
+
+          <RevealGroup className="mt-20 grid gap-4 md:grid-cols-2">
+            {shifts.map((x) => (
+              <RevealItem className="rounded-2xl border border-rule bg-paper p-6" key={x.to}>
+                <p className="flex flex-wrap items-center gap-2 text-sm">
+                  <span className="text-ink-soft line-through">{x.from}</span>
+                  <span aria-hidden className="text-ink-soft">→</span>
+                  <span className="font-medium" style={{ color: C.red }}>{x.to}</span>
+                </p>
+                <p className="mt-3 text-ink-soft leading-relaxed">{x.body}</p>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </div>
+      </section>
+
+      {/* 04 · Employee home */}
+      <section className="py-24">
+        <div className={wrap}>
+          <Chapter label="The new home" n="04" title="Every block has a rule behind it.">
+            <p>A feed looks simple. What makes it work is what each block decides to show, and when. Hover the markers for the rules I wrote beside each one.</p>
+          </Chapter>
+          <div className="mt-14">
+            <Hotspots alt="The Kudos feed, annotated" height={2140} points={feedPoints} src={`${IMG}/feed.webp`} tone="red" width={2684} />
+          </div>
         </div>
       </section>
 
@@ -245,7 +360,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
       <section className="py-28" style={{ background: `color-mix(in oklab, ${C.red} 8%, var(--paper))` }}>
         <div className={wrap}>
           <Reveal>
-            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">03</span> · The insight</p>
+            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">05</span> · How I worked</p>
             <p className="mt-8 max-w-5xl font-display text-[clamp(2.2rem,5vw,4rem)] leading-[1.02]">
               A screen isn’t finished until its <span style={{ color: C.red }}>rules</span> are written down.
             </p>
@@ -260,22 +375,10 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
         </div>
       </section>
 
-      {/* 04 · Employee home */}
-      <section className="py-24">
-        <div className={wrap}>
-          <Chapter label="The employee side" n="04" title="A feed built around saying thanks.">
-            <p>The home screen is a social feed, with recognition as its first action and reasons to use it all around. Hover the markers.</p>
-          </Chapter>
-          <div className="mt-14">
-            <Hotspots alt="The Kudos feed, annotated" height={2140} points={feedPoints} src={`${IMG}/feed.webp`} tone="red" width={2684} />
-          </div>
-        </div>
-      </section>
-
       {/* 05 · Features */}
       <section className="border-rule border-t bg-paper-2/60 py-24">
         <div className={wrap}>
-          <Chapter label="Features" n="05" title="Every way to take part, one tap from the feed.">
+          <Chapter label="Features" n="06" title="Every way to take part, one tap from the feed.">
             <p>Each feature earns coins, and every page follows the same pattern: what it is, what you get, one clear action. Pick a page.</p>
           </Chapter>
           <div className="mt-12">
@@ -287,7 +390,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
       {/* 05b · One dialog, many moments */}
       <section className="py-24">
         <div className={wrap}>
-          <Chapter label="Rewards" n="05b" title="One dialog, many moments.">
+          <Chapter label="Rewards" n="06b" title="One dialog, many moments.">
             <p>Coins arrive for many reasons. Instead of a screen for each, I designed one congratulations dialog for web and mobile, with a message template per occasion and an image each company can swap for its own coin or medal.</p>
           </Chapter>
           <Reveal className="mt-12 overflow-hidden rounded-3xl bg-[#3a3a3c] p-4 sm:p-8">
@@ -316,7 +419,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
       {/* 06 · First-run guide */}
       <section className="py-24">
         <div className={wrap}>
-          <Chapter label="First run" n="06" title="A guide that gets a company set up on its own.">
+          <Chapter label="First run" n="07" title="A guide that gets a company set up on its own.">
             <p>A company can create its Kudos workspace for free and invite its people itself. I designed a five-step guide that spotlights one area at a time, and wrote its copy, for managers and staff alike.</p>
           </Chapter>
           <div className="mt-14">
@@ -329,7 +432,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
       <section className="border-rule border-t bg-paper-2/60 py-24">
         <div className={cn(wrap, "grid items-start gap-12 lg:grid-cols-12")}>
           <Reveal className="lg:col-span-5">
-            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">07</span> · Onboarding</p>
+            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">08</span> · Onboarding</p>
             <h2 className="mt-4 font-display text-4xl leading-[1.05]">A new hire’s first week, as a checklist.</h2>
             <p className="mt-6 text-ink-soft leading-relaxed">HR ticks off what a new colleague needs and fills in the details once. Each item can be switched on or off per hire.</p>
             <ul className="mt-6 space-y-2">
@@ -353,7 +456,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
       {/* 08 · HR dashboard */}
       <section className="py-24 text-white" style={{ background: C.ink }}>
         <div className={wrap}>
-          <Chapter dark label="The HR side" n="08" title="Four questions, one dashboard.">
+          <Chapter dark label="The HR side" n="09" title="Four questions, one dashboard.">
             <p>I gathered ten admin and analytics dashboards as references for how others group numbers and charts. The result is organised around four questions HR keeps asking.</p>
           </Chapter>
           <div className="mt-14 grid gap-12 lg:grid-cols-12 lg:items-center">
@@ -377,7 +480,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
       {
         <section className="py-24">
           <div className={wrap}>
-            <Chapter label="Admin" n="09" title="People, groups and permissions.">
+            <Chapter label="Admin" n="10" title="People, groups and permissions.">
               <p>Behind every feature sits a module HR controls, plus the pages that decide who can do what. Pick a page.</p>
             </Chapter>
             <div className="mt-12">
@@ -391,7 +494,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
       <section className="border-rule border-t py-24">
         <div className={cn(wrap, "grid items-center gap-12 lg:grid-cols-12")}>
           <Reveal className="lg:col-span-5">
-            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">09b</span> · Pricing</p>
+            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">10b</span> · Pricing</p>
             <h2 className="mt-4 font-display text-4xl leading-[1.05]">One form, three paths.</h2>
             <p className="mt-6 text-ink-soft leading-relaxed">
               Companies sign up through a single setup form. The plan period defaults to a year and the per-user price updates live as you change it.
@@ -418,7 +521,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
       <section className="border-rule border-t bg-paper-2/60 py-24">
         <div className={cn(wrap, "grid items-center gap-12 lg:grid-cols-12")}>
           <Reveal className="lg:col-span-5">
-            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">10</span> · Mobile</p>
+            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">11</span> · Mobile</p>
             <h2 className="mt-4 font-display text-4xl leading-[1.05]">The same day, in a pocket.</h2>
             <p className="mt-6 text-ink-soft leading-relaxed">
               On a phone, the side menu becomes a bottom bar (Home, Marketplace, Colleagues, Settings) and each section turns into a swipeable row, so
@@ -427,12 +530,13 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
           </Reveal>
           <div className="flex items-start justify-center gap-4 lg:col-span-7">
             {[
-              { src: "feed-mobile", h: 1624, label: "Feed" },
-              { src: "m-home", h: 2606, label: "Home" },
+              { src: "m-home", h: 2606, label: "v1 · Home" },
+              { src: "feed-mobile", h: 1624, label: "v2 · Feed" },
+              { src: "market-mobile", h: 1624, label: "Marketplace" },
               { src: "wallet-mobile", h: 1624, label: "Wallet" },
             ].map((m, i) => (
-              <Reveal className={cn("w-1/3 max-w-[220px]", i === 1 && "translate-y-8")} delay={i * 0.06} key={m.src}>
-                <IPhoneShot alt={`Kudos ${m.label.toLowerCase()} on mobile`} className="[&_img]:aspect-[375/812] [&_img]:object-cover [&_img]:object-top" height={m.h} sizes="220px" src={`${IMG}/${m.src}.webp`} width={750} />
+              <Reveal className={cn("w-1/4 max-w-[190px]", i % 2 === 1 && "translate-y-8")} delay={i * 0.06} key={m.src}>
+                <IPhoneShot alt={`Kudos ${m.label.toLowerCase()} on mobile`} className="[&_img]:aspect-[375/812] [&_img]:object-cover [&_img]:object-top" height={m.h} sizes="190px" src={`${IMG}/${m.src}.webp`} width={750} />
                 <p className="mt-3 text-center font-mono text-[0.7rem] text-ink-soft uppercase">{m.label}</p>
               </Reveal>
             ))}
@@ -440,7 +544,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
         </div>
         <div className={cn(wrap, "mt-24")}>
           <Reveal>
-            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">10b</span> · The unhappy paths</p>
+            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">11b</span> · The unhappy paths</p>
             <h3 className="mt-4 font-display text-3xl">Designed too: what people see when things go wrong.</h3>
           </Reveal>
           <div className="mt-10 grid items-end gap-8 md:grid-cols-[2fr_1fr_1fr]">
@@ -465,7 +569,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
       {/* 11 · Design system */}
       <section className="py-24">
         <div className={wrap}>
-          <Chapter label="Design system" n="11" title="One kit for two products.">
+          <Chapter label="Design system" n="12" title="One kit for two products.">
             <p>Kudos runs on a Tailwind-based system with a shared UI kit and variables. The same foundation also carried Remeet, the team’s access and meeting product, which won at Tehran Design Week.</p>
           </Chapter>
           <RevealGroup className="mt-12 flex flex-wrap gap-2">
@@ -502,13 +606,14 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
       {/* 12 · Where it stands */}
       <section className="py-24 text-white" style={{ background: C.red }}>
         <div className={wrap}>
-          <Chapter dark label="Where it stands" n="12" title="Shipped, and in use.">
+          <Chapter dark label="Where it stands" n="13" title="Shipped, and in use.">
             <p>Kudos is live with real companies; by my count, around 500 people use it. I can’t attribute numbers to single design decisions, so I won’t.</p>
           </Chapter>
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             <Reveal className="rounded-2xl border border-white/30 p-7">
               <p className="font-mono text-white/75 text-xs uppercase">Shipped</p>
               <ul className="mt-4 space-y-2 text-white/95">
+                <li>Version 2: the social-network redesign</li>
                 <li>Employee side, web and mobile</li>
                 <li>HR admin and dashboard</li>
                 <li>First-run guide and onboarding</li>

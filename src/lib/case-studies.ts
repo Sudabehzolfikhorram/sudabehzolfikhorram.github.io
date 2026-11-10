@@ -279,7 +279,7 @@ const all: CaseStudy[] = [
     featured: true,
     tagline: "Employee recognition that people actually use, and that HR can see working.",
     summary:
-      "Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events, challenges and onboarding in the same place. At Novaday I designed the employee side and the HR admin, a first-run guide, and the shared Tailwind-based design system, documenting every page’s logic for engineering alongside PM and QA.",
+      "Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events, challenges and onboarding in the same place. At Novaday I redesigned its home from a dashboard into a social network, designed the employee side and the HR admin, a first-run guide and the shared Tailwind-based design system, and documented every page’s logic for engineering alongside PM and QA.",
     category: "B2B SaaS · HR",
     period: { start: "2024-09", end: "2025-06" },
     status: "Live",
@@ -304,6 +304,7 @@ const all: CaseStudy[] = [
       "A screen isn’t finished until its rules are written down. In a product this size, the design file had to work as a shared workspace for engineering, PM and QA.",
     scope: ["Employee side", "HR admin & dashboard", "First-run guide", "Onboarding checklist", "Designer-note system", "Tailwind-based design system"],
     highlights: [
+      { title: "Dashboard to social network", body: "A home screen rebuilt around people thanking each other, backed by research into eight recognition products." },
       { title: "Notes as a system", body: "Six kinds of designer note, so logic, copy and review feedback each have a place." },
       { title: "A self-serve start", body: "A five-step guide that gets a company set up without help." },
       { title: "A dashboard for HR", body: "Take-up, morale, money and trends, on one screen." },
