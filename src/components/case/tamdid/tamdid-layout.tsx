@@ -13,6 +13,7 @@ import { periodLabel, wrap } from "../blocks";
 import { IPhoneShot, MacBook } from "../devices";
 import { BeforeAfter, type PageTab, PageSwitcher } from "../novin/interactive";
 import { ReadingProgress } from "../novin/reading-progress";
+import { CurrencyDemo } from "./currency";
 import { type FlowStep, FlowStepper } from "./flow";
 
 const vazir = Vazirmatn({ subsets: ["arabic", "latin"], weight: ["400", "500", "700"] });
@@ -406,6 +407,87 @@ export function TamdidLayout({ cs }: { cs: CaseStudy }) {
                 </RevealItem>
               ))}
             </RevealGroup>
+          </div>
+        </div>
+      </section>
+
+      {/* 06b · Bookkeeping */}
+      <section className="relative overflow-hidden py-28" style={{ background: `color-mix(in oklab, ${C.mint} 14%, var(--paper))` }}>
+        <div className={wrap}>
+          <Chapter label="A new feature" n="06b" title="Top-up apps sell the package. Tamdid keeps the books.">
+            <p>
+              When you buy for other people, money changes hands outside the app too. Top-up apps don’t keep track of that, so I designed a running
+              account with every contact, built into the same screens people already use.
+            </p>
+          </Chapter>
+
+          {/* Automatic and manual, side by side. */}
+          <RevealGroup className="mt-14 grid gap-4 md:grid-cols-2">
+            <RevealItem className="rounded-3xl bg-paper p-7 ring-1 ring-rule">
+              <p className="flex items-center gap-3 font-display text-2xl">
+                <span className="grid size-10 place-items-center rounded-xl text-white" style={{ background: C.active }}>⟳</span> Automatic
+              </p>
+              <p className="mt-4 text-ink-soft leading-relaxed">Every purchase, credit transfer, wallet top-up and approved request for a contact lands in your account with them on its own.</p>
+              <p className="mt-3 text-ink-soft leading-relaxed">Each receipt has a switch, “Count in account balance”, for the purchases that shouldn’t.</p>
+            </RevealItem>
+            <RevealItem className="rounded-3xl bg-paper p-7 ring-1 ring-rule">
+              <p className="flex items-center gap-3 font-display text-2xl">
+                <span className="grid size-10 place-items-center rounded-xl text-white" style={{ background: "#2ECC71" }}>✎</span> Manual
+              </p>
+              <p className="mt-4 text-ink-soft leading-relaxed">Cash and card payments outside Tamdid are recorded by hand: money received or paid, with the amount, currency, date and time, a note and a photo of the receipt.</p>
+              <p className="mt-3 text-ink-soft leading-relaxed">Both kinds sit in one timeline, so the balance always adds up.</p>
+            </RevealItem>
+          </RevealGroup>
+
+          <div className="mt-16 grid items-start gap-10 lg:grid-cols-12">
+            <div className="grid grid-cols-3 gap-3 sm:gap-5 lg:col-span-8">
+              <Phone alt="Contacts with their wallet balance and whether they owe you, you owe them or you’re settled" className="w-full" label="Contacts" src="acc-contacts" />
+              <Phone alt="One contact’s account: payments and receipts, Record payment and Record receipt, and a timeline of manual and automatic entries" className="w-full translate-y-8" label="One account" src="acc-detail" />
+              <Phone alt="Recording a receipt: amount and currency, the contact, date and time, a note and an attached photo" className="w-full" label="Record a receipt" src="acc-record-filled" />
+            </div>
+            <Reveal className="lg:col-span-4" delay={0.08}>
+              <p className="font-display text-2xl leading-tight">More than one currency? Pick one.</p>
+              <p className="mt-3 text-ink-soft leading-relaxed">
+                Managers deal in tomans, dollars and euros. A balance can’t add them together, so the list asks for a currency and filters out anyone
+                you’ve never dealt with in it.
+              </p>
+              <div className="mt-6">
+                <CurrencyDemo accent={C.active} />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* 06c · Commission */}
+      <section className="py-24">
+        <div className={wrap}>
+          <Chapter label="Commission" n="06c" title="What managers earn, and where it comes from.">
+            <p>Managers earn a share of what their contacts buy. The commission page answers the three questions they ask most, in this order.</p>
+          </Chapter>
+          <div className="mt-14 grid items-center gap-12 lg:grid-cols-12">
+            <Reveal className="lg:col-span-8">
+              <MacBook>
+                <Image alt="Commission on the web: balance, distribution by source, this month against last month, and a list of commission-earning transactions" className="block h-auto w-full" height={1133} sizes="(min-width: 1024px) 60vw, 100vw" src={`${IMG}/commission-d.webp`} width={1440} />
+              </MacBook>
+            </Reveal>
+            <div className="lg:col-span-4">
+              <RevealGroup className="space-y-3">
+                {[
+                  ["Where did it come from?", "A breakdown by source: charge, internet, UC, credit transfers and other, with a time-range filter."],
+                  ["Is it growing?", "This month’s commission so far, and the number of commission-earning transactions, each against last month."],
+                  ["From whom?", "The list switches between transactions and contacts: how much each contact earned you, and from how many purchases."],
+                ].map(([q, a], i) => (
+                  <RevealItem className="rounded-2xl border border-rule bg-paper p-5" key={q}>
+                    <p className="flex items-baseline gap-3 font-medium"><span className="font-mono text-signal text-xs">0{i + 1}</span>{q}</p>
+                    <p className="mt-2 text-ink-soft text-sm leading-relaxed">{a}</p>
+                  </RevealItem>
+                ))}
+              </RevealGroup>
+              <Reveal className="mx-auto mt-8 w-[200px]" delay={0.1}>
+                <PhoneTop alt="Commission on mobile" src="commission-m" />
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>

@@ -258,11 +258,12 @@ const all: CaseStudy[] = [
     ],
     context:
       "Most purchases are repeats: the same number, the same package, often for the same person. Tamdid is designed for the second purchase, not the first.",
-    scope: ["Information architecture", "Purchase flows", "Wallet & payments", "Manager tools", "Gamification", "Design system", "Web, tablet & English"],
+    scope: ["Information architecture", "Purchase flows", "Wallet & payments", "Contact accounts & commission", "Gamification", "Design system", "Web, tablet & English"],
     highlights: [
       { title: "Repeat in one tap", body: "Previous purchases sit at the top of every buy screen, each with a Renew button." },
       { title: "Pay from several wallets", body: "Choose which wallets to use and see the order they’ll be charged in." },
       { title: "A monthly league", body: "Points, challenges and missions earned by doing what Tamdid is for." },
+      { title: "Bookkeeping built in", body: "A running account with every contact, automatic and manual entries, in any currency, plus commission." },
     ],
     screens: [],
     facts: [
@@ -279,7 +280,7 @@ const all: CaseStudy[] = [
     featured: true,
     tagline: "Employee recognition that people actually use, and that HR can see working.",
     summary:
-      "Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events, challenges and onboarding in the same place. At Novaday I redesigned its home from a dashboard into a social network, designed the employee side and the HR admin, a first-run guide and the shared Tailwind-based design system, and documented every page’s logic for engineering alongside PM and QA.",
+      "Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events, challenges and onboarding in the same place. At Novaday I redesigned its home from a dashboard into a social network, designed the employee side and the HR admin on a shared Tailwind-based design system, and documented every page’s logic for engineering alongside PM and QA.",
     category: "B2B SaaS · HR",
     period: { start: "2024-09", end: "2025-06" },
     status: "Live",
@@ -293,19 +294,18 @@ const all: CaseStudy[] = [
       { label: "kudos.ir", href: "https://kudos.ir/" },
       { label: "novaday.ir", href: "https://novaday.ir/" },
     ],
-    cover: { image: `${BASE}/work/kudos/cover.webp`, alt: "Kudos: the HR dashboard and the mobile home on a red background" },
-    thumbnail: { image: `${BASE}/work/kudos/cover.webp`, alt: "Kudos: the HR dashboard and the mobile home on a red background" },
+    cover: { image: `${BASE}/work/kudos/cover.webp`, alt: "Kudos: the social feed on desktop and mobile, on a red background" },
+    thumbnail: { image: `${BASE}/work/kudos/cover.webp`, alt: "Kudos: the social feed on desktop and mobile, on a red background" },
     gallery: [
-      { image: `${BASE}/work/kudos/home.webp`, alt: "Kudos home for an employee", device: "web", width: 2560, height: 1800, label: "Home" },
-      { image: `${BASE}/work/kudos/admin-dashboard.webp`, alt: "Kudos HR dashboard", device: "web", width: 2684, height: 2124, label: "HR dashboard" },
-      { image: `${BASE}/work/kudos/m-home.webp`, alt: "Kudos home on mobile", device: "phone", width: 750, height: 2606, label: "Mobile" },
+      { image: `${BASE}/work/kudos/feed.webp`, alt: "The Kudos feed", device: "web", width: 2684, height: 2140, label: "Feed" },
+      { image: `${BASE}/work/kudos/feed-mobile.webp`, alt: "The Kudos feed on mobile", device: "phone", width: 750, height: 1624, label: "Mobile" },
     ],
     context:
       "A screen isn’t finished until its rules are written down. In a product this size, the design file had to work as a shared workspace for engineering, PM and QA.",
-    scope: ["Employee side", "HR admin & dashboard", "First-run guide", "Onboarding checklist", "Designer-note system", "Tailwind-based design system"],
+    scope: ["Dashboard → social network redesign", "Employee side", "HR admin", "Competitive analysis", "Tailwind-based design system"],
     highlights: [
       { title: "Dashboard to social network", body: "A home screen rebuilt around people thanking each other, backed by research into eight recognition products." },
-      { title: "Notes as a system", body: "Six kinds of designer note, so logic, copy and review feedback each have a place." },
+      { title: "Rules behind the feed", body: "Who to thank, what’s starting soon, who ranks first: each block decides what to show, and when." },
       { title: "A self-serve start", body: "A five-step guide that gets a company set up without help." },
       { title: "A dashboard for HR", body: "Take-up, morale, money and trends, on one screen." },
     ],

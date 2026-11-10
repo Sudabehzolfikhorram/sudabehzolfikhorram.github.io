@@ -4,7 +4,6 @@
 // employee side, the HR side and the system → where it stands. Every screen
 // is from the Kudos Figma file; Persian copy is translated, not invented.
 
-import { Vazirmatn } from "next/font/google";
 import Image from "next/image";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import type { CaseStudy } from "@/lib/case-studies";
@@ -13,9 +12,8 @@ import { periodLabel, wrap } from "../blocks";
 import { IPhoneShot, MacBook } from "../devices";
 import { BeforeAfter, type Hotspot, Hotspots, type PageTab, PageSwitcher } from "../novin/interactive";
 import { ReadingProgress } from "../novin/reading-progress";
-import { type GuideStep, GuideTour, NoteSystem, type NoteType } from "./interactive";
+import { ScreenTour, type TourScreen } from "./screen-tour";
 
-const vazir = Vazirmatn({ subsets: ["arabic", "latin"], weight: ["400", "500", "700"] });
 const IMG = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/work/kudos`;
 
 // Kudos red, sampled from the file's thumbnail and logo.
@@ -56,14 +54,6 @@ const tensions = [
   { title: "Worthless if unused", body: "Recognition only works if people actually send it. Every feature had to be easy to start and visible to the HR team when it wasn’t working." },
 ];
 
-const notes: NoteType[] = [
-  { id: "note", label: "Note", fa: "نوت برای نوشتن یادداشت", use: "General notes and context for whoever opens the frame next.", tint: "#F3DDF6", ink: "#B03ACB", icon: "✎", example: { where: "First-run guide", text: "Welcome to Kudos! If you’re a manager or company representative, create your company for free on the left. Otherwise, enter your membership code or accept your invitation on the right." } },
-  { id: "dev", label: "Dev", fa: "نوت برای نوشتن نکات مورد توجه دولوپرها", use: "Rules engineers must follow: logic, permissions, conditions.", tint: "#DDF8F4", ink: "#0FB59B", icon: "</>", example: { where: "Navigation", text: "We show this icon to managers only." } },
-  { id: "info", label: "Info", fa: "نوت برای نوشتن تولتیپ‌ها و اطلاع‌رسانی", use: "The exact copy for tooltips and notifications.", tint: "#DCEBF5", ink: "#3D8FD8", icon: "i", example: { where: "Support", text: "If you need more information or run into a problem, click the support icon and open a ticket." } },
-  { id: "like", label: "Like", fa: "نوت برای نوشتن نقاط مثبت و نظرات موافق", use: "What works, and agreement in reviews.", tint: "#E2F8E2", ink: "#2FB350", icon: "👍" },
-  { id: "dislike", label: "Dislike", fa: "نوت برای نوشتن نقاط منفی و نظرات مخالف", use: "What doesn’t work, and disagreement in reviews.", tint: "#FBE2E3", ink: "#E6352B", icon: "👎" },
-  { id: "star", label: "Star", fa: "نوت برای نوشتن نکات مهم و قابل توجه", use: "The one thing nobody should miss.", tint: "#FBF7DF", ink: "#E0A800", icon: "★" },
-];
 
 const feedPoints: Hotspot[] = [
   { x: 90, y: 5, title: "The company, not the vendor", body: "The company’s own logo and name lead the header. Tap the arrow to switch between companies you belong to; the moon switches to dark mode, where the logo sits on a white chip to stay legible." },
@@ -104,47 +94,45 @@ const shifts = [
 
 
 
-const guide: GuideStep[] = [
-  { src: `${IMG}/guide-1.webp`, width: 1541, height: 574, title: "Create or join a company", text: "Welcome to Kudos! If you’re a manager or company representative, create your company for free. Otherwise, enter your membership code or accept your invitation. No code? Ask your company representative to send one." },
-  { src: `${IMG}/guide-2.webp`, width: 1541, height: 574, title: "Invite your team", text: "Add your team members so invitations go out to them. This step is optional and you can do it later. After each person, click (+) at the end of the row to save them." },
-  { src: `${IMG}/guide-3.webp`, width: 1541, height: 574, title: "The header", text: "You’re in. From here you can see what matters most: notifications, your coin and rial balances, the number of users and the time left on your Kudos subscription." },
-  { src: `${IMG}/guide-4.webp`, width: 1541, height: 574, title: "Your account", text: "Manage your personal details and profile photo here. If you belong to more than one company, switch between them under “My companies”." },
-  { src: `${IMG}/guide-5.webp`, width: 1541, height: 574, title: "The menu", text: "Everything else lives here: the colleagues list, the company marketplace and, for managers, the admin sections." },
-];
 
-const onboardingItems = [
-  "Documents and forms the new hire needs",
-  "The company handbook, as a file",
-  "A first-week agenda, task by task",
-  "Logins for company tools",
-  "What to bring on day one",
-  "Dress code, and how to get in and where to park",
-  "A welcome gift of coins, with a message",
-];
 
-const dashboardQuestions = [
-  { q: "Are people using it?", a: "Take-up for each feature (surveys, events, gift cards, marketplace, challenges) and the share of active users." },
-  { q: "How does the team feel?", a: "The organisational mood check: how many answered, how many didn’t, and how many are happy or unhappy." },
-  { q: "Where is the money going?", a: "Marketplace purchases approved, pending and rejected, items out of stock, and withdrawal requests." },
-  { q: "What’s changing?", a: "A month-by-month chart of gift cards, automatic top-ups and expiries, and survey, event and challenge winners." },
-];
 
-const featurePages: PageTab[] = [
-  { id: "gifts", label: "Gift cards", src: `${IMG}/gift-cards.webp`, width: 2560, height: 1800, notes: ["Who it’s from, who it’s for, a title like “Outstanding consultant” and the coins attached.", "A reason in the colleague’s own words: “for all your help delivering the Access project”.", "Public by default, so recognition is seen, not just received."] },
-  { id: "surveys", label: "Surveys", src: `${IMG}/surveys.webp`, width: 2560, height: 1800, notes: ["Competitive polls such as “Most professional colleague of the month”.", "Vote from a list of colleagues; a podium shows the top three.", "Live results with the total number of votes."] },
-  { id: "events", label: "Events", src: `${IMG}/events.webp`, width: 2560, height: 1800, notes: ["Volunteer tasks posted by colleagues, with a coin reward and days left.", "One button to sign up.", "Participants listed, with trophies for those who delivered."] },
-  { id: "challenges", label: "Challenges", src: `${IMG}/challenges.webp`, width: 2560, height: 1800, notes: ["Team goals as progress rings, like 120 of 200 survey votes.", "The coin reward is always visible.", "A Claim button appears only when the goal is reached."] },
-  { id: "mood", label: "My mood", src: `${IMG}/thermometer-mine.webp`, width: 2684, height: 1800, notes: ["“How are you feeling now?” with a calendar of past answers.", "Today compared with yesterday.", "A personal history with tags, private to the employee."] },
-  { id: "market", label: "Marketplace", src: `${IMG}/market.webp`, width: 2560, height: 1800, notes: ["Rewards from real brands, such as restaurant credit, paid for in coins.", "Each card shows the price, stock and expiry date before you commit.", "Search and filters for when the catalogue grows."] },
-  { id: "wallet", label: "Wallet", src: `${IMG}/wallet.webp`, width: 2560, height: 1800, notes: ["Coin and rial balances, and a converter (1 coin = 10,000 rials).", "Request a withdrawal in one step.", "A history of every request: approved, pending or rejected."] },
-];
 
 const adminPages: PageTab[] = [
+  { id: "survey", label: "Survey results", src: `${IMG}/v2-d-survey-results.webp`, width: 2684, height: 1800, notes: ["Building a survey and reading it happen in one place: settings, questions, a results table, and analysis.", "Each question’s answers as a chart, with percentages.", "Inside the same management menu as everything else."] },
+  { id: "events", label: "Events", src: `${IMG}/v2-d-events-admin.webp`, width: 2684, height: 1800, notes: ["Every event with its winner, participants, status, start and end.", "Prizes are free or paid in coins.", "Pick a winner straight from the row once an event ends."] },
   { id: "colleagues", label: "Colleagues", src: `${IMG}/admin-colleagues.webp`, width: 2684, height: 1800, notes: ["Everyone in the company, with their groups, coins and balance.", "A row menu for the four things HR does most: edit, add to a group, adjust coins or balance, remove.", "Add a colleague from the top of the table."] },
   { id: "groups", label: "Groups", src: `${IMG}/admin-groups.webp`, width: 2684, height: 1800, notes: ["Teams such as Technical, Finance, Development and Sales.", "Each group shows its head, its members and what it’s allowed to do.", "Permissions as chips, readable at a glance."] },
   { id: "access", label: "Access", src: `${IMG}/admin-access.webp`, width: 2684, height: 2218, notes: ["About eighteen permissions, from the social feed to the marketplace and medals.", "Grant each one to groups, not people, so access follows the org chart.", "One list to audit who can do what."] },
-  { id: "report", label: "Mood report", src: `${IMG}/reports.webp`, width: 2560, height: 1800, notes: ["Average mood day by day, as a line.", "Participation at a glance: 83% in the sample data.", "Average respondents and answers, so HR knows how much to trust the trend."] },
   { id: "mood", label: "Team mood", src: `${IMG}/admin-thermometer.webp`, width: 2684, height: 2172, notes: ["How the company feels, as a chart over time.", "How many colleagues took part.", "Each answer with its mood, tags and time, for HR to follow up."] },
+];
+
+
+const composerRules = [
+  { k: "Recipient", v: "Anyone in the company. From an occasion card, it’s already filled in." },
+  { k: "Message", v: "10 to 300 characters: long enough to be specific, short enough to read in the feed." },
+  { k: "Values", v: "The company’s own values as hashtags, so thanks connect to what the company cares about." },
+  { k: "Badge & coins", v: "An optional badge such as “Most committed”, and 5 to 30 coins." },
+  { k: "Private", v: "A switch for thanks that shouldn’t be public: only the recipient and their manager see it." },
+];
+
+const socialRules = [
+  { t: "Posts that write themselves", b: "Birthdays, new colleagues and work anniversaries post to the feed automatically, so nobody’s milestone depends on someone remembering." },
+  { t: "Who can do what", b: "Everyone can reply to and report comments, and delete their own. Social-network admins can delete or report any post or comment." },
+  { t: "Announcements stay announcements", b: "Company news can be liked but not commented on, so it never turns into a thread." },
+  { t: "Likes you can see", b: "The heart turns red once you’ve liked a post; tap the count to see who. Admins also see view counts per post." },
+  { t: "Challenges that update themselves", b: "A challenge post keeps its progress live; when it ends, Claim points opens the reward." },
+];
+
+const tour: TourScreen[] = [
+  { src: `${IMG}/v2-m-feed.webp`, width: 750, height: 1624, label: "Feed", title: "The feed, one thumb wide.", body: "Announcements on top, then moments from colleagues, filterable by your groups. The red button starts a post or a thank-you from anywhere." },
+  { src: `${IMG}/v2-m-appreciate.webp`, width: 750, height: 1652, label: "Appreciation", title: "Saying thanks, in one screen.", body: "Recipient, a message, company values, a badge, coins, and a private switch, all on one scroll, with limits written right under each field." },
+  { src: `${IMG}/v2-m-post-comments.webp`, width: 750, height: 1612, label: "Post", title: "A post and its conversation.", body: "Likes, comments and quoted replies under a work-anniversary post. Deleting your own comment confirms with a quiet toast." },
+  { src: `${IMG}/v2-m-profile.webp`, width: 750, height: 1624, label: "Profile", title: "A colleague, at a glance.", body: "Birthday, rank, coins, work anniversary, events and surveys in six tiles, then badges and trophy cups under Achievements." },
+  { src: `${IMG}/v2-m-mood-checkin.webp`, width: 750, height: 1624, label: "Mood", title: "How are you, really?", body: "Five faces from great to very bad, optional reasons such as commute or team relations, and a single button: Submit confidentially." },
+  { src: `${IMG}/v2-m-workspace.webp`, width: 750, height: 1624, label: "Workspace", title: "Everything else, one tap away.", body: "Marketplace, mood, challenges, events and surveys as tiles, with your mood calendar and what’s starting soon underneath." },
+  { src: `${IMG}/v2-m-notifications.webp`, width: 750, height: 1622, label: "Notifications", title: "Act on it right there.", body: "Requests to join the company come with Approve and Reject in the notification itself, next to plain company notices." },
+  { src: `${IMG}/v2-m-achievers.webp`, width: 750, height: 1624, label: "Top achievers", title: "Recognition, ranked fairly.", body: "Everyone’s trophies and coins earned, searchable and filterable. Earned, not held, so spending never costs anyone their place." },
 ];
 
 const templates = [
@@ -216,7 +204,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
         <RevealGroup className="grid gap-px overflow-hidden rounded-2xl border border-rule bg-rule md:grid-cols-3">
           {[
             ["The product", "Employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events, challenges and onboarding in the same place."],
-            ["My role", "Product designer at Novaday: the redesign from a dashboard to a social network, the employee side and HR admin, a first-run guide, and the shared design system."],
+            ["My role", "Product designer at Novaday: the redesign from a dashboard to a social network, the employee side and the HR admin, and the shared design system."],
             ["Where it is", "Live, used by real companies. By my count, around 500 people use it."],
           ].map(([k, v]) => (
             <RevealItem className="bg-paper p-7" key={k}>
@@ -356,34 +344,71 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
         </div>
       </section>
 
-      {/* 03 · Insight */}
-      <section className="py-28" style={{ background: `color-mix(in oklab, ${C.red} 8%, var(--paper))` }}>
-        <div className={wrap}>
-          <Reveal>
-            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">05</span> · How I worked</p>
-            <p className="mt-8 max-w-5xl font-display text-[clamp(2.2rem,5vw,4rem)] leading-[1.02]">
-              A screen isn’t finished until its <span style={{ color: C.red }}>rules</span> are written down.
+      {/* Composer */}
+      <section className="border-rule border-t bg-paper-2/60 py-24">
+        <div className={cn(wrap, "grid items-center gap-12 lg:grid-cols-12")}>
+          <Reveal className="order-2 lg:order-1 lg:col-span-7">
+            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">05</span> · Appreciation</p>
+            <h2 className="mt-4 font-display text-4xl leading-[1.05] sm:text-5xl">A thank-you worth reading.</h2>
+            <p className="mt-6 max-w-xl text-ink-soft leading-relaxed">
+              Generic thanks are easy to ignore. The composer nudges people to be specific and ties each thank-you to something the company values.
             </p>
-            <p className="mt-6 max-w-2xl text-ink-soft text-lg leading-relaxed">
-              So I gave the file a vocabulary: six kinds of note, each with its own colour and icon, placed beside the frames they explain. Logic for
-              engineers, exact copy for tooltips, and quick verdicts for reviews each have a place, so nothing important lives only in a chat thread.
-            </p>
+            <RevealGroup className="mt-8 divide-y divide-rule border-rule border-y">
+              {composerRules.map((r) => (
+                <RevealItem className="grid gap-1 py-4 sm:grid-cols-[150px_1fr] sm:gap-6" key={r.k}>
+                  <p className="font-medium" style={{ color: C.red }}>{r.k}</p>
+                  <p className="text-ink-soft leading-relaxed">{r.v}</p>
+                </RevealItem>
+              ))}
+            </RevealGroup>
           </Reveal>
-          <div className="mt-14">
-            <NoteSystem fontClass={vazir.className} notes={notes} />
+          <Reveal className="order-1 mx-auto w-[250px] sm:w-[290px] lg:order-2 lg:col-span-4 lg:col-start-9" delay={0.08}>
+            <IPhoneShot alt="The appreciation composer: recipient, message, values, badge, coins and a private switch" className="[&_img]:aspect-[375/812] [&_img]:object-cover [&_img]:object-top" height={1652} sizes="290px" src={`${IMG}/v2-m-appreciate.webp`} width={750} />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Social layer */}
+      <section className="py-24">
+        <div className={wrap}>
+          <Chapter label="The social layer" n="06" title="A feed needs rules, not just posts.">
+            <p>Once people can post and comment at work, every interaction needs a clear owner. These are the rules I wrote beside the screens.</p>
+          </Chapter>
+          <div className="mt-14 grid gap-12 lg:grid-cols-12 lg:items-start">
+            <Reveal className="lg:col-span-7">
+              <MacBook>
+                <div className="relative aspect-[16/10] overflow-y-auto overscroll-contain">
+                  <Image alt="A post opened in the feed, with comments, a quoted reply and emoji reactions" className="block h-auto w-full" height={2140} sizes="(min-width: 1024px) 55vw, 100vw" src={`${IMG}/v2-d-post-comments.webp`} width={2684} />
+                </div>
+              </MacBook>
+              <p className="mt-3 font-mono text-[0.7rem] text-ink-soft">Scroll inside the screen.</p>
+            </Reveal>
+            <RevealGroup className="space-y-3 lg:col-span-5">
+              {socialRules.map((r, i) => (
+                <RevealItem className="rounded-2xl border border-rule bg-paper p-5" key={r.t}>
+                  <p className="flex items-baseline gap-3 font-medium"><span className="font-mono text-signal text-xs">0{i + 1}</span>{r.t}</p>
+                  <p className="mt-2 text-ink-soft text-sm leading-relaxed">{r.b}</p>
+                </RevealItem>
+              ))}
+            </RevealGroup>
           </div>
         </div>
       </section>
 
-      {/* 05 · Features */}
-      <section className="border-rule border-t bg-paper-2/60 py-24">
-        <div className={wrap}>
-          <Chapter label="Features" n="06" title="Every way to take part, one tap from the feed.">
-            <p>Each feature earns coins, and every page follows the same pattern: what it is, what you get, one clear action. Pick a page.</p>
-          </Chapter>
-          <div className="mt-12">
-            <PageSwitcher accent={C.red} altSuffix="in Kudos" pages={featurePages} />
-          </div>
+      {/* Dark mode */}
+      <section className="py-24 text-white" style={{ background: "#0F1922" }}>
+        <div className={cn(wrap, "grid gap-10 lg:grid-cols-12")}>
+          <Reveal className="lg:col-span-4">
+            <p className="font-mono text-[#ffb3c0] text-[0.78rem] uppercase tracking-[0.06em]"><span className="text-white">06b</span> · Dark mode</p>
+            <h2 className="mt-4 font-display text-4xl leading-[1.05]">The same feed, after hours.</h2>
+            <p className="mt-6 text-white/70 leading-relaxed">
+              Version 2 added a dark theme, switched from the moon in the header. Each company’s logo sits on a white chip so it stays legible on navy.
+              Drag to compare.
+            </p>
+          </Reveal>
+          <Reveal className="lg:col-span-8" delay={0.1}>
+            <BeforeAfter accent={C.red} after={`${IMG}/v2-d-dark-mode.webp`} afterAlt="The Kudos feed in dark mode" afterLabel="Dark" before={`${IMG}/feed.webp`} beforeAlt="The Kudos feed in light mode" beforeLabel="Light" height={2140} width={2684} />
+          </Reveal>
         </div>
       </section>
 
@@ -413,74 +438,25 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
             ))}
           </RevealGroup>
           <p className="mt-4 font-mono text-[0.72rem] text-ink-soft">Templates from my note in the file, translated. Anything else falls back to a plain version of the same dialog.</p>
-        </div>
-      </section>
-
-      {/* 06 · First-run guide */}
-      <section className="py-24">
-        <div className={wrap}>
-          <Chapter label="First run" n="07" title="A guide that gets a company set up on its own.">
-            <p>A company can create its Kudos workspace for free and invite its people itself. I designed a five-step guide that spotlights one area at a time, and wrote its copy, for managers and staff alike.</p>
-          </Chapter>
-          <div className="mt-14">
-            <GuideTour accent={C.red} steps={guide} />
-          </div>
-        </div>
-      </section>
-
-      {/* 07 · Onboarding */}
-      <section className="border-rule border-t bg-paper-2/60 py-24">
-        <div className={cn(wrap, "grid items-start gap-12 lg:grid-cols-12")}>
-          <Reveal className="lg:col-span-5">
-            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">08</span> · Onboarding</p>
-            <h2 className="mt-4 font-display text-4xl leading-[1.05]">A new hire’s first week, as a checklist.</h2>
-            <p className="mt-6 text-ink-soft leading-relaxed">HR ticks off what a new colleague needs and fills in the details once. Each item can be switched on or off per hire.</p>
-            <ul className="mt-6 space-y-2">
-              {onboardingItems.map((it) => (
-                <li className="flex items-start gap-3" key={it}>
-                  <span className="mt-1 grid size-4 shrink-0 place-items-center rounded text-[0.6rem] text-white" style={{ background: C.red }}>✓</span>
-                  <span>{it}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-          <Reveal className="lg:col-span-7" delay={0.08}>
-            <div className="max-h-[640px] overflow-y-auto overscroll-contain rounded-2xl shadow-[0_30px_60px_-30px_rgb(0_0_0/0.35)] ring-1 ring-black/10 [scrollbar-width:thin]">
-              <Image alt="The onboarding checklist HR fills in for a new hire" className="block h-auto w-full" height={2658} sizes="(min-width: 1024px) 55vw, 100vw" src={`${IMG}/onboarding.webp`} width={2560} />
-            </div>
-            <p className="mt-3 font-mono text-[0.7rem] text-ink-soft">Scroll inside the frame. Sample logins are blurred.</p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 08 · HR dashboard */}
-      <section className="py-24 text-white" style={{ background: C.ink }}>
-        <div className={wrap}>
-          <Chapter dark label="The HR side" n="09" title="Four questions, one dashboard.">
-            <p>I gathered ten admin and analytics dashboards as references for how others group numbers and charts. The result is organised around four questions HR keeps asking.</p>
-          </Chapter>
-          <div className="mt-14 grid gap-12 lg:grid-cols-12 lg:items-center">
-            <Reveal className="lg:col-span-7">
+          <div className="mt-16 grid items-center gap-10 lg:grid-cols-12">
+            <Reveal className="lg:col-span-4">
+              <h3 className="font-display text-3xl leading-tight">And somewhere to spend them.</h3>
+              <p className="mt-4 text-ink-soft leading-relaxed">Coins turn into real rewards in the company marketplace: photos, what you get, how long it’s valid, how many are left, and the price in coins on one red button.</p>
+            </Reveal>
+            <Reveal className="lg:col-span-8" delay={0.08}>
               <MacBook>
-                <Image alt="The Kudos management dashboard: take-up, active users, finances, surveys, mood and monthly activity" className="block h-auto w-full" height={2124} sizes="(min-width: 1024px) 55vw, 100vw" src={`${IMG}/admin-dashboard.webp`} width={2684} />
+                <Image alt="A marketplace item: a park ticket with photos, validity, stock and a Buy with 10 coins button" className="block h-auto w-full" height={1800} sizes="(min-width: 1024px) 60vw, 100vw" src={`${IMG}/v2-d-marketplace-product.webp`} width={2684} />
               </MacBook>
             </Reveal>
-            <RevealGroup className="space-y-4 lg:col-span-5">
-              {dashboardQuestions.map((d, i) => (
-                <RevealItem className="rounded-2xl border border-white/12 bg-white/[0.04] p-5" key={d.q}>
-                  <p className="flex items-baseline gap-3 font-display text-xl"><span className="font-mono text-[#ffb3c0] text-xs">0{i + 1}</span>{d.q}</p>
-                  <p className="mt-2 text-sm text-white/70 leading-relaxed">{d.a}</p>
-                </RevealItem>
-              ))}
-            </RevealGroup>
           </div>
         </div>
       </section>
 
+      {/* Admin */}
       {
         <section className="py-24">
           <div className={wrap}>
-            <Chapter label="Admin" n="10" title="People, groups and permissions.">
+            <Chapter label="Admin" n="10" title="Running it: the admin side.">
               <p>Behind every feature sits a module HR controls, plus the pages that decide who can do what. Pick a page.</p>
             </Chapter>
             <div className="mt-12">
@@ -517,29 +493,14 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
         </div>
       </section>
 
-      {/* 10 · Mobile */}
+      {/* Mobile */}
       <section className="border-rule border-t bg-paper-2/60 py-24">
-        <div className={cn(wrap, "grid items-center gap-12 lg:grid-cols-12")}>
-          <Reveal className="lg:col-span-5">
-            <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">11</span> · Mobile</p>
-            <h2 className="mt-4 font-display text-4xl leading-[1.05]">The same day, in a pocket.</h2>
-            <p className="mt-6 text-ink-soft leading-relaxed">
-              On a phone, the side menu becomes a bottom bar (Home, Marketplace, Colleagues, Settings) and each section turns into a swipeable row, so
-              surveys, events and gift cards stay one thumb away.
-            </p>
-          </Reveal>
-          <div className="flex items-start justify-center gap-4 lg:col-span-7">
-            {[
-              { src: "m-home", h: 2606, label: "v1 · Home" },
-              { src: "feed-mobile", h: 1624, label: "v2 · Feed" },
-              { src: "market-mobile", h: 1624, label: "Marketplace" },
-              { src: "wallet-mobile", h: 1624, label: "Wallet" },
-            ].map((m, i) => (
-              <Reveal className={cn("w-1/4 max-w-[190px]", i % 2 === 1 && "translate-y-8")} delay={i * 0.06} key={m.src}>
-                <IPhoneShot alt={`Kudos ${m.label.toLowerCase()} on mobile`} className="[&_img]:aspect-[375/812] [&_img]:object-cover [&_img]:object-top" height={m.h} sizes="190px" src={`${IMG}/${m.src}.webp`} width={750} />
-                <p className="mt-3 text-center font-mono text-[0.7rem] text-ink-soft uppercase">{m.label}</p>
-              </Reveal>
-            ))}
+        <div className={wrap}>
+          <Chapter label="Mobile" n="11" title="Version 2, in your pocket.">
+            <p>The latest mobile app: a three-tab bar, a floating button for posting and saying thanks, and every feature from the web. Pick a screen.</p>
+          </Chapter>
+          <div className="mt-14">
+            <ScreenTour accent={C.red} screens={tour} />
           </div>
         </div>
         <div className={cn(wrap, "mt-24")}>
@@ -547,7 +508,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
             <p className="font-mono text-[0.78rem] text-ink-soft uppercase tracking-[0.06em]"><span className="text-signal">11b</span> · The unhappy paths</p>
             <h3 className="mt-4 font-display text-3xl">Designed too: what people see when things go wrong.</h3>
           </Reveal>
-          <div className="mt-10 grid items-end gap-8 md:grid-cols-[2fr_1fr_1fr]">
+          <div className="mt-10 grid items-end gap-8 md:grid-cols-[2fr_1fr]">
             <Reveal>
               <MacBook>
                 <Image alt="A 404 page: the page you’re looking for wasn’t found, with a button back home" className="block h-auto w-full" height={1800} sizes="(min-width: 768px) 45vw, 100vw" src={`${IMG}/error-404.webp`} width={2880} />
@@ -557,10 +518,6 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
             <Reveal className="mx-auto w-[200px]" delay={0.06}>
               <IPhoneShot alt="Offline screen: your device isn’t connected to the internet, with a Retry button" height={1852} sizes="200px" src={`${IMG}/error-offline-mobile.webp`} width={856} />
               <p className="mt-3 text-center font-mono text-[0.7rem] text-ink-soft uppercase">Offline</p>
-            </Reveal>
-            <Reveal className="mx-auto w-[200px]" delay={0.12}>
-              <IPhoneShot alt="A skeleton of the mobile home while it loads" className="[&_img]:aspect-[375/812] [&_img]:object-cover [&_img]:object-top" height={2494} sizes="200px" src={`${IMG}/skeleton-mobile.webp`} width={750} />
-              <p className="mt-3 text-center font-mono text-[0.7rem] text-ink-soft uppercase">Loading</p>
             </Reveal>
           </div>
         </div>
@@ -616,8 +573,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
                 <li>Version 2: the social-network redesign</li>
                 <li>Employee side, web and mobile</li>
                 <li>HR admin and dashboard</li>
-                <li>First-run guide and onboarding</li>
-                <li>Design system and note system</li>
+                                <li>Design system and handoff notes</li>
               </ul>
             </Reveal>
             <Reveal className="rounded-2xl border border-white/30 p-7" delay={0.08}>
