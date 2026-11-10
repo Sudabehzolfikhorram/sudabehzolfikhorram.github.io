@@ -7,7 +7,7 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 import type { ScreenId } from "@/components/case/mockups";
 
-export type Layout = "split" | "duo" | "journey" | "editorial" | "system" | "novin" | "brief" | "kaaryar" | "atlas" | "tamdid";
+export type Layout = "split" | "duo" | "journey" | "editorial" | "system" | "novin" | "brief" | "kaaryar" | "atlas" | "tamdid" | "kudos";
 
 export type CaseStudy = {
   slug: string;
@@ -274,61 +274,45 @@ const all: CaseStudy[] = [
   {
     slug: "kudos",
     name: "Kudos",
-    layout: "duo",
-    hue: "#e08a1e",
+    layout: "kudos",
+    hue: "#e6294d",
     featured: true,
-    tagline: "An HR and employee-engagement platform, with an admin side engineers could build without guessing.",
+    tagline: "Employee recognition that people actually use, and that HR can see working.",
     summary:
-      "Kudos helps companies engage and reward their people. At Novaday I designed its B2B admin panel on a Tailwind-based design system, documented every flow and page’s logic for engineering, and worked closely with PM and QA. The same team also built Remeet, which I designed too.",
+      "Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events, challenges and onboarding in the same place. At Novaday I designed the employee side and the HR admin, a first-run guide, and the shared Tailwind-based design system, documenting every page’s logic for engineering alongside PM and QA.",
     category: "B2B SaaS · HR",
     period: { start: "2024-09", end: "2025-06" },
-    status: "Shipped",
+    status: "Live",
     meta: {
       role: "Product Designer",
-      engagement: "Full-time · Hybrid",
-      platform: "Web & mobile",
+      engagement: "Novaday · Full-time · Hybrid",
+      platform: "Web, responsive to mobile",
       tools: ["Figma", "Tailwind-based design system"],
     },
     links: [
+      { label: "kudos.ir", href: "https://kudos.ir/" },
       { label: "novaday.ir", href: "https://novaday.ir/" },
-      { label: "Kudos panel", href: "https://panel.kudos.ir/" },
-      { label: "remeet.ir", href: "https://remeet.ir/" },
     ],
-    cover: "kudos-panel",
-    thumbnail: { image: `${BASE}/work/kudos/thumb.svg`, alt: "Kudos: a recognition card and a leaderboard of the most recognised teams" },
+    cover: { image: `${BASE}/work/kudos/cover.webp`, alt: "Kudos: the HR dashboard and the mobile home on a red background" },
+    thumbnail: { image: `${BASE}/work/kudos/cover.webp`, alt: "Kudos: the HR dashboard and the mobile home on a red background" },
+    gallery: [
+      { image: `${BASE}/work/kudos/home.webp`, alt: "Kudos home for an employee", device: "web", width: 2560, height: 1800, label: "Home" },
+      { image: `${BASE}/work/kudos/admin-dashboard.webp`, alt: "Kudos HR dashboard", device: "web", width: 2684, height: 2124, label: "HR dashboard" },
+      { image: `${BASE}/work/kudos/m-home.webp`, alt: "Kudos home on mobile", device: "phone", width: 750, height: 2606, label: "Mobile" },
+    ],
     context:
-      "Two products for business customers, built by the same team. A shared, Tailwind-based design system kept them consistent and made admin workflows faster to design and build.",
-    scope: ["Kudos admin panel", "Remeet web & mobile", "Flow and page-logic documentation", "Close work with PM and QA"],
+      "A screen isn’t finished until its rules are written down. In a product this size, the design file had to work as a shared workspace for engineering, PM and QA.",
+    scope: ["Employee side", "HR admin & dashboard", "First-run guide", "Onboarding checklist", "Designer-note system", "Tailwind-based design system"],
     highlights: [
-      { title: "Documented page logic", body: "Clear documentation of flows and page logic improved coordination between design and development." },
-      { title: "Biometric access", body: "Fingerprint and RFID access for meetings and spaces, in a multilingual product." },
-      { title: "Outlook integration", body: "Bookings sync with Outlook, automating reservations and making better use of resources." },
+      { title: "Notes as a system", body: "Six kinds of designer note, so logic, copy and review feedback each have a place." },
+      { title: "A self-serve start", body: "A five-step guide that gets a company set up without help." },
+      { title: "A dashboard for HR", body: "Take-up, morale, money and trends, on one screen." },
     ],
-    products: [
-      {
-        name: "Kudos",
-        body: "Kudos is an employee recognition and engagement platform. On its B2B admin panel I created clear documentation of flows and page logic to improve coordination between design and development, enhanced the UI with refined visuals, and aligned closely with PM and QA for smooth delivery.",
-        points: ["Flow documentation", "Page logic", "Refined UI", "PM & QA alignment"],
-        screen: "kudos-panel",
-        link: "https://panel.kudos.ir/",
-      },
-      {
-        name: "Remeet",
-        body: "A multilingual web and mobile access system with biometric (fingerprint/RFID) features for meeting and access management, integrated with Outlook to automate bookings and optimise resource usage.",
-        points: ["Multilingual", "Fingerprint & RFID", "Meeting rooms", "Outlook sync"],
-        screen: "remeet-booking",
-        link: "https://remeet.ir/",
-      },
-    ],
-    screens: [
-      { id: "kudos-panel", title: "Kudos · admin panel", caption: "Admin workflows on the shared Tailwind-based system." },
-      { id: "remeet-booking", title: "Remeet · bookings", caption: "Room bookings synced with Outlook." },
-      { id: "remeet-access", title: "Remeet · access", caption: "Fingerprint and RFID check-in on mobile." },
-    ],
+    screens: [],
     facts: [
-      { value: "2", label: "B2B products designed" },
-      { value: "1", label: "Tailwind-based design system across both" },
-      { value: "Web + mobile", label: "Multilingual access system" },
+      { value: "~500", label: "People using it, by my count" },
+      { value: "70+", label: "Pages in the design file" },
+      { value: "2", label: "Products on one design system" },
     ],
   },
   {

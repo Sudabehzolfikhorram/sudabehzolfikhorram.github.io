@@ -10,6 +10,7 @@ import { KaaryarLayout } from "@/components/case/layouts/kaaryar";
 import { SplitLayout } from "@/components/case/layouts/split";
 import { SystemLayout } from "@/components/case/layouts/system";
 import { NovinLayout } from "@/components/case/novin/novin-layout";
+import { KudosLayout } from "@/components/case/kudos/kudos-layout";
 import { TamdidLayout } from "@/components/case/tamdid/tamdid-layout";
 import { type CaseStudy, caseStudies, getCaseStudy, type Layout } from "@/lib/case-studies";
 
@@ -25,6 +26,7 @@ const layouts: Record<Layout, (p: { cs: CaseStudy }) => React.ReactNode> = {
   kaaryar: KaaryarLayout,
   atlas: AtlasLayout,
   tamdid: TamdidLayout,
+  kudos: KudosLayout,
 };
 
 export function generateStaticParams() {
