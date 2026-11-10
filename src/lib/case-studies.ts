@@ -7,7 +7,7 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 import type { ScreenId } from "@/components/case/mockups";
 
-export type Layout = "split" | "duo" | "journey" | "editorial" | "system" | "novin" | "brief" | "kaaryar" | "atlas";
+export type Layout = "split" | "duo" | "journey" | "editorial" | "system" | "novin" | "brief" | "kaaryar" | "atlas" | "tamdid";
 
 export type CaseStudy = {
   slug: string;
@@ -232,49 +232,43 @@ const all: CaseStudy[] = [
   {
     slug: "tamdid",
     name: "Tamdid",
-    layout: "journey",
+    layout: "tamdid",
     featured: true,
-    hue: "#5b6fd6",
-    tagline: "Subscriptions, wallet and payments in one app, with a little game that keeps people on top of their renewals.",
+    hue: "#6179d9",
+    tagline: "Renewals, wallets and a monthly league, for people who top up for themselves and for everyone else.",
     summary:
-      "Tamdid brings subscriptions, a wallet and payments into one product, with gamification that makes staying on top of renewals feel rewarding. I was its only designer, from the first idea to development: mobile first, then web, on a design system of its own.",
+      "Tamdid sells mobile charge, internet packages and game credit, for yourself or for others, paid from one wallet. Managers fund their contacts’ wallets, approve requests and keep track of who owes what, and a monthly league rewards keeping up. I was its only designer, from the first idea to development: mobile first, then web, tablet and English, on a design system of its own.",
     category: "Fintech · Mobile & web",
     period: { start: "2025-08", end: "2026-06" },
     status: "In development",
     meta: {
       role: "Solo product designer",
       engagement: "Remote",
-      platform: "Mobile first, then web",
+      platform: "Mobile first, then web and tablet",
       tools: ["Figma", "FigJam"],
     },
-    cover: "tamdid-home",
+    cover: { image: `${BASE}/work/tamdid/cover.webp`, alt: "Tamdid: three phone screens on a blue gradient, showing the league, home and payment" },
+    thumbnail: { image: `${BASE}/work/tamdid/cover.webp`, alt: "Tamdid: three phone screens on a blue gradient, showing the league, home and payment" },
     gallery: [
-      { image: `${BASE}/work/tamdid/mobile-home.webp`, alt: "Tamdid home on mobile: wallet balance, quick actions, live prices and recent transactions", device: "phone", width: 375, height: 1028, label: "Home" },
-      { image: `${BASE}/work/tamdid/mobile-wallet.webp`, alt: "Tamdid wallet breakdown in a bottom sheet, by person", device: "phone", width: 375, height: 812, label: "Wallet breakdown" },
-      { image: `${BASE}/work/tamdid/mobile-points.webp`, alt: "Tamdid points balance with the Tamdid League rewards card", device: "phone", width: 375, height: 812, label: "Points & league" },
-      { image: `${BASE}/work/tamdid/web-light.webp`, alt: "Tamdid web dashboard in light mode with balances and a transactions table", device: "web", width: 1440, height: 1133, label: "Web · light" },
+      { image: `${BASE}/work/tamdid/m-dashboard.webp`, alt: "Tamdid home on mobile: wallet balance, quick actions, live rates and transactions", device: "phone", width: 750, height: 2056, label: "Home" },
+      { image: `${BASE}/work/tamdid/f-pay.webp`, alt: "Paying from several wallets, in a set order", device: "phone", width: 750, height: 1624, label: "Payment" },
+      { image: `${BASE}/work/tamdid/m-league.webp`, alt: "Profile with the Tamdid League, daily challenge and missions", device: "phone", width: 750, height: 2164, label: "League" },
+      { image: `${BASE}/work/tamdid/web-light.webp`, alt: "Tamdid web dashboard in light mode", device: "web", width: 1440, height: 1133, label: "Web · light" },
       { image: `${BASE}/work/tamdid/web-dark.webp`, alt: "Tamdid web dashboard in dark mode", device: "web", width: 1440, height: 1133, label: "Web · dark" },
     ],
-    thumbnail: { image: `${BASE}/work/tamdid/thumb.webp`, alt: "Tamdid: the product’s Persian wordmark" },
     context:
-      "Subscriptions renew quietly and payments are scattered across cards and services. Tamdid brings subscriptions, wallet and payments into one place, and uses gamification to make staying on top of them feel rewarding.",
-    scope: ["Subscriptions overview & renewals", "Wallet & top-ups", "Payments", "Gamification", "Custom design system"],
+      "Most purchases are repeats: the same number, the same package, often for the same person. Tamdid is designed for the second purchase, not the first.",
+    scope: ["Information architecture", "Purchase flows", "Wallet & payments", "Manager tools", "Gamification", "Design system", "Web, tablet & English"],
     highlights: [
-      { title: "Subscriptions in one view", body: "Every active subscription, its cost and its next renewal date on a single screen." },
-      { title: "Wallet-first payments", body: "Top up once and pay renewals from the wallet, with clear confirmation at each step." },
-      { title: "Gamification", body: "Streaks and rewards that make managing money feel like progress, not a chore." },
+      { title: "Repeat in one tap", body: "Previous purchases sit at the top of every buy screen, each with a Renew button." },
+      { title: "Pay from several wallets", body: "Choose which wallets to use and see the order they’ll be charged in." },
+      { title: "A monthly league", body: "Points, challenges and missions earned by doing what Tamdid is for." },
     ],
-    screens: [
-      { id: "tamdid-home", title: "Home", caption: "Monthly spend and upcoming renewals at a glance." },
-      { id: "tamdid-sub", title: "Subscription", caption: "One subscription’s plan, history and renewal settings." },
-      { id: "tamdid-wallet", title: "Wallet", caption: "Balance, top-ups and recent activity." },
-      { id: "tamdid-pay", title: "Payment", caption: "Paying a renewal from the wallet, with a clear confirmation." },
-      { id: "tamdid-rewards", title: "Rewards", caption: "Gamification: streaks, levels and rewards." },
-    ],
+    screens: [],
     facts: [
       { value: "Solo", label: "Designer, from idea to development" },
-      { value: "2", label: "Platforms: mobile first, then web" },
-      { value: "Light + dark", label: "Themes in its own design system" },
+      { value: "12", label: "Feature areas designed" },
+      { value: "3", label: "Layouts: mobile, web, tablet" },
     ],
   },
   {

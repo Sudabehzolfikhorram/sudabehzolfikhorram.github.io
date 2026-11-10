@@ -292,8 +292,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["tamdid", "تمدید"],
     answer: {
-      en: "Tamdid is a fintech product for subscriptions, a wallet and payments, with gamification. Sudabeh designed it alone, mobile first and then web, with its own design system. It’s now in development.",
-      fa: "تمدید یک محصول فین‌تک برای اشتراک‌ها، کیف پول و پرداخت است، همراه با گیمیفیکیشن. سودابه به‌تنهایی طراحی‌اش کرد؛ اول موبایل و بعد وب، با دیزاین سیستم اختصاصی. الان در مرحله‌ی توسعه است.",
+      en: "Tamdid is a fintech product for renewals: mobile charge, internet packages and game credit, for yourself or for others, paid from one wallet. Managers fund their contacts’ wallets and track who owes what, and a monthly league rewards keeping up. Sudabeh designed it alone, mobile first, then web, tablet and English, with its own design system. It’s now in development.",
+      fa: "تمدید یک محصول فین‌تک برای تمدید است: شارژ، بسته‌ی اینترنت و یوسی، برای خودت یا هدیه به دیگران، با پرداخت از کیف پول. مدیرها کیف پول مخاطبانشان را شارژ می‌کنند و حساب طلب و بدهی را دارند، و یک لیگ ماهانه به کاربرهای فعال امتیاز می‌دهد. سودابه به‌تنهایی طراحی‌اش کرد؛ اول موبایل، بعد وب، تبلت و نسخه‌ی انگلیسی، با دیزاین سیستم اختصاصی. الان در مرحله‌ی توسعه است.",
     },
     link: { href: "/work/tamdid", label: { en: "Tamdid case study", fa: "کیس استادی تمدید" } },
   },

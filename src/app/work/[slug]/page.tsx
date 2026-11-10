@@ -10,6 +10,7 @@ import { KaaryarLayout } from "@/components/case/layouts/kaaryar";
 import { SplitLayout } from "@/components/case/layouts/split";
 import { SystemLayout } from "@/components/case/layouts/system";
 import { NovinLayout } from "@/components/case/novin/novin-layout";
+import { TamdidLayout } from "@/components/case/tamdid/tamdid-layout";
 import { type CaseStudy, caseStudies, getCaseStudy, type Layout } from "@/lib/case-studies";
 
 // Each project gets its own page structure, chosen by `layout` in the data.
@@ -23,6 +24,7 @@ const layouts: Record<Layout, (p: { cs: CaseStudy }) => React.ReactNode> = {
   brief: BriefLayout,
   kaaryar: KaaryarLayout,
   atlas: AtlasLayout,
+  tamdid: TamdidLayout,
 };
 
 export function generateStaticParams() {
