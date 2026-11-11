@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "cv": "node scripts/build-cv.mjs"
+    "cv": "node scripts/build-cv.mjs",
+    "test:assistant": "node --no-warnings scripts/test-assistant.mjs"
   },
   "dependencies": {
     "animejs": "^4.5.0",

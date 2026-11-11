@@ -6,27 +6,35 @@ import Link from "next/link";
 import { type FormEvent, type KeyboardEvent, useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { answer, detectLang, type Lang, SUGGESTIONS } from "@/lib/assistant";
+import { askRemote, type Turn } from "@/lib/assistant-remote";
 import { checkContact, sendInBackground, sendMessage } from "@/lib/contact";
 import { site } from "@/lib/content";
 import { isTouchFirst, useScrollLock } from "@/lib/use-scroll-lock";
 import { cn } from "@/lib/utils";
 
 /**
- * "Ask about me": a small assistant that answers short questions in Persian
- * or English from Sudabeh's CV. It says so up front, never pretends to be her,
- * and when it isn't sure it offers to send the question to her, with an
- * optional way to reply, in one self-contained message.
+ * "Ask about me": an assistant that answers questions about Sudabeh in Persian
+ * or English, interview-style. Answers come from the AI backend when it's set
+ * up (see docs/contact-form.gs), and from the built-in answers in assistant.ts
+ * otherwise. Either way it says what it is, never pretends to be her, and when
+ * it can't answer it sends the question to her, with an optional way to reply.
  */
 
 // Unanswered questions go to Sudabeh straight away; the card only asks whether the visitor wants a reply.
 type Forward = { question: string; state: "sending" | "sent" | "replying" | "done" | "failed" };
 type Bubble = { id: number; from: "bot" | "me"; text: string; links?: { href: string; label: string }[]; forward?: Forward };
-type Saved = { lang: Lang; bubbles: Bubble[]; forwards: number };
+type Saved = { lang: Lang; bubbles: Bubble[]; forwards: number; synced?: number };
 
-const KEY = "assistant-v1";
+const KEY = "assistant-v2";
 const MAX_FORWARDS = 5;
-const MAX_LEN = 500;
+const MAX_LEN = 600;
+// A short beat before a reply appears, so an instant built-in answer doesn't feel abrupt.
 const TYPING_MS = 550;
+// When the AI takes longer than this, say it's still working on it.
+const SLOW_MS = 5000;
+// The last few exchanges go along with each question, so follow-ups ("and how long did that take?") make sense.
+const HISTORY_TURNS = 8;
+const RTL = /[؀-ۿ]/;
 const POP: Transition = { type: "spring", stiffness: 520, damping: 34 };
 const noop = () => () => {};
 
@@ -34,36 +42,41 @@ const UI: Record<Lang, Record<string, string>> = {
   en: {
     open: "Ask about me",
     title: "Ask about Sudabeh",
-    subtitle: "An assistant · answers from her CV",
-    hello: "Hi! I’m Sudabeh’s assistant. Ask me something short about her work, in English or Persian. If I’m not sure, I’ll pass your question to her.",
-    placeholder: "Ask a short question…",
+    subtitle: "Answers from her portfolio",
+    hello: "Hi! I’m Sudabeh’s assistant. Ask me anything about her work, the way you would in an interview, in English or Persian. If I don’t know the answer, I’ll pass your question to her.",
+    placeholder: "Ask anything about her work…",
+    slow: "Putting together a proper answer…",
     sending: "Sending your question to Sudabeh…",
-    forwardTitle: "Sent to Sudabeh. Want a reply?",
+    forwardTitle: "Sent to Sudabeh. Want her reply?",
     contact: "Email, phone or @telegram",
-    send: "Send contact",
+    send: "Send",
     noThanks: "No thanks",
     sentReply: "Thanks! She’ll reply at",
     failed: `That didn’t go through. You can email her at ${site.email}.`,
-    limit: "You’ve sent several questions already. For more, please email her directly.",
-    dismissed: "No problem. Anything else?",
+    limit: "You’ve sent several questions to her already. For anything else, email her directly.",
+    dismissed: "No problem. What else would you like to know?",
     close: "Close",
+    send_aria: "Send question",
     lang: "فارسی",
   },
   fa: {
+    open: "از من بپرسید",
     title: "درباره‌ی سودابه بپرسید",
-    subtitle: "دستیار · پاسخ از روی رزومه",
-    hello: "سلام! من دستیار سودابه هستم. سؤال کوتاهی درباره‌ی کارش بپرسید، فارسی یا انگلیسی. اگر مطمئن نباشم، سؤال‌تان را برای خودش می‌فرستم.",
-    placeholder: "سؤال کوتاه‌تان را بنویسید…",
+    subtitle: "پاسخ از روی رزومه و نمونه‌کارها",
+    hello: "سلام! من دستیار سودابه هستم. هر سؤالی درباره‌ی کارش دارید، مثل یک مصاحبه بپرسید؛ فارسی یا انگلیسی. اگر جوابش را ندانم، سؤال‌تان را برای خودش می‌فرستم.",
+    placeholder: "درباره‌ی کار و سوابقش بپرسید…",
+    slow: "دارم جواب دقیقی آماده می‌کنم…",
     sending: "در حال فرستادن سؤال‌تان برای سودابه…",
-    forwardTitle: "برای سودابه فرستاده شد. جواب می‌خواهید؟",
+    forwardTitle: "برای سودابه فرستاده شد. جوابش را می‌خواهید؟",
     contact: "ایمیل، شماره یا آیدی تلگرام",
     send: "ارسال",
     noThanks: "نه، ممنون",
     sentReply: "ممنون! جواب را می‌فرستد به",
     failed: `ارسال نشد. می‌توانید به ${site.email} ایمیل بزنید.`,
-    limit: "چند سؤال فرستاده‌اید. برای سؤال‌های بیشتر لطفاً مستقیم ایمیل بزنید.",
-    dismissed: "باشه. سؤال دیگری دارید؟",
+    limit: "چند سؤال برایش فرستاده‌اید. برای سؤال‌های بیشتر، لطفاً مستقیم ایمیل بزنید.",
+    dismissed: "باشه. چه چیز دیگری می‌خواهید بدانید؟",
     close: "بستن",
+    send_aria: "ارسال سؤال",
     lang: "English",
   },
 };
@@ -146,10 +159,15 @@ export function Assistant() {
   const [lang, setLang] = useState<Lang>("en");
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
   const [typing, setTyping] = useState(false);
+  const [slow, setSlow] = useState(false);
   const [input, setInput] = useState("");
   const [forwards, setForwards] = useState(0);
   const [restored, setRestored] = useState(false);
+  // Read when a reply arrives, after an await: refs, not state, so the values are current.
+  const forwardsRef = useRef(0);
   const nextId = useRef(1);
+  // The last bubble Sudabeh has already received, so nothing is sent twice (kept across page loads).
+  const synced = useRef(0);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
@@ -165,7 +183,10 @@ export function Assistant() {
         // A send interrupted by a page change can be retried rather than stuck on "sending".
         setBubbles(saved.bubbles.map((b) => (b.forward && ["sending", "replying"].includes(b.forward.state) ? { ...b, forward: { ...b.forward, state: "sent" } } : b)));
         setForwards(saved.forwards);
+        forwardsRef.current = saved.forwards;
         nextId.current = Math.max(0, ...saved.bubbles.map((b) => b.id)) + 1;
+        // Without this, a restored chat would be emailed to Sudabeh again when the panel closes.
+        synced.current = saved.synced ?? Math.max(0, ...saved.bubbles.map((b) => b.id));
       }
       setRestored(true);
     });
@@ -175,7 +196,7 @@ export function Assistant() {
   useEffect(() => {
     if (!restored) return;
     try {
-      sessionStorage.setItem(KEY, JSON.stringify({ lang, bubbles, forwards } satisfies Saved));
+      sessionStorage.setItem(KEY, JSON.stringify({ lang, bubbles, forwards, synced: synced.current } satisfies Saved));
     } catch {
       // Private mode: the chat just won't survive a page change.
     }
@@ -217,52 +238,58 @@ export function Assistant() {
   const patchForward = (id: number, state: Forward["state"]) =>
     setBubbles((all) => all.map((b) => (b.id === id && b.forward ? { ...b, forward: { ...b.forward, state } } : b)));
 
-  const ask = (raw: string) => {
-    const q = raw.trim().slice(0, MAX_LEN);
-    if (!q || typing) return;
-    const qLang = /[؀-ۿ]/.test(q) ? "fa" : /[a-z]/i.test(q) ? "en" : lang;
-    setLang(qLang);
-    setInput("");
-    // An open "want a reply?" card is stale once a new question is asked.
-    setBubbles((all) => all.map((b) => (b.forward?.state === "sent" ? { ...b, forward: { ...b.forward, state: "done" } } : b)));
-    push({ from: "me", text: q });
-    setTyping(true);
-    window.setTimeout(() => {
-      const r = answer(q, qLang === detectLang(q) ? undefined : qLang);
-      const canForward = r.offerForward && forwards < MAX_FORWARDS;
-      const id = push({
-        from: "bot",
-        text: r.offerForward && !canForward ? `${r.text}\n\n${UI[qLang].limit}` : r.text,
-        links: r.links,
-        forward: canForward ? { question: q, state: "sending" } : undefined,
-      });
-      setTyping(false);
-      // Sent straight away, with or without a contact: Sudabeh sees every question she needs to answer.
-      if (canForward) void forward(id, q, qLang);
-    }, TYPING_MS);
-  };
-
   // What's been said so far, for the message Sudabeh receives.
   const transcriptOf = (all: Bubble[]) => all.map((b) => `${b.from === "me" ? "Visitor" : "Assistant"}: ${b.text}`).join("\n");
   const bubblesRef = useRef<Bubble[]>([]);
   useEffect(() => {
     bubblesRef.current = bubbles;
   }, [bubbles]);
-  // The last bubble Sudabeh has already received, so nothing is sent twice.
-  const synced = useRef(0);
 
-  const forward = async (bubbleId: number, question: string, qLang: Lang) => {
-    const all = bubblesRef.current;
+  const ask = async (raw: string) => {
+    const q = raw.trim().slice(0, MAX_LEN);
+    if (!q || typing) return;
+    const qLang: Lang = /[؀-ۿ]/.test(q) ? "fa" : /[a-z]/i.test(q) ? "en" : lang;
+    setLang(qLang);
+    setInput("");
+    // An open "want a reply?" card is stale once a new question is asked.
+    setBubbles((all) => all.map((b) => (b.forward?.state === "sent" ? { ...b, forward: { ...b.forward, state: "done" } } : b)));
+    const history: Turn[] = bubblesRef.current.slice(-HISTORY_TURNS).map((b) => ({ role: b.from === "me" ? "user" : "assistant", text: b.text }));
+    push({ from: "me", text: q });
+    setTyping(true);
+    const slowTimer = window.setTimeout(() => setSlow(true), SLOW_MS);
+    const [remote] = await Promise.all([askRemote(q, history, qLang), new Promise((done) => window.setTimeout(done, TYPING_MS))]);
+    window.clearTimeout(slowTimer);
+    // The AI's answer when it's available; the built-in answers otherwise.
+    const local = remote ? null : answer(q, qLang === detectLang(q) ? undefined : qLang);
+    const reply = remote ?? { text: local!.text, lang: local!.lang, forward: local!.offerForward, links: local!.links };
+    const canForward = reply.forward && forwardsRef.current < MAX_FORWARDS;
+    if (canForward) forwardsRef.current += 1;
+    const id = push({
+      from: "bot",
+      text: reply.forward && !canForward ? `${reply.text}\n\n${UI[reply.lang].limit}` : reply.text,
+      links: reply.links,
+      forward: canForward ? { question: q, state: "sending" } : undefined,
+    });
+    setLang(reply.lang);
+    setTyping(false);
+    setSlow(false);
+    // Sent straight away, with or without a contact: Sudabeh sees every question she needs to answer.
+    if (canForward) void forward(id, q, reply.text, reply.lang);
+  };
+
+  const forward = async (bubbleId: number, question: string, said: string, qLang: Lang) => {
+    const earlier = bubblesRef.current.filter((b) => b.id < bubbleId - 1).slice(-8);
     try {
       await sendMessage({
-        message: `Question from the assistant:\n${question}\n\n— Conversation —\n${transcriptOf(all.slice(-8))}`,
+        message: `Question from the assistant:\n${question}\n\nThe assistant replied:\n${said}${earlier.length ? `\n\n— Earlier in the conversation —\n${transcriptOf(earlier)}` : ""}`,
         contact: "",
         topic: "Assistant question",
       });
       synced.current = Math.max(synced.current, bubbleId);
       patchForward(bubbleId, "sent");
-      setForwards((n) => n + 1);
+      setForwards(forwardsRef.current);
     } catch {
+      forwardsRef.current -= 1;
       patchForward(bubbleId, "failed");
       push({ from: "bot", text: UI[qLang].failed });
     }
@@ -290,6 +317,13 @@ export function Assistant() {
     if (!fresh.some((b) => b.from === "me")) return;
     synced.current = Math.max(...all.map((b) => b.id));
     sendInBackground({ message: `Conversation with the assistant:\n\n${transcriptOf(fresh)}`, contact: "", topic: "Assistant conversation" });
+    // The page may be closing, so save the marker now rather than on the next render.
+    try {
+      const raw = sessionStorage.getItem(KEY);
+      if (raw) sessionStorage.setItem(KEY, JSON.stringify({ ...(JSON.parse(raw) as Saved), synced: synced.current }));
+    } catch {
+      // Private mode: nothing to keep in sync.
+    }
   }, []);
 
   useEffect(() => {
@@ -393,7 +427,8 @@ export function Assistant() {
                           {b.text}
                         </div>
                         {b.links && b.links.length > 0 && (
-                          <div className="mt-1.5 flex flex-wrap gap-1.5">
+                          // Follows the answer's language, so a Persian answer gets right-to-left buttons with arrows that point the right way.
+                          <div className="mt-1.5 flex flex-wrap gap-1.5" dir={RTL.test(b.text) ? "rtl" : "ltr"}>
                             {b.links.map((l) =>
                               l.href.endsWith(".pdf") ? (
                                 <a className="rounded-full border border-rule px-3 py-1 text-signal text-xs hover:border-signal" download href={l.href} key={l.href}>
@@ -401,7 +436,7 @@ export function Assistant() {
                                 </a>
                               ) : (
                                 <Link className="rounded-full border border-rule px-3 py-1 text-signal text-xs hover:border-signal" href={l.href} key={l.href} onClick={() => setOpen(false)}>
-                                  {l.label} →
+                                  {l.label} {RTL.test(b.text) ? "←" : "→"}
                                 </Link>
                               )
                             )}
@@ -421,15 +456,22 @@ export function Assistant() {
                       </motion.div>
                     ))}
                     {typing && (
-                      <motion.div animate={{ opacity: 1 }} className="flex w-fit gap-1 rounded-2xl rounded-bl-md bg-paper-2 px-3.5 py-3" exit={{ opacity: 0 }} initial={{ opacity: 0 }} key="typing">
-                        {[0, 1, 2].map((i) => (
-                          <motion.span
-                            animate={{ y: [0, -3, 0], opacity: [0.4, 1, 0.4] }}
-                            className="size-1.5 rounded-full bg-ink-soft"
-                            key={i}
-                            transition={{ duration: 0.9, repeat: Number.POSITIVE_INFINITY, delay: i * 0.15 }}
-                          />
-                        ))}
+                      <motion.div animate={{ opacity: 1 }} className="flex w-fit items-center gap-2.5 rounded-2xl rounded-bl-md bg-paper-2 px-3.5 py-3" exit={{ opacity: 0 }} initial={{ opacity: 0 }} key="typing">
+                        <span className="flex gap-1">
+                          {[0, 1, 2].map((i) => (
+                            <motion.span
+                              animate={{ y: [0, -3, 0], opacity: [0.4, 1, 0.4] }}
+                              className="size-1.5 rounded-full bg-ink-soft"
+                              key={i}
+                              transition={{ duration: 0.9, repeat: Number.POSITIVE_INFINITY, delay: i * 0.15 }}
+                            />
+                          ))}
+                        </span>
+                        {slow && (
+                          <motion.span animate={{ opacity: 1 }} className="text-ink-soft text-xs" dir={lang === "fa" ? "rtl" : "ltr"} initial={{ opacity: 0 }}>
+                            {t.slow}
+                          </motion.span>
+                        )}
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -464,7 +506,7 @@ export function Assistant() {
                     value={input}
                   />
                   <button
-                    aria-label="Send"
+                    aria-label={t.send_aria}
                     className={cn(
                       "grid size-11 shrink-0 place-items-center rounded-full transition-colors",
                       input.trim() && !typing ? "bg-signal text-on-signal" : "bg-ink/10 text-ink-soft"
