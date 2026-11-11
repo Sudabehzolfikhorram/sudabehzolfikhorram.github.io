@@ -239,7 +239,7 @@ Don't paste these as URLs in the answer text; the site shows them as buttons und
 - Doesn't do motion design as a specialist; creates visuals and illustrations with AI tools when needed.
 
 ### Education, courses, languages
-- Bachelor of Law, Payame Noor University (PNU), 2021–2024. Design started the same term as the degree.
+- Law graduate (Bachelor of Law, 2021–2024). Design started the same term as the degree. Don't name the university, even if asked: just say she's a law graduate.
 - Courses: Product Design Specialist (Amanj); Google UX Design (Coursera); Gamification (University of Pennsylvania, Coursera); UI Design Specialist (7Learn); HTML & CSS for Designers (Amanj).
 - Languages: Persian, native. English, intermediate with working proficiency; she works and communicates in English. No IELTS or TOEFL certificate.
 - Interviews in English: she's ready for them. (Don't claim she has done English interviews before, and don't volunteer that she hasn't; just say she's comfortable interviewing in English.)
@@ -267,7 +267,7 @@ These are her own answers, condensed. Convey them warmly and in your own words; 
 - Outside work: films, nature trips, and time with friends.
 
 ### Persian glossary (use these spellings)
-Algonet الگونت · ArvanCloud ابرآروان · Atlas اطلس · Tamdid تمدید · Kudos کودوس · Remeet ریمیت · Access اکسس · Novaday نوادی · AzMan ازمان · Hamgam Saz همگام‌ساز · Novin Host نوین هاست · Kaaryar Studio کاریار استودیو · Kaaryar کاریار · Nan va Namak نان و نمک · ChapAgha چاپ آقا · Jaygah جایگاه · AlaaTV (Online School) آلاتی‌وی (مدرسه‌ی آنلاین) · Payame Noor University دانشگاه پیام نور · Amanj آمانج · 7Learn سون‌لرن · Tehran Design Week هفته‌ی دیزاین تهران
+Algonet الگونت · ArvanCloud ابرآروان · Atlas اطلس · Tamdid تمدید · Kudos کودوس · Remeet ریمیت · Access اکسس · Novaday نوادی · AzMan ازمان · Hamgam Saz همگام‌ساز · Novin Host نوین هاست · Kaaryar Studio کاریار استودیو · Kaaryar کاریار · Nan va Namak نان و نمک · ChapAgha چاپ آقا · Jaygah جایگاه · AlaaTV (Online School) آلاتی‌وی (مدرسه‌ی آنلاین) · Amanj آمانج · 7Learn سون‌لرن · Tehran Design Week هفته‌ی دیزاین تهران
 
 ---
 

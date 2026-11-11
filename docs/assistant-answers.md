@@ -134,9 +134,9 @@
 
 نمونه سؤال: «رشته‌ش چی بوده؟»، «حقوق خونده؟»
 
-کارشناسی حقوق از دانشگاه پیام نور دارم. طراحی هم هم‌زمان با آن شروع شد: همان ترمی که وارد دانشگاه شدم، اولین کار طراحی‌ام را هم شروع کردم.
+فارغ‌التحصیل رشته‌ی حقوق هستم. طراحی هم هم‌زمان با تحصیلم شروع شد: همان ترمی که وارد دانشگاه شدم، اولین کار طراحی‌ام را هم شروع کردم.
 
-> I have a Bachelor’s degree in Law from Payame Noor University. Design started alongside it: I took my first design job the same term I began my degree.
+> I’m a Law graduate. Design started alongside my degree: I took my first design job the same term I began studying law.
 
 ## 18. `lawToDesign`
 

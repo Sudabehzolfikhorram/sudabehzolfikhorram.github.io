@@ -179,8 +179,8 @@ export const intents: Intent[] = [
     strong: ["education", "degree", "university", "bachelor", "study", "studied", "major", "college", "law", "تحصیلات", "مدرک", "دانشگاه", "لیسانس", "کارشناسی", "رشته", "حقوق خوندی", "رشته حقوق", "حقوق خونده", "تحصیل", "چی خوندی", "چی خونده", "چی خوندید", "درس خوندی", "tahsilat", "reshte"],
     weak: ["حقوق"],
     answer: {
-      en: "I have a Bachelor’s degree in Law from Payame Noor University. Design started alongside it: I took my first design job the same term I began my degree.",
-      fa: "کارشناسی حقوق از دانشگاه پیام نور دارم. طراحی هم هم‌زمان با آن شروع شد: همان ترمی که وارد دانشگاه شدم، اولین کار طراحی‌ام را هم شروع کردم.",
+      en: "I’m a Law graduate. Design started alongside my degree: I took my first design job the same term I began studying law.",
+      fa: "فارغ‌التحصیل رشته‌ی حقوق هستم. طراحی هم هم‌زمان با تحصیلم شروع شد: همان ترمی که وارد دانشگاه شدم، اولین کار طراحی‌ام را هم شروع کردم.",
     },
   },
   {
