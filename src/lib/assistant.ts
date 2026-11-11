@@ -138,10 +138,10 @@ export const intents: Intent[] = [
   },
   {
     id: "relocation",
-    strong: ["relocate", "relocation", "move abroad", "visa", "work permit", "move to", "مهاجرت", "ریلوکیشن", "جابجایی", "ویزا", "اقامت"],
+    strong: ["relocate", "relocation", "move abroad", "visa", "work permit", "move to", "مهاجرت", "ریلوکیشن", "جابجایی", "ویزا", "اقامت", "sponsorship", "visa sponsorship", "sponsor", "which country", "which countries", "اسپانسر", "اسپانسرشیپ", "کدوم کشور", "چه کشوری"],
     answer: {
-      en: "She’s planning to relocate, and doesn’t have a visa yet.",
-      fa: "قصد مهاجرت دارد و فعلاً ویزا ندارد.",
+      en: "Yes. She plans to relocate and is open to any country. She would need visa sponsorship.",
+      fa: "بله. قصد مهاجرت دارد و برای هر کشوری آماده است؛ فقط به اسپانسرشیپ ویزا نیاز دارد.",
     },
   },
   {
@@ -312,8 +312,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["kudos", "کودوس"],
     answer: {
-      en: "Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events and onboarding in one place. As its only designer at Novaday, she turned the home from a plain dashboard into a social feed, an A/B test confirmed the direction, and she documented every page’s logic for engineering. It’s live with real companies; at ArvanCloud alone, around 500 people use it.",
-      fa: "کودوس نرم‌افزار قدردانی از کارکنان است: همکارها با گیفت‌کارت و سکه از هم تشکر می‌کنند و منابع انسانی نظرسنجی، رویداد و آنبوردینگ را در همان‌جا اجرا می‌کند. سودابه تنها طراحش در نوادی بود؛ صفحه‌ی اصلی را از یک داشبورد ساده به یک فید اجتماعی تبدیل کرد، تست A/B این مسیر را تأیید کرد و منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کرد. کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در ابرآروان حدود ۵۰۰ نفر از آن استفاده می‌کنند.",
+      en: "Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events and onboarding in one place. As its only designer at Novaday, she turned the home from a plain dashboard into a social feed, an A/B test confirmed the direction, and she documented every page’s logic for engineering. It’s live with real companies; at one client alone, around 500 people use it.",
+      fa: "کودوس نرم‌افزار قدردانی از کارکنان است: همکارها با گیفت‌کارت و سکه از هم تشکر می‌کنند و منابع انسانی نظرسنجی، رویداد و آنبوردینگ را در همان‌جا اجرا می‌کند. سودابه تنها طراحش در نوادی بود؛ صفحه‌ی اصلی را از یک داشبورد ساده به یک فید اجتماعی تبدیل کرد، تست A/B این مسیر را تأیید کرد و منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کرد. کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در یکی از مشتری‌هایش حدود ۵۰۰ نفر از آن استفاده می‌کنند.",
     },
     link: { href: "/work/kudos", label: { en: "Kudos case study", fa: "کیس‌استادی کودوس" } },
   },
@@ -332,8 +332,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["atlas", "aix2", "اطلس"],
     answer: {
-      en: "Atlas is an AI platform she designs at Algonet. It analyses a company’s emails, chats and workflows, maps how work really moves, and suggests a simpler process. The team took it from brief to a live first version in two to three days, and it’s now in development for an international client in the oil and gas sector in Switzerland. That’s why it’s shown blurred on the site.",
-      fa: "اطلس پلتفرم هوش مصنوعی‌ای است که سودابه در الگونت طراحی می‌کند. ایمیل‌ها، چت‌ها و فرایندهای یک شرکت را تحلیل می‌کند، مسیر واقعی کارها را نشان می‌دهد و مسیر ساده‌تری پیشنهاد می‌دهد. تیم اولین نسخه‌ی لایوش را در دو سه روز بالا آورد و الان برای یک مشتری بین‌المللی در حوزه‌ی نفت و گاز در سوئیس در حال توسعه است؛ برای همین در سایت تار نمایش داده شده.",
+      en: "Atlas is an AI platform she designs at Algonet. It analyses a company’s emails, chats and workflows, maps how work really moves, and suggests a simpler process. The team took it from brief to a live first version in two to three days, and it now has real customers and is heading for an international launch. That’s why it’s shown blurred on the site for now.",
+      fa: "اطلس پلتفرم هوش مصنوعی‌ای است که سودابه در الگونت طراحی می‌کند. ایمیل‌ها، چت‌ها و فرایندهای یک شرکت را تحلیل می‌کند، مسیر واقعی کارها را نشان می‌دهد و مسیر ساده‌تری پیشنهاد می‌دهد. تیم اولین نسخه‌ی لایوش را در دو سه روز بالا آورد و حالا مشتری واقعی دارد و برای لانچ بین‌المللی آماده می‌شود؛ برای همین فعلاً در سایت تار نمایش داده شده.",
     },
     link: { href: "/work/atlas", label: { en: "About Atlas", fa: "درباره‌ی اطلس" } },
   },
@@ -483,8 +483,8 @@ export const intents: Intent[] = [
     id: "results",
     strong: ["results", "impact", "metrics", "kpi", "kpis", "numbers", "how many users", "outcome", "outcomes", "achievement", "achievements", "accomplishment", "measure success", "success metrics", "data driven", "data-driven", "نتیجه", "نتایج", "دستاورد", "دستاوردها", "چند کاربر", "تعداد کاربر", "موفقیت", "سنجش"],
     answer: {
-      en: "Kudos is live with real companies; at ArvanCloud alone, around 500 people use it, and an A/B test backed its home redesign. Remeet, which she designed, won at Tehran Design Week. At Algonet she designs products that many thousands rely on, several used by more than 5,000 people, and Atlas went from brief to live in two to three days.",
-      fa: "کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در ابرآروان حدود ۵۰۰ نفر کاربرش هستند و ریدیزاین صفحه‌ی اصلی‌اش با تست A/B تأیید شد. ریمیت، که طراحی‌اش با او بود، در هفته‌ی دیزاین تهران برنده شد. در الگونت محصولاتی طراحی می‌کند که چند تا از آن‌ها بیش از ۵٬۰۰۰ کاربر دارند، و اطلس در دو سه روز از بریف به نسخه‌ی لایو رسید.",
+      en: "Kudos is live with real companies; at one client alone, around 500 people use it, and an A/B test backed its home redesign. Remeet, which she designed, won at Tehran Design Week. At Algonet she designs products that many thousands rely on, several used by more than 5,000 people, and Atlas went from brief to live in two to three days.",
+      fa: "کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در یکی از مشتری‌هایش حدود ۵۰۰ نفر کاربرش هستند و ریدیزاین صفحه‌ی اصلی‌اش با تست A/B تأیید شد. ریمیت، که طراحی‌اش با او بود، در هفته‌ی دیزاین تهران برنده شد. در الگونت محصولاتی طراحی می‌کند که چند تا از آن‌ها بیش از ۵٬۰۰۰ کاربر دارند، و اطلس در دو سه روز از بریف به نسخه‌ی لایو رسید.",
     },
   },
   {
@@ -755,10 +755,10 @@ export const intents: Intent[] = [
   // Getting in touch
   {
     id: "contact",
-    strong: ["contact", "email", "e-mail", "phone", "number", "call", "telegram", "linkedin", "reach", "talk to her", "talk to sudabeh", "get in touch", "book an interview", "schedule an interview", "job interview", "interview her", "book a call", "schedule a call", "video call", "set up a meeting", "مصاحبه کاری", "دعوت به مصاحبه", "تماس تصویری", "جلسه آنلاین", "ایمیل", "تماس", "شماره", "تلفن", "تلگرام", "لینکدین", "ارتباط", "صحبت کنم", "پیام بدم"],
+    strong: ["contact", "email", "e-mail", "phone", "number", "call", "telegram", "linkedin", "reach", "talk to her", "talk to sudabeh", "get in touch", "book an interview", "schedule an interview", "job interview", "interview her", "book a call", "schedule a call", "video call", "set up a meeting", "مصاحبه کاری", "دعوت به مصاحبه", "تماس تصویری", "جلسه آنلاین", "ایمیل", "تماس", "شماره", "تلفن", "تلگرام", "لینکدین", "ارتباط", "صحبت کنم", "پیام بدم", "whatsapp", "whats app", "واتساپ", "واتس اپ", "واتس‌اپ"],
     answer: {
-      en: "Email sudabeh.a.zolfikhorram@gmail.com, or Telegram @sudabehzolfikhorram. She’s on LinkedIn too: linkedin.com/in/sudabehzolfikhorram2001. Her phone number is in her CV. Or just write your message here and I’ll pass it on.",
-      fa: "ایمیل: sudabeh.a.zolfikhorram@gmail.com یا تلگرام: ‎@sudabehzolfikhorram. لینکدین هم دارد: linkedin.com/in/sudabehzolfikhorram2001. شماره تلفنش در رزومه هست. یا همین‌جا پیام‌تان را بنویسید تا برایش بفرستم.",
+      en: "Email sudabeh.a.zolfikhorram@gmail.com, message her on WhatsApp (+98 991 206 6324) or Telegram (@sudabehzolfikhorram), or find her on LinkedIn: linkedin.com/in/sudabehzolfikhorram2001. Or just write your message here and I’ll pass it on.",
+      fa: "ایمیل: sudabeh.a.zolfikhorram@gmail.com، واتساپ: ‎+98 991 206 6324، تلگرام: ‎@sudabehzolfikhorram و لینکدین: linkedin.com/in/sudabehzolfikhorram2001. یا همین‌جا پیام‌تان را بنویسید تا برایش بفرستم.",
     },
   },
   {

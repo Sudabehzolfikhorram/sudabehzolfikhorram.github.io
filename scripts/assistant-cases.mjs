@@ -74,6 +74,10 @@ export const cases = [
   ["Does she sign NDAs?", "nda", false],
   ["Can I get her CV?", "cv", false],
   ["How can I contact her?", "contact", false],
+  ["Does she have WhatsApp?", "contact", false],
+  ["شماره واتساپش رو داری؟", "contact", false],
+  ["Does she need visa sponsorship?", "relocation", false],
+  ["حاضره به چه کشوری مهاجرت کنه؟", "relocation", false],
 
   // Craft
   ["What tools does she use?", "tools", false],

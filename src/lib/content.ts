@@ -23,6 +23,7 @@ export const site = {
     { label: "Medium", handle: "@sudabeh.a.zolfikhorram", href: "https://medium.com/@sudabeh.a.zolfikhorram" },
     { label: "Instagram", handle: "@sudabehzolfi.design", href: "https://www.instagram.com/sudabehzolfi.design" },
     { label: "Telegram", handle: "@sudabehzolfikhorram", href: "https://t.me/sudabehzolfikhorram" },
+    { label: "WhatsApp", handle: "+98 991 206 6324", href: "https://wa.me/989912066324" },
   ],
 };
 

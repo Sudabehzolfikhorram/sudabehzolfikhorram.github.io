@@ -108,11 +108,11 @@
 
 ## 14. `relocation`
 
-نمونه سؤال: «Would she relocate?»
+نمونه سؤال: «Would she relocate?»، «Does she need visa sponsorship?»، «حاضره به چه کشوری مهاجرت کنه؟»
 
-قصد مهاجرت دارد و فعلاً ویزا ندارد.
+بله. قصد مهاجرت دارد و برای هر کشوری آماده است؛ فقط به اسپانسرشیپ ویزا نیاز دارد.
 
-> She’s planning to relocate, and doesn’t have a visa yet.
+> Yes. She plans to relocate and is open to any country. She would need visa sponsorship.
 
 ## 15. `hobbies`
 
@@ -258,9 +258,9 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 نمونه سؤال: «درباره‌ی کودوس بگو»
 
-کودوس نرم‌افزار قدردانی از کارکنان است: همکارها با گیفت‌کارت و سکه از هم تشکر می‌کنند و منابع انسانی نظرسنجی، رویداد و آنبوردینگ را در همان‌جا اجرا می‌کند. سودابه تنها طراحش در نوادی بود؛ صفحه‌ی اصلی را از یک داشبورد ساده به یک فید اجتماعی تبدیل کرد، تست A/B این مسیر را تأیید کرد و منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کرد. کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در ابرآروان حدود ۵۰۰ نفر از آن استفاده می‌کنند.
+کودوس نرم‌افزار قدردانی از کارکنان است: همکارها با گیفت‌کارت و سکه از هم تشکر می‌کنند و منابع انسانی نظرسنجی، رویداد و آنبوردینگ را در همان‌جا اجرا می‌کند. سودابه تنها طراحش در نوادی بود؛ صفحه‌ی اصلی را از یک داشبورد ساده به یک فید اجتماعی تبدیل کرد، تست A/B این مسیر را تأیید کرد و منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کرد. کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در یکی از مشتری‌هایش حدود ۵۰۰ نفر از آن استفاده می‌کنند.
 
-> Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events and onboarding in one place. As its only designer at Novaday, she turned the home from a plain dashboard into a social feed, an A/B test confirmed the direction, and she documented every page’s logic for engineering. It’s live with real companies; at ArvanCloud alone, around 500 people use it.
+> Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events and onboarding in one place. As its only designer at Novaday, she turned the home from a plain dashboard into a social feed, an A/B test confirmed the direction, and she documented every page’s logic for engineering. It’s live with real companies; at one client alone, around 500 people use it.
 
 ## 35. `remeet` 🔗
 
@@ -272,9 +272,9 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 نمونه سؤال: «What is Atlas?»
 
-اطلس پلتفرم هوش مصنوعی‌ای است که سودابه در الگونت طراحی می‌کند. ایمیل‌ها، چت‌ها و فرایندهای یک شرکت را تحلیل می‌کند، مسیر واقعی کارها را نشان می‌دهد و مسیر ساده‌تری پیشنهاد می‌دهد. تیم اولین نسخه‌ی لایوش را در دو سه روز بالا آورد و الان برای یک مشتری بین‌المللی در حوزه‌ی نفت و گاز در سوئیس در حال توسعه است؛ برای همین در سایت تار نمایش داده شده.
+اطلس پلتفرم هوش مصنوعی‌ای است که سودابه در الگونت طراحی می‌کند. ایمیل‌ها، چت‌ها و فرایندهای یک شرکت را تحلیل می‌کند، مسیر واقعی کارها را نشان می‌دهد و مسیر ساده‌تری پیشنهاد می‌دهد. تیم اولین نسخه‌ی لایوش را در دو سه روز بالا آورد و حالا مشتری واقعی دارد و برای لانچ بین‌المللی آماده می‌شود؛ برای همین فعلاً در سایت تار نمایش داده شده.
 
-> Atlas is an AI platform she designs at Algonet. It analyses a company’s emails, chats and workflows, maps how work really moves, and suggests a simpler process. The team took it from brief to a live first version in two to three days, and it’s now in development for an international client in the oil and gas sector in Switzerland. That’s why it’s shown blurred on the site.
+> Atlas is an AI platform she designs at Algonet. It analyses a company’s emails, chats and workflows, maps how work really moves, and suggests a simpler process. The team took it from brief to a live first version in two to three days, and it now has real customers and is heading for an international launch. That’s why it’s shown blurred on the site for now.
 
 ## 37. `azman` 🔗
 
@@ -390,9 +390,9 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 نمونه سؤال: «What results has she achieved?»، «How does she measure success?»
 
-کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در ابرآروان حدود ۵۰۰ نفر کاربرش هستند و ریدیزاین صفحه‌ی اصلی‌اش با تست A/B تأیید شد. ریمیت، که طراحی‌اش با او بود، در هفته‌ی دیزاین تهران برنده شد. در الگونت محصولاتی طراحی می‌کند که چند تا از آن‌ها بیش از ۵٬۰۰۰ کاربر دارند، و اطلس در دو سه روز از بریف به نسخه‌ی لایو رسید.
+کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در یکی از مشتری‌هایش حدود ۵۰۰ نفر کاربرش هستند و ریدیزاین صفحه‌ی اصلی‌اش با تست A/B تأیید شد. ریمیت، که طراحی‌اش با او بود، در هفته‌ی دیزاین تهران برنده شد. در الگونت محصولاتی طراحی می‌کند که چند تا از آن‌ها بیش از ۵٬۰۰۰ کاربر دارند، و اطلس در دو سه روز از بریف به نسخه‌ی لایو رسید.
 
-> Kudos is live with real companies; at ArvanCloud alone, around 500 people use it, and an A/B test backed its home redesign. Remeet, which she designed, won at Tehran Design Week. At Algonet she designs products that many thousands rely on, several used by more than 5,000 people, and Atlas went from brief to live in two to three days.
+> Kudos is live with real companies; at one client alone, around 500 people use it, and an A/B test backed its home redesign. Remeet, which she designed, won at Tehran Design Week. At Algonet she designs products that many thousands rely on, several used by more than 5,000 people, and Atlas went from brief to live in two to three days.
 
 ## 54. `philosophy`
 
@@ -640,11 +640,11 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 ## 86. `contact`
 
-نمونه سؤال: «How can I contact her?»
+نمونه سؤال: «How can I contact her?»، «Does she have WhatsApp?»، «شماره واتساپش رو داری؟»
 
-ایمیل: sudabeh.a.zolfikhorram@gmail.com یا تلگرام: ‎@sudabehzolfikhorram. لینکدین هم دارد: linkedin.com/in/sudabehzolfikhorram2001. شماره تلفنش در رزومه هست. یا همین‌جا پیام‌تان را بنویسید تا برایش بفرستم.
+ایمیل: sudabeh.a.zolfikhorram@gmail.com، واتساپ: ‎+98 991 206 6324، تلگرام: ‎@sudabehzolfikhorram و لینکدین: linkedin.com/in/sudabehzolfikhorram2001. یا همین‌جا پیام‌تان را بنویسید تا برایش بفرستم.
 
-> Email sudabeh.a.zolfikhorram@gmail.com, or Telegram @sudabehzolfikhorram. She’s on LinkedIn too: linkedin.com/in/sudabehzolfikhorram2001. Her phone number is in her CV. Or just write your message here and I’ll pass it on.
+> Email sudabeh.a.zolfikhorram@gmail.com, message her on WhatsApp (+98 991 206 6324) or Telegram (@sudabehzolfikhorram), or find her on LinkedIn: linkedin.com/in/sudabehzolfikhorram2001. Or just write your message here and I’ll pass it on.
 
 ## 87. `cv` 🔗
 
