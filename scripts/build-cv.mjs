@@ -24,9 +24,9 @@ const contact = [
   [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/sudabehzolfikhorram2001/" },
     { label: "Telegram", href: "https://t.me/sudabehzolfikhorram" },
+    { label: "Instagram", href: "https://www.instagram.com/sudabehzolfi.design" },
     { label: "Behance", href: "https://www.behance.net/sudabehzolfikh" },
     { label: "Medium", href: "https://medium.com/@sudabeh.a.zolfikhorram" },
-    { label: "Instagram", href: "https://www.instagram.com/sudabehzolfi.design" },
   ],
 ];
 
