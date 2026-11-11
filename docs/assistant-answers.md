@@ -42,9 +42,9 @@
 
 نمونه سؤال: «Tell me about yourself»، «از خودت بگو»
 
-سودابه زلفی‌خرم هستم، پروداکت دیزاینر با بیش از ۵ سال سابقه. تمرکزم ساده کردن محصولات پیچیده است: فین‌تک، ابزارهای منابع انسانی، ERP و هوش مصنوعی سازمانی، از اولین فلو تا تحویل به تیم توسعه. الان در الگونت محصولات B2B طراحی می‌کنم، از جمله اطلس که یک پلتفرم هوش مصنوعی است. پیش از آن تمدید را از ابتدا تا انتها به‌تنهایی طراحی کردم و در نوادی ریمیت را، که بعدها در هفته‌ی دیزاین تهران برنده شد. ساکن تهرانم و برای همکاری ریموت آماده‌ام.
+سودابه زلفی‌خرم هستم، پروداکت دیزاینر با بیش از ۵ سال سابقه. کارم ساده کردن محصولات پیچیده است، از فین‌تک و ابزارهای منابع انسانی تا ERP و هوش مصنوعی سازمانی، و الان در الگونت محصولات B2B طراحی می‌کنم.
 
-> I’m Sudabeh Zolfi Khorram, a product designer with 5+ years of experience. My focus is making complex products feel simple: fintech, HR tools, ERP and enterprise AI, from the first flow to developer handoff. Right now I design B2B products at Algonet, including Atlas, an AI platform. Before that I designed Tamdid end to end on my own, and Remeet at Novaday, which went on to win at Tehran Design Week. I’m based in Tehran and open to remote work.
+> I’m Sudabeh Zolfi Khorram, a product designer with 5+ years of experience. I make complex products feel simple, from fintech and HR tools to ERP and enterprise AI, and right now I design B2B products at Algonet.
 
 ## 6. `role`
 
@@ -58,21 +58,21 @@
 
 نمونه سؤال: «How many years of experience?»، «chand sal sabeghe dare?»، «سابقه‌ت چقدره؟»
 
-بیش از ۵ سال در پروداکت و UI/UX دیزاین، در ۱۰ تیم و محصول؛ از فین‌تک و منابع انسانی تا ERP و هوش مصنوعی سازمانی. از ۲۰۲۱ شروع کردم و در محصولاتی مثل تمدید، طراحی را از اولین ایده تا توسعه خودم پیش برده‌ام.
+بیش از ۵ سال در پروداکت و UI/UX دیزاین، در ۱۰ تیم و محصول؛ از فین‌تک تا ERP و هوش مصنوعی سازمانی.
 
-> More than 5 years in product and UI/UX design, across 10 teams and products, from fintech and HR tech to ERP and enterprise AI. I started in 2021, and on products like Tamdid I’ve owned the design from the first idea to development.
+> More than 5 years in product and UI/UX design, across 10 teams and products, from fintech to ERP and enterprise AI.
 
 ## 8. `location`
 
-ساکن تهرانم (UTC+3:30) و برای همکاری ریموت آماده‌ام. برنامه‌ی مهاجرت هم دارم.
+ساکن تهرانم (UTC+3:30) و برای همکاری ریموت آماده‌ام.
 
-> I’m based in Tehran, Iran (UTC+3:30), and open to remote work. I’m also planning to relocate.
+> I’m based in Tehran, Iran (UTC+3:30), and open to remote work.
 
 ## 9. `remote`
 
 نمونه سؤال: «Is she open to remote work?»
 
-بله، دقیقاً دنبال همکاری ریموت هستم و تجربه‌اش را هم دارم؛ پروژه‌هایی مثل تمدید و کاریار استودیو را ریموت انجام داده‌ام.
+بله، دقیقاً دنبال همکاری ریموت هستم و تجربه‌اش را هم دارم؛ مثل پروژه‌های تمدید و کاریار استودیو.
 
 > Yes, remote is exactly what I’m looking for, and I’ve delivered remote projects before, like Tamdid and Kaaryar Studio.
 
@@ -80,9 +80,9 @@
 
 نمونه سؤال: «When can she start?»، «از کی می‌تونه شروع کنه؟»
 
-برای نقش تمام‌وقت، بعد از یک ماه فرصت برای اطلاع به شرکت فعلی‌ام می‌توانم شروع کنم؛ برای کار پروژه‌ای همین حالا آماده‌ام. ریموت، تمام‌وقت، پاره‌وقت یا پروژه‌ای، همه برایم مناسب است؛ فقط دنبال کار حضوری نیستم. اندازه‌ی شرکت هم فرقی نمی‌کند، از استارتاپ تا تیم‌های بزرگ.
+برای نقش تمام‌وقت، بعد از یک ماه فرصت برای اطلاع به شرکت فعلی‌ام می‌توانم شروع کنم؛ برای کار پروژه‌ای همین حالا آماده‌ام.
 
-> For a full-time role, I can start after one month’s notice to my current employer; for project-based work, I’m available right away. Remote full-time, part-time or project-based all work for me; the only thing I’m not looking for is on-site work. Company size doesn’t matter, from startups to large teams.
+> For a full-time role, I can start after one month’s notice to my current employer; for project-based work, I’m available right away.
 
 ## 11. `onsite`
 
@@ -94,9 +94,9 @@
 
 ## 12. `freelance`
 
-بله، همه‌شان برایم مناسب است: ریموت تمام‌وقت، پاره‌وقت یا پروژه‌ای؛ فقط حضوری نه. تجربه‌ی هر دو را دارم: نقش تمام‌وقت در الگونت و نوادی، و کار پروژه‌ای مثل تمدید و کاریار استودیو.
+بله. کار پروژه‌ای و پاره‌وقت هر دو برایم مناسب است، به شرط ریموت بودن؛ قبلاً هم پروژه‌ای کار کرده‌ام، مثل تمدید و کاریار استودیو.
 
-> Yes, all of them work for me: remote full-time, part-time or project-based; just not on-site. I’ve done both: full-time roles at Algonet and Novaday, and project-based work like Tamdid and Kaaryar Studio.
+> Yes. Project-based and part-time work both suit me, as long as it’s remote; I’ve done project work before, like Tamdid and Kaaryar Studio.
 
 ## 13. `salary` 📨
 
@@ -134,17 +134,17 @@
 
 نمونه سؤال: «رشته‌ش چی بوده؟»، «حقوق خونده؟»
 
-فارغ‌التحصیل رشته‌ی حقوق هستم. طراحی هم هم‌زمان با تحصیلم شروع شد: همان ترمی که وارد دانشگاه شدم، اولین کار طراحی‌ام را هم شروع کردم.
+فارغ‌التحصیل رشته‌ی حقوق هستم.
 
-> I’m a Law graduate. Design started alongside my degree: I took my first design job the same term I began studying law.
+> I’m a Law graduate.
 
 ## 18. `lawToDesign`
 
 نمونه سؤال: «سلام خوبی؟ چرا حقوق خوندی؟»
 
-آن زمان علاقه‌ام حقوق بود و هنوز با دنیای تکنولوژی آن‌قدر آشنا نبودم. وقتی اولین کارم را شروع کردم، متوجه شدم می‌توانم طراح هم بشوم؛ همین مسیر را ادامه دادم و از آن روز سعی کرده‌ام هر روز پیشرفت کنم و ایده‌های خلاقانه‌تری داشته باشم. ولی حقوق را هنوز هم دوست دارم: به حق‌وحقوقم آگاه‌ترم، دیدم گسترده‌تر شده و یادم داده قوانین پیچیده را بخوانم و ساده کنم؛ کاری که هر روز در طراحی انجام می‌دهم.
+آن زمان علاقه‌ام حقوق بود و هنوز با دنیای تکنولوژی آن‌قدر آشنا نبودم. وقتی اولین کارم را شروع کردم، متوجه شدم می‌توانم طراح هم بشوم؛ همین مسیر را ادامه دادم و از آن روز سعی کرده‌ام هر روز پیشرفت کنم و ایده‌های خلاقانه‌تری داشته باشم. ولی حقوق را هنوز هم دوست دارم: به حق‌وحقوقم آگاه‌ترم و دیدم گسترده‌تر شده.
 
-> Law was what interested me at the time, and technology wasn’t yet a world I knew. When I started my first job, I realised I could become a designer too, so I followed that path, and I’ve worked every day since to grow and bring more creative ideas to the table. I still love law, though: it’s made me more aware of my rights, broadened my perspective, and taught me to read dense rules and make them clear, which I do in design every day.
+> Law was what interested me at the time, and technology wasn’t yet a world I knew. When I started my first job, I realised I could become a designer too, so I followed that path and have worked every day since to grow. I still love law, though: it’s made me more aware of my rights and broadened my perspective.
 
 ## 19. `courses`
 
@@ -178,9 +178,9 @@
 
 نمونه سؤال: «Does she use AI?»
 
-هوش مصنوعی هم‌فکر من است، نه جای من. از آن برای تحقیق سریع‌تر، مقایسه‌ی ایده‌ها، نوشتن UX copy و پروتوتایپ استفاده می‌کنم (ChatGPT، Claude، Google AI Studio، NotebookLM، Lovable)، ولی تصمیم‌ها با خودم است. خودم هم یک محصول هوش مصنوعی طراحی می‌کنم: اطلس، در الگونت.
+هوش مصنوعی هم‌فکر من است، نه جای من: از آن برای تحقیق سریع‌تر، مقایسه‌ی ایده‌ها، نوشتن UX copy و پروتوتایپ استفاده می‌کنم، ولی تصمیم‌ها با خودم است.
 
-> AI is my thinking partner, not my designer. I use it to research faster, compare directions, draft UX copy and prototype (ChatGPT, Claude, Google AI Studio, NotebookLM, Lovable), but the decisions stay mine. I also design an AI product myself: Atlas, at Algonet.
+> AI is my thinking partner, not my designer: I use it to research faster, compare directions, draft UX copy and prototype, but the decisions stay mine.
 
 ## 24. `designSystem`
 
@@ -238,9 +238,9 @@
 
 نمونه سؤال: «How does she work with developers?»، «Does she write documentation for engineers?»
 
-نزدیک و هر روز. در نوادی و الگونت کنار مدیر محصول، QA و تیم فنی کار کرده‌ام و فلوها، منطق صفحات، استیت‌ها و حالت‌های خاص را مستند می‌کنم تا چیزی به حدس و گمان نماند. مسئولیت کامل یک محصول را هم به‌تنهایی می‌پذیرم: در تمدید تنها طراح بودم.
+نزدیک و هر روز. کنار مدیر محصول، QA و تیم فنی کار می‌کنم و فلوها، منطق صفحات، استیت‌ها و حالت‌های خاص را مستند می‌کنم تا چیزی به حدس و گمان نماند.
 
-> Closely, every day. At Novaday and Algonet I’ve worked side by side with PMs, QA and engineers, and I document flows, page logic, states and edge cases so nothing is left to guesswork. I can also own a product on my own: I was the only designer on Tamdid.
+> Closely, every day. I work side by side with PMs, QA and engineers, and I document flows, page logic, states and edge cases so nothing is left to guesswork.
 
 ## 32. `projects` 🔗
 
@@ -252,17 +252,17 @@
 
 نمونه سؤال: «What was the conversion rate on Tamdid?»، «Did Tamdid show live rates?»، «Tell me about Tamdid»
 
-تمدید یک محصول فین‌تک برای تمدید است: شارژ، بسته‌ی اینترنت و یوسی، برای خود یا هدیه به دیگران، با پرداخت از کیف پول. مدیرها کیف پول مخاطبان‌شان را شارژ می‌کنند و حساب طلب و بدهی را دارند، و یک لیگ ماهانه به کاربرهای فعال امتیاز می‌دهد. به‌تنهایی طراحی‌اش کردم؛ اول موبایل، بعد وب، تبلت و نسخه‌ی انگلیسی، روی دیزاین‌سیستم اختصاصی خودش. الان در مرحله‌ی توسعه است.
+تمدید یک محصول فین‌تک برای تمدید شارژ، بسته‌ی اینترنت و اعتبار بازی است، با پرداخت از کیف پول و یک لیگ ماهانه برای کاربرهای فعال. به‌تنهایی طراحی‌اش کردم، از اولین ایده تا توسعه، و الان در مرحله‌ی ساخت است.
 
-> Tamdid is a fintech product for renewals: mobile charge, internet packages and game credit, for yourself or as a gift, paid from one wallet. Managers fund their contacts’ wallets and keep track of who owes what, and a monthly league rewards people for keeping up. I designed it on my own, mobile first, then web, tablet and English, on its own design system. It’s now in development.
+> Tamdid is a fintech product for renewals: mobile charge, internet packages and game credit, paid from one wallet, with a monthly league that rewards keeping up. I designed it on my own, from the first idea to development, and it’s now being built.
 
 ## 34. `kudos` 🔗
 
 نمونه سؤال: «درباره‌ی کودوس بگو»
 
-کودوس نرم‌افزار قدردانی از کارکنان است: همکارها با گیفت‌کارت و سکه از هم تشکر می‌کنند و منابع انسانی نظرسنجی، رویداد و آنبوردینگ را همان‌جا اجرا می‌کند. تنها طراحش در نوادی بودم؛ صفحه‌ی اصلی را از یک داشبورد ساده به یک فید اجتماعی تبدیل کردم، با تست A/B اعتبارسنجی‌اش کردم و منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کردم. کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در ابرآروان حدود ۵۰۰ نفر کاربرش هستند.
+کودوس نرم‌افزار قدردانی از کارکنان است: همکارها با گیفت‌کارت و سکه از هم تشکر می‌کنند و منابع انسانی نظرسنجی و رویدادها را همان‌جا اجرا می‌کند. تنها طراحش در نوادی بودم؛ صفحه‌ی اصلی‌اش را از یک داشبورد ساده به یک فید اجتماعی تبدیل کردم و حالا در شرکت‌های واقعی استفاده می‌شود.
 
-> Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events and onboarding in one place. As its only designer at Novaday, I turned the home from a plain dashboard into a social feed, validated it with an A/B test, and documented every page’s logic for engineering. It’s live with real companies; at ArvanCloud alone, around 500 people use it.
+> Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys and events in the same place. As its only designer at Novaday, I turned its home from a plain dashboard into a social feed, and it’s live with real companies.
 
 ## 35. `remeet` 🔗
 
@@ -274,9 +274,9 @@
 
 نمونه سؤال: «What is Atlas?»
 
-اطلس پلتفرم هوش مصنوعی‌ای است که در الگونت طراحی می‌کنم. ایمیل‌ها، چت‌ها و فرایندهای یک شرکت را تحلیل می‌کند، مسیر واقعی کارها را نشان می‌دهد و مسیر ساده‌تری پیشنهاد می‌دهد. اولین نسخه‌ی لایوش را در دو سه روز از بریف به اجرا رساندیم؛ حالا مشتری واقعی دارد و برای لانچ بین‌المللی آماده می‌شود، برای همین فعلاً در سایت تار نمایش داده شده.
+اطلس پلتفرم هوش مصنوعی‌ای است که در الگونت طراحی می‌کنم. ایمیل‌ها، چت‌ها و فرایندهای یک شرکت را تحلیل می‌کند و مسیر ساده‌تری پیشنهاد می‌دهد؛ اولین نسخه‌ی لایوش را در دو سه روز از بریف به اجرا رساندیم.
 
-> Atlas is an AI platform I design at Algonet. It analyses a company’s emails, chats and workflows, maps how work really moves and suggests a simpler process. We took it from brief to a live first version in two to three days; it now has real customers and is heading for an international launch, which is why it’s blurred on the site for now.
+> Atlas is an AI platform I design at Algonet. It analyses a company’s emails, chats and workflows and suggests a simpler way to run them; we took it from brief to a live first version in two to three days.
 
 ## 37. `azman` 🔗
 
@@ -294,9 +294,9 @@
 
 ## 39. `novinhost` 🔗
 
-نوین هاست یک برند هاستینگ با ۱۵ سال سابقه است. از خرداد تا شهریور ۱۴۰۵ سایتش را ریدیزاین کردم تا به‌روز شود و انتخاب سرویس راحت‌تر باشد، بدون اینکه مشتری‌های قدیمی راه‌شان را گم کنند. کار را با یک آدیت هیوریستیک از سایت فعلی شروع کردم.
+نوین هاست یک برند هاستینگ با ۱۵ سال سابقه است. از خرداد تا شهریور ۱۴۰۵ سایتش را ریدیزاین کردم تا به‌روز شود و انتخاب سرویس راحت‌تر باشد، بدون اینکه مشتری‌های قدیمی راه‌شان را گم کنند.
 
-> Novin Host is a hosting brand with 15 years behind it. From June to September 2026 I redesigned its website to feel current and make choosing a plan easier, without long-time customers losing their way. The work started with a heuristic UX audit of the live site.
+> Novin Host is a hosting brand with 15 years behind it. From June to September 2026 I redesigned its website to feel current and make choosing a plan easier, without long-time customers losing their way.
 
 ## 40. `nanvanamak` 🔗
 
@@ -362,9 +362,9 @@
 
 نمونه سؤال: «Tell me about a failure»، «بزرگ‌ترین اشتباهت چی بوده؟»
 
-درسی که برایم ماندگار شد: تا وقتی مسئله مبهم است، طراحی را شروع نکنم. وقتی بریف پر از سؤال باز است، آن‌قدر می‌پرسم و ریسرچ می‌کنم تا مسئله را واقعاً بفهمم، چون خروجی خوب از همین‌جا می‌آید. نان و نمک هم کلی به من یاد داد: لانچ نشد، ولی همان‌جا پروداکت دیزاینر شدم.
+درسی که برایم ماندگار شد: تا وقتی مسئله مبهم است، طراحی را شروع نکنم. وقتی بریف پر از سؤال باز است، آن‌قدر می‌پرسم و ریسرچ می‌کنم تا مسئله را واقعاً بفهمم.
 
-> The lesson that stuck with me: don’t start designing while the problem is still blurry. When a brief is full of open questions, I keep asking and researching until I truly understand it, because that’s where good output comes from. Nan va Namak taught me a lot too: it never launched, but it’s where I became a product designer.
+> The lesson that stuck with me: don’t start designing while the problem is still blurry. When a brief is full of open questions, I keep asking and researching until I truly understand it.
 
 ## 50. `teamSize`
 
@@ -386,9 +386,9 @@
 
 نمونه سؤال: «How does she handle tight deadlines?»، «زیر فشار کاری چطوره؟»
 
-کار زیر فشار را یاد گرفته‌ام و اطلس گواهش است: اولین نسخه‌ی لایوش را در دو سه روز از بریف به اجرا رساندیم. ددلاین‌های فشرده را با یک برنامه‌ی دقیق، هوش مصنوعی به‌عنوان همراه و کلی پشتکار پیش می‌برم، و ددلاین واقعی حتی تمرکزم را بیشتر می‌کند. درباره‌ی سخت‌ترین پروژه هم، هر پروژه سختی خودش را دارد، برای همین یکی را انتخاب نمی‌کنم.
+کار زیر فشار را یاد گرفته‌ام: در اطلس، در دو سه روز از بریف به اولین نسخه‌ی لایو رسیدیم. یک برنامه‌ی دقیق، هوش مصنوعی به‌عنوان همراه و پشتکار کمکم می‌کند، و ددلاین واقعی حتی تمرکزم را بیشتر می‌کند.
 
-> Pressure is something I’ve learned to work with, and Atlas is proof: we took it from brief to a live first version in two to three days. I handle tight deadlines with a clear plan, AI as a partner and a lot of persistence, and a real deadline actually sharpens my focus. As for the hardest project, every one has its own hard part, so I wouldn’t pick just one.
+> Pressure is something I’ve learned to work with: on Atlas, we went from brief to a live first version in two to three days. A clear plan, AI as a partner and persistence get me through, and a real deadline actually sharpens my focus.
 
 ## 53. `results`
 
@@ -408,9 +408,9 @@
 
 نمونه سؤال: «Can she work US hours?»، «What time can she take meetings?»
 
-ساکن تهرانم (UTC+3:30) و با هماهنگی قبلی از ساعت ۱۰ صبح تا ۱۰ شب به وقت تهران می‌توانم جلسه داشته باشم؛ یعنی کل ساعت کاری اروپا و صبح تا اوایل بعدازظهر شرق آمریکا. اگر پروژه لازم داشته باشد، آخر هفته‌ها هم کار می‌کنم.
+ساکن تهرانم (UTC+3:30) و با هماهنگی قبلی از ساعت ۱۰ صبح تا ۱۰ شب به وقت تهران می‌توانم جلسه داشته باشم؛ یعنی کل ساعت کاری اروپا و صبح‌های شرق آمریکا.
 
-> I’m in Tehran (UTC+3:30) and can meet any time between 10:00 and 22:00 Tehran time, arranged in advance. That covers the whole European working day and US East Coast mornings into the early afternoon. When a project needs it, I work weekends too.
+> I’m in Tehran (UTC+3:30) and can meet between 10:00 and 22:00 Tehran time, arranged in advance. That covers the whole European working day and US East Coast mornings.
 
 ## 56. `nda`
 
@@ -478,9 +478,9 @@
 
 نمونه سؤال: «Why should we hire her?»، «chera bayad estekhdamesh konim?»
 
-چون محصول‌های پیچیده را ساده می‌کنم و کارهایم این را نشان می‌دهد: تمدید را به‌تنهایی از ایده تا توسعه طراحی کردم، در کودوس منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کردم و ریمیت را طراحی کردم که در هفته‌ی دیزاین تهران برنده شد. سه دیزاین‌سیستم اختصاصی ساخته‌ام، با کمک هوش مصنوعی سریع کار می‌کنم بدون اینکه تصمیم‌ها را به آن بسپارم، و محصولاتی که در الگونت طراحی می‌کنم هزاران کاربر دارند.
+چون محصول‌های پیچیده را ساده می‌کنم و کارهایم این را نشان می‌دهد: تمدید را به‌تنهایی از ایده تا توسعه طراحی کردم، و ریمیت را که در هفته‌ی دیزاین تهران برنده شد. با کمک هوش مصنوعی سریع کار می‌کنم، بدون اینکه تصمیم‌ها را به آن بسپارم.
 
-> Because I make complicated products simple, and my work shows it. I designed Tamdid on my own from idea to development, documented every page’s logic for engineers on Kudos, and designed Remeet, which won at Tehran Design Week. I’ve built three custom design systems, I work fast with AI without handing it the decisions, and the products I design at Algonet serve thousands of people.
+> Because I make complicated products simple, and my work shows it: I designed Tamdid on my own from idea to development, and Remeet, which won at Tehran Design Week. I work fast with AI without handing it the decisions.
 
 ## 66. `strengths`
 
@@ -502,17 +502,17 @@
 
 نمونه سؤال: «Tell me about a time she disagreed with a developer»، «با کارفرمای سخت چطور کنار میاد؟»
 
-بیشتر اختلاف‌نظرهایم سر فاصله‌ی بین طراحی و چیزی بوده که در نهایت پیاده شده، و بستن همین فاصله را بخشی از کار خودم می‌دانم. وقت می‌گذارم تا محدودیت‌های تیم فنی را بفهمم، اما پای فلو و تجربه‌ای که برای کاربر درست است هم می‌ایستم. به همین دلیل هم قبل از تحویل، منطق صفحات و حالت‌های خاص را مستند می‌کنم.
+بیشتر اختلاف‌نظرهایم سر فاصله‌ی بین طراحی و چیزی بوده که در نهایت پیاده شده، و بستن همین فاصله را بخشی از کار خودم می‌دانم. وقت می‌گذارم تا محدودیت‌های تیم فنی را بفهمم، اما پای فلو و تجربه‌ای که برای کاربر درست است هم می‌ایستم.
 
-> Most of my disagreements have been about the gap between what I designed and what got built, and I see closing that gap as part of my job. I take the time to understand the developers’ constraints, while standing up for the flow and UX that work for the user. That’s also why I document page logic and edge cases before handoff.
+> Most of my disagreements have been about the gap between what I designed and what got built, and I see closing that gap as part of my job. I take the time to understand the developers’ constraints, while standing up for the flow and UX that work for the user.
 
 ## 69. `feedback`
 
 نمونه سؤال: «How does she handle feedback and criticism?»
 
-فیدبک را بخشی از فرایند می‌دانم، نه مزاحمت. در کودوس، فیدبک‌های ریویو یک نوع یادداشت طراحی جدا داشتند، کنار منطق و متن، تا چیزی گم نشود. در کاریار استودیو هم اول وایرفریم خاکستری کشیدم تا بحث اول درباره‌ی ترتیب و محتوا باشد، نه ظاهر.
+فیدبک را بخشی از فرایند می‌دانم، نه مزاحمت. در کودوس حتی فیدبک‌های ریویو یک نوع یادداشت طراحی جدا داشتند تا چیزی گم نشود.
 
-> I treat feedback as part of the process, not an interruption. On Kudos, review feedback had its own type of designer note, next to logic and copy, so nothing got lost. On Kaaryar Studio I started with grey wireframes, so the first conversation was about order and content rather than looks.
+> I treat feedback as part of the process, not an interruption. On Kudos, review feedback even had its own type of designer note, so nothing got lost.
 
 ## 70. `ambiguity`
 
@@ -526,25 +526,25 @@
 
 نمونه سؤال: «where does she see herself in five years?»، «هدفش برای آینده چیه؟»
 
-می‌خواهم به سمت لید طراحی بروم. تا الان بیشتر تنها طراح محصول بوده‌ام و بخش مدیریتی کار را واقعاً دوست دارم. برنامه‌ی مهاجرت هم دارم و برای کار در یک تیم بین‌المللی آماده‌ام.
+می‌خواهم به سمت لید طراحی بروم. تا الان بیشتر تنها طراح محصول بوده‌ام و بخش مدیریتی کار را واقعاً دوست دارم.
 
-> I want to grow into leading design. So far I’ve mostly been the only designer on a product, and I really enjoy the management side of the work. I’m also planning to relocate, and I’m ready for an international team.
+> I want to grow into leading design. So far I’ve mostly been the only designer on a product, and I really enjoy the management side of the work.
 
 ## 72. `motivation`
 
 نمونه سؤال: «What motivates her?»
 
-ساده کردن چیزهای پیچیده. سؤالم خیلی زود از «چطور به نظر می‌رسد؟» به «چطور کار می‌کند؟» رسید و ساختن یک محصول کامل در نان و نمک نشانم داد جایم کجاست. از نظر من کار وقتی درست انجام شده که برای کاربر ساده باشد، برای کسب‌وکار نتیجه بدهد و خودم هم از مسیر لذت برده باشم.
+ساده کردن چیزهای پیچیده. از نظر من کار وقتی درست انجام شده که برای کاربر ساده باشد، برای کسب‌وکار نتیجه بدهد و خودم هم از مسیر لذت برده باشم.
 
-> Making complicated things feel simple. Early on, my question shifted from “how does it look?” to “how does it work?”, and owning a whole product at Nan va Namak showed me where I belong. For me, the job is done right when users find it easy, the business gets results, and I’ve enjoyed the way there.
+> Making complicated things feel simple. For me, the job is done right when users find it easy, the business gets results, and I’ve enjoyed the way there.
 
 ## 73. `favorite` 🔗
 
 نمونه سؤال: «What's her favorite project?»
 
-نمی‌توانم فقط یکی را انتخاب کنم، و همین خودش گویاست: چیزی که عاشقش هستم کل مسیر است؛ اینکه یک ایده را بگیرم و به محصولی تبدیلش کنم که واقعاً به دل آدم‌ها بنشیند. پروژه‌های اصلی‌ام اطلس (هوش مصنوعی سازمانی)، تمدید (فین‌تک، به‌تنهایی) و کودوس (منابع انسانی، در حال استفاده در شرکت‌های واقعی) هستند.
+نمی‌توانم فقط یکی را انتخاب کنم. چیزی که عاشقش هستم کل مسیر است؛ اینکه یک ایده را بگیرم و به محصولی تبدیلش کنم که واقعاً به دل آدم‌ها بنشیند.
 
-> I can’t pick just one, and that says something: what I love is the whole journey of taking an idea and turning it into a product people genuinely enjoy. My lead projects are Atlas (enterprise AI), Tamdid (fintech, designed solo) and Kudos (HR, live with real companies).
+> I can’t pick just one. What I love is the whole journey: taking an idea and turning it into a product people genuinely enjoy.
 
 ## 74. `learning`
 

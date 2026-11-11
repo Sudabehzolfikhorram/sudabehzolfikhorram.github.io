@@ -75,8 +75,8 @@ export const intents: Intent[] = [
     weak: ["sudabeh", "سودابه"],
     link: { href: "/work", label: { en: "See all projects", fa: "همه‌ی پروژه‌ها" } },
     answer: {
-      en: "I’m Sudabeh Zolfi Khorram, a product designer with 5+ years of experience. My focus is making complex products feel simple: fintech, HR tools, ERP and enterprise AI, from the first flow to developer handoff. Right now I design B2B products at Algonet, including Atlas, an AI platform. Before that I designed Tamdid end to end on my own, and Remeet at Novaday, which went on to win at Tehran Design Week. I’m based in Tehran and open to remote work.",
-      fa: "سودابه زلفی‌خرم هستم، پروداکت دیزاینر با بیش از ۵ سال سابقه. تمرکزم ساده کردن محصولات پیچیده است: فین‌تک، ابزارهای منابع انسانی، ERP و هوش مصنوعی سازمانی، از اولین فلو تا تحویل به تیم توسعه. الان در الگونت محصولات B2B طراحی می‌کنم، از جمله اطلس که یک پلتفرم هوش مصنوعی است. پیش از آن تمدید را از ابتدا تا انتها به‌تنهایی طراحی کردم و در نوادی ریمیت را، که بعدها در هفته‌ی دیزاین تهران برنده شد. ساکن تهرانم و برای همکاری ریموت آماده‌ام.",
+      en: "I’m Sudabeh Zolfi Khorram, a product designer with 5+ years of experience. I make complex products feel simple, from fintech and HR tools to ERP and enterprise AI, and right now I design B2B products at Algonet.",
+      fa: "سودابه زلفی‌خرم هستم، پروداکت دیزاینر با بیش از ۵ سال سابقه. کارم ساده کردن محصولات پیچیده است، از فین‌تک و ابزارهای منابع انسانی تا ERP و هوش مصنوعی سازمانی، و الان در الگونت محصولات B2B طراحی می‌کنم.",
     },
   },
   {
@@ -93,16 +93,16 @@ export const intents: Intent[] = [
     strong: ["years of experience", "how many years", "how long", "how much experience", "your experience", "work experience", "experienced", "senior", "junior", "سابقه", "چند سال", "تجربه کاری", "سابقه کار", "sabeghe", "chand sal", "tajrobe", "years in the field", "in the field", "چند وقته", "چند ساله", "chand sale", "chand vaghte", "how long in design"],
     weak: ["experience", "تجربه"],
     answer: {
-      en: "More than 5 years in product and UI/UX design, across 10 teams and products, from fintech and HR tech to ERP and enterprise AI. I started in 2021, and on products like Tamdid I’ve owned the design from the first idea to development.",
-      fa: "بیش از ۵ سال در پروداکت و UI/UX دیزاین، در ۱۰ تیم و محصول؛ از فین‌تک و منابع انسانی تا ERP و هوش مصنوعی سازمانی. از ۲۰۲۱ شروع کردم و در محصولاتی مثل تمدید، طراحی را از اولین ایده تا توسعه خودم پیش برده‌ام.",
+      en: "More than 5 years in product and UI/UX design, across 10 teams and products, from fintech to ERP and enterprise AI.",
+      fa: "بیش از ۵ سال در پروداکت و UI/UX دیزاین، در ۱۰ تیم و محصول؛ از فین‌تک تا ERP و هوش مصنوعی سازمانی.",
     },
   },
   {
     id: "location",
     strong: ["where are you", "where is she", "where do you live", "where does she live", "where she lives", "live in", "based", "location", "city", "country", "iran", "tehran", "کجا هستی", "کجایی", "کجا زندگی", "شهر", "تهران", "ایران", "kojaei"],
     answer: {
-      en: "I’m based in Tehran, Iran (UTC+3:30), and open to remote work. I’m also planning to relocate.",
-      fa: "ساکن تهرانم (UTC+3:30) و برای همکاری ریموت آماده‌ام. برنامه‌ی مهاجرت هم دارم.",
+      en: "I’m based in Tehran, Iran (UTC+3:30), and open to remote work.",
+      fa: "ساکن تهرانم (UTC+3:30) و برای همکاری ریموت آماده‌ام.",
     },
   },
   {
@@ -110,15 +110,15 @@ export const intents: Intent[] = [
     strong: ["remote", "work from home", "wfh", "hybrid", "ریموت", "دورکاری", "دور کاری", "هیبرید", "از راه دور"],
     answer: {
       en: "Yes, remote is exactly what I’m looking for, and I’ve delivered remote projects before, like Tamdid and Kaaryar Studio.",
-      fa: "بله، دقیقاً دنبال همکاری ریموت هستم و تجربه‌اش را هم دارم؛ پروژه‌هایی مثل تمدید و کاریار استودیو را ریموت انجام داده‌ام.",
+      fa: "بله، دقیقاً دنبال همکاری ریموت هستم و تجربه‌اش را هم دارم؛ مثل پروژه‌های تمدید و کاریار استودیو.",
     },
   },
   {
     id: "availability",
     strong: ["what kind of role", "type of role", "kind of job", "kind of work", "what kind of company", "type of company", "kind of company", "company size", "notice period", "start right away", "start immediately", "چه نوع همکاری", "نوع همکاری", "چه شرکتی", "نوع شرکت", "چه نوع شرکت", "کی میتونه شروع", "کی می‌تونه شروع", "کی شروع", "شروع کنه", "زمان شروع", "available", "availability", "open to work", "hiring", "looking for a job", "open to new", "job offer", "can we hire", "hire her", "hire you", "start date", "can you start", "can she start", "notice period", "when can", "آزاد", "در دسترس", "دنبال کار", "استخدام", "شروع همکاری", "کی میتونی", "از کی", "پیشنهاد کاری", "کار جدید", "آماده کار", "آماده‌ی کار", "آماده همکاری", "آماده‌ی همکاری", "موقعیت شغلی", "فرصت شغلی", "جویای کار", "new role", "new job", "looking for work", "estekhdam", "how soon", "when can she join", "when can you join", "join us", "join the team", "تا شروع کنی", "شروع کنی", "چقدر زمان لازم", "کی میای", "کی میتونی بیای", "begin", "next week", "start next", "start soon", "آزاد میشی"],
     answer: {
-      en: "For a full-time role, I can start after one month’s notice to my current employer; for project-based work, I’m available right away. Remote full-time, part-time or project-based all work for me; the only thing I’m not looking for is on-site work. Company size doesn’t matter, from startups to large teams.",
-      fa: "برای نقش تمام‌وقت، بعد از یک ماه فرصت برای اطلاع به شرکت فعلی‌ام می‌توانم شروع کنم؛ برای کار پروژه‌ای همین حالا آماده‌ام. ریموت، تمام‌وقت، پاره‌وقت یا پروژه‌ای، همه برایم مناسب است؛ فقط دنبال کار حضوری نیستم. اندازه‌ی شرکت هم فرقی نمی‌کند، از استارتاپ تا تیم‌های بزرگ.",
+      en: "For a full-time role, I can start after one month’s notice to my current employer; for project-based work, I’m available right away.",
+      fa: "برای نقش تمام‌وقت، بعد از یک ماه فرصت برای اطلاع به شرکت فعلی‌ام می‌توانم شروع کنم؛ برای کار پروژه‌ای همین حالا آماده‌ام.",
     },
   },
   {
@@ -133,8 +133,8 @@ export const intents: Intent[] = [
     id: "freelance",
     strong: ["freelance", "freelancer", "project based", "project-based", "contract", "part time", "part-time", "full time", "full-time", "فریلنس", "پروژه ای", "پروژه‌ای", "پاره وقت", "پاره‌وقت", "تمام وقت", "تمام‌وقت", "قرارداد"],
     answer: {
-      en: "Yes, all of them work for me: remote full-time, part-time or project-based; just not on-site. I’ve done both: full-time roles at Algonet and Novaday, and project-based work like Tamdid and Kaaryar Studio.",
-      fa: "بله، همه‌شان برایم مناسب است: ریموت تمام‌وقت، پاره‌وقت یا پروژه‌ای؛ فقط حضوری نه. تجربه‌ی هر دو را دارم: نقش تمام‌وقت در الگونت و نوادی، و کار پروژه‌ای مثل تمدید و کاریار استودیو.",
+      en: "Yes. Project-based and part-time work both suit me, as long as it’s remote; I’ve done project work before, like Tamdid and Kaaryar Studio.",
+      fa: "بله. کار پروژه‌ای و پاره‌وقت هر دو برایم مناسب است، به شرط ریموت بودن؛ قبلاً هم پروژه‌ای کار کرده‌ام، مثل تمدید و کاریار استودیو.",
     },
   },
   {
@@ -179,16 +179,16 @@ export const intents: Intent[] = [
     strong: ["education", "degree", "university", "bachelor", "study", "studied", "major", "college", "law", "تحصیلات", "مدرک", "دانشگاه", "لیسانس", "کارشناسی", "رشته", "حقوق خوندی", "رشته حقوق", "حقوق خونده", "تحصیل", "چی خوندی", "چی خونده", "چی خوندید", "درس خوندی", "tahsilat", "reshte"],
     weak: ["حقوق"],
     answer: {
-      en: "I’m a Law graduate. Design started alongside my degree: I took my first design job the same term I began studying law.",
-      fa: "فارغ‌التحصیل رشته‌ی حقوق هستم. طراحی هم هم‌زمان با تحصیلم شروع شد: همان ترمی که وارد دانشگاه شدم، اولین کار طراحی‌ام را هم شروع کردم.",
+      en: "I’m a Law graduate.",
+      fa: "فارغ‌التحصیل رشته‌ی حقوق هستم.",
     },
   },
   {
     id: "lawToDesign",
     strong: ["why design", "why law", "از حقوق", "حقوق به", "حقوق اومد", "سمت دیزاین", "سمت طراحی", "پیشینه", "پیش زمینه", "law to design", "from law", "switch", "career change", "how did you start", "how did she start", "become a designer", "got into design", "چرا دیزاین", "چرا حقوق", "تغییر مسیر", "چطور دیزاینر", "چجوری دیزاینر", "چطوری دیزاینر", "دیزاینر شد", "از کجا شروع", "چجوری شروع", "law background", "legal background", "چرا حقوق خوندی", "چرا حقوق خواندی", "چرا رشته حقوق", "چرا رفتی حقوق", "why did you study law", "why did she study law", "why study law", "chera hoghoogh"],
     answer: {
-      en: "Law was what interested me at the time, and technology wasn’t yet a world I knew. When I started my first job, I realised I could become a designer too, so I followed that path, and I’ve worked every day since to grow and bring more creative ideas to the table. I still love law, though: it’s made me more aware of my rights, broadened my perspective, and taught me to read dense rules and make them clear, which I do in design every day.",
-      fa: "آن زمان علاقه‌ام حقوق بود و هنوز با دنیای تکنولوژی آن‌قدر آشنا نبودم. وقتی اولین کارم را شروع کردم، متوجه شدم می‌توانم طراح هم بشوم؛ همین مسیر را ادامه دادم و از آن روز سعی کرده‌ام هر روز پیشرفت کنم و ایده‌های خلاقانه‌تری داشته باشم. ولی حقوق را هنوز هم دوست دارم: به حق‌وحقوقم آگاه‌ترم، دیدم گسترده‌تر شده و یادم داده قوانین پیچیده را بخوانم و ساده کنم؛ کاری که هر روز در طراحی انجام می‌دهم.",
+      en: "Law was what interested me at the time, and technology wasn’t yet a world I knew. When I started my first job, I realised I could become a designer too, so I followed that path and have worked every day since to grow. I still love law, though: it’s made me more aware of my rights and broadened my perspective.",
+      fa: "آن زمان علاقه‌ام حقوق بود و هنوز با دنیای تکنولوژی آن‌قدر آشنا نبودم. وقتی اولین کارم را شروع کردم، متوجه شدم می‌توانم طراح هم بشوم؛ همین مسیر را ادامه دادم و از آن روز سعی کرده‌ام هر روز پیشرفت کنم و ایده‌های خلاقانه‌تری داشته باشم. ولی حقوق را هنوز هم دوست دارم: به حق‌وحقوقم آگاه‌ترم و دیدم گسترده‌تر شده.",
     },
   },
   {
@@ -229,8 +229,8 @@ export const intents: Intent[] = [
     id: "ai",
     strong: ["ai", "artificial intelligence", "chatgpt", "claude", "gpt", "lovable", "notebooklm", "ai studio", "هوش مصنوعی", "ای آی", "چت جی پی تی", "hoosh", "ai tools", "ai tool", "using ai", "use ai"],
     answer: {
-      en: "AI is my thinking partner, not my designer. I use it to research faster, compare directions, draft UX copy and prototype (ChatGPT, Claude, Google AI Studio, NotebookLM, Lovable), but the decisions stay mine. I also design an AI product myself: Atlas, at Algonet.",
-      fa: "هوش مصنوعی هم‌فکر من است، نه جای من. از آن برای تحقیق سریع‌تر، مقایسه‌ی ایده‌ها، نوشتن UX copy و پروتوتایپ استفاده می‌کنم (ChatGPT، Claude، Google AI Studio، NotebookLM، Lovable)، ولی تصمیم‌ها با خودم است. خودم هم یک محصول هوش مصنوعی طراحی می‌کنم: اطلس، در الگونت.",
+      en: "AI is my thinking partner, not my designer: I use it to research faster, compare directions, draft UX copy and prototype, but the decisions stay mine.",
+      fa: "هوش مصنوعی هم‌فکر من است، نه جای من: از آن برای تحقیق سریع‌تر، مقایسه‌ی ایده‌ها، نوشتن UX copy و پروتوتایپ استفاده می‌کنم، ولی تصمیم‌ها با خودم است.",
     },
   },
   {
@@ -294,8 +294,8 @@ export const intents: Intent[] = [
     id: "team",
     strong: ["team", "teamwork", "collaborate", "collaboration", "solo", "alone", "pm", "product manager", "qa", "engineers", "with developer", "work with developer", "with engineer", "تیم", "تیمی", "همکاری", "تنها", "انفرادی", "مدیر محصول", "تیم فنی", "با تیم", "با دولوپر", "با برنامه نویس", "documentation", "documents", "specs", "spec", "developers", "engineering", "مستندسازی", "داکیومنت", "مستند"],
     answer: {
-      en: "Closely, every day. At Novaday and Algonet I’ve worked side by side with PMs, QA and engineers, and I document flows, page logic, states and edge cases so nothing is left to guesswork. I can also own a product on my own: I was the only designer on Tamdid.",
-      fa: "نزدیک و هر روز. در نوادی و الگونت کنار مدیر محصول، QA و تیم فنی کار کرده‌ام و فلوها، منطق صفحات، استیت‌ها و حالت‌های خاص را مستند می‌کنم تا چیزی به حدس و گمان نماند. مسئولیت کامل یک محصول را هم به‌تنهایی می‌پذیرم: در تمدید تنها طراح بودم.",
+      en: "Closely, every day. I work side by side with PMs, QA and engineers, and I document flows, page logic, states and edge cases so nothing is left to guesswork.",
+      fa: "نزدیک و هر روز. کنار مدیر محصول، QA و تیم فنی کار می‌کنم و فلوها، منطق صفحات، استیت‌ها و حالت‌های خاص را مستند می‌کنم تا چیزی به حدس و گمان نماند.",
     },
   },
 
@@ -314,8 +314,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["tamdid", "تمدید"],
     answer: {
-      en: "Tamdid is a fintech product for renewals: mobile charge, internet packages and game credit, for yourself or as a gift, paid from one wallet. Managers fund their contacts’ wallets and keep track of who owes what, and a monthly league rewards people for keeping up. I designed it on my own, mobile first, then web, tablet and English, on its own design system. It’s now in development.",
-      fa: "تمدید یک محصول فین‌تک برای تمدید است: شارژ، بسته‌ی اینترنت و یوسی، برای خود یا هدیه به دیگران، با پرداخت از کیف پول. مدیرها کیف پول مخاطبان‌شان را شارژ می‌کنند و حساب طلب و بدهی را دارند، و یک لیگ ماهانه به کاربرهای فعال امتیاز می‌دهد. به‌تنهایی طراحی‌اش کردم؛ اول موبایل، بعد وب، تبلت و نسخه‌ی انگلیسی، روی دیزاین‌سیستم اختصاصی خودش. الان در مرحله‌ی توسعه است.",
+      en: "Tamdid is a fintech product for renewals: mobile charge, internet packages and game credit, paid from one wallet, with a monthly league that rewards keeping up. I designed it on my own, from the first idea to development, and it’s now being built.",
+      fa: "تمدید یک محصول فین‌تک برای تمدید شارژ، بسته‌ی اینترنت و اعتبار بازی است، با پرداخت از کیف پول و یک لیگ ماهانه برای کاربرهای فعال. به‌تنهایی طراحی‌اش کردم، از اولین ایده تا توسعه، و الان در مرحله‌ی ساخت است.",
     },
     link: { href: "/work/tamdid", label: { en: "Tamdid case study", fa: "کیس‌استادی تمدید" } },
   },
@@ -324,8 +324,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["kudos", "کودوس"],
     answer: {
-      en: "Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events and onboarding in one place. As its only designer at Novaday, I turned the home from a plain dashboard into a social feed, validated it with an A/B test, and documented every page’s logic for engineering. It’s live with real companies; at ArvanCloud alone, around 500 people use it.",
-      fa: "کودوس نرم‌افزار قدردانی از کارکنان است: همکارها با گیفت‌کارت و سکه از هم تشکر می‌کنند و منابع انسانی نظرسنجی، رویداد و آنبوردینگ را همان‌جا اجرا می‌کند. تنها طراحش در نوادی بودم؛ صفحه‌ی اصلی را از یک داشبورد ساده به یک فید اجتماعی تبدیل کردم، با تست A/B اعتبارسنجی‌اش کردم و منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کردم. کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در ابرآروان حدود ۵۰۰ نفر کاربرش هستند.",
+      en: "Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys and events in the same place. As its only designer at Novaday, I turned its home from a plain dashboard into a social feed, and it’s live with real companies.",
+      fa: "کودوس نرم‌افزار قدردانی از کارکنان است: همکارها با گیفت‌کارت و سکه از هم تشکر می‌کنند و منابع انسانی نظرسنجی و رویدادها را همان‌جا اجرا می‌کند. تنها طراحش در نوادی بودم؛ صفحه‌ی اصلی‌اش را از یک داشبورد ساده به یک فید اجتماعی تبدیل کردم و حالا در شرکت‌های واقعی استفاده می‌شود.",
     },
     link: { href: "/work/kudos", label: { en: "Kudos case study", fa: "کیس‌استادی کودوس" } },
   },
@@ -344,8 +344,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["atlas", "aix2", "اطلس"],
     answer: {
-      en: "Atlas is an AI platform I design at Algonet. It analyses a company’s emails, chats and workflows, maps how work really moves and suggests a simpler process. We took it from brief to a live first version in two to three days; it now has real customers and is heading for an international launch, which is why it’s blurred on the site for now.",
-      fa: "اطلس پلتفرم هوش مصنوعی‌ای است که در الگونت طراحی می‌کنم. ایمیل‌ها، چت‌ها و فرایندهای یک شرکت را تحلیل می‌کند، مسیر واقعی کارها را نشان می‌دهد و مسیر ساده‌تری پیشنهاد می‌دهد. اولین نسخه‌ی لایوش را در دو سه روز از بریف به اجرا رساندیم؛ حالا مشتری واقعی دارد و برای لانچ بین‌المللی آماده می‌شود، برای همین فعلاً در سایت تار نمایش داده شده.",
+      en: "Atlas is an AI platform I design at Algonet. It analyses a company’s emails, chats and workflows and suggests a simpler way to run them; we took it from brief to a live first version in two to three days.",
+      fa: "اطلس پلتفرم هوش مصنوعی‌ای است که در الگونت طراحی می‌کنم. ایمیل‌ها، چت‌ها و فرایندهای یک شرکت را تحلیل می‌کند و مسیر ساده‌تری پیشنهاد می‌دهد؛ اولین نسخه‌ی لایوش را در دو سه روز از بریف به اجرا رساندیم.",
     },
     link: { href: "/work/atlas", label: { en: "About Atlas", fa: "درباره‌ی اطلس" } },
   },
@@ -374,8 +374,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["novin", "novin host", "novinhost", "hosting", "نوین", "نوین هاست", "هاستینگ"],
     answer: {
-      en: "Novin Host is a hosting brand with 15 years behind it. From June to September 2026 I redesigned its website to feel current and make choosing a plan easier, without long-time customers losing their way. The work started with a heuristic UX audit of the live site.",
-      fa: "نوین هاست یک برند هاستینگ با ۱۵ سال سابقه است. از خرداد تا شهریور ۱۴۰۵ سایتش را ریدیزاین کردم تا به‌روز شود و انتخاب سرویس راحت‌تر باشد، بدون اینکه مشتری‌های قدیمی راه‌شان را گم کنند. کار را با یک آدیت هیوریستیک از سایت فعلی شروع کردم.",
+      en: "Novin Host is a hosting brand with 15 years behind it. From June to September 2026 I redesigned its website to feel current and make choosing a plan easier, without long-time customers losing their way.",
+      fa: "نوین هاست یک برند هاستینگ با ۱۵ سال سابقه است. از خرداد تا شهریور ۱۴۰۵ سایتش را ریدیزاین کردم تا به‌روز شود و انتخاب سرویس راحت‌تر باشد، بدون اینکه مشتری‌های قدیمی راه‌شان را گم کنند.",
     },
     link: { href: "/work/novinhost", label: { en: "Novin Host case study", fa: "کیس‌استادی نوین هاست" } },
   },
@@ -464,8 +464,8 @@ export const intents: Intent[] = [
     id: "lesson",
     strong: ["failure", "failed", "mistake", "mistakes", "lesson", "lessons learned", "learned the hard way", "what went wrong", "شکست", "اشتباه", "درس", "تجربه تلخ"],
     answer: {
-      en: "The lesson that stuck with me: don’t start designing while the problem is still blurry. When a brief is full of open questions, I keep asking and researching until I truly understand it, because that’s where good output comes from. Nan va Namak taught me a lot too: it never launched, but it’s where I became a product designer.",
-      fa: "درسی که برایم ماندگار شد: تا وقتی مسئله مبهم است، طراحی را شروع نکنم. وقتی بریف پر از سؤال باز است، آن‌قدر می‌پرسم و ریسرچ می‌کنم تا مسئله را واقعاً بفهمم، چون خروجی خوب از همین‌جا می‌آید. نان و نمک هم کلی به من یاد داد: لانچ نشد، ولی همان‌جا پروداکت دیزاینر شدم.",
+      en: "The lesson that stuck with me: don’t start designing while the problem is still blurry. When a brief is full of open questions, I keep asking and researching until I truly understand it.",
+      fa: "درسی که برایم ماندگار شد: تا وقتی مسئله مبهم است، طراحی را شروع نکنم. وقتی بریف پر از سؤال باز است، آن‌قدر می‌پرسم و ریسرچ می‌کنم تا مسئله را واقعاً بفهمم.",
     },
   },
   {
@@ -490,8 +490,8 @@ export const intents: Intent[] = [
     id: "challenge",
     strong: ["hardest", "biggest challenge", "challenge", "challenging", "difficult project", "toughest", "pressure", "tight deadline", "deadline", "deadlines", "under pressure", "stress", "stressful", "prioritize", "prioritise", "time management", "سخت ترین", "چالش", "سختی", "فشار", "ددلاین", "مهلت کم", "زمان کم", "استرس", "اولویت بندی", "مدیریت زمان", "زیر فشار", "زیر فشار چطور", "فشار کاری", "under pressure how"],
     answer: {
-      en: "Pressure is something I’ve learned to work with, and Atlas is proof: we took it from brief to a live first version in two to three days. I handle tight deadlines with a clear plan, AI as a partner and a lot of persistence, and a real deadline actually sharpens my focus. As for the hardest project, every one has its own hard part, so I wouldn’t pick just one.",
-      fa: "کار زیر فشار را یاد گرفته‌ام و اطلس گواهش است: اولین نسخه‌ی لایوش را در دو سه روز از بریف به اجرا رساندیم. ددلاین‌های فشرده را با یک برنامه‌ی دقیق، هوش مصنوعی به‌عنوان همراه و کلی پشتکار پیش می‌برم، و ددلاین واقعی حتی تمرکزم را بیشتر می‌کند. درباره‌ی سخت‌ترین پروژه هم، هر پروژه سختی خودش را دارد، برای همین یکی را انتخاب نمی‌کنم.",
+      en: "Pressure is something I’ve learned to work with: on Atlas, we went from brief to a live first version in two to three days. A clear plan, AI as a partner and persistence get me through, and a real deadline actually sharpens my focus.",
+      fa: "کار زیر فشار را یاد گرفته‌ام: در اطلس، در دو سه روز از بریف به اولین نسخه‌ی لایو رسیدیم. یک برنامه‌ی دقیق، هوش مصنوعی به‌عنوان همراه و پشتکار کمکم می‌کند، و ددلاین واقعی حتی تمرکزم را بیشتر می‌کند.",
     },
   },
   {
@@ -514,8 +514,8 @@ export const intents: Intent[] = [
     id: "hours",
     strong: ["time zone", "timezone", "time zones", "overlap", "us hours", "european hours", "working hours", "weekend", "weekends", "hours", "تایم زون", "منطقه زمانی", "ساعت کاری", "آخر هفته", "تعطیلات", "meeting", "meetings", "what time", "جلسه", "چه ساعتی", "ساعت جلسه", "meet at", "cet", "est", "pst", "gmt", "utc", "ساعت چند", "چه ساعت هایی", "تا چه ساعتی", "berlin time", "london time", "new york time", "local time", "your time", "call at", "meeting at", "time difference", "اختلاف ساعت", "به وقت"],
     answer: {
-      en: "I’m in Tehran (UTC+3:30) and can meet any time between 10:00 and 22:00 Tehran time, arranged in advance. That covers the whole European working day and US East Coast mornings into the early afternoon. When a project needs it, I work weekends too.",
-      fa: "ساکن تهرانم (UTC+3:30) و با هماهنگی قبلی از ساعت ۱۰ صبح تا ۱۰ شب به وقت تهران می‌توانم جلسه داشته باشم؛ یعنی کل ساعت کاری اروپا و صبح تا اوایل بعدازظهر شرق آمریکا. اگر پروژه لازم داشته باشد، آخر هفته‌ها هم کار می‌کنم.",
+      en: "I’m in Tehran (UTC+3:30) and can meet between 10:00 and 22:00 Tehran time, arranged in advance. That covers the whole European working day and US East Coast mornings.",
+      fa: "ساکن تهرانم (UTC+3:30) و با هماهنگی قبلی از ساعت ۱۰ صبح تا ۱۰ شب به وقت تهران می‌توانم جلسه داشته باشم؛ یعنی کل ساعت کاری اروپا و صبح‌های شرق آمریکا.",
     },
   },
   {
@@ -599,8 +599,8 @@ export const intents: Intent[] = [
     id: "whyHire",
     strong: ["why should we hire", "why hire", "why should i hire", "why her", "why sudabeh", "what makes her different", "what makes her stand out", "stand out", "what sets her apart", "unique", "good fit", "right fit", "چرا باید استخدام", "چرا استخدام", "چرا سودابه", "چرا باید سودابه", "چه چیزی متمایز", "فرقش با بقیه", "متمایز", "چرا تو", "چرا شما", "chera bayad", "best fit", "sets you apart", "sets her apart", "apart from other", "the best candidate", "right candidate", "بهترین گزینه", "چرا باید تو", "تو را استخدام", "تو رو استخدام", "استخدام کنیم", "استخدامت کنیم", "hire you"],
     answer: {
-      en: "Because I make complicated products simple, and my work shows it. I designed Tamdid on my own from idea to development, documented every page’s logic for engineers on Kudos, and designed Remeet, which won at Tehran Design Week. I’ve built three custom design systems, I work fast with AI without handing it the decisions, and the products I design at Algonet serve thousands of people.",
-      fa: "چون محصول‌های پیچیده را ساده می‌کنم و کارهایم این را نشان می‌دهد: تمدید را به‌تنهایی از ایده تا توسعه طراحی کردم، در کودوس منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کردم و ریمیت را طراحی کردم که در هفته‌ی دیزاین تهران برنده شد. سه دیزاین‌سیستم اختصاصی ساخته‌ام، با کمک هوش مصنوعی سریع کار می‌کنم بدون اینکه تصمیم‌ها را به آن بسپارم، و محصولاتی که در الگونت طراحی می‌کنم هزاران کاربر دارند.",
+      en: "Because I make complicated products simple, and my work shows it: I designed Tamdid on my own from idea to development, and Remeet, which won at Tehran Design Week. I work fast with AI without handing it the decisions.",
+      fa: "چون محصول‌های پیچیده را ساده می‌کنم و کارهایم این را نشان می‌دهد: تمدید را به‌تنهایی از ایده تا توسعه طراحی کردم، و ریمیت را که در هفته‌ی دیزاین تهران برنده شد. با کمک هوش مصنوعی سریع کار می‌کنم، بدون اینکه تصمیم‌ها را به آن بسپارم.",
     },
     link: { href: "/work", label: { en: "See all projects", fa: "همه‌ی پروژه‌ها" } },
   },
@@ -624,16 +624,16 @@ export const intents: Intent[] = [
     id: "conflict",
     strong: ["conflict", "conflicts", "disagree", "disagreed", "disagreement", "push back", "pushback", "difficult stakeholder", "difficult client", "difficult person", "argument", "tension", "تعارض", "اختلاف نظر", "مخالفت", "مخالف بود", "بحث با", "کارفرمای سخت", "مشتری سخت", "درگیری", "به مشکل خوردی", "مشکل خوردی", "مشکل خورده", "اختلاف داشته", "اختلاف پیدا", "اختلاف داشتی", "اختلاف نظر داشتی", "دعوا", "دعوات", "builds it differently", "built differently", "differently than your design", "differently than the design", "doesnt match the design", "not what you designed", "not as designed", "با طراحی فرق", "مطابق طراحی نبود", "argued", "doesnt follow", "dont follow", "not following the design", "ignores your design", "ignore your design", "طراحیت رو اجرا نکرد"],
     answer: {
-      en: "Most of my disagreements have been about the gap between what I designed and what got built, and I see closing that gap as part of my job. I take the time to understand the developers’ constraints, while standing up for the flow and UX that work for the user. That’s also why I document page logic and edge cases before handoff.",
-      fa: "بیشتر اختلاف‌نظرهایم سر فاصله‌ی بین طراحی و چیزی بوده که در نهایت پیاده شده، و بستن همین فاصله را بخشی از کار خودم می‌دانم. وقت می‌گذارم تا محدودیت‌های تیم فنی را بفهمم، اما پای فلو و تجربه‌ای که برای کاربر درست است هم می‌ایستم. به همین دلیل هم قبل از تحویل، منطق صفحات و حالت‌های خاص را مستند می‌کنم.",
+      en: "Most of my disagreements have been about the gap between what I designed and what got built, and I see closing that gap as part of my job. I take the time to understand the developers’ constraints, while standing up for the flow and UX that work for the user.",
+      fa: "بیشتر اختلاف‌نظرهایم سر فاصله‌ی بین طراحی و چیزی بوده که در نهایت پیاده شده، و بستن همین فاصله را بخشی از کار خودم می‌دانم. وقت می‌گذارم تا محدودیت‌های تیم فنی را بفهمم، اما پای فلو و تجربه‌ای که برای کاربر درست است هم می‌ایستم.",
     },
   },
   {
     id: "feedback",
     strong: ["feedback", "criticism", "criticise", "criticize", "critique", "design review", "design reviews", "review your work", "فیدبک", "بازخورد", "انتقاد", "نقد", "reject your design", "rejects your design", "rejected", "stakeholder", "stakeholders", "dont like your design", "doesnt like your design", "طراحیت رو رد", "رد کنن"],
     answer: {
-      en: "I treat feedback as part of the process, not an interruption. On Kudos, review feedback had its own type of designer note, next to logic and copy, so nothing got lost. On Kaaryar Studio I started with grey wireframes, so the first conversation was about order and content rather than looks.",
-      fa: "فیدبک را بخشی از فرایند می‌دانم، نه مزاحمت. در کودوس، فیدبک‌های ریویو یک نوع یادداشت طراحی جدا داشتند، کنار منطق و متن، تا چیزی گم نشود. در کاریار استودیو هم اول وایرفریم خاکستری کشیدم تا بحث اول درباره‌ی ترتیب و محتوا باشد، نه ظاهر.",
+      en: "I treat feedback as part of the process, not an interruption. On Kudos, review feedback even had its own type of designer note, so nothing got lost.",
+      fa: "فیدبک را بخشی از فرایند می‌دانم، نه مزاحمت. در کودوس حتی فیدبک‌های ریویو یک نوع یادداشت طراحی جدا داشتند تا چیزی گم نشود.",
     },
   },
   {
@@ -648,24 +648,24 @@ export const intents: Intent[] = [
     id: "goals",
     strong: ["five years", "5 years from now", "in 5 years", "future", "career goal", "career goals", "goals", "goal", "next step", "ambition", "ambitions", "where do you see", "where does she see", "long term", "long-term", "آینده", "۵ سال آینده", "5 سال آینده", "هدف", "اهداف", "هدفت", "برنامه آینده", "قدم بعدی", "go next", "want to go next", "where do you want to go", "next in your career", "قدم بعدی ات"],
     answer: {
-      en: "I want to grow into leading design. So far I’ve mostly been the only designer on a product, and I really enjoy the management side of the work. I’m also planning to relocate, and I’m ready for an international team.",
-      fa: "می‌خواهم به سمت لید طراحی بروم. تا الان بیشتر تنها طراح محصول بوده‌ام و بخش مدیریتی کار را واقعاً دوست دارم. برنامه‌ی مهاجرت هم دارم و برای کار در یک تیم بین‌المللی آماده‌ام.",
+      en: "I want to grow into leading design. So far I’ve mostly been the only designer on a product, and I really enjoy the management side of the work.",
+      fa: "می‌خواهم به سمت لید طراحی بروم. تا الان بیشتر تنها طراح محصول بوده‌ام و بخش مدیریتی کار را واقعاً دوست دارم.",
     },
   },
   {
     id: "motivation",
     strong: ["motivation", "motivates", "motivated", "passion", "passionate", "what drives", "why product design", "why do you love", "why does she love", "enjoy most", "love about", "انگیزه", "علاقه", "چرا طراحی محصول", "چرا پروداکت", "عاشق", "چی دوست داری", "از چی لذت"],
     answer: {
-      en: "Making complicated things feel simple. Early on, my question shifted from “how does it look?” to “how does it work?”, and owning a whole product at Nan va Namak showed me where I belong. For me, the job is done right when users find it easy, the business gets results, and I’ve enjoyed the way there.",
-      fa: "ساده کردن چیزهای پیچیده. سؤالم خیلی زود از «چطور به نظر می‌رسد؟» به «چطور کار می‌کند؟» رسید و ساختن یک محصول کامل در نان و نمک نشانم داد جایم کجاست. از نظر من کار وقتی درست انجام شده که برای کاربر ساده باشد، برای کسب‌وکار نتیجه بدهد و خودم هم از مسیر لذت برده باشم.",
+      en: "Making complicated things feel simple. For me, the job is done right when users find it easy, the business gets results, and I’ve enjoyed the way there.",
+      fa: "ساده کردن چیزهای پیچیده. از نظر من کار وقتی درست انجام شده که برای کاربر ساده باشد، برای کسب‌وکار نتیجه بدهد و خودم هم از مسیر لذت برده باشم.",
     },
   },
   {
     id: "favorite",
     strong: ["favorite project", "favourite project", "proudest", "best project", "most proud", "پروژه مورد علاقه", "بیشتر از همه دوست", "افتخار", "بهترین پروژه", "پروژه محبوب", "بیشتر دوستش داری", "most proud of", "favorite work", "favourite work", "پروژه مورد علاقت", "کار مورد علاقه", "کار مورد علاقت", "پروژه محبوبت", "پروژت رو بیشتر", "proud of"],
     answer: {
-      en: "I can’t pick just one, and that says something: what I love is the whole journey of taking an idea and turning it into a product people genuinely enjoy. My lead projects are Atlas (enterprise AI), Tamdid (fintech, designed solo) and Kudos (HR, live with real companies).",
-      fa: "نمی‌توانم فقط یکی را انتخاب کنم، و همین خودش گویاست: چیزی که عاشقش هستم کل مسیر است؛ اینکه یک ایده را بگیرم و به محصولی تبدیلش کنم که واقعاً به دل آدم‌ها بنشیند. پروژه‌های اصلی‌ام اطلس (هوش مصنوعی سازمانی)، تمدید (فین‌تک، به‌تنهایی) و کودوس (منابع انسانی، در حال استفاده در شرکت‌های واقعی) هستند.",
+      en: "I can’t pick just one. What I love is the whole journey: taking an idea and turning it into a product people genuinely enjoy.",
+      fa: "نمی‌توانم فقط یکی را انتخاب کنم. چیزی که عاشقش هستم کل مسیر است؛ اینکه یک ایده را بگیرم و به محصولی تبدیلش کنم که واقعاً به دل آدم‌ها بنشیند.",
     },
     link: { href: "/work", label: { en: "See all projects", fa: "همه‌ی پروژه‌ها" } },
   },
@@ -1169,6 +1169,10 @@ export const QUESTION_LABELS: Record<string, Record<Lang, string>> = {
   hours: { en: "What hours can you meet?", fa: "چه ساعت‌هایی می‌توانید جلسه داشته باشید؟" },
   languages: { en: "How’s your English?", fa: "انگلیسی‌تان چطور است؟" },
   contact: { en: "How can I contact you?", fa: "چطور با شما در تماس باشم؟" },
+  lawToDesign: { en: "Why did you study law?", fa: "چرا حقوق خواندید؟" },
+  courses: { en: "What courses have you taken?", fa: "چه دوره‌هایی گذرانده‌اید؟" },
+  relocation: { en: "Would you relocate?", fa: "حاضرید مهاجرت کنید؟" },
+  freelance: { en: "Do you take on project-based work?", fa: "کار پروژه‌ای هم انجام می‌دهید؟" },
   tamdid: { en: "Tell me about Tamdid", fa: "درباره‌ی تمدید بگویید" },
   kudos: { en: "Tell me about Kudos", fa: "درباره‌ی کودوس بگویید" },
   atlas: { en: "Tell me about Atlas", fa: "درباره‌ی اطلس بگویید" },
@@ -1179,6 +1183,10 @@ export const QUESTION_LABELS: Record<string, Record<Lang, string>> = {
 const PROJECT_NEXT = ["results", "team", "process"];
 const FOLLOW: Record<string, string[]> = {
   who: ["whyHire", "projects", "experience"],
+  education: ["lawToDesign", "courses", "experience"],
+  lawToDesign: ["experience", "projects", "whyHire"],
+  courses: ["lawToDesign", "tools", "projects"],
+  location: ["remote", "relocation", "hours"],
   whyHire: ["strengths", "results", "availability"],
   experience: ["projects", "strengths", "availability"],
   role: ["atlas", "projects", "availability"],
@@ -1194,8 +1202,8 @@ const FOLLOW: Record<string, string[]> = {
   tools: ["ai", "process", "projects"],
   ai: ["tools", "process", "atlas"],
   challenge: ["weakness", "atlas", "process"],
-  availability: ["remote", "hours", "contact"],
-  remote: ["availability", "hours", "contact"],
+  availability: ["remote", "freelance", "hours"],
+  remote: ["availability", "hours", "relocation"],
   hours: ["availability", "languages", "contact"],
   languages: ["hours", "availability", "contact"],
   salary: ["availability", "remote", "contact"],
