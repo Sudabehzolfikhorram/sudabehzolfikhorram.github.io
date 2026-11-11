@@ -102,9 +102,9 @@
 
 نمونه سؤال: «What's her salary expectation?»، «حقوق چند میخوای؟»، «حقوقت چقدره»
 
-این را ترجیح می‌دهم وقتی با هم در ارتباطیم، مستقیم صحبت کنیم. به اسکیل پروژه و مدت زمان آن بستگی دارد و بعد از صحبت بیشتر، در یک جلسه مشخص می‌شود. سؤال‌تان به دست خودم رسید؛ اگر راه ارتباطی بگذارید، برای جلسه هماهنگ می‌کنیم.
+این را ترجیح می‌دهم وقتی با هم در ارتباطیم، مستقیم صحبت کنیم. به اسکیل پروژه و مدت زمان آن بستگی دارد و بعد از صحبت بیشتر، در یک جلسه مشخص می‌شود. می‌توانید ایمیل یا یک راه ارتباطی بفرستید تا با شما در ارتباط باشم؟
 
-> That’s something I’d rather discuss with you directly once we’re in touch. It depends on the project’s scale and duration, and we can settle it in a meeting after we’ve talked it through. Your question has come straight to me; leave a way to reach you below and we’ll set up a time.
+> That’s something I’d rather discuss with you directly. It depends on the project’s scale and duration, and we can settle it in a meeting once we’ve talked it through. Could you send me your email or another way to reach you, so I can get in touch?
 
 ## 14. `relocation`
 

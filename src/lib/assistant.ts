@@ -140,10 +140,10 @@ export const intents: Intent[] = [
   {
     id: "salary",
     strong: ["salary", "salary expectation", "expected pay", "compensation", "hourly rate", "day rate", "your rate", "her rate", "her rates", "your rates", "rate card", "price", "how much does she cost", "how much do you charge", "how much does she charge", "hourly", "حقوق چند", "چند حقوق", "حقوق میخوای", "حقوق میخواد", "حقوق مدنظر", "حقوق مد نظر", "حقوق دریافتی", "دریافتی", "میزان دستمزد", "ساعتی", "ریت ساعتی", "budget", "expected salary", "حقوق درخواستی", "حقوق چقدر", "چقدر حقوق", "حقوقت", "حقوق ماهانه", "حقوق انتظاری", "انتظار حقوق", "میزان حقوق", "دستمزد", "قیمت", "هزینه", "ریت", "بودجه", "hoghoogh"],
-    casual: { fa: "این را ترجیح می‌دهم وقتی با هم در ارتباطیم، مستقیم صحبت کنیم. به اسکیل پروژه و مدت زمانش بستگی دارد و بعد از صحبت بیشتر، در یک جلسه مشخص می‌شود. سؤالت به دست خودم رسید؛ اگر راه ارتباطی بگذاری، برای جلسه هماهنگ می‌کنیم." },
+    casual: { fa: "این را ترجیح می‌دهم وقتی با هم در ارتباطیم، مستقیم صحبت کنیم. به اسکیل پروژه و مدت زمانش بستگی دارد و بعد از صحبت بیشتر، در یک جلسه مشخص می‌شود. می‌توانی ایمیل یا یک راه ارتباطی بفرستی تا با تو در ارتباط باشم؟" },
     answer: {
-      en: "That’s something I’d rather discuss with you directly once we’re in touch. It depends on the project’s scale and duration, and we can settle it in a meeting after we’ve talked it through. Your question has come straight to me; leave a way to reach you below and we’ll set up a time.",
-      fa: "این را ترجیح می‌دهم وقتی با هم در ارتباطیم، مستقیم صحبت کنیم. به اسکیل پروژه و مدت زمان آن بستگی دارد و بعد از صحبت بیشتر، در یک جلسه مشخص می‌شود. سؤال‌تان به دست خودم رسید؛ اگر راه ارتباطی بگذارید، برای جلسه هماهنگ می‌کنیم.",
+      en: "That’s something I’d rather discuss with you directly. It depends on the project’s scale and duration, and we can settle it in a meeting once we’ve talked it through. Could you send me your email or another way to reach you, so I can get in touch?",
+      fa: "این را ترجیح می‌دهم وقتی با هم در ارتباطیم، مستقیم صحبت کنیم. به اسکیل پروژه و مدت زمان آن بستگی دارد و بعد از صحبت بیشتر، در یک جلسه مشخص می‌شود. می‌توانید ایمیل یا یک راه ارتباطی بفرستید تا با شما در ارتباط باشم؟",
     },
     forward: true,
   },
