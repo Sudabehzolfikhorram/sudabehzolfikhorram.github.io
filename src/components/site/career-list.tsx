@@ -29,7 +29,7 @@ const FIELD: Record<string, LucideIcon> = {
   ChapAgha: Printer,
   "Nan va Namak": ChefHat,
   Jaygah: Megaphone,
-  "Alla Online School": GraduationCap,
+  "AlaaTV (Online School)": GraduationCap,
 };
 
 /** One colour at rest (ink, or white in dark mode); the brand's own colours come through on hover. */

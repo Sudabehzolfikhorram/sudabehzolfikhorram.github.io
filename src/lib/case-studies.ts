@@ -311,32 +311,32 @@ const all: CaseStudy[] = [
     ],
     screens: [],
     facts: [
-      { value: "~500", label: "People using it, by my count" },
+      { value: "~500", label: "People using it at ArvanCloud alone" },
       { value: "70+", label: "Pages in the design file" },
       { value: "2", label: "Products on one design system" },
     ],
   },
   {
     slug: "kaaryar",
-    name: "Studio Kaaryar",
+    name: "Kaaryar Studio",
     layout: "kaaryar",
     hue: "#03703a",
     tagline: "Selling a new kind of product team in four pages, and keeping it simple on purpose.",
     summary:
-      "I redesigned the full Studio Kaaryar website, improving information architecture, visual storytelling, accessibility and clarity, and built a custom design system for it.",
+      "I redesigned the full Kaaryar Studio website, improving information architecture, visual storytelling, accessibility and clarity, and built a custom design system for it.",
     category: "Website redesign · Social impact",
     period: { start: "2025-09", end: "2026-01" },
-    status: "Design completed · in development",
+    status: "Live",
     meta: {
       role: "Product Designer",
       engagement: "Remote",
       platform: "Responsive web",
       tools: ["Figma", "FigJam"],
     },
-    links: [{ label: "studio.kaaryar.ir", href: "https://studio.kaaryar.ir/" }],
+    links: [{ label: "Live site: studio.kaaryar.ir", href: "https://studio.kaaryar.ir/" }],
     // Real screens from Figma, so no coded mockup (and no "illustrative" note).
-    cover: { image: `${BASE}/work/kaaryar/home.webp`, alt: "Studio Kaaryar home page, redesigned" },
-    thumbnail: { image: `${BASE}/work/kaaryar/thumb.webp`, alt: "Studio Kaaryar redesign: the studio’s K mark in green and orange" },
+    cover: { image: `${BASE}/work/kaaryar/home.webp`, alt: "Kaaryar Studio home page, redesigned" },
+    thumbnail: { image: `${BASE}/work/kaaryar/thumb.webp`, alt: "Kaaryar Studio redesign: the studio’s K mark in green and orange" },
     context:
       "Kaaryar trains programmers and designers from across Iran. Kaaryar Studio is where its graduates build real products for clients, reviewed by experienced mentors. Every project becomes a real job for a young person.",
     scope: ["Information architecture", "Visual storytelling", "Accessibility", "Clarity of content", "Custom design system"],
@@ -354,7 +354,7 @@ const all: CaseStudy[] = [
     facts: [
       { value: "Full site", label: "Redesigned end to end" },
       { value: "Custom", label: "Design system built for the site" },
-      { value: "Designed", label: "Design completed; in development" },
+      { value: "Live", label: "At studio.kaaryar.ir, close to the final design" },
     ],
   },
   {

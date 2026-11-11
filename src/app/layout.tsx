@@ -47,7 +47,7 @@ const person = {
   worksFor: experience.filter((r) => !r.end).map((r) => ({ "@type": "Organization", name: r.company })),
   alumniOf: { "@type": "CollegeOrUniversity", name: "Payame Noor University" },
   knowsAbout: skills,
-  sameAs: site.socials.map((s) => s.href),
+  sameAs: site.socials.filter((s) => !s.href.includes("wa.me")).map((s) => s.href),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

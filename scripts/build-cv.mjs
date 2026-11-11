@@ -14,15 +14,20 @@ const font = (p) => `data:font/woff2;base64,${readFileSync(join(root, "node_modu
 const SITE = "https://sudabehzolfikhorram.github.io";
 const work = (slug) => `${SITE}/work/${slug}/`;
 
+// Two rows: ways to reach her, then where to find her work.
 const contact = [
-  { label: "+98 991 206 63 24", href: "tel:+989912066324" },
-  { label: "sudabeh.a.zolfikhorram@gmail.com", href: "mailto:sudabeh.a.zolfikhorram@gmail.com" },
-  { label: "sudabehzolfikhorram.github.io", href: SITE, strong: true },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/sudabehzolfikhorram2001/" },
-  { label: "Telegram", href: "https://t.me/sudabehzolfikhorram" },
-  { label: "Behance", href: "https://www.behance.net/sudabehzolfikh" },
-  { label: "Medium", href: "https://medium.com/@sudabeh.a.zolfikhorram" },
-  { label: "Instagram", href: "https://www.instagram.com/sudabehzolfi.design" },
+  [
+    { label: "sudabehzolfikhorram.github.io", href: SITE, strong: true },
+    { label: "sudabeh.a.zolfikhorram@gmail.com", href: "mailto:sudabeh.a.zolfikhorram@gmail.com" },
+    { label: "+98 991 206 63 24 (phone & WhatsApp)", href: "https://wa.me/989912066324" },
+  ],
+  [
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/sudabehzolfikhorram2001/" },
+    { label: "Telegram", href: "https://t.me/sudabehzolfikhorram" },
+    { label: "Behance", href: "https://www.behance.net/sudabehzolfikh" },
+    { label: "Medium", href: "https://medium.com/@sudabeh.a.zolfikhorram" },
+    { label: "Instagram", href: "https://www.instagram.com/sudabehzolfi.design" },
+  ],
 ];
 
 const experience = [
@@ -56,11 +61,11 @@ const experience = [
   },
   {
     title: "Product Designer",
-    company: "Studio Kaaryar",
+    company: "Kaaryar Studio",
     mode: "Remote",
     period: "Sep 2025 – Jan 2026",
     points: [
-      "Redesigned the full website for a social-impact design studio, improving information architecture, visual storytelling, accessibility and clarity; built a custom design system. Design completed; in development.",
+      "Redesigned the full website for a social-impact design studio, improving information architecture, visual storytelling, accessibility and clarity; built a custom design system. Now live.",
     ],
     links: [
       { label: "Case study", href: work("kaaryar") },
@@ -121,7 +126,7 @@ const experience = [
   },
   {
     title: "Educational Content Designer",
-    company: "Alla Online School",
+    company: "AlaaTV (Online School)",
     mode: "Full-time (hybrid)",
     period: "Aug 2021 – Apr 2023",
     points: [
@@ -196,7 +201,7 @@ html, body { width: 210mm; height: 297mm; }
 body { font-family: Jakarta, sans-serif; color: var(--ink); font-size: 7.8pt; line-height: 1.31; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 a { color: inherit; text-decoration: none; }
 .page { position: relative; height: 297mm; padding: 9mm 11mm 7mm; display: grid; grid-template-rows: auto 1fr auto; overflow: hidden; }
-header { position: relative; padding-bottom: 3.4mm; border-bottom: 1px solid var(--rule); }
+header { position: relative; padding-bottom: 2.8mm; border-bottom: 1px solid var(--rule); }
 header svg { position: absolute; right: 0; top: 1mm; width: 46mm; height: 14mm; }
 h1 { font-size: 21pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
 .role { margin-top: 1.6mm; font-size: 10.5pt; font-weight: 600; color: var(--signal); }
@@ -237,7 +242,7 @@ footer a { color: var(--signal); }
   <h1>Sudabeh Zolfi Khorram</h1>
   <p class="role">Product Designer <span>· Tehran, Iran · Open to remote</span></p>
   <p class="summary">Product Designer with 5+ years of experience across B2B and B2C digital products, complex systems, fintech, operational tools and AI-enabled workflows. Strong in turning dense requirements into clear user flows, scalable interfaces, design systems and production-ready experiences, from early product thinking to developer handoff.</p>
-  <p class="contact">${contact.map(a).join("")}</p>
+  ${contact.map((row, i) => `<p class="contact"${i ? ' style="margin-top: 0.6mm"' : ""}>${row.map(a).join("")}</p>`).join("")}
 </header>
 <div class="grid">
   <main>

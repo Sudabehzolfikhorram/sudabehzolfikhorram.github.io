@@ -23,6 +23,7 @@ export const site = {
     { label: "Medium", handle: "@sudabeh.a.zolfikhorram", href: "https://medium.com/@sudabeh.a.zolfikhorram" },
     { label: "Instagram", handle: "@sudabehzolfi.design", href: "https://www.instagram.com/sudabehzolfi.design" },
     { label: "Telegram", handle: "@sudabehzolfikhorram", href: "https://t.me/sudabehzolfikhorram" },
+    { label: "WhatsApp", handle: "+98 991 206 6324", href: "https://wa.me/989912066324" },
   ],
 };
 
@@ -41,7 +42,7 @@ export const untangleSteps = [
   {
     verb: "Systemise",
     title: "Build the spine",
-    body: "Components, tokens and states that every screen shares, so the product stays consistent as it grows. I’ve built custom design systems for Algonet, Tamdid and Studio Kaaryar.",
+    body: "Components, tokens and states that every screen shares, so the product stays consistent as it grows. I’ve built custom design systems for Algonet, Tamdid and Kaaryar Studio.",
   },
   {
     verb: "Ship",
@@ -103,11 +104,11 @@ export const experience: Role[] = [
     link: { label: "novinhost.org", href: "https://www.novinhost.org/" },
   },
   {
-    company: "Studio Kaaryar", logo: "kaaryar", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-09", end: "2026-01",
+    company: "Kaaryar Studio", logo: "kaaryar", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-09", end: "2026-01",
     summary: "A website redesign for a social-impact design studio.",
     about: "A deliberately simple redesign within tight client constraints: clearer structure, better storytelling and accessibility, on a small custom design system.",
-    cases: [{ slug: "kaaryar", label: "Studio Kaaryar" }],
-    link: { label: "studio.kaaryar.ir", href: "https://studio.kaaryar.ir/" },
+    cases: [{ slug: "kaaryar", label: "Kaaryar Studio" }],
+    link: { label: "Live site: studio.kaaryar.ir", href: "https://studio.kaaryar.ir/" },
   },
   {
     company: "Tamdid", logo: "tamdid", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-08", end: "2026-06",
@@ -144,7 +145,7 @@ export const experience: Role[] = [
     about: "Collaborated on B2B and B2C marketing packages and digital content, improving visual communication across campaigns and social touchpoints.",
   },
   {
-    company: "Alla Online School", title: "Educational Content Designer", type: "Full-time", mode: "Hybrid", start: "2021-08", end: "2023-04",
+    company: "AlaaTV (Online School)", title: "Educational Content Designer", type: "Full-time", mode: "Hybrid", start: "2021-08", end: "2023-04",
     summary: "Where it started: designing learning content for exam prep.",
     about: "My first design job, started the same term as my law degree: structuring and designing educational content for a university-entrance exam school, with clearer layouts and a better learning experience.",
   },

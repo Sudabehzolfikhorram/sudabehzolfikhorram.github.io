@@ -595,7 +595,7 @@ const screens: Record<ScreenId, { device: Device; url?: string; node: ReactNode 
     ),
   },
 
-  /* Studio Kaaryar */
+  /* Kaaryar Studio */
   "kaaryar-home": {
     device: "desktop",
     url: "studio.kaaryar.ir",

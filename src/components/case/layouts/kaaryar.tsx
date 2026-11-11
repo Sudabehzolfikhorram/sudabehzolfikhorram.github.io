@@ -1,4 +1,4 @@
-// Studio Kaaryar: a deliberately simple website redesign, told like a Behance
+// Kaaryar Studio: a deliberately simple website redesign, told like a Behance
 // case study. Hero composition, the studio and the brief, the process strip,
 // lo-fi → mid-fi → final, the visual direction, every final page, mobile, and
 // what keeping it simple taught.
@@ -128,14 +128,14 @@ export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
           <Reveal className="col-span-12 sm:col-span-9" delay={0.1}>
             <MacBook>
               <div className="relative aspect-[16/10] overflow-hidden">
-                <Image alt="Studio Kaaryar home page, redesigned: hero, client logos and services" className="object-cover object-top" fill priority sizes="(min-width: 1024px) 70vw, 100vw" src={img("home")} />
+                <Image alt="Kaaryar Studio home page, redesigned: hero, client logos and services" className="object-cover object-top" fill priority sizes="(min-width: 1024px) 70vw, 100vw" src={img("home")} />
               </div>
             </MacBook>
           </Reveal>
           <Reveal className="col-span-3 hidden translate-y-8 sm:block" delay={0.2}>
             <IPhoneFrame className="mx-auto w-[78%]">
               <div className="relative aspect-[9/19.5]">
-                <Image alt="Studio Kaaryar home page on mobile" className="object-cover object-top pt-[11%]" fill sizes="20vw" src={img("home-mobile")} />
+                <Image alt="Kaaryar Studio home page on mobile" className="object-cover object-top pt-[11%]" fill sizes="20vw" src={img("home-mobile")} />
               </div>
             </IPhoneFrame>
           </Reveal>
@@ -192,7 +192,7 @@ export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
         <div className={wrap}>
           <SectionHead label="From lo-fi to final" n="02" title="The same page, three times." />
           <Reveal className="mt-10">
-            <PageSwitcher altSuffix="stage of the Studio Kaaryar home page" pages={fidelity} />
+            <PageSwitcher altSuffix="stage of the Kaaryar Studio home page" pages={fidelity} />
           </Reveal>
         </div>
       </section>
@@ -238,7 +238,7 @@ export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
         <div className={wrap}>
           <SectionHead label="The pages" n="04" title="Four pages, one job each." />
           <Reveal className="mt-10">
-            <PageSwitcher altSuffix="page of the redesigned Studio Kaaryar site" pages={finalPages} tall />
+            <PageSwitcher altSuffix="page of the redesigned Kaaryar Studio site" pages={finalPages} tall />
           </Reveal>
         </div>
       </section>
@@ -254,7 +254,7 @@ export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
             </p>
           </SectionHead>
           <Reveal className="mt-14" delay={0.1}>
-            <IPhone alt="The full Studio Kaaryar home page on mobile" height={3852} src={img("home-mobile")} width={375} />
+            <IPhone alt="The full Kaaryar Studio home page on mobile" height={3852} src={img("home-mobile")} width={375} />
           </Reveal>
         </div>
       </section>
@@ -274,6 +274,19 @@ export function KaaryarLayout({ cs }: { cs: CaseStudy }) {
             </RevealItem>
           ))}
         </RevealGroup>
+        {/* The redesign is live: end on the real thing. */}
+        {cs.links?.map((l) => (
+          <Reveal className="mt-12" key={l.href}>
+            <a
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 font-medium text-paper text-sm transition-colors hover:bg-signal hover:text-on-signal"
+              href={l.href}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <span className="size-1.5 rounded-full bg-[#2fb350]" /> See it live at studio.kaaryar.ir ↗
+            </a>
+          </Reveal>
+        ))}
       </section>
     </div>
   );
