@@ -52,7 +52,7 @@ const UI: Record<Lang, Record<string, string>> = {
     contact: "Email, phone or @telegram",
     send: "Send",
     noThanks: "No thanks",
-    sentReply: "Thanks! I’ll reply at",
+    sentReply: "Thank you! I’ll get in touch at {contact} within the next two working days. I hope we get to work together!",
     failed: `That didn’t go through. You can email me at ${site.email}.`,
     limit: "You’ve sent me several questions already. For anything else, email me directly.",
     dismissed: "No problem. What else would you like to know?",
@@ -72,7 +72,7 @@ const UI: Record<Lang, Record<string, string>> = {
     contact: "ایمیل، شماره یا آیدی تلگرام",
     send: "ارسال",
     noThanks: "نه، ممنون",
-    sentReply: "ممنون! جوابم را می‌فرستم به",
+    sentReply: "ممنونم! تا دو روز کاری آینده از طریق {contact} با شما در ارتباط خواهم بود. امیدوارم همکاری خوبی با هم داشته باشیم!",
     failed: `ارسال نشد. می‌توانید به ${site.email} ایمیل بزنید.`,
     limit: "چند سؤال برایم فرستاده‌اید. برای سؤال‌های بیشتر، لطفاً مستقیم ایمیل بزنید.",
     dismissed: "باشه. چه چیز دیگری می‌خواهید بدانید؟",
@@ -250,8 +250,22 @@ export function Assistant() {
     const q = raw.trim().slice(0, MAX_LEN);
     if (!q || typing) return;
     const qLang: Lang = /[؀-ۿ]/.test(q) ? "fa" : /[a-z]/i.test(q) ? "en" : lang;
-    setLang(qLang);
     setInput("");
+    // Just an email, a phone number or a @telegram typed into the chat: that's the visitor's way to be
+    // reached, so it goes to Sudabeh with the last question she was sent, not to the answer engine.
+    const contactOnly = q.split(/\s+/).length <= 3 && checkContact(q.replace(/^(?:my|email|phone|telegram|whatsapp|ایمیل|شماره|تلگرام|واتساپ)[:：\s]*/i, "")).valid;
+    if (contactOnly) {
+      const lastAsked = [...bubblesRef.current].reverse().find((b) => b.forward);
+      push({ from: "me", text: q });
+      if (lastAsked?.forward) {
+        setBubbles((all) => all.map((b) => (b.id === lastAsked.id && b.forward ? { ...b, forward: { ...b.forward, state: "sent" } } : b)));
+        void sendReply(lastAsked.id, lastAsked.forward.question, q.replace(/^\S+[:：]\s*/, ""));
+      } else {
+        void sendReply(-1, "(no question: the visitor left their contact in the chat)", q);
+      }
+      return;
+    }
+    setLang(qLang);
     // An open "want a reply?" card is stale once a new question is asked.
     setBubbles((all) => all.map((b) => (b.forward?.state === "sent" ? { ...b, forward: { ...b.forward, state: "done" } } : b)));
     const history: Turn[] = bubblesRef.current.slice(-HISTORY_TURNS).map((b) => ({ role: b.from === "me" ? "user" : "assistant", text: b.text }));
@@ -301,11 +315,12 @@ export function Assistant() {
   // A way to reply, added after the question has already gone.
   const sendReply = async (bubbleId: number, question: string, contact: string) => {
     patchForward(bubbleId, "replying");
-    const value = checkContact(contact).value;
+    const check = checkContact(contact);
+    const value = check.valid ? check.value : contact.trim();
     try {
       await sendMessage({ message: `Reply details for the question:\n${question}`, contact: value, topic: "Assistant question · reply" });
       patchForward(bubbleId, "done");
-      push({ from: "bot", text: `${t.sentReply} ${value}.` });
+      push({ from: "bot", text: t.sentReply.replace("{contact}", `\u2068${value}\u2069`) });
     } catch {
       patchForward(bubbleId, "sent");
       push({ from: "bot", text: t.failed });
