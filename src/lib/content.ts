@@ -15,6 +15,9 @@ export const site = {
   // Web app URL of the Google Apps Script in docs/contact-form.gs, which
   // emails contact messages to Sudabeh. Empty falls back to opening the
   // visitor's mail app.
+  // The "Ask about me" assistant's AI answers (docs/assistant-setup.md). Off: the built-in answers reply
+  // instantly, with no request to the backend. Turn on once ANTHROPIC_API_KEY is set in the Apps Script.
+  assistantAI: false,
   contactEndpoint: "https://script.google.com/macros/s/AKfycbyNUnvUJUsH6wB81ULdBtibH3JAYypTpneB99kbQeDg8AzMCD0NH602HnhqP71L3D7R/exec",
   socials: [
     { label: "LinkedIn", handle: "sudabehzolfikhorram2001", href: "https://www.linkedin.com/in/sudabehzolfikhorram2001/" },

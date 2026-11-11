@@ -5,7 +5,7 @@ import { AnimatePresence, motion, type Transition } from "motion/react";
 import Link from "next/link";
 import { type FormEvent, type KeyboardEvent, useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
-import { answer, detectLang, type Lang, SUGGESTIONS } from "@/lib/assistant";
+import { answer, detectLang, type Lang, nextQuestions, SUGGESTIONS } from "@/lib/assistant";
 import { askRemote, type Turn } from "@/lib/assistant-remote";
 import { checkContact, sendInBackground, sendMessage } from "@/lib/contact";
 import { site } from "@/lib/content";
@@ -22,7 +22,8 @@ import { cn } from "@/lib/utils";
 
 // Unanswered questions go to Sudabeh straight away; the card only asks whether the visitor wants a reply.
 type Forward = { question: string; state: "sending" | "sent" | "replying" | "done" | "failed" };
-type Bubble = { id: number; from: "bot" | "me"; text: string; links?: { href: string; label: string }[]; forward?: Forward };
+// `intents`: what a bot answer was about, so the follow-up buttons can suggest what to ask next.
+type Bubble = { id: number; from: "bot" | "me"; text: string; links?: { href: string; label: string }[]; forward?: Forward; intents?: string[] };
 type Saved = { lang: Lang; bubbles: Bubble[]; forwards: number; synced?: number };
 
 const KEY = "assistant-v2";
@@ -259,9 +260,10 @@ export function Assistant() {
     const slowTimer = window.setTimeout(() => setSlow(true), SLOW_MS);
     const [remote] = await Promise.all([askRemote(q, history, qLang), new Promise((done) => window.setTimeout(done, TYPING_MS))]);
     window.clearTimeout(slowTimer);
-    // The AI's answer when it's available; the built-in answers otherwise.
-    const local = remote ? null : answer(q, qLang === detectLang(q) ? undefined : qLang);
-    const reply = remote ?? { text: local!.text, lang: local!.lang, forward: local!.offerForward, links: local!.links };
+    // The AI's answer when it's available; the built-in answers otherwise. The built-in match also
+    // says what the question was about, for the follow-up buttons.
+    const local = answer(q, qLang === detectLang(q) ? undefined : qLang);
+    const reply = remote ?? { text: local.text, lang: local.lang, forward: local.offerForward, links: local.links };
     const canForward = reply.forward && forwardsRef.current < MAX_FORWARDS;
     if (canForward) forwardsRef.current += 1;
     const id = push({
@@ -269,6 +271,7 @@ export function Assistant() {
       text: reply.forward && !canForward ? `${reply.text}\n\n${UI[reply.lang].limit}` : reply.text,
       links: reply.links,
       forward: canForward ? { question: q, state: "sending" } : undefined,
+      intents: local.intents,
     });
     setLang(reply.lang);
     setTyping(false);
@@ -348,6 +351,11 @@ export function Assistant() {
   };
 
   const showSuggestions = !typing && !bubbles.some((b) => b.from === "me");
+  // After an answer, three related questions, unless the visitor is being asked for a way to reply.
+  const last = bubbles[bubbles.length - 1];
+  const awaitingContact = last?.forward && ["sending", "sent", "replying"].includes(last.forward.state);
+  const followUps =
+    !typing && last?.from === "bot" && !awaitingContact ? nextQuestions(last.intents ?? [], bubbles.flatMap((b) => b.intents ?? []), lang) : [];
 
   return (
     <>
@@ -475,6 +483,15 @@ export function Assistant() {
                       </motion.div>
                     )}
                   </AnimatePresence>
+                  {followUps.length > 0 && (
+                    <motion.div animate={{ opacity: 1, y: 0 }} className="mt-1 flex flex-wrap gap-1.5" dir={lang === "fa" ? "rtl" : "ltr"} initial={{ opacity: 0, y: 6 }} key={last?.id}>
+                      {followUps.map((s) => (
+                        <button className="rounded-full border border-rule px-3 py-1.5 text-xs hover:border-signal hover:text-signal" key={s} onClick={() => ask(s)} type="button">
+                          {s}
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
                   {showSuggestions && (
                     <div className="mt-1 flex flex-wrap gap-1.5" dir={lang === "fa" ? "rtl" : "ltr"}>
                       {SUGGESTIONS[lang].map((s) => (
