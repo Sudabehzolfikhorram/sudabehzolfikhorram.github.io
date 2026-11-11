@@ -43,7 +43,7 @@ type Wire = { ok?: boolean; answer?: string; lang?: string; forward?: boolean; l
 let unavailable = false;
 
 export async function askRemote(question: string, history: Turn[], lang: Lang): Promise<RemoteReply | null> {
-  if (unavailable || !site.contactEndpoint) return null;
+  if (unavailable || !site.assistantAI || !site.contactEndpoint) return null;
   const controller = new AbortController();
   const timer = window.setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {

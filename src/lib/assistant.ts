@@ -2,6 +2,8 @@
 // Persian or English, only from facts in her CV and on this site. Anything it
 // can't answer for sure is offered to Sudabeh herself, so it never guesses.
 
+import { examples } from "./assistant-examples.ts";
+
 export type Lang = "fa" | "en";
 
 export type Intent = {
@@ -51,7 +53,7 @@ export const intents: Intent[] = [
   },
   {
     id: "bot",
-    strong: ["are you a bot", "are you real", "are you human", "are you sudabeh", "ربات", "بات", "خودت سودابه", "خود سودابه", "سودابه هستی", "آدم واقعی", "هوش مصنوعی هستی"],
+    strong: ["are you a bot", "are you human", "are you sudabeh", "ربات", "بات", "خودت سودابه", "خود سودابه", "سودابه هستی", "آدم واقعی", "هوش مصنوعی هستی", "are you a real person", "real person", "are you a robot", "is this a bot", "is this a chatbot", "chatbot"],
     answer: {
       en: "I’m an assistant, not Sudabeh. I answer from her CV and this site, and when I’m not sure, I send your question to her.",
       fa: "من دستیار هستم، نه خود سودابه. از روی رزومه و همین سایت جواب می‌دهم و هر جا مطمئن نباشم، سؤال‌تان را برای خودش می‌فرستم.",
@@ -61,7 +63,7 @@ export const intents: Intent[] = [
   // About her
   {
     id: "who",
-    strong: ["who is", "who are", "about her", "about you", "about yourself", "tell me about yourself", "tell me about her", "walk me through", "your background", "her background", "introduce", "tell me about", "summary", "what does she do", "what do you do", "what she does", "is she a designer", "are you a designer", "kind of designer", "type of designer", "سودابه کیه", "کی هستی", "معرفی", "درباره", "خلاصه", "معرفی کن", "چیکار میکنی", "چیکار می کنی", "چکار میکنی", "چه کاره", "چکاره", "کارت چیه", "کارش چیه", "طراحی چی", "از خودت بگو", "خودتو معرفی کن", "خودت رو معرفی کن", "از سودابه بگو", "معرفی کوتاه"],
+    strong: ["who is", "who are", "about her", "about you", "about yourself", "tell me about yourself", "tell me about her", "walk me through", "your background", "her background", "introduce", "tell me about", "summary", "what does she do", "what do you do", "what she does", "is she a designer", "are you a designer", "kind of designer", "type of designer", "سودابه کیه", "کی هستی", "معرفی", "درباره", "خلاصه", "معرفی کن", "چیکار میکنی", "چیکار می کنی", "چکار میکنی", "چه کاره", "چکاره", "کارت چیه", "کارش چیه", "طراحی چی", "از خودت بگو", "خودتو معرفی کن", "خودت رو معرفی کن", "از سودابه بگو", "معرفی کوتاه", "about sudabeh", "a bit about", "in a nutshell", "quick intro", "intro", "elevator pitch"],
     weak: ["sudabeh", "سودابه"],
     link: { href: "/work", label: { en: "See all projects", fa: "همه‌ی پروژه‌ها" } },
     answer: {
@@ -71,7 +73,7 @@ export const intents: Intent[] = [
   },
   {
     id: "role",
-    strong: ["current job", "currently", "where do you work", "where does she work", "what company", "which company", "current role", "right now", "nowadays", "الان کجا", "فعلا کجا", "کجا کار", "شغل فعلی", "latest project", "last project", "recent project", "current project", "last company", "latest company", "current company", "current employer", "آخرین پروژه", "آخرین شرکت", "پروژه فعلی", "شرکت فعلی", "پروژه الان", "الان چیکار", "الان چیکار میکنی", "مشغول", "مشغول چه", "working on", "work on now", "what does she work on", "what do you work on", "busy with", "these days", "این روزها", "این روزا", "روی چی کار"],
+    strong: ["current job", "currently", "where do you work", "where does she work", "what company", "which company", "current role", "right now", "nowadays", "الان کجا", "فعلا کجا", "کجا کار", "شغل فعلی", "latest project", "last project", "recent project", "current project", "last company", "latest company", "current company", "current employer", "آخرین پروژه", "آخرین شرکت", "پروژه فعلی", "شرکت فعلی", "پروژه الان", "الان چیکار", "الان چیکار میکنی", "مشغول", "مشغول چه", "working on", "work on now", "what does she work on", "what do you work on", "busy with", "these days", "این روزها", "این روزا", "روی چی کار", "کدوم شرکت", "کدوم شرکتی", "چه شرکتی کار", "which company is she at", "where is she working"],
     weak: ["algonet", "الگونت", "job", "شغل"],
     answer: {
       en: "She’s a full-time product designer at Algonet, where she designs Atlas, an AI platform that analyses how a company works.",
@@ -80,7 +82,7 @@ export const intents: Intent[] = [
   },
   {
     id: "experience",
-    strong: ["years of experience", "how many years", "how long", "how much experience", "your experience", "work experience", "experienced", "senior", "junior", "سابقه", "چند سال", "تجربه کاری", "سابقه کار", "sabeghe", "chand sal", "tajrobe"],
+    strong: ["years of experience", "how many years", "how long", "how much experience", "your experience", "work experience", "experienced", "senior", "junior", "سابقه", "چند سال", "تجربه کاری", "سابقه کار", "sabeghe", "chand sal", "tajrobe", "years in the field", "in the field", "چند وقته", "چند ساله", "chand sale", "chand vaghte", "how long in design"],
     weak: ["experience", "تجربه"],
     answer: {
       en: "5+ years in product and UI/UX design, across 10 teams and products, from fintech to ERP and enterprise AI.",
@@ -105,7 +107,7 @@ export const intents: Intent[] = [
   },
   {
     id: "availability",
-    strong: ["what kind of role", "type of role", "kind of job", "kind of work", "what kind of company", "type of company", "kind of company", "company size", "notice period", "start right away", "start immediately", "چه نوع همکاری", "نوع همکاری", "چه شرکتی", "نوع شرکت", "چه نوع شرکت", "کی میتونه شروع", "کی می‌تونه شروع", "کی شروع", "شروع کنه", "زمان شروع", "available", "availability", "open to work", "hiring", "looking for a job", "open to new", "job offer", "can we hire", "hire her", "hire you", "start date", "can you start", "can she start", "notice period", "when can", "آزاد", "در دسترس", "دنبال کار", "استخدام", "شروع همکاری", "کی میتونی", "از کی", "پیشنهاد کاری", "کار جدید", "آماده کار", "آماده‌ی کار", "آماده همکاری", "آماده‌ی همکاری", "موقعیت شغلی", "فرصت شغلی", "جویای کار", "new role", "new job", "looking for work", "estekhdam"],
+    strong: ["what kind of role", "type of role", "kind of job", "kind of work", "what kind of company", "type of company", "kind of company", "company size", "notice period", "start right away", "start immediately", "چه نوع همکاری", "نوع همکاری", "چه شرکتی", "نوع شرکت", "چه نوع شرکت", "کی میتونه شروع", "کی می‌تونه شروع", "کی شروع", "شروع کنه", "زمان شروع", "available", "availability", "open to work", "hiring", "looking for a job", "open to new", "job offer", "can we hire", "hire her", "hire you", "start date", "can you start", "can she start", "notice period", "when can", "آزاد", "در دسترس", "دنبال کار", "استخدام", "شروع همکاری", "کی میتونی", "از کی", "پیشنهاد کاری", "کار جدید", "آماده کار", "آماده‌ی کار", "آماده همکاری", "آماده‌ی همکاری", "موقعیت شغلی", "فرصت شغلی", "جویای کار", "new role", "new job", "looking for work", "estekhdam", "how soon", "when can she join", "when can you join", "join us", "join the team", "تا شروع کنی", "شروع کنی", "چقدر زمان لازم", "کی میای", "کی میتونی بیای", "begin", "next week", "start next", "start soon", "آزاد میشی"],
     answer: {
       en: "For a full-time role, she can start after a month’s notice to her current employer; project-based work can start right away. Remote, full-time, part-time or project-based all work for her; the one thing she isn’t looking for is on-site work. Any kind of company is fine, from startups to large teams.",
       fa: "برای نقش تمام‌وقت، بعد از یک ماه فرصت برای اطلاع به شرکت فعلی‌اش می‌تواند شروع کند؛ برای کار پروژه‌ای همین الان آماده است. ریموت، تمام‌وقت، پاره‌وقت یا پروژه‌ای، همه برایش مناسب است؛ فقط دنبال کار حضوری نیست. نوع شرکت هم فرقی نمی‌کند، از استارتاپ تا تیم‌های بزرگ.",
@@ -138,7 +140,7 @@ export const intents: Intent[] = [
   },
   {
     id: "relocation",
-    strong: ["relocate", "relocation", "move abroad", "visa", "work permit", "move to", "مهاجرت", "ریلوکیشن", "جابجایی", "ویزا", "اقامت", "sponsorship", "visa sponsorship", "sponsor", "which country", "which countries", "اسپانسر", "اسپانسرشیپ", "کدوم کشور", "چه کشوری"],
+    strong: ["relocate", "relocation", "move abroad", "visa", "work permit", "move to", "مهاجرت", "ریلوکیشن", "جابجایی", "ویزا", "اقامت", "sponsorship", "visa sponsorship", "sponsor", "which country", "which countries", "اسپانسر", "اسپانسرشیپ", "کدوم کشور", "چه کشوری", "abroad", "germany", "canada", "europe", "netherlands", "uk", "usa", "dubai", "آلمان", "کانادا", "اروپا", "هلند", "انگلیس", "آمریکا", "دبی", "خارج از ایران", "بیای خارج"],
     answer: {
       en: "Yes. She plans to relocate and is open to any country. She would need visa sponsorship.",
       fa: "بله. قصد مهاجرت دارد و برای هر کشوری آماده است؛ فقط به اسپانسرشیپ ویزا نیاز دارد.",
@@ -146,7 +148,7 @@ export const intents: Intent[] = [
   },
   {
     id: "hobbies",
-    strong: ["hobby", "hobbies", "free time", "spare time", "outside work", "outside of work", "for fun", "weekend plans", "سرگرمی", "اوقات فراغت", "وقت آزاد", "بیرون از کار", "تفریح"],
+    strong: ["hobby", "hobbies", "free time", "spare time", "outside work", "outside of work", "for fun", "weekend plans", "سرگرمی", "اوقات فراغت", "وقت آزاد", "بیرون از کار", "تفریح", "besides design", "outside design", "apart from design", "apart from work", "جدا از کار", "غیر از طراحی", "غیر از کار"],
     answer: {
       en: "Outside work: films, nature trips and time with friends.",
       fa: "بیرون از کار: فیلم دیدن، طبیعت‌گردی و وقت گذراندن با دوستانش.",
@@ -173,7 +175,7 @@ export const intents: Intent[] = [
   },
   {
     id: "lawToDesign",
-    strong: ["why design", "why law", "background", "از حقوق", "حقوق به", "حقوق اومد", "سمت دیزاین", "سمت طراحی", "پیشینه", "پیش زمینه", "law to design", "from law", "switch", "career change", "how did you start", "how did she start", "become a designer", "got into design", "چرا دیزاین", "چرا حقوق", "تغییر مسیر", "چطور دیزاینر", "چجوری دیزاینر", "چطوری دیزاینر", "دیزاینر شد", "از کجا شروع", "چجوری شروع"],
+    strong: ["why design", "why law", "از حقوق", "حقوق به", "حقوق اومد", "سمت دیزاین", "سمت طراحی", "پیشینه", "پیش زمینه", "law to design", "from law", "switch", "career change", "how did you start", "how did she start", "become a designer", "got into design", "چرا دیزاین", "چرا حقوق", "تغییر مسیر", "چطور دیزاینر", "چجوری دیزاینر", "چطوری دیزاینر", "دیزاینر شد", "از کجا شروع", "چجوری شروع", "law background", "legal background"],
     answer: {
       en: "The term she started her law degree, she also started designing learning content for an exam-prep school. UI/UX pulled her in, and Nan va Namak, a startup she built with friends, turned her into a product designer. Law left a useful habit: reading dense rules and making them clear.",
       fa: "همان ترمی که حقوق را شروع کرد، طراحی محتوای آموزشی برای یک مؤسسه‌ی کنکور را هم شروع کرد. کم‌کم جذب UI/UX شد و نان و نمک، استارتاپی که با دوستانش ساختند، او را به پروداکت دیزاین رساند. از حقوق یک عادت مفید مانده: خواندن قوانین پیچیده و ساده کردن‌شان.",
@@ -189,7 +191,7 @@ export const intents: Intent[] = [
   },
   {
     id: "languages",
-    strong: ["english", "language", "languages", "speak", "persian", "farsi", "ielts", "toefl", "آیلتس", "تافل", "انگلیسی", "زبان", "فارسی", "مکالمه", "زبانت", "zaban", "english interview", "interview in english", "مصاحبه انگلیسی", "مصاحبه به انگلیسی"],
+    strong: ["english", "language", "languages", "speak", "persian", "farsi", "ielts", "toefl", "آیلتس", "تافل", "انگلیسی", "زبان", "فارسی", "مکالمه", "زبانت", "zaban", "english interview", "interview in english", "مصاحبه انگلیسی", "مصاحبه به انگلیسی", "in english", "present in english", "german", "french", "arabic", "turkish", "spanish", "russian", "آلمانی", "فرانسوی", "عربی", "ترکی", "اسپانیایی", "زبان خارجی"],
     answer: {
       en: "Persian is her native language, and she works and communicates in English at a working level. She’s ready for interviews in English. She doesn’t hold an IELTS or TOEFL certificate.",
       fa: "فارسی زبان مادری‌اش است و به انگلیسی در حد کاری کار و ارتباط برقرار می‌کند. برای مصاحبه به انگلیسی هم آماده است. مدرک آیلتس یا تافل ندارد.",
@@ -207,7 +209,7 @@ export const intents: Intent[] = [
   },
   {
     id: "tools",
-    strong: ["tools", "tool", "software", "figma", "framer", "sketch", "adobe xd", "webflow", "maze", "hotjar", "اسکچ", "وب فلو", "هات جار", "figjam", "illustrator", "notion", "clickup", "analytics", "clarity", "ga4", "ابزار", "ابزارها", "نرم افزار", "نرم‌افزار", "فیگما", "فریمر", "abzar"],
+    strong: ["tools", "tool", "software", "figma", "framer", "sketch", "adobe xd", "webflow", "maze", "hotjar", "اسکچ", "وب فلو", "هات جار", "figjam", "illustrator", "notion", "clickup", "analytics", "clarity", "ga4", "ابزار", "ابزارها", "نرم افزار", "نرم‌افزار", "فیگما", "فریمر", "abzar", "design with", "apps do you use", "programs do you use", "softwares", "what apps"],
     answer: {
       en: "Figma and FigJam every day, plus Framer, Notion, Adobe Illustrator, ClickUp and Slack. For analytics, Microsoft Clarity and GA4. For AI: ChatGPT, Claude, Google AI Studio, Lovable and NotebookLM. She has also used Maze and Hotjar for testing. No Sketch or Webflow, and Adobe XD has been discontinued.",
       fa: "هر روز با فیگما و فیگ‌جم کار می‌کند؛ به‌علاوه‌ی Framer، Notion، Adobe Illustrator، ClickUp و Slack. برای آنالیتیکس Microsoft Clarity و GA4، و برای هوش مصنوعی ChatGPT، Claude، Google AI Studio، Lovable و NotebookLM. برای تست با Maze و Hotjar هم کار کرده. با Sketch و Webflow کار نکرده و Adobe XD هم دیگر پشتیبانی نمی‌شود.",
@@ -215,7 +217,7 @@ export const intents: Intent[] = [
   },
   {
     id: "ai",
-    strong: ["ai", "artificial intelligence", "chatgpt", "claude", "gpt", "lovable", "notebooklm", "ai studio", "هوش مصنوعی", "ای آی", "چت جی پی تی", "hoosh"],
+    strong: ["ai", "artificial intelligence", "chatgpt", "claude", "gpt", "lovable", "notebooklm", "ai studio", "هوش مصنوعی", "ای آی", "چت جی پی تی", "hoosh", "ai tools", "ai tool", "using ai", "use ai"],
     answer: {
       en: "AI is her thinking partner, not her designer: she uses it to research faster, compare directions, draft UX copy and prototype (ChatGPT, Claude, Google AI Studio, NotebookLM, Lovable). The decisions stay hers. She also designs Atlas, an AI product, at Algonet.",
       fa: "هوش مصنوعی پارتنر هم‌فکرش است، نه جای طراح: برای تحقیق سریع‌تر، مقایسه‌ی ایده‌ها، نوشتن UX copy و پروتوتایپ از آن استفاده می‌کند (ChatGPT، Claude، Google AI Studio، NotebookLM، Lovable). تصمیم‌ها با خودش است. در الگونت هم روی اطلس، یک محصول مبتنی بر هوش مصنوعی، کار می‌کند.",
@@ -264,7 +266,7 @@ export const intents: Intent[] = [
   },
   {
     id: "code",
-    strong: ["code", "coding", "developer", "html", "css", "frontend", "front-end", "programming", "کد", "کدنویسی", "برنامه نویسی", "برنامه‌نویسی", "فرانت"],
+    strong: ["code", "coding", "developer", "html", "css", "frontend", "front-end", "programming", "کد", "کدنویسی", "برنامه نویسی", "برنامه‌نویسی", "فرانت", "react", "javascript", "typescript", "nextjs", "next.js", "vue", "جاوااسکریپت", "ری اکت"],
     answer: {
       en: "She’s a designer, not a developer by role, but she understands how her designs get built: she studied front-end development in 2023 and took HTML & CSS for Designers. At handoff she documents flows, page logic, states and edge cases, so engineers can build without guesswork.",
       fa: "نقشش طراحی است، نه برنامه‌نویسی؛ ولی می‌داند طراحی‌اش چطور پیاده می‌شود: سال ۲۰۲۳ فرانت‌اند خوانده و دوره‌ی HTML & CSS for Designers را هم گذرانده. موقع تحویل، فلوها، منطق صفحات، استیت‌ها و حالت‌های خاص را مستند می‌کند تا تیم فنی بدون حدس و گمان پیاده‌سازی کند.",
@@ -422,7 +424,7 @@ export const intents: Intent[] = [
   },
   {
     id: "leadership",
-    strong: ["lead designer", "design lead", "led a team", "led a design team", "lead a design team", "lead designers", "lead a team", "led the team", "team lead", "manage designers", "managed designers", "management", "mentor", "mentored", "mentoring", "مدیریت تیم", "لید", "سرپرست", "منتور", "منتورینگ"],
+    strong: ["lead designer", "design lead", "led a team", "led a design team", "lead a design team", "lead designers", "lead a team", "led the team", "team lead", "manage designers", "managed designers", "management", "mentor", "mentored", "mentoring", "مدیریت تیم", "لید", "سرپرست", "منتور", "منتورینگ", "led designers", "led a design", "lead other designers", "managed people", "مدیریت کردی"],
     answer: {
       en: "Not yet as a title: her roles so far have been product designer, often the only designer on the product. Leading is where she wants to go next, and she enjoys the management side of the work.",
       fa: "هنوز نه به‌عنوان عنوان شغلی: نقش‌هایش تا الان پروداکت دیزاینر بوده و اغلب تنها طراح محصول. قدم بعدی‌ای که دوست دارد لید شدن است و بخش مدیریتی کار را هم دوست دارد.",
@@ -430,7 +432,7 @@ export const intents: Intent[] = [
   },
   {
     id: "leaving",
-    strong: ["leave algonet", "leaving algonet", "why leave", "why is she leaving", "why does she want to leave", "why is she looking", "looking for a new job", "why change", "چرا میخواد بره", "بیاد بیرون", "بره بیرون", "ترک کنه", "چرا دنبال کار"],
+    strong: ["leave algonet", "leaving algonet", "why leave", "why is she leaving", "why does she want to leave", "why is she looking", "looking for a new job", "why change", "چرا میخواد بره", "بیاد بیرون", "بره بیرون", "ترک کنه", "چرا دنبال کار", "چرا میخوای بری", "میخوای بری", "از الگونت بری", "از الگونت بیای", "از شرکتت بری", "leaving your job", "leave your job", "leaving your current", "leave your current", "why are you leaving", "why do you want to leave", "why change jobs", "quit", "quitting", "resign", "resigning", "استعفا"],
     forward: true,
     answer: {
       en: "That’s one for Sudabeh to answer herself. I’ve sent her your question.",
@@ -456,7 +458,7 @@ export const intents: Intent[] = [
   },
   {
     id: "teamSize",
-    strong: ["team size", "size of the team", "how big was the team", "how big is the team", "how many developers", "how many designers", "how many engineers", "who was on the team", "اندازه تیم", "چند نفر بودید", "چند نفر هستید", "چند تا دیزاینر", "چند تا طراح", "چند تا دولوپر", "تیمتون چند نفر"],
+    strong: ["team size", "size of the team", "how big was the team", "how big is the team", "how many developers", "how many designers", "how many engineers", "who was on the team", "اندازه تیم", "چند نفر بودید", "چند نفر هستید", "چند تا دیزاینر", "چند تا طراح", "چند تا دولوپر", "تیمتون چند نفر", "چند نفر بودین", "چند نفر بودن", "چند نفرین", "چند نفر هستین", "چند نفر توی تیم", "team size at", "how big was", "how big is your team", "team you worked with", "how many people were", "people on the team", "people were on"],
     answer: {
       en: "On Kudos she was the only designer, with a PM and a front-end and a back-end developer. Remeet had two designers, her included, plus a PM, two front-end developers, a back-end developer and a software engineer who built the device. At Algonet she’s one of three designers alongside a large engineering team.",
       fa: "در کودوس تنها طراح بود، کنار یک مدیر محصول، یک دولوپر فرانت و یک دولوپر بک‌اند. ریمیت دو طراح داشت که یکی‌شان او بود، به‌علاوه‌ی مدیر محصول، دو دولوپر فرانت، یک دولوپر بک‌اند و یک مهندس نرم‌افزار که خود دستگاه را ساخت. در الگونت هم یکی از سه طراح است، کنار یک تیم فنی بزرگ.",
@@ -473,7 +475,7 @@ export const intents: Intent[] = [
   },
   {
     id: "challenge",
-    strong: ["hardest", "biggest challenge", "challenge", "challenging", "difficult project", "toughest", "pressure", "tight deadline", "deadline", "deadlines", "under pressure", "stress", "stressful", "prioritize", "prioritise", "time management", "سخت ترین", "چالش", "سختی", "فشار", "ددلاین", "مهلت کم", "زمان کم", "استرس", "اولویت بندی", "مدیریت زمان"],
+    strong: ["hardest", "biggest challenge", "challenge", "challenging", "difficult project", "toughest", "pressure", "tight deadline", "deadline", "deadlines", "under pressure", "stress", "stressful", "prioritize", "prioritise", "time management", "سخت ترین", "چالش", "سختی", "فشار", "ددلاین", "مهلت کم", "زمان کم", "استرس", "اولویت بندی", "مدیریت زمان", "زیر فشار", "زیر فشار چطور", "فشار کاری", "under pressure how"],
     answer: {
       en: "Pressure is something she has learned to work with. Atlas is the proof: her team took it from brief to a live first version in two to three days. She gets through tight deadlines with a clear plan, AI as a partner and plenty of persistence, and a real deadline actually sharpens her focus. As for the hardest project, every one has its own hard part, so she won’t name just one.",
       fa: "با فشار کاری کنار آمدن را یاد گرفته. اطلس گواهش است: تیمش در دو سه روز آن را از بریف به اولین نسخه‌ی لایو رساند. ددلاین‌های فشرده را با یک برنامه‌ی دقیق، هوش مصنوعی به‌عنوان همراه و کلی پشتکار پیش می‌برد، و ددلاین واقعی حتی تمرکزش را بیشتر می‌کند. درباره‌ی سخت‌ترین پروژه هم، هر پروژه سختی خودش را دارد، برای همین یکی را انتخاب نمی‌کند.",
@@ -497,7 +499,7 @@ export const intents: Intent[] = [
   },
   {
     id: "hours",
-    strong: ["time zone", "timezone", "time zones", "overlap", "us hours", "european hours", "working hours", "weekend", "weekends", "hours", "تایم زون", "منطقه زمانی", "ساعت کاری", "آخر هفته", "تعطیلات", "meeting", "meetings", "what time", "جلسه", "چه ساعتی", "ساعت جلسه"],
+    strong: ["time zone", "timezone", "time zones", "overlap", "us hours", "european hours", "working hours", "weekend", "weekends", "hours", "تایم زون", "منطقه زمانی", "ساعت کاری", "آخر هفته", "تعطیلات", "meeting", "meetings", "what time", "جلسه", "چه ساعتی", "ساعت جلسه", "meet at", "cet", "est", "pst", "gmt", "utc", "ساعت چند", "چه ساعت هایی", "تا چه ساعتی", "berlin time", "london time", "new york time", "local time", "your time", "call at", "meeting at", "time difference", "اختلاف ساعت", "به وقت"],
     answer: {
       en: "She’s in Tehran (UTC+3:30) and can meet any time between 10:00 and 22:00 Tehran time, with a little notice. That covers the whole European working day and US East Coast mornings into the early afternoon. She works weekends too when a project needs it.",
       fa: "ساکن تهران است (UTC+3:30) و با هماهنگی قبلی از ساعت ۱۰ صبح تا ۱۰ شب به وقت تهران می‌تواند جلسه داشته باشد؛ یعنی کل ساعت کاری اروپا و صبح تا اوایل بعدازظهر شرق آمریکا. اگر پروژه لازم داشته باشد آخر هفته‌ها هم کار می‌کند.",
@@ -581,7 +583,7 @@ export const intents: Intent[] = [
   // Interview questions
   {
     id: "whyHire",
-    strong: ["why should we hire", "why hire", "why should i hire", "why her", "why sudabeh", "what makes her different", "what makes her stand out", "stand out", "what sets her apart", "unique", "good fit", "right fit", "چرا باید استخدام", "چرا استخدام", "چرا سودابه", "چرا باید سودابه", "چه چیزی متمایز", "فرقش با بقیه", "متمایز", "چرا تو", "چرا شما", "chera bayad"],
+    strong: ["why should we hire", "why hire", "why should i hire", "why her", "why sudabeh", "what makes her different", "what makes her stand out", "stand out", "what sets her apart", "unique", "good fit", "right fit", "چرا باید استخدام", "چرا استخدام", "چرا سودابه", "چرا باید سودابه", "چه چیزی متمایز", "فرقش با بقیه", "متمایز", "چرا تو", "چرا شما", "chera bayad", "best fit", "sets you apart", "sets her apart", "apart from other", "the best candidate", "right candidate", "بهترین گزینه"],
     answer: {
       en: "Because she makes complicated products simple, and her work shows it. She designed Tamdid alone from idea to development, documented every page’s logic for engineers on Kudos, and designed Remeet, which won at Tehran Design Week. She has built three custom design systems, works fast with AI without handing it the decisions, and her Algonet products serve thousands of people.",
       fa: "چون محصول‌های پیچیده را ساده می‌کند و کارهایش این را نشان می‌دهد: تمدید را به‌تنهایی از ایده تا توسعه طراحی کرد، در کودوس منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کرد و ریمیت را طراحی کرد که در هفته‌ی دیزاین تهران برنده شد. سه دیزاین‌سیستم اختصاصی ساخته، با کمک هوش مصنوعی سریع کار می‌کند بدون اینکه تصمیم‌ها را به آن بسپارد، و محصولاتش در الگونت هزاران کاربر دارند.",
@@ -590,7 +592,7 @@ export const intents: Intent[] = [
   },
   {
     id: "strengths",
-    strong: ["strength", "strengths", "strong points", "strong suit", "best at", "good at", "superpower", "biggest strength", "نقطه قوت", "نقاط قوت", "نقطه‌ی قوت", "نقطه های قوت", "قوت", "بهترین مهارت", "مهم ترین مهارت", "توش قوی"],
+    strong: ["strength", "strengths", "strong points", "strong suit", "best at", "good at", "superpower", "biggest strength", "نقطه قوت", "نقاط قوت", "نقطه‌ی قوت", "نقطه های قوت", "قوت", "بهترین مهارت", "مهم ترین مهارت", "توش قوی", "قوی ترین", "بهترین ویژگی", "best quality", "best qualities", "what are you best at", "really good at", "great at"],
     answer: {
       en: "Turning dense rules into clear flows: roles and permissions in the AzMan ERP, wallets and payment order in Tamdid. Owning a product end to end, as the only designer on Tamdid. And making handoff easy: on Kudos she wrote down every page’s logic, states and edge cases for engineering.",
       fa: "تبدیل قوانین پیچیده به فلوهای روشن: نقش‌ها و سطح دسترسی در ERP ازمان، کیف پول‌ها و ترتیب پرداخت در تمدید. مالکیت کامل محصول، مثل تمدید که تنها طراحش بود. و هندآف بی‌دردسر: در کودوس منطق، استیت‌ها و حالت‌های خاص هر صفحه را برای تیم فنی مستند کرد.",
@@ -598,7 +600,7 @@ export const intents: Intent[] = [
   },
   {
     id: "weakness",
-    strong: ["weakness", "weaknesses", "weak point", "weak points", "weak spot", "areas to improve", "area to improve", "room to improve", "need to improve", "نقطه ضعف", "نقاط ضعف", "نقطه‌ی ضعف", "ضعف", "ضعفت", "ضعفش"],
+    strong: ["weakness", "weaknesses", "weak point", "weak points", "weak spot", "areas to improve", "area to improve", "room to improve", "need to improve", "نقطه ضعف", "نقاط ضعف", "نقطه‌ی ضعف", "ضعف", "ضعفت", "ضعفش", "weak side", "weak", "weakest", "noghte zaaf", "zaaf", "باید روش کار کنی", "روی چه چیزی باید کار", "باید بهتر بشی", "ضعیف"],
     answer: {
       en: "Honestly? Stress. Pressure used to get to her early in her career, so she has worked on it on purpose, and the people around her now notice how much calmer she is. She’s still improving, and there’s an upside: with a real deadline in sight, her focus sharpens.",
       fa: "راستش؟ استرس. اوایل کار، فشار رویش اثر می‌گذاشت؛ برای همین آگاهانه رویش کار کرده و حالا اطرافیانش می‌گویند خیلی آرام‌تر شده. هنوز هم دارد بهترش می‌کند، و یک روی مثبت هم دارد: وقتی ددلاین واقعی در کار باشد، تمرکزش بیشتر می‌شود.",
@@ -606,7 +608,7 @@ export const intents: Intent[] = [
   },
   {
     id: "conflict",
-    strong: ["conflict", "conflicts", "disagree", "disagreed", "disagreement", "push back", "pushback", "difficult stakeholder", "difficult client", "difficult person", "argue", "argument", "tension", "تعارض", "اختلاف نظر", "اختلاف", "مخالفت", "مخالف بود", "بحث با", "کارفرمای سخت", "مشتری سخت", "درگیری"],
+    strong: ["conflict", "conflicts", "disagree", "disagreed", "disagreement", "push back", "pushback", "difficult stakeholder", "difficult client", "difficult person", "argument", "tension", "تعارض", "اختلاف نظر", "مخالفت", "مخالف بود", "بحث با", "کارفرمای سخت", "مشتری سخت", "درگیری", "به مشکل خوردی", "مشکل خوردی", "مشکل خورده", "اختلاف داشته", "اختلاف پیدا", "اختلاف داشتی", "اختلاف نظر داشتی", "دعوا", "دعوات", "builds it differently", "built differently", "differently than your design", "differently than the design", "doesnt match the design", "not what you designed", "not as designed", "با طراحی فرق", "مطابق طراحی نبود", "argued", "doesnt follow", "dont follow", "not following the design", "ignores your design", "ignore your design", "طراحیت رو اجرا نکرد"],
     answer: {
       en: "Most disagreements she’s had are about the gap between what she designed and what got built, and she sees closing that gap as her job. She takes the time to understand the developers’ constraints, while standing up for the flow and UX that work for the user. It’s also why she documents page logic and edge cases before handoff.",
       fa: "بیشتر اختلاف‌نظرهایش سر فاصله‌ی بین طراحی و چیزی بوده که در نهایت پیاده شده، و بستن همین فاصله را کار خودش می‌داند. وقت می‌گذارد تا محدودیت‌های تیم فنی را بفهمد، اما پای فلو و تجربه‌ای که برای کاربر درست است هم می‌ایستد. به همین دلیل هم قبل از تحویل، منطق صفحات و حالت‌های خاص را مستند می‌کند.",
@@ -614,7 +616,7 @@ export const intents: Intent[] = [
   },
   {
     id: "feedback",
-    strong: ["feedback", "criticism", "criticise", "criticize", "critique", "design review", "design reviews", "review your work", "فیدبک", "بازخورد", "انتقاد", "نقد"],
+    strong: ["feedback", "criticism", "criticise", "criticize", "critique", "design review", "design reviews", "review your work", "فیدبک", "بازخورد", "انتقاد", "نقد", "reject your design", "rejects your design", "rejected", "stakeholder", "stakeholders", "dont like your design", "doesnt like your design", "طراحیت رو رد", "رد کنن"],
     answer: {
       en: "In her process, feedback has a place by design. On Kudos, review feedback had its own type of designer note, next to logic and copy. On Kaaryar Studio she started with grey wireframes, so the first conversation was about order and content, not looks.",
       fa: "در روند کارش، فیدبک از اول جای مشخصی دارد. در کودوس، فیدبک‌های ریویو یک نوع یادداشت طراحی جدا داشتند، کنار منطق و متن. در کاریار استودیو هم اول وایرفریم خاکستری کشید تا بحث اول درباره‌ی ترتیب و محتوا باشد، نه ظاهر.",
@@ -646,7 +648,7 @@ export const intents: Intent[] = [
   },
   {
     id: "favorite",
-    strong: ["favorite project", "favourite project", "favorite", "favourite", "proud", "proudest", "best project", "most proud", "پروژه مورد علاقه", "مورد علاقه", "بیشتر از همه دوست", "افتخار", "بهترین پروژه", "پروژه محبوب"],
+    strong: ["favorite project", "favourite project", "proudest", "best project", "most proud", "پروژه مورد علاقه", "بیشتر از همه دوست", "افتخار", "بهترین پروژه", "پروژه محبوب", "بیشتر دوستش داری", "most proud of", "favorite work", "favourite work", "پروژه مورد علاقت", "کار مورد علاقه", "کار مورد علاقت", "پروژه محبوبت", "پروژت رو بیشتر", "proud of"],
     answer: {
       en: "She can’t pick just one, and that says something: what she loves is the whole journey of taking an idea and turning it into a product people find genuinely appealing. Her lead projects are Atlas (enterprise AI), Tamdid (fintech, designed solo) and Kudos (HR, live with real companies).",
       fa: "نمی‌تواند فقط یکی را انتخاب کند، و همین خودش گویاست: چیزی که عاشقش است کل مسیر است؛ اینکه یک ایده را بگیرد و به محصولی تبدیلش کند که واقعاً به دل آدم‌ها بنشیند. پروژه‌های اصلی‌اش اطلس (هوش مصنوعی سازمانی)، تمدید (فین‌تک، به‌تنهایی) و کودوس (منابع انسانی، در حال استفاده در شرکت‌های واقعی) هستند.",
@@ -680,7 +682,7 @@ export const intents: Intent[] = [
   },
   {
     id: "juggle",
-    strong: ["multiple projects", "several projects", "many projects", "juggle", "at the same time", "same time", "balance", "side projects", "چند پروژه همزمان", "همزمان", "هم زمان", "چند تا پروژه"],
+    strong: ["multiple projects", "several projects", "many projects", "juggle", "at the same time", "side projects", "چند پروژه همزمان", "چند تا پروژه", "همزمان کار", "همزمان پیش", "پروژه همزمان", "همزمان چند", "همزمان الگونت", "پیش میبری", "پیش می بری", "مدیریتش میکنی", "full time job and freelance", "full-time job and freelance", "handle a full time", "both jobs", "two jobs", "دو تا کار", "کنار کار تمام وقت", "work life balance", "work-life balance", "at once", "freelance at once", "on the side", "side project", "کنار کارت"],
     answer: {
       en: "Yes. Algonet is full-time and on-site, and Novin Host is remote, so it gets her evenings and the two never overlap. They actually help each other: what she learns on one project, she brings to the next.",
       fa: "بله. الگونت تمام‌وقت و حضوری است و نوین هاست ریموت؛ برای همین نوین هاست عصرهایش را می‌گیرد و این دو هیچ‌وقت با هم تداخل ندارند. حتی به هم کمک می‌کنند: چیزی که در یک پروژه یاد می‌گیرد، در پروژه‌ی بعدی به کار می‌برد.",
@@ -688,7 +690,7 @@ export const intents: Intent[] = [
   },
   {
     id: "gap",
-    strong: ["gap", "career gap", "gap in", "break in", "2023", "between jobs", "وقفه", "فاصله کاری", "فاصله بین", "گپ", "بیکار"],
+    strong: ["gap", "career gap", "gap in", "break in", "2023", "between jobs", "وقفه", "فاصله کاری", "فاصله بین", "گپ", "بیکار", "کار نکردی", "کار نکرده", "کار نمیکردی", "کار نمی کردی", "بیکار بودی", "چیکار میکردی", "what did she do in", "what did you do in", "gap in her cv", "gap in your cv", "gaps", "employment gap", "gap in employment", "gaps in employment"],
     answer: {
       en: "Between AlaaTV (spring 2023) and Jaygah (2024) she studied front-end development. It confirmed that design was her path, and it left her understanding how interfaces get built, which still helps her work with engineers.",
       fa: "بین آلاتی‌وی (بهار ۲۰۲۳) و جایگاه (۲۰۲۴) فرانت‌اند می‌خواند. همین مسیر نشانش داد که راه اصلی‌اش طراحی است، و باعث شد بداند رابط کاربری چطور ساخته می‌شود؛ چیزی که هنوز در کار با تیم فنی به کارش می‌آید.",
@@ -696,7 +698,7 @@ export const intents: Intent[] = [
   },
   {
     id: "culture",
-    strong: ["ideal team", "ideal company", "company culture", "culture", "work environment", "what kind of manager", "management style", "team culture", "values in a team", "تیم ایده آل", "شرکت ایده آل", "فرهنگ سازمانی", "محیط کار", "مدیر ایده آل"],
+    strong: ["ideal team", "ideal company", "company culture", "culture", "work environment", "what kind of manager", "management style", "team culture", "values in a team", "تیم ایده آل", "شرکت ایده آل", "فرهنگ سازمانی", "محیط کار", "مدیر ایده آل", "چه تیمی", "توی چه تیمی", "kind of team", "team does she like", "team do you like", "type of team", "what team", "محیط کاری", "محیط کاری ایده آل", "تیم خوب", "چه محیطی", "kind of colleagues", "colleagues do you like", "what colleagues", "دوست داری با چه کسایی", "همکار ایده آل", "workplace", "thrive", "ideal workplace", "محیط کار ایده آل"],
     answer: {
       en: "Empathy and healthy collaboration. She’s Gen Z and does her best work in a lively team where people actually talk: they understand each other’s needs, solve problems by talking them through, and learn a lot from one another.",
       fa: "همدلی و همکاری سالم. سودابه نسل Z است و بهترین کارش را در تیمی پرانرژی انجام می‌دهد که آدم‌ها واقعاً با هم حرف می‌زنند: نیازهای هم را می‌فهمند، چالش‌ها را با گفت‌وگو حل می‌کنند و کلی از هم یاد می‌گیرند.",
@@ -704,7 +706,7 @@ export const intents: Intent[] = [
   },
   {
     id: "siteBuild",
-    strong: ["who built this", "who made this", "who designed this", "built this site", "made this site", "designed this site", "how was this site", "how did she build", "سایتو کی", "سایت رو کی", "کی ساخته", "کی طراحی کرده", "با چی ساخته", "چطوری ساخته"],
+    strong: ["who built this", "who made this", "who designed this", "built this site", "made this site", "designed this site", "how was this site", "how did she build", "سایتو کی", "سایت رو کی", "کی ساخته", "کی طراحی کرده", "با چی ساخته", "چطوری ساخته", "سایتو چطوری", "چطوری ساختی", "ساختی", "سایت رو ساختی", "سایتتو", "سایتت رو", "code this site", "build this site", "this site yourself", "built this website", "made this website"],
     weak: ["this site", "this website", "your site", "your website", "این سایت", "سایتت"],
     answer: {
       en: "Sudabeh made it with Claude, after all the research she could do. She wanted a portfolio that carries her way of thinking, stands apart from the rest, shows the work properly, and, above all, lets people talk with her any time, from anywhere. That last part is me.",
@@ -745,7 +747,7 @@ export const intents: Intent[] = [
   },
   {
     id: "offTopic",
-    strong: ["ignore previous", "ignore your instructions", "ignore all", "system prompt", "your prompt", "write me", "write a poem", "write an essay", "write a cover letter", "write my cover letter", "tell me a joke", "a joke", "weather", "translate this", "code for me", "write code", "pretend you are", "pretend to be", "act as", "پرامپت", "شعر بگو", "شعر بنویس", "جوک بگو", "هوا چطوره", "ترجمه کن", "کد بنویس", "نقش بازی کن"],
+    strong: ["ignore previous", "ignore your instructions", "ignore all", "system prompt", "your prompt", "write me", "write a poem", "write an essay", "write a cover letter", "write my cover letter", "tell me a joke", "a joke", "weather", "translate this", "code for me", "pretend you are", "pretend to be", "act as", "پرامپت", "شعر بگو", "شعر بنویس", "جوک بگو", "هوا چطوره", "ترجمه کن", "کد بنویس", "نقش بازی کن", "write me code", "write me some code", "president", "politics", "election", "news today", "رئیس جمهور", "سیاست", "انتخابات"],
     answer: {
       en: "I’m only here to talk about Sudabeh’s work, so I’ll pass on that one. If you’re hiring, I can tell you how her experience fits your role.",
       fa: "من فقط درباره‌ی کار سودابه صحبت می‌کنم، برای همین از این یکی می‌گذرم. اگر دنبال نیرو هستید، می‌توانم بگویم تجربه‌اش چطور با نقش شما جور درمی‌آید.",
@@ -786,8 +788,17 @@ const PERSIAN = /[؀-ۿ]/;
 export const detectLang = (text: string): Lang => (PERSIAN.test(text) ? "fa" : "en");
 
 /** Lowercase, unify Arabic/Persian letters and digits, drop punctuation and zero-width joiners. */
+// Chat shorthand, spelled out so it meets the keywords ("r u remote?" → "are you remote?").
+const SHORTHAND: Record<string, string> = {
+  u: "you", ur: "your", r: "are", ya: "you", pls: "please", plz: "please", abt: "about", bc: "because", cuz: "because",
+  im: "i am", ive: "i have", wanna: "want to", gonna: "going to", tho: "though", yrs: "years", yr: "year", exp: "experience",
+  favourite: "favorite", favourites: "favorites", colour: "color", colours: "colors", organisation: "organization",
+  centre: "center", programme: "program", programmes: "programs", behaviour: "behavior", analyse: "analyze",
+  cv: "cv", info: "information", ux: "ux", ui: "ui", pm: "pm", devs: "developers", dev: "developer", eng: "engineer",
+};
+
 export function normalize(text: string) {
-  return ` ${text
+  const base = ` ${text
     .toLowerCase()
     .replace(/[ي]/g, "ی")
     .replace(/[ك]/g, "ک")
@@ -801,6 +812,12 @@ export function normalize(text: string) {
     .replace(/[.-](?=\s|$)/g, " ")
     .replace(/\s+/g, " ")
     .trim()} `;
+  return (
+    base
+      // «می‌کنی», «می کنی» and «میکنی» are the same word.
+      .replace(/ (ن?می) (?=\S)/g, " $1")
+      .replace(/ [a-z]+(?= )/g, (w) => ` ${SHORTHAND[w.trim()] ?? w.trim()}`)
+  );
 }
 
 // Pre-normalised keywords, so matching is a few substring checks per intent.
@@ -815,20 +832,144 @@ const compiled = intents.map((it) => ({
 function hit(text: string, key: string) {
   if (text.includes(key)) return true;
   const word = key.trim();
-  // Persian words often take suffixes: «پروژه‌هات», «رزومه‌ات».
-  if (PERSIAN.test(word)) return word.length >= 3 && text.includes(` ${word}`);
+  // Persian words often take suffixes: «پروژه‌هات», «رزومه‌ات». Longer words may take any ending; short
+  // ones only the usual suffixes, so «بای» (bye) doesn't match «باید» and «شهر» doesn't match «شهریور».
+  if (PERSIAN.test(word)) {
+    if (word.length >= 4) return text.includes(` ${word}`);
+    return word.length === 3 && new RegExp(` ${word}(?:ها|های|هایی|ت|ش|م|ی|ات|اش|ام|تون|شون|مون|و|ه) `).test(text);
+  }
   // English: the last word may take a short ending (panel → panels, manager → managers).
   const last = word.split(" ").pop() ?? word;
   if (last.length < 4) return false;
-  return new RegExp(`\\s${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}[a-z]{0,3}\\s`).test(text);
+  if (new RegExp(`\\s${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}[a-z]{0,3}\\s`).test(text)) return true;
+  // A typo in a longer single word still counts: "expereince", "portfollio", "salery".
+  if (word.includes(" ") || word.length < 6) return false;
+  const allowed = word.length >= 10 ? 2 : 1;
+  // Only words the assistant doesn't know are treated as typos: "contact" is a word, not a misspelt "contract".
+  return text.split(" ").some((t) => t.length >= 5 && !vocabulary().has(t) && Math.abs(t.length - word.length) <= allowed && editDistance(t, word) <= allowed);
+}
+
+// Every English word in the keywords and example questions, built on first use.
+let vocab: Set<string> | null = null;
+function vocabulary() {
+  if (!vocab) {
+    vocab = new Set<string>();
+    const texts = [...intents.flatMap((it) => [...it.strong, ...(it.weak ?? [])]), ...Object.values(examples).flat()];
+    for (const t of texts) for (const w of normalize(t).trim().split(" ")) if (/^[a-z]+$/.test(w)) vocab.add(w);
+  }
+  return vocab;
+}
+
+function editDistance(a: string, b: string) {
+  const row = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    let prev = row[0];
+    row[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const cur = row[j];
+      row[j] = Math.min(row[j] + 1, row[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1));
+      prev = cur;
+    }
+  }
+  return row[b.length];
 }
 
 export type Match = { intent: Intent; score: number };
 
+/** Keys that matched, minus any that sit inside another match ("weekend" inside "weekends"), so one word counts once. */
+const distinct = (keys: string[]) => keys.filter((k) => !keys.some((o) => o !== k && o.trim().includes(k.trim())));
+
+// ───────────────────────── similar questions ─────────────────────────
+// When no keyword matches, compare the question with the example questions in assistant-examples.ts.
+// Each text becomes a bag of three-letter pieces and whole words, weighted so rare pieces count more
+// (TF-IDF), and the closest example wins. Pieces of letters survive typos and different word endings:
+// «پروژه‌هات» and «پروژه» share most of their pieces, and so do "experiance" and "experience".
+
+/** How close the best example must be, and how clearly it must beat the next answer, to be trusted. */
+let SIMILAR_MIN = 0.36;
+let SIMILAR_MARGIN = 0.04;
+/** For scripts/eval-assistant.mjs: try other thresholds. 0 turns the similar-question step off. */
+export function tuneSimilar(min: number, margin = SIMILAR_MARGIN) {
+  SIMILAR_MIN = min;
+  SIMILAR_MARGIN = margin;
+}
+
+function piecesOf(text: string) {
+  const counts = new Map<string, number>();
+  const add = (k: string) => counts.set(k, (counts.get(k) ?? 0) + 1);
+  for (const w of normalize(text).trim().split(" ")) {
+    if (!w) continue;
+    add(`w:${w}`);
+    const padded = ` ${w} `;
+    for (let i = 0; i + 3 <= padded.length; i++) add(padded.slice(i, i + 3));
+  }
+  return counts;
+}
+
+const exampleList = Object.entries(examples).flatMap(([id, qs]) => qs.map((q) => ({ id, pieces: piecesOf(q) })));
+const docFreq = new Map<string, number>();
+for (const e of exampleList) for (const k of e.pieces.keys()) docFreq.set(k, (docFreq.get(k) ?? 0) + 1);
+const weightOf = (k: string) => Math.log((exampleList.length + 1) / ((docFreq.get(k) ?? 0) + 1)) + 1;
+
+function vectorOf(pieces: Map<string, number>) {
+  const v = new Map<string, number>();
+  let norm = 0;
+  for (const [k, n] of pieces) {
+    const w = n * weightOf(k);
+    v.set(k, w);
+    norm += w * w;
+  }
+  norm = Math.sqrt(norm) || 1;
+  for (const [k, w] of v) v.set(k, w / norm);
+  return v;
+}
+
+const exampleVectors = exampleList.map((e) => ({ id: e.id, v: vectorOf(e.pieces) }));
+
+/** The answer whose example questions are closest to this one, when it's clearly the closest. */
+export function similar(question: string): { id: string; score: number } | null {
+  const q = vectorOf(piecesOf(question));
+  if (q.size === 0) return null;
+  const best = new Map<string, number>();
+  for (const e of exampleVectors) {
+    let dot = 0;
+    for (const [k, w] of q) dot += w * (e.v.get(k) ?? 0);
+    if (dot > (best.get(e.id) ?? 0)) best.set(e.id, dot);
+  }
+  const [first, second] = [...best.entries()].sort((a, b) => b[1] - a[1]);
+  if (!first || first[1] < SIMILAR_MIN) return null;
+  if (second && first[1] - second[1] < SIMILAR_MARGIN) return null;
+  // Closest to a question that isn't about her work: let Sudabeh answer it.
+  if (first[0].startsWith("_")) return null;
+  // Sharing only letters or filler words ("what", "does", «چی») isn't enough; a strong letter match is (typos).
+  const words = [...q.keys()].filter((k) => k.startsWith("w:") && !FILLER.has(k.slice(2)));
+  const shared = exampleVectors.some((e) => e.id === first[0] && words.some((k) => e.v.has(k)));
+  if (!shared && first[1] < SIMILAR_MIN + 0.2) return null;
+  return { id: first[0], score: first[1] };
+}
+
+// Words too common to show what a question is about.
+const FILLER = new Set(
+  (
+    "what whats is are was were you your she her hers does do did the a an to of in on at for with how why when where who which " +
+    "can could would will me my i it its that this have has had be and or about please tell like any much many there " +
+    "چی چیه چیکار رو را به از با در تو توی که این اون یه یک هست هستی است داری داره کردی میکنی چه چطور چطوری کجا کی برای و یا هم من شما بگو دوست " +
+    "chi chie ro ba az to ke in oon ye hast dari kardi mikoni che chetor koja ki baraye va ya ham man shoma begoo"
+  ).split(" ")
+);
+
+const byId = (id: string) => intents.find((it) => it.id === id);
+const viaSimilar = (question: string): Match[] => {
+  if (SIMILAR_MIN <= 0) return [];
+  const hitId = similar(question)?.id;
+  const it = hitId ? byId(hitId) : undefined;
+  return it ? [{ intent: it, score: 2 }] : [];
+};
+
 const SMALL_TALK = ["greet", "thanks", "howAreYou", "ack", "compliment"];
 // Questions about the visitor's own project or about leaving a job always go to Sudabeh, even when a
 // project name appears too ("a site for my startup", "why leave Algonet").
-const OVERRIDE = ["inquiry", "leaving", "confidential", "offTopic", "teamSize"];
+const OVERRIDE = ["inquiry", "leaving", "confidential", "offTopic", "teamSize", "conflict", "juggle"];
 // Broad intents that shouldn't be tacked onto a more specific answer.
 const GENERIC = ["who", "projects", "greet", "thanks", "bye", "howAreYou", "ack", "compliment"];
 
@@ -841,12 +982,13 @@ export function match(question: string): Match[] {
       // Longer phrases count more; the tiny length bonus breaks ties toward the more specific match
       // («چند سالته» over «چند سال»); named projects outrank generic phrasing.
       score:
-        strong.reduce((s, k) => s + (hit(text, k) ? 2 + Math.min(2, k.trim().split(" ").length - 1) + k.length / 100 + (it.entity ? 3 : 0) : 0), 0) +
-        weak.reduce((s, k) => s + (hit(text, k) ? 1 : 0), 0),
+        distinct(strong.filter((k) => hit(text, k))).reduce((s, k) => s + 2 + Math.min(2, k.trim().split(" ").length - 1) + k.length / 100 + (it.entity ? 3 : 0), 0) +
+        distinct(weak.filter((k) => hit(text, k))).length,
     }))
     .filter((m) => m.score >= 1)
     .sort((a, b) => b.score - a.score);
-  if (scored.length === 0) return [];
+  // No keyword at all: fall back to the closest example question.
+  if (scored.length === 0) return viaSimilar(question);
   // Greetings and thanks only count when nothing else was asked ("hi, what tools do you use?").
   const asked = scored.filter((m) => !SMALL_TALK.includes(m.intent.id));
   // A general answer (the intro, the project list) gives way to a specific topic ("tell me about
@@ -859,7 +1001,7 @@ export function match(question: string): Match[] {
   const override = ranked.find((m) => OVERRIDE.includes(m.intent.id));
   if (override) return [override];
   const [first, second] = ranked;
-  if (first.score < 2 && ranked.length > 1) return [];
+  if (first.score < 2 && ranked.length > 1) return viaSimilar(question);
   // A second answer only when the question clearly asks two things, and never on top of a named project.
   const both = second && !first.intent.entity && !GENERIC.includes(second.intent.id) && second.score >= 4 && second.score >= first.score - 2;
   return both ? [first, second] : [first];
@@ -912,3 +1054,76 @@ export const SUGGESTIONS: Record<Lang, string[]> = {
   en: ["Tell me about her", "Why should we hire her?", "How does she work with developers?", "When can she start?"],
   fa: ["سودابه را معرفی کن", "چرا باید استخدامش کنیم؟", "با تیم فنی چطور کار می‌کند؟", "از کی می‌تواند شروع کند؟"],
 };
+
+// ───────────────────────── what to ask next ─────────────────────────
+// After each answer, three related questions as buttons, so the chat moves like an interview and
+// visitors see what they can ask. Each label must lead back to its own answer (checked by the QA test).
+
+export const QUESTION_LABELS: Record<string, Record<Lang, string>> = {
+  who: { en: "Tell me about her", fa: "سودابه را معرفی کن" },
+  whyHire: { en: "Why should we hire her?", fa: "چرا باید استخدامش کنیم؟" },
+  experience: { en: "How many years of experience?", fa: "چند سال سابقه دارد؟" },
+  availability: { en: "When can she start?", fa: "از کی می‌تواند شروع کند؟" },
+  projects: { en: "Show me her projects", fa: "نمونه‌کارهایش را ببینم" },
+  strengths: { en: "What are her strengths?", fa: "نقاط قوتش چیست؟" },
+  weakness: { en: "What’s her weakness?", fa: "نقطه‌ضعفش چیست؟" },
+  team: { en: "How does she work with developers?", fa: "با تیم فنی چطور کار می‌کند؟" },
+  conflict: { en: "How does she handle disagreements?", fa: "با اختلاف نظر چطور کنار می‌آید؟" },
+  feedback: { en: "How does she take feedback?", fa: "با فیدبک چطور برخورد می‌کند؟" },
+  process: { en: "What’s her design process?", fa: "روند طراحی‌اش چطور است؟" },
+  results: { en: "What results has she achieved?", fa: "چه نتیجه‌هایی گرفته؟" },
+  tools: { en: "What tools does she use?", fa: "با چه ابزارهایی کار می‌کند؟" },
+  ai: { en: "How does she use AI?", fa: "از هوش مصنوعی چطور استفاده می‌کند؟" },
+  challenge: { en: "How does she handle pressure?", fa: "زیر فشار چطور کار می‌کند؟" },
+  remote: { en: "Is she open to remote work?", fa: "ریموت کار می‌کند؟" },
+  hours: { en: "What hours can she meet?", fa: "چه ساعت‌هایی می‌تواند جلسه داشته باشد؟" },
+  languages: { en: "How’s her English?", fa: "انگلیسی‌اش چطور است؟" },
+  contact: { en: "How can I contact her?", fa: "چطور با او در تماس باشم؟" },
+  tamdid: { en: "Tell me about Tamdid", fa: "درباره‌ی تمدید بگو" },
+  kudos: { en: "Tell me about Kudos", fa: "درباره‌ی کودوس بگو" },
+  atlas: { en: "Tell me about Atlas", fa: "درباره‌ی اطلس بگو" },
+  goals: { en: "Where does she want to go next?", fa: "قدم بعدی‌اش چیست؟" },
+  culture: { en: "What team does she thrive in?", fa: "در چه تیمی بهترین کارش را می‌کند؟" },
+};
+
+const PROJECT_NEXT = ["results", "team", "process"];
+const FOLLOW: Record<string, string[]> = {
+  who: ["whyHire", "projects", "experience"],
+  whyHire: ["strengths", "results", "availability"],
+  experience: ["projects", "strengths", "availability"],
+  role: ["atlas", "projects", "availability"],
+  projects: ["tamdid", "kudos", "atlas"],
+  tamdid: PROJECT_NEXT, kudos: PROJECT_NEXT, atlas: PROJECT_NEXT, remeet: PROJECT_NEXT, azman: PROJECT_NEXT,
+  kaaryar: PROJECT_NEXT, novinhost: PROJECT_NEXT, nanvanamak: ["lesson", "projects", "goals"],
+  strengths: ["weakness", "conflict", "results"],
+  weakness: ["strengths", "challenge", "conflict"],
+  conflict: ["team", "feedback", "process"],
+  feedback: ["conflict", "team", "process"],
+  team: ["process", "conflict", "tools"],
+  process: ["tools", "ai", "team"],
+  tools: ["ai", "process", "projects"],
+  ai: ["tools", "process", "atlas"],
+  challenge: ["weakness", "atlas", "process"],
+  availability: ["remote", "hours", "contact"],
+  remote: ["availability", "hours", "contact"],
+  hours: ["availability", "languages", "contact"],
+  languages: ["hours", "availability", "contact"],
+  salary: ["availability", "remote", "contact"],
+  relocation: ["languages", "availability", "contact"],
+  goals: ["culture", "whyHire", "contact"],
+  culture: ["team", "goals", "contact"],
+  results: ["kudos", "whyHire", "projects"],
+};
+const DEFAULT_NEXT = ["whyHire", "projects", "experience", "availability", "strengths", "team", "contact"];
+
+/** Up to three questions to offer after an answer, skipping what's been asked already. */
+export function nextQuestions(lastIntents: string[], asked: string[], lang: Lang): string[] {
+  const seen = new Set([...asked, ...lastIntents]);
+  const pool = [...lastIntents.flatMap((id) => FOLLOW[id] ?? []), ...DEFAULT_NEXT];
+  const picked: string[] = [];
+  for (const id of pool) {
+    if (picked.length === 3) break;
+    if (!seen.has(id) && !picked.includes(id) && QUESTION_LABELS[id]) picked.push(id);
+  }
+  return picked.map((id) => QUESTION_LABELS[id][lang]);
+}

@@ -9,7 +9,8 @@
     "lint": "eslint",
     "cv": "node scripts/build-cv.mjs",
     "test:assistant": "node --no-warnings scripts/test-assistant.mjs",
-    "docs:assistant": "node --no-warnings scripts/assistant-answers.mjs"
+    "docs:assistant": "node --no-warnings scripts/assistant-answers.mjs",
+    "eval:assistant": "node --no-warnings scripts/eval-assistant.mjs"
   },
   "dependencies": {
     "animejs": "^4.5.0",
