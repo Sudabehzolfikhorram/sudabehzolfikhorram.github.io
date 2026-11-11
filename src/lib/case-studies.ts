@@ -63,10 +63,10 @@ const all: CaseStudy[] = [
     hue: "#11215d",
     tagline: "Modernising a 15-year-old hosting brand, without customers feeling it changed.",
     summary:
-      "Novin Host has sold servers, hosting and domains to Iranian businesses for more than 15 years. I’m redesigning its website so it feels current and is easier to choose from, while staying unmistakably Novin Host.",
+      "Novin Host has sold servers, hosting and domains to Iranian businesses for more than 15 years. I redesigned its website so it feels current and is easier to choose from, while staying unmistakably Novin Host.",
     category: "Website redesign · Hosting & cloud",
-    period: { start: "2026-06", end: null },
-    status: "In progress",
+    period: { start: "2026-06", end: "2026-09" },
+    status: "Main pages redesigned",
     meta: {
       role: "Product Designer",
       engagement: "Website redesign",
@@ -157,7 +157,7 @@ const all: CaseStudy[] = [
     summary:
       "AzMan connects customers with service experts. Customers describe what they need, compare experts and follow the request to completion, on web and mobile. It’s one of three connected products I designed for AzMan, with Hamgam Saz and the ERP behind them.",
     category: "Marketplace · Web & mobile",
-    period: { start: "2025-10", end: null },
+    period: { start: "2025-10", end: "2026-09" },
     status: "Product design",
     meta: { role: "Product Designer", engagement: "Project-based · Remote", platform: "Web & mobile", tools: ["Figma", "FigJam"] },
     cover: "azman-request",
@@ -184,7 +184,7 @@ const all: CaseStudy[] = [
     summary:
       "The ERP runs AzMan from the inside: personnel, roles and access levels, operational scopes, documents, contracts and guarantees. It’s one of three connected products I designed for AzMan.",
     category: "ERP · Internal tool",
-    period: { start: "2025-10", end: null },
+    period: { start: "2025-10", end: "2026-09" },
     status: "Product design",
     meta: { role: "Product Designer", engagement: "Project-based · Remote", platform: "Web", tools: ["Figma", "FigJam"] },
     cover: "erp-access",
@@ -212,7 +212,7 @@ const all: CaseStudy[] = [
     summary:
       "Hamgam Saz is where AzMan’s field experts log calls, follow up and keep in touch with customers, so every conversation is traceable. It’s one of three connected products I designed for AzMan.",
     category: "Operations tool · Field experts",
-    period: { start: "2025-10", end: null },
+    period: { start: "2025-10", end: "2026-09" },
     status: "Product design",
     meta: { role: "Product Designer", engagement: "Project-based · Remote", platform: "Web & mobile", tools: ["Figma", "FigJam"] },
     cover: "hamgam-calls",

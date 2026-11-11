@@ -538,7 +538,7 @@ export function NovinLayout({ cs }: { cs: CaseStudy }) {
       <section className="bg-[#11215d] py-24 text-white">
         <div className={wrap}>
           <Chapter dark label="Where it stands" n="13" title="Designed. Next: proving it.">
-            <p>The redesign is in progress since June 2026. Before launch, the plan is to test it with the people the brief protects: existing customers.</p>
+            <p>I redesigned the main pages between June and September 2026. Before launch, the plan was to test them with the people the brief protects: existing customers.</p>
           </Chapter>
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             <Reveal className="rounded-2xl border border-white/15 p-7">

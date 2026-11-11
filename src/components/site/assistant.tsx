@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * "Ask about me": an assistant that answers questions about Sudabeh in Persian
- * or English, interview-style. Answers come from the AI backend when it's set
+ * or English, interview-style, in her own voice (first person). Answers come from the AI backend when it's set
  * up (see docs/contact-form.gs), and from the built-in answers in assistant.ts
  * otherwise. Either way it says what it is, never pretends to be her, and when
  * it can't answer it sends the question to her, with an optional way to reply.
@@ -42,19 +42,19 @@ const noop = () => () => {};
 const UI: Record<Lang, Record<string, string>> = {
   en: {
     open: "Ask about me",
-    title: "Ask about Sudabeh",
-    subtitle: "Answers from her portfolio",
-    hello: "Hi! I’m Sudabeh’s assistant. Ask me anything about her work, the way you would in an interview, in English or Persian. If I don’t know the answer, I’ll pass your question to her.",
-    placeholder: "Ask anything about her work…",
+    title: "Ask me anything",
+    subtitle: "Answers in my own words",
+    hello: "Hi, I’m Sudabeh! Well, my assistant: it answers in my words, from my CV and answers I’ve written myself. Ask me anything about my work, the way you would in an interview. If it can’t answer, your question comes straight to me.",
+    placeholder: "Ask about my work…",
     slow: "Putting together a proper answer…",
-    sending: "Sending your question to Sudabeh…",
-    forwardTitle: "Sent to Sudabeh. Want her reply?",
+    sending: "Sending your question…",
+    forwardTitle: "It’s with me now. Want my reply?",
     contact: "Email, phone or @telegram",
     send: "Send",
     noThanks: "No thanks",
-    sentReply: "Thanks! She’ll reply at",
-    failed: `That didn’t go through. You can email her at ${site.email}.`,
-    limit: "You’ve sent several questions to her already. For anything else, email her directly.",
+    sentReply: "Thanks! I’ll reply at",
+    failed: `That didn’t go through. You can email me at ${site.email}.`,
+    limit: "You’ve sent me several questions already. For anything else, email me directly.",
     dismissed: "No problem. What else would you like to know?",
     close: "Close",
     send_aria: "Send question",
@@ -62,19 +62,19 @@ const UI: Record<Lang, Record<string, string>> = {
   },
   fa: {
     open: "از من بپرسید",
-    title: "درباره‌ی سودابه بپرسید",
-    subtitle: "پاسخ از روی رزومه و نمونه‌کارها",
-    hello: "سلام! من دستیار سودابه هستم. هر سؤالی درباره‌ی کارش دارید، مثل یک مصاحبه بپرسید؛ فارسی یا انگلیسی. اگر جوابش را ندانم، سؤال‌تان را برای خودش می‌فرستم.",
-    placeholder: "درباره‌ی کار و سوابقش بپرسید…",
+    title: "از من بپرسید",
+    subtitle: "دستیار من · با حرف‌های خودم",
+    hello: "سلام، سودابه هستم! یا دقیق‌تر، دستیارم؛ با حرف‌های خودم جواب می‌دهد، از روی رزومه و جواب‌هایی که خودم نوشته‌ام. هر سؤالی درباره‌ی کارم دارید، مثل یک مصاحبه بپرسید. اگر جوابش را نداشت، سؤال‌تان مستقیم به دست خودم می‌رسد.",
+    placeholder: "درباره‌ی کار و سوابقم بپرسید…",
     slow: "دارم جواب دقیقی آماده می‌کنم…",
-    sending: "در حال فرستادن سؤال‌تان برای سودابه…",
-    forwardTitle: "برای سودابه فرستاده شد. جوابش را می‌خواهید؟",
+    sending: "در حال فرستادن سؤال‌تان…",
+    forwardTitle: "به دستم رسید. جوابم را می‌خواهید؟",
     contact: "ایمیل، شماره یا آیدی تلگرام",
     send: "ارسال",
     noThanks: "نه، ممنون",
-    sentReply: "ممنون! جواب را می‌فرستد به",
+    sentReply: "ممنون! جوابم را می‌فرستم به",
     failed: `ارسال نشد. می‌توانید به ${site.email} ایمیل بزنید.`,
-    limit: "چند سؤال برایش فرستاده‌اید. برای سؤال‌های بیشتر، لطفاً مستقیم ایمیل بزنید.",
+    limit: "چند سؤال برایم فرستاده‌اید. برای سؤال‌های بیشتر، لطفاً مستقیم ایمیل بزنید.",
     dismissed: "باشه. چه چیز دیگری می‌خواهید بدانید؟",
     close: "بستن",
     send_aria: "ارسال سؤال",

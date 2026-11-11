@@ -29,10 +29,14 @@ export default function ContactPage() {
           </Reveal>
 
           {/* Social tiles: a fill sweeps up on hover, the arrow turns to point out. */}
-          <RevealGroup className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-4" stagger={0.07}>
+          <RevealGroup className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-12" stagger={0.07}>
             {site.socials.map((s, i, all) => (
-              // With an odd number of tiles on the last row of four, the last one stretches so no cell sits empty.
-              <RevealItem className={cn(i === all.length - 1 && all.length % 4 === 3 && "lg:col-span-2", i === all.length - 1 && all.length % 2 === 1 && "sm:max-lg:col-span-2")} key={s.href}>
+              // Wide screens: the first three (ways to talk) share the top row, the rest sit four to a row.
+              // Two columns: an odd last tile stretches, so no cell sits empty.
+              <RevealItem
+                className={cn(i < 3 ? "lg:col-span-4" : "lg:col-span-3", i === all.length - 1 && all.length % 2 === 1 && "sm:max-lg:col-span-2")}
+                key={s.href}
+              >
                 <a
                   className="group relative flex h-full min-h-[200px] flex-col justify-between overflow-hidden bg-paper p-7 transition-colors duration-300 hover:text-paper"
                   href={s.href}

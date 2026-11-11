@@ -19,7 +19,8 @@ export const site = {
   // instantly, with no request to the backend. Turn on once ANTHROPIC_API_KEY is set in the Apps Script.
   assistantAI: false,
   contactEndpoint: "https://script.google.com/macros/s/AKfycbyNUnvUJUsH6wB81ULdBtibH3JAYypTpneB99kbQeDg8AzMCD0NH602HnhqP71L3D7R/exec",
-  // In this order on the contact page and in the footer.
+  // In this order on the contact page and in the footer. The first three (ways to talk) share the
+  // contact page’s top row; the rest sit below.
   socials: [
     { label: "LinkedIn", handle: "sudabehzolfikhorram2001", href: "https://www.linkedin.com/in/sudabehzolfikhorram2001/" },
     { label: "Telegram", handle: "@sudabehzolfikhorram", href: "https://t.me/sudabehzolfikhorram" },
@@ -91,7 +92,7 @@ export const experience: Role[] = [
     cases: [{ slug: "atlas", label: "Atlas" }],
   },
   {
-    company: "AzMan", logo: "azman", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-10", end: null,
+    company: "AzMan", logo: "azman", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-10", end: "2026-09",
     summary: "Three connected products: a marketplace, a field tool and the ERP behind them.",
     about: "AzMan is the marketplace where customers find services. Hamgam Saz is the tool the field experts work and communicate in. The ERP runs both, from roles and permissions to contracts and documents.",
     cases: [
@@ -101,9 +102,9 @@ export const experience: Role[] = [
     ],
   },
   {
-    company: "Novin Host", logo: "novinhost", title: "Product Designer", start: "2026-06", end: null,
-    summary: "Redesigning a 15-year-old hosting brand.",
-    about: "A redesign that makes Novin Host feel current and easier to choose from, without customers feeling it changed. The main pages are done; the rest is in progress.",
+    company: "Novin Host", logo: "novinhost", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2026-06", end: "2026-09",
+    summary: "A redesign for a 15-year-old hosting brand.",
+    about: "A redesign that makes Novin Host feel current and easier to choose from, without customers feeling it changed. I redesigned the main pages before the collaboration ended in September 2026.",
     cases: [{ slug: "novinhost", label: "Novin Host" }],
     link: { label: "novinhost.org", href: "https://www.novinhost.org/" },
   },
