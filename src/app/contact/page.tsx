@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { ContactHero } from "@/components/site/contact-hero";
 import { site } from "@/lib/content";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = { title: "Contact · Sudabeh" };
 
@@ -29,8 +30,9 @@ export default function ContactPage() {
 
           {/* Social tiles: a fill sweeps up on hover, the arrow turns to point out. */}
           <RevealGroup className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-4" stagger={0.07}>
-            {site.socials.map((s) => (
-              <RevealItem key={s.href}>
+            {site.socials.map((s, i, all) => (
+              // With an odd number of tiles on the last row of four, the last one stretches so no cell sits empty.
+              <RevealItem className={cn(i === all.length - 1 && all.length % 4 === 3 && "lg:col-span-2", i === all.length - 1 && all.length % 2 === 1 && "sm:max-lg:col-span-2")} key={s.href}>
                 <a
                   className="group relative flex h-full min-h-[200px] flex-col justify-between overflow-hidden bg-paper p-7 transition-colors duration-300 hover:text-paper"
                   href={s.href}

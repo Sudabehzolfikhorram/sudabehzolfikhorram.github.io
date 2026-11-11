@@ -19,14 +19,15 @@ export const site = {
   // instantly, with no request to the backend. Turn on once ANTHROPIC_API_KEY is set in the Apps Script.
   assistantAI: false,
   contactEndpoint: "https://script.google.com/macros/s/AKfycbyNUnvUJUsH6wB81ULdBtibH3JAYypTpneB99kbQeDg8AzMCD0NH602HnhqP71L3D7R/exec",
+  // In this order on the contact page and in the footer.
   socials: [
     { label: "LinkedIn", handle: "sudabehzolfikhorram2001", href: "https://www.linkedin.com/in/sudabehzolfikhorram2001/" },
+    { label: "Telegram", handle: "@sudabehzolfikhorram", href: "https://t.me/sudabehzolfikhorram" },
+    { label: "WhatsApp", handle: "+98 991 206 6324", href: "https://wa.me/989912066324" },
+    { label: "Instagram", handle: "@sudabehzolfi.design", href: "https://www.instagram.com/sudabehzolfi.design" },
     { label: "Dribbble", handle: "SudabehZolfikhorram", href: "https://dribbble.com/SudabehZolfikhorram" },
     { label: "Behance", handle: "sudabehzolfikh", href: "https://www.behance.net/sudabehzolfikh" },
     { label: "Medium", handle: "@sudabeh.a.zolfikhorram", href: "https://medium.com/@sudabeh.a.zolfikhorram" },
-    { label: "Instagram", handle: "@sudabehzolfi.design", href: "https://www.instagram.com/sudabehzolfi.design" },
-    { label: "Telegram", handle: "@sudabehzolfikhorram", href: "https://t.me/sudabehzolfikhorram" },
-    { label: "WhatsApp", handle: "+98 991 206 6324", href: "https://wa.me/989912066324" },
   ],
 };
 
