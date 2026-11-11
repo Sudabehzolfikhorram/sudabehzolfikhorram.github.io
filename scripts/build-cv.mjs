@@ -173,7 +173,7 @@ const side = [
     ],
   },
   { title: "Languages", items: ["Persian · Native", "English · Intermediate (working proficiency)"] },
-  { title: "Education", items: ["Bachelor of Law · PNU · 2021 – 2024"] },
+  { title: "Education", items: ["Bachelor of Law · 2021 – 2024"] },
   {
     title: "Courses",
     items: [

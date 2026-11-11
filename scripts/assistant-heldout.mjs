@@ -103,7 +103,7 @@ export const heldout = [
   ["could she begin next week", "availability"], ["چه زمانی آزاد میشی برای شروع", "availability"],
   ["what's the expected compensation", "salary"], ["چقدر حقوق مد نظرته", "salary"],
   ["willing to move to canada?", "relocation"], ["میای آلمان کار کنی؟", "relocation"],
-  ["what did she major in at uni", "education"], ["دانشگاه کجا رفتی", "education"],
+  ["what did she major in at uni", "education"], ["دانشگاه کجا رفتی", "university"],
   ["how is ur english", "languages"], ["can she present in english", "languages"],
   ["figma or sketch?", "tools"], ["what apps do you design with", "tools"],
   ["how do you use AI tools while designing", "ai"], ["از چت جی پی تی استفاده میکنی؟", "ai"],
