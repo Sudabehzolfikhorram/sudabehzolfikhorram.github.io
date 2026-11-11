@@ -311,7 +311,7 @@ const all: CaseStudy[] = [
     ],
     screens: [],
     facts: [
-      { value: "~500", label: "People using it, by my count" },
+      { value: "~500", label: "People using it at one client alone" },
       { value: "70+", label: "Pages in the design file" },
       { value: "2", label: "Products on one design system" },
     ],

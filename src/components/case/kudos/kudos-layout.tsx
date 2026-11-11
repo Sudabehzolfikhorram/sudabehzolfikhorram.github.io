@@ -217,7 +217,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
           {[
             ["The product", "Employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events, challenges and onboarding in the same place."],
             ["My role", "Product designer at Novaday: the redesign from a dashboard to a social network, the employee side and HR admin, a first-run guide, and the shared design system."],
-            ["Where it is", "Live, used by real companies. By my count, around 500 people use it."],
+            ["Where it is", "Live, used by real companies. At one client alone, around 500 people use it."],
           ].map(([k, v]) => (
             <RevealItem className="bg-paper p-7" key={k}>
               <p className="font-mono text-[0.72rem] text-ink-soft uppercase tracking-[0.06em]">{k}</p>
@@ -607,7 +607,7 @@ export function KudosLayout({ cs }: { cs: CaseStudy }) {
       <section className="py-24 text-white" style={{ background: C.red }}>
         <div className={wrap}>
           <Chapter dark label="Where it stands" n="13" title="Shipped, and in use.">
-            <p>Kudos is live with real companies; by my count, around 500 people use it. I can’t attribute numbers to single design decisions, so I won’t.</p>
+            <p>Kudos is live with real companies; at one client alone, around 500 people use it. I can’t attribute numbers to single design decisions, so I won’t.</p>
           </Chapter>
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             <Reveal className="rounded-2xl border border-white/30 p-7">

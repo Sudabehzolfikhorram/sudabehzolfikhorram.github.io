@@ -65,8 +65,8 @@ export const intents: Intent[] = [
     weak: ["sudabeh", "سودابه"],
     link: { href: "/work", label: { en: "See all projects", fa: "همه‌ی پروژه‌ها" } },
     answer: {
-      en: "Sudabeh Zolfi Khorram is a product designer with 5+ years of experience who makes complicated products feel simple: fintech, HR tools, ERP and enterprise AI, from the first flow to developer handoff. Right now she designs Atlas, an AI platform, at Algonet. Before that she designed Tamdid on her own and the award-winning Remeet at Novaday. She’s based in Tehran, open to remote, and can start right away.",
-      fa: "سودابه ذولفی‌خرم پروداکت دیزاینری با بیش از ۵ سال سابقه است که محصولات پیچیده را ساده می‌کند: فین‌تک، ابزارهای منابع انسانی، ERP و هوش مصنوعی سازمانی، از اولین فلو تا تحویل به توسعه. الان در الگونت اطلس را طراحی می‌کند، یک پلتفرم هوش مصنوعی. پیش از آن تمدید را به‌تنهایی طراحی کرد و ریمیت را در نوادی، که در هفته‌ی دیزاین تهران برنده شد. ساکن تهران است، برای کار ریموت آماده است و همین الان می‌تواند شروع کند.",
+      en: "Sudabeh Zolfi Khorram is a product designer with 5+ years of experience who makes complicated products feel simple: fintech, HR tools, ERP and enterprise AI, from the first flow to developer handoff. Right now she designs B2B products at Algonet, including Atlas, an AI platform. Before that she designed Tamdid on her own and, at Novaday, Remeet, which went on to win at Tehran Design Week. She’s based in Tehran and open to remote work.",
+      fa: "سودابه زلفی‌خرم پروداکت دیزاینری با بیش از ۵ سال سابقه است که محصولات پیچیده را ساده می‌کند: فین‌تک، ابزارهای منابع انسانی، ERP و هوش مصنوعی سازمانی، از اولین فلو تا تحویل به توسعه. الان در الگونت محصولات B2B طراحی می‌کند، از جمله اطلس که یک پلتفرم هوش مصنوعی است. پیش از آن تمدید را به‌تنهایی طراحی کرد و در نوادی ریمیت را، که بعدها در هفته‌ی دیزاین تهران برنده شد. ساکن تهران است و برای کار ریموت آماده است.",
     },
   },
   {
@@ -107,8 +107,8 @@ export const intents: Intent[] = [
     id: "availability",
     strong: ["what kind of role", "type of role", "kind of job", "kind of work", "what kind of company", "type of company", "kind of company", "company size", "notice period", "start right away", "start immediately", "چه نوع همکاری", "نوع همکاری", "چه شرکتی", "نوع شرکت", "چه نوع شرکت", "کی میتونه شروع", "کی می‌تونه شروع", "کی شروع", "شروع کنه", "زمان شروع", "available", "availability", "open to work", "hiring", "looking for a job", "open to new", "job offer", "can we hire", "hire her", "hire you", "start date", "can you start", "can she start", "notice period", "when can", "آزاد", "در دسترس", "دنبال کار", "استخدام", "شروع همکاری", "کی میتونی", "از کی", "پیشنهاد کاری", "کار جدید", "آماده کار", "آماده‌ی کار", "آماده همکاری", "آماده‌ی همکاری", "موقعیت شغلی", "فرصت شغلی", "جویای کار", "new role", "new job", "looking for work", "estekhdam"],
     answer: {
-      en: "She can start right away. Remote, full-time, part-time or project-based all work for her; the one thing she isn’t looking for is on-site work. Any kind of company is fine, from startups to large teams.",
-      fa: "همین الان می‌تواند شروع کند. ریموت، تمام‌وقت، پاره‌وقت یا پروژه‌ای، همه برایش اوکی است؛ فقط دنبال کار حضوری نیست. نوع شرکت هم فرقی نمی‌کند، از استارتاپ تا تیم‌های بزرگ.",
+      en: "For a full-time role, she can start after a month’s notice to her current employer; project-based work can start right away. Remote, full-time, part-time or project-based all work for her; the one thing she isn’t looking for is on-site work. Any kind of company is fine, from startups to large teams.",
+      fa: "برای نقش تمام‌وقت، بعد از یک ماه فرصت برای اطلاع به شرکت فعلی‌اش می‌تواند شروع کند؛ برای کار پروژه‌ای همین الان آماده است. ریموت، تمام‌وقت، پاره‌وقت یا پروژه‌ای، همه برایش مناسب است؛ فقط دنبال کار حضوری نیست. نوع شرکت هم فرقی نمی‌کند، از استارتاپ تا تیم‌های بزرگ.",
     },
   },
   {
@@ -142,6 +142,14 @@ export const intents: Intent[] = [
     answer: {
       en: "She’s planning to relocate, and doesn’t have a visa yet.",
       fa: "قصد مهاجرت دارد و فعلاً ویزا ندارد.",
+    },
+  },
+  {
+    id: "hobbies",
+    strong: ["hobby", "hobbies", "free time", "spare time", "outside work", "outside of work", "for fun", "weekend plans", "سرگرمی", "اوقات فراغت", "وقت آزاد", "بیرون از کار", "تفریح"],
+    answer: {
+      en: "Outside work: films, nature trips and time with friends.",
+      fa: "بیرون از کار: فیلم دیدن، طبیعت‌گردی و وقت گذراندن با دوستانش.",
     },
   },
   {
@@ -181,10 +189,10 @@ export const intents: Intent[] = [
   },
   {
     id: "languages",
-    strong: ["english", "language", "languages", "speak", "persian", "farsi", "ielts", "toefl", "آیلتس", "تافل", "انگلیسی", "زبان", "فارسی", "مکالمه", "زبانت", "zaban"],
+    strong: ["english", "language", "languages", "speak", "persian", "farsi", "ielts", "toefl", "آیلتس", "تافل", "انگلیسی", "زبان", "فارسی", "مکالمه", "زبانت", "zaban", "english interview", "interview in english", "مصاحبه انگلیسی", "مصاحبه به انگلیسی"],
     answer: {
-      en: "Persian is her native language and her English is intermediate, at working proficiency. She doesn’t hold an IELTS or TOEFL certificate, but she works and communicates in English.",
-      fa: "فارسی زبان مادری‌اش است و انگلیسی‌اش در سطح متوسط و در حد کاری است. مدرک آیلتس یا تافل ندارد، ولی در کار به انگلیسی ارتباط برقرار می‌کند.",
+      en: "Persian is her native language, and she works and communicates in English at a working level. She’s ready for interviews in English. She doesn’t hold an IELTS or TOEFL certificate.",
+      fa: "فارسی زبان مادری‌اش است و به انگلیسی در حد کاری کار و ارتباط برقرار می‌کند. برای مصاحبه به انگلیسی هم آماده است. مدرک آیلتس یا تافل ندارد.",
     },
   },
 
@@ -258,8 +266,8 @@ export const intents: Intent[] = [
     id: "code",
     strong: ["code", "coding", "developer", "html", "css", "frontend", "front-end", "programming", "کد", "کدنویسی", "برنامه نویسی", "برنامه‌نویسی", "فرانت"],
     answer: {
-      en: "She’s a designer, not a developer, but she took HTML & CSS for Designers and works closely with engineers: documented flows, page logic, states and edge cases at handoff.",
-      fa: "طراح است، نه برنامه‌نویس؛ ولی دوره‌ی HTML & CSS for Designers را گذرانده و نزدیک با تیم فنی کار می‌کند: مستندسازی فلوها، منطق صفحات، استیت‌ها و حالت‌های خاص در زمان تحویل.",
+      en: "She’s a designer, not a developer by role, but she understands how her designs get built: she studied front-end development in 2023 and took HTML & CSS for Designers. At handoff she documents flows, page logic, states and edge cases, so engineers can build without guesswork.",
+      fa: "نقشش طراحی است، نه برنامه‌نویسی؛ ولی می‌داند طراحی‌اش چطور پیاده می‌شود: سال ۲۰۲۳ فرانت‌اند خوانده و دوره‌ی HTML & CSS for Designers را هم گذرانده. موقع تحویل، فلوها، منطق صفحات، استیت‌ها و حالت‌های خاص را مستند می‌کند تا تیم فنی بدون حدس و گمان پیاده‌سازی کند.",
     },
   },
   {
@@ -304,8 +312,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["kudos", "کودوس"],
     answer: {
-      en: "Kudos is an HR and employee-engagement platform. At Novaday she designed its admin panel on a Tailwind-based system, documented flows and page logic for engineers, and worked closely with PM and QA. Kudos is live with real companies, and by her count around 500 people use it.",
-      fa: "کودوس یک پلتفرم منابع انسانی و تعامل کارکنان است. در نوادی پنل ادمینش را روی دیزاین سیستم مبتنی بر Tailwind طراحی کرد، فلوها و منطق صفحات را برای تیم فنی مستند کرد و نزدیک با PM و QA کار کرد. کودوس با شرکت‌های واقعی در حال استفاده است و به گفته‌ی خودش حدود ۵۰۰ نفر کاربرش هستند.",
+      en: "Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events and onboarding in one place. As its only designer at Novaday, she turned the home from a plain dashboard into a social feed, an A/B test confirmed the direction, and she documented every page’s logic for engineering. It’s live with real companies; at ArvanCloud alone, around 500 people use it.",
+      fa: "کودوس نرم‌افزار قدردانی از کارکنان است: همکارها با گیفت‌کارت و سکه از هم تشکر می‌کنند و منابع انسانی نظرسنجی، رویداد و آنبوردینگ را در همان‌جا اجرا می‌کند. سودابه تنها طراحش در نوادی بود؛ صفحه‌ی اصلی را از یک داشبورد ساده به یک فید اجتماعی تبدیل کرد، تست A/B این مسیر را تأیید کرد و منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کرد. کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در ابرآروان حدود ۵۰۰ نفر از آن استفاده می‌کنند.",
     },
     link: { href: "/work/kudos", label: { en: "Kudos case study", fa: "کیس‌استادی کودوس" } },
   },
@@ -314,8 +322,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["remeet", "access", "award", "awards", "tehran design week", "design week", "prize", "ریمیت", "اکسس", "جایزه", "هفته دیزاین", "هفته طراحی"],
     answer: {
-      en: "Remeet (first called Access) is a multilingual access and meeting system with fingerprint and RFID check-in and Outlook sync. Sudabeh designed it at Novaday, and it won at Tehran Design Week.",
-      fa: "ریمیت (که اول اسمش اکسس بود) یک سیستم چندزبانه‌ی مدیریت دسترسی و جلسات با ورود اثر انگشت و RFID و همگام با Outlook است. سودابه آن را در نوادی طراحی کرد و در هفته‌ی دیزاین تهران برنده شد.",
+      en: "Remeet (first called Access) is a multilingual access and meeting system: fingerprint and RFID check-in, with bookings synced to Outlook. Sudabeh designed it at Novaday, one of two designers on the team, and in December 2025 the Remeet team won at Tehran Design Week with the product she designed.",
+      fa: "ریمیت (که اول اسمش اکسس بود) یک سیستم چندزبانه‌ی مدیریت دسترسی و جلسات است: ورود با اثر انگشت و RFID و رزرو اتاق‌ها هماهنگ با Outlook. سودابه آن را در نوادی طراحی کرد، به‌عنوان یکی از دو طراح تیم، و دسامبر ۲۰۲۵ تیم ریمیت با همین طراحی در هفته‌ی دیزاین تهران برنده شد.",
     },
     link: { href: "/work/remeet", label: { en: "About Remeet", fa: "درباره‌ی ریمیت" } },
   },
@@ -324,8 +332,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["atlas", "aix2", "اطلس"],
     answer: {
-      en: "Atlas is an AI platform she designs at Algonet. It analyses a company’s emails, chats and workflows, maps how work really moves, and suggests a simpler process. It’s in development, so parts are shown blurred.",
-      fa: "اطلس یک پلتفرم هوش مصنوعی است که سودابه در الگونت طراحی می‌کند. ایمیل‌ها، چت‌ها و فرایندهای یک شرکت را تحلیل می‌کند، مسیر واقعی کارها را نشان می‌دهد و مسیر ساده‌تری پیشنهاد می‌دهد. در حال توسعه است و بخشی از آن تار نمایش داده شده.",
+      en: "Atlas is an AI platform she designs at Algonet. It analyses a company’s emails, chats and workflows, maps how work really moves, and suggests a simpler process. The team took it from brief to a live first version in two to three days, and it’s now in development for an international client in the oil and gas sector in Switzerland. That’s why it’s shown blurred on the site.",
+      fa: "اطلس پلتفرم هوش مصنوعی‌ای است که سودابه در الگونت طراحی می‌کند. ایمیل‌ها، چت‌ها و فرایندهای یک شرکت را تحلیل می‌کند، مسیر واقعی کارها را نشان می‌دهد و مسیر ساده‌تری پیشنهاد می‌دهد. تیم اولین نسخه‌ی لایوش را در دو سه روز بالا آورد و الان برای یک مشتری بین‌المللی در حوزه‌ی نفت و گاز در سوئیس در حال توسعه است؛ برای همین در سایت تار نمایش داده شده.",
     },
     link: { href: "/work/atlas", label: { en: "About Atlas", fa: "درباره‌ی اطلس" } },
   },
@@ -364,18 +372,18 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["nan va namak", "nanvanamak", "startup", "own startup", "نان و نمک", "نون و نمک", "استارتاپ"],
     answer: {
-      en: "Nan va Namak was a cooking platform she and a few friends set out to launch. She and another designer took it from idea to execution across web, tablet and mobile. It didn’t launch, but it’s where she became a product designer.",
-      fa: "نان و نمک یک پلتفرم آشپزی بود که سودابه و چند دوستش می‌خواستند لانچ کنند. او و یک طراح دیگر آن را از ایده تا اجرا برای وب، تبلت و موبایل طراحی کردند. لانچ نشد، ولی همان‌جا بود که پروداکت دیزاینر شد.",
+      en: "Nan va Namak was a cooking platform she and a few friends set out to turn into a startup. As a co-founder and one of its two designers, she took it from idea to execution across web, tablet and mobile. It never launched, but it’s where she moved from UI design into end-to-end product design.",
+      fa: "نان و نمک یک پلتفرم آشپزی بود که سودابه و چند دوستش می‌خواستند به یک استارتاپ تبدیلش کنند. سودابه یکی از هم‌بنیان‌گذارها و یکی از دو طراحش بود و آن را از ایده تا اجرا برای وب، تبلت و موبایل طراحی کرد. لانچ نشد، ولی همان‌جا بود که از طراحی رابط کاربری به طراحی محصول از ابتدا تا انتها رسید.",
     },
     link: { href: "/work/nanvanamak", label: { en: "The story", fa: "داستانش" } },
   },
   {
     id: "algonet",
     entity: true,
-    strong: ["algonet", "الگونت"],
+    strong: ["algonet", "الگونت", "algonet.ai"],
     answer: {
-      en: "At Algonet (full-time) she designs Atlas, dashboards and operational tools, and built a custom design system. She also shaped Algonet’s visual identity: logo, pattern and brochure.",
-      fa: "در الگونت (تمام‌وقت) روی اطلس، داشبوردها و ابزارهای عملیاتی کار می‌کند و دیزاین سیستم اختصاصی ساخته. هویت بصری الگونت هم کار اوست: لوگو، پترن و بروشور.",
+      en: "At Algonet (full-time) she designs B2B products for Iranian and international clients, several used by more than 5,000 people: Atlas, monitoring systems, ERP modules and data-heavy dashboards. She builds new products from zero and audits live ones to fix where users struggle, on a custom design system she built and maintains. She also designed Algonet’s brand identity and is creating its brand book.",
+      fa: "در الگونت (تمام‌وقت) محصولات B2B برای مشتری‌های ایرانی و بین‌المللی طراحی می‌کند که چند تا از آن‌ها بیش از ۵٬۰۰۰ کاربر دارند: اطلس، سیستم‌های مانیتورینگ، ماژول‌های ERP و داشبوردهای پرداده. محصول جدید را از صفر می‌سازد و محصولات لایو را آدیت می‌کند تا جاهایی را که کاربر گیر می‌کند درست کند؛ همه روی دیزاین‌سیستم اختصاصی‌ای که خودش ساخته و نگه می‌دارد. هویت بصری الگونت را هم طراحی کرده و الان برندبوکش را می‌سازد.",
     },
   },
   {
@@ -439,8 +447,24 @@ export const intents: Intent[] = [
     },
   },
   {
+    id: "lesson",
+    strong: ["failure", "failed", "mistake", "mistakes", "lesson", "lessons learned", "learned the hard way", "what went wrong", "شکست", "اشتباه", "درس", "تجربه تلخ"],
+    answer: {
+      en: "The lesson that stuck: don’t design while the problem is still blurry. When a brief is full of open questions, she keeps asking and researching until she really understands it, because that’s what makes the output good. Nan va Namak, the startup she co-founded, taught her a lot too: it never launched, but it’s where she became a product designer.",
+      fa: "درسی که برایش ماندگار شد: تا وقتی مسئله مبهم است، طراحی را شروع نکند. وقتی بریف پر از سؤال باز است، آن‌قدر می‌پرسد و ریسرچ می‌کند تا واقعاً مسئله را بفهمد، چون خروجی خوب از همین‌جا می‌آید. نان و نمک، استارتاپی که هم‌بنیان‌گذارش بود، هم کلی به او یاد داد: لانچ نشد، ولی همان‌جا پروداکت دیزاینر شد.",
+    },
+  },
+  {
+    id: "teamSize",
+    strong: ["team size", "size of the team", "how big was the team", "how big is the team", "how many developers", "how many designers", "how many engineers", "who was on the team", "اندازه تیم", "چند نفر بودید", "چند نفر هستید", "چند تا دیزاینر", "چند تا طراح", "چند تا دولوپر", "تیمتون چند نفر"],
+    answer: {
+      en: "On Kudos she was the only designer, with a PM and a front-end and a back-end developer. Remeet had two designers, her included, plus a PM, two front-end developers, a back-end developer and a software engineer who built the device. At Algonet she’s one of three designers alongside a large engineering team.",
+      fa: "در کودوس تنها طراح بود، کنار یک مدیر محصول، یک دولوپر فرانت و یک دولوپر بک‌اند. ریمیت دو طراح داشت که یکی‌شان او بود، به‌علاوه‌ی مدیر محصول، دو دولوپر فرانت، یک دولوپر بک‌اند و یک مهندس نرم‌افزار که خود دستگاه را ساخت. در الگونت هم یکی از سه طراح است، کنار یک تیم فنی بزرگ.",
+    },
+  },
+  {
     id: "story",
-    strong: ["failure", "mistake", "colleagues", "references", "reference", "recommendation", "شکست", "اشتباه", "توصیه نامه", "رفرنس", "معرف کاری", "همکاراش"],
+    strong: ["colleagues", "references", "reference", "recommendation", "توصیه نامه", "رفرنس", "معرف کاری", "همکاراش"],
     forward: true,
     answer: {
       en: "That one is best answered by Sudabeh herself. I’ve sent her your question.",
@@ -451,16 +475,16 @@ export const intents: Intent[] = [
     id: "challenge",
     strong: ["hardest", "biggest challenge", "challenge", "challenging", "difficult project", "toughest", "pressure", "tight deadline", "deadline", "deadlines", "under pressure", "stress", "stressful", "prioritize", "prioritise", "time management", "سخت ترین", "چالش", "سختی", "فشار", "ددلاین", "مهلت کم", "زمان کم", "استرس", "اولویت بندی", "مدیریت زمان"],
     answer: {
-      en: "Every project has its hard part, so she won’t pick just one. What tests her most is extreme time pressure, like Atlas, which her team took live in two to three days. She gets through it with a tight plan, AI as a partner and plenty of persistence.",
-      fa: "هر پروژه‌ای سختی خودش را دارد، برای همین یکی را انتخاب نمی‌کند. چیزی که بیشتر از همه محکش می‌زند فشار زمانی شدید است، مثل اطلس که تیمش در دو سه روز بالا آورد. با یک برنامه‌ی دقیق، هوش مصنوعی به‌عنوان همراه و کلی پشتکار از پسش برمی‌آید.",
+      en: "Pressure is something she has learned to work with. Atlas is the proof: her team took it from brief to a live first version in two to three days. She gets through tight deadlines with a clear plan, AI as a partner and plenty of persistence, and a real deadline actually sharpens her focus. As for the hardest project, every one has its own hard part, so she won’t name just one.",
+      fa: "با فشار کاری کنار آمدن را یاد گرفته. اطلس گواهش است: تیمش در دو سه روز آن را از بریف به اولین نسخه‌ی لایو رساند. ددلاین‌های فشرده را با یک برنامه‌ی دقیق، هوش مصنوعی به‌عنوان همراه و کلی پشتکار پیش می‌برد، و ددلاین واقعی حتی تمرکزش را بیشتر می‌کند. درباره‌ی سخت‌ترین پروژه هم، هر پروژه سختی خودش را دارد، برای همین یکی را انتخاب نمی‌کند.",
     },
   },
   {
     id: "results",
     strong: ["results", "impact", "metrics", "kpi", "kpis", "numbers", "how many users", "outcome", "outcomes", "achievement", "achievements", "accomplishment", "measure success", "success metrics", "data driven", "data-driven", "نتیجه", "نتایج", "دستاورد", "دستاوردها", "چند کاربر", "تعداد کاربر", "موفقیت", "سنجش"],
     answer: {
-      en: "Kudos is the clearest one: it’s live with real companies, and by her count around 500 people use it. Remeet won at Tehran Design Week, Atlas went from brief to live in two to three days, and Tamdid is in development.",
-      fa: "روشن‌ترینش کودوس است: با شرکت‌های واقعی در حال استفاده است و به گفته‌ی خودش حدود ۵۰۰ نفر کاربرش هستند. ریمیت در هفته‌ی دیزاین تهران برنده شد، اطلس در دو سه روز از بریف به نسخه‌ی لایو رسید و تمدید در حال توسعه است.",
+      en: "Kudos is live with real companies; at ArvanCloud alone, around 500 people use it, and an A/B test backed its home redesign. Remeet, which she designed, won at Tehran Design Week. At Algonet she designs products that many thousands rely on, several used by more than 5,000 people, and Atlas went from brief to live in two to three days.",
+      fa: "کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در ابرآروان حدود ۵۰۰ نفر کاربرش هستند و ریدیزاین صفحه‌ی اصلی‌اش با تست A/B تأیید شد. ریمیت، که طراحی‌اش با او بود، در هفته‌ی دیزاین تهران برنده شد. در الگونت محصولاتی طراحی می‌کند که چند تا از آن‌ها بیش از ۵٬۰۰۰ کاربر دارند، و اطلس در دو سه روز از بریف به نسخه‌ی لایو رسید.",
     },
   },
   {
@@ -473,10 +497,10 @@ export const intents: Intent[] = [
   },
   {
     id: "hours",
-    strong: ["time zone", "timezone", "time zones", "overlap", "us hours", "european hours", "working hours", "weekend", "weekends", "hours", "تایم زون", "منطقه زمانی", "ساعت کاری", "آخر هفته", "تعطیلات"],
+    strong: ["time zone", "timezone", "time zones", "overlap", "us hours", "european hours", "working hours", "weekend", "weekends", "hours", "تایم زون", "منطقه زمانی", "ساعت کاری", "آخر هفته", "تعطیلات", "meeting", "meetings", "what time", "جلسه", "چه ساعتی", "ساعت جلسه"],
     answer: {
-      en: "She’s in Tehran (UTC+3:30) and can line up her hours with teams in other time zones, US hours included. She works weekends too when a project needs it.",
-      fa: "ساکن تهران است (UTC+3:30) و می‌تواند ساعت کاری‌اش را با تیم‌هایی در منطقه‌های زمانی دیگر، حتی آمریکا، هماهنگ کند. اگر پروژه لازم داشته باشد آخر هفته‌ها هم کار می‌کند.",
+      en: "She’s in Tehran (UTC+3:30) and can meet any time between 10:00 and 22:00 Tehran time, with a little notice. That covers the whole European working day and US East Coast mornings into the early afternoon. She works weekends too when a project needs it.",
+      fa: "ساکن تهران است (UTC+3:30) و با هماهنگی قبلی از ساعت ۱۰ صبح تا ۱۰ شب به وقت تهران می‌تواند جلسه داشته باشد؛ یعنی کل ساعت کاری اروپا و صبح تا اوایل بعدازظهر شرق آمریکا. اگر پروژه لازم داشته باشد آخر هفته‌ها هم کار می‌کند.",
     },
   },
   {
@@ -506,10 +530,10 @@ export const intents: Intent[] = [
   },
   {
     id: "testing",
-    strong: ["a/b", "ab test", "ab testing", "a b test", "split test", "experiment", "experiments", "تست ای بی", "ای بی تست", "آزمایش"],
+    strong: ["a/b", "ab test", "ab testing", "a b test", "split test", "experiment", "experiments", "تست ای بی", "ای بی تست", "آزمایش", "a/b test", "a/b testing", "تست a/b", "ای/بی"],
     answer: {
-      en: "Yes, she has run A/B tests, alongside usability testing and analytics with Hotjar, Maze, Microsoft Clarity and GA4.",
-      fa: "بله، A/B تست اجرا کرده؛ در کنار تست یوزبیلیتی و آنالیتیکس با Hotjar، Maze، Microsoft Clarity و GA4.",
+      en: "Yes. On Kudos she A/B tested the prototype of the redesigned home against the old dashboard; backed by solid research and benchmarks, it confirmed the direction, and the redesign shipped. She also uses usability testing and analytics with Hotjar, Maze, Microsoft Clarity and GA4.",
+      fa: "بله. در کودوس پروتوتایپ صفحه‌ی اصلیِ ریدیزاین‌شده را با داشبورد قبلی A/B تست کرد؛ چون پشتش ریسرچ و بنچمارک محکمی بود، نتیجه همان مسیر را تأیید کرد و ریدیزاین اجرا شد. از تست یوزبیلیتی و آنالیتیکس با Hotjar، Maze، Microsoft Clarity و GA4 هم استفاده می‌کند.",
     },
   },
   {
@@ -559,8 +583,8 @@ export const intents: Intent[] = [
     id: "whyHire",
     strong: ["why should we hire", "why hire", "why should i hire", "why her", "why sudabeh", "what makes her different", "what makes her stand out", "stand out", "what sets her apart", "unique", "good fit", "right fit", "چرا باید استخدام", "چرا استخدام", "چرا سودابه", "چرا باید سودابه", "چه چیزی متمایز", "فرقش با بقیه", "متمایز", "چرا تو", "چرا شما", "chera bayad"],
     answer: {
-      en: "Because she makes complicated products simple, and her work shows it. She designed Tamdid alone from idea to development, documented every page’s logic for engineers on Kudos, and designed Remeet, a winner at Tehran Design Week. She has built three custom design systems, and she works fast with AI without handing it the decisions. She can start right away, remote.",
-      fa: "چون محصول‌های پیچیده را ساده می‌کند و کارهایش این را نشان می‌دهد: تمدید را به‌تنهایی از ایده تا توسعه طراحی کرد، در کودوس منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کرد و ریمیت را طراحی کرد که در هفته‌ی دیزاین تهران برنده شد. سه دیزاین‌سیستم اختصاصی ساخته و با کمک هوش مصنوعی سریع کار می‌کند، بدون اینکه تصمیم‌ها را به آن بسپارد. همین الان هم می‌تواند به‌صورت ریموت شروع کند.",
+      en: "Because she makes complicated products simple, and her work shows it. She designed Tamdid alone from idea to development, documented every page’s logic for engineers on Kudos, and designed Remeet, which won at Tehran Design Week. She has built three custom design systems, works fast with AI without handing it the decisions, and her Algonet products serve thousands of people.",
+      fa: "چون محصول‌های پیچیده را ساده می‌کند و کارهایش این را نشان می‌دهد: تمدید را به‌تنهایی از ایده تا توسعه طراحی کرد، در کودوس منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کرد و ریمیت را طراحی کرد که در هفته‌ی دیزاین تهران برنده شد. سه دیزاین‌سیستم اختصاصی ساخته، با کمک هوش مصنوعی سریع کار می‌کند بدون اینکه تصمیم‌ها را به آن بسپارد، و محصولاتش در الگونت هزاران کاربر دارند.",
     },
     link: { href: "/work", label: { en: "See all projects", fa: "همه‌ی پروژه‌ها" } },
   },
@@ -575,19 +599,17 @@ export const intents: Intent[] = [
   {
     id: "weakness",
     strong: ["weakness", "weaknesses", "weak point", "weak points", "weak spot", "areas to improve", "area to improve", "room to improve", "need to improve", "نقطه ضعف", "نقاط ضعف", "نقطه‌ی ضعف", "ضعف", "ضعفت", "ضعفش"],
-    forward: true,
     answer: {
-      en: "That’s one Sudabeh would rather answer herself, so I’ve passed it on. What I can say: she hasn’t held a lead title yet. She’s usually been the only designer on a product, though, so she’s used to owning decisions end to end.",
-      fa: "این سؤال را سودابه ترجیح می‌دهد خودش جواب بدهد، برای همین برایش فرستادم. چیزی که می‌توانم بگویم: هنوز عنوان لید نداشته، ولی معمولاً تنها طراح محصول بوده و به گرفتن تصمیم‌ها از اول تا آخر عادت دارد.",
+      en: "Honestly? Stress. Pressure used to get to her early in her career, so she has worked on it on purpose, and the people around her now notice how much calmer she is. She’s still improving, and there’s an upside: with a real deadline in sight, her focus sharpens.",
+      fa: "راستش؟ استرس. اوایل کار، فشار رویش اثر می‌گذاشت؛ برای همین آگاهانه رویش کار کرده و حالا اطرافیانش می‌گویند خیلی آرام‌تر شده. هنوز هم دارد بهترش می‌کند، و یک روی مثبت هم دارد: وقتی ددلاین واقعی در کار باشد، تمرکزش بیشتر می‌شود.",
     },
   },
   {
     id: "conflict",
     strong: ["conflict", "conflicts", "disagree", "disagreed", "disagreement", "push back", "pushback", "difficult stakeholder", "difficult client", "difficult person", "argue", "argument", "tension", "تعارض", "اختلاف نظر", "اختلاف", "مخالفت", "مخالف بود", "بحث با", "کارفرمای سخت", "مشتری سخت", "درگیری"],
-    forward: true,
     answer: {
-      en: "She’d like to answer that with a real example of her own, so I’ve sent your question to her.",
-      fa: "سودابه ترجیح می‌دهد این را با یک نمونه‌ی واقعی از تجربه‌ی خودش جواب بدهد، برای همین سؤال‌تان را برایش فرستادم.",
+      en: "Most disagreements she’s had are about the gap between what she designed and what got built, and she sees closing that gap as her job. She takes the time to understand the developers’ constraints, while standing up for the flow and UX that work for the user. It’s also why she documents page logic and edge cases before handoff.",
+      fa: "بیشتر اختلاف‌نظرهایش سر فاصله‌ی بین طراحی و چیزی بوده که در نهایت پیاده شده، و بستن همین فاصله را کار خودش می‌داند. وقت می‌گذارد تا محدودیت‌های تیم فنی را بفهمد، اما پای فلو و تجربه‌ای که برای کاربر درست است هم می‌ایستد. به همین دلیل هم قبل از تحویل، منطق صفحات و حالت‌های خاص را مستند می‌کند.",
     },
   },
   {
@@ -625,10 +647,9 @@ export const intents: Intent[] = [
   {
     id: "favorite",
     strong: ["favorite project", "favourite project", "favorite", "favourite", "proud", "proudest", "best project", "most proud", "پروژه مورد علاقه", "مورد علاقه", "بیشتر از همه دوست", "افتخار", "بهترین پروژه", "پروژه محبوب"],
-    forward: true,
     answer: {
-      en: "She’d pick that one herself, so I’ve asked her. Her lead projects are Atlas (enterprise AI), Tamdid (fintech, designed solo) and Kudos (HR, live with real companies).",
-      fa: "انتخابش با خود سودابه است، برای همین از او پرسیدم. پروژه‌های اصلی‌اش اطلس (هوش مصنوعی سازمانی)، تمدید (فین‌تک، به‌تنهایی) و کودوس (منابع انسانی، در حال استفاده در شرکت‌های واقعی) هستند.",
+      en: "She can’t pick just one, and that says something: what she loves is the whole journey of taking an idea and turning it into a product people find genuinely appealing. Her lead projects are Atlas (enterprise AI), Tamdid (fintech, designed solo) and Kudos (HR, live with real companies).",
+      fa: "نمی‌تواند فقط یکی را انتخاب کند، و همین خودش گویاست: چیزی که عاشقش است کل مسیر است؛ اینکه یک ایده را بگیرد و به محصولی تبدیلش کند که واقعاً به دل آدم‌ها بنشیند. پروژه‌های اصلی‌اش اطلس (هوش مصنوعی سازمانی)، تمدید (فین‌تک، به‌تنهایی) و کودوس (منابع انسانی، در حال استفاده در شرکت‌های واقعی) هستند.",
     },
     link: { href: "/work", label: { en: "See all projects", fa: "همه‌ی پروژه‌ها" } },
   },
@@ -660,38 +681,34 @@ export const intents: Intent[] = [
   {
     id: "juggle",
     strong: ["multiple projects", "several projects", "many projects", "juggle", "at the same time", "same time", "balance", "side projects", "چند پروژه همزمان", "همزمان", "هم زمان", "چند تا پروژه"],
-    forward: true,
     answer: {
-      en: "She’s worked on several products in parallel: Atlas at Algonet, plus AzMan’s three products and the Novin Host redesign. How she’d balance a new role is something she’d rather answer herself, so I’ve passed your question to her.",
-      fa: "هم‌زمان روی چند محصول کار کرده: اطلس در الگونت، به‌علاوه‌ی سه محصول ازمان و ریدیزاین نوین هاست. اینکه نقش جدید را چطور کنار بقیه پیش می‌برد را ترجیح می‌دهد خودش جواب بدهد، برای همین سؤال‌تان را برایش فرستادم.",
+      en: "Yes. Algonet is full-time and on-site, and Novin Host is remote, so it gets her evenings and the two never overlap. They actually help each other: what she learns on one project, she brings to the next.",
+      fa: "بله. الگونت تمام‌وقت و حضوری است و نوین هاست ریموت؛ برای همین نوین هاست عصرهایش را می‌گیرد و این دو هیچ‌وقت با هم تداخل ندارند. حتی به هم کمک می‌کنند: چیزی که در یک پروژه یاد می‌گیرد، در پروژه‌ی بعدی به کار می‌برد.",
     },
   },
   {
     id: "gap",
     strong: ["gap", "career gap", "gap in", "break in", "2023", "between jobs", "وقفه", "فاصله کاری", "فاصله بین", "گپ", "بیکار"],
-    forward: true,
     answer: {
-      en: "Good catch. That’s one for Sudabeh to explain herself, so I’ve sent her your question.",
-      fa: "نکته‌ی دقیقی است. توضیحش با خود سودابه است، برای همین سؤال‌تان را برایش فرستادم.",
+      en: "Between Alla (spring 2023) and Jaygah (2024) she studied front-end development. It confirmed that design was her path, and it left her understanding how interfaces get built, which still helps her work with engineers.",
+      fa: "بین مدرسه‌ی آلا (بهار ۲۰۲۳) و جایگاه (۲۰۲۴) فرانت‌اند می‌خواند. همین مسیر نشانش داد که راه اصلی‌اش طراحی است، و باعث شد بداند رابط کاربری چطور ساخته می‌شود؛ چیزی که هنوز در کار با تیم فنی به کارش می‌آید.",
     },
   },
   {
     id: "culture",
     strong: ["ideal team", "ideal company", "company culture", "culture", "work environment", "what kind of manager", "management style", "team culture", "values in a team", "تیم ایده آل", "شرکت ایده آل", "فرهنگ سازمانی", "محیط کار", "مدیر ایده آل"],
-    forward: true,
     answer: {
-      en: "Any company type works for her, from startups to large teams, and she’s used to working side by side with PMs, engineers and QA. What she looks for in a team is hers to say, so I’ve passed your question on.",
-      fa: "نوع شرکت برایش فرقی نمی‌کند، از استارتاپ تا تیم‌های بزرگ، و به کار نزدیک با مدیر محصول، تیم فنی و QA عادت دارد. اینکه در یک تیم دنبال چه چیزی است را بهتر است خودش بگوید، برای همین سؤال‌تان را برایش فرستادم.",
+      en: "Empathy and healthy collaboration. She’s Gen Z and does her best work in a lively team where people actually talk: they understand each other’s needs, solve problems by talking them through, and learn a lot from one another.",
+      fa: "همدلی و همکاری سالم. سودابه نسل Z است و بهترین کارش را در تیمی پرانرژی انجام می‌دهد که آدم‌ها واقعاً با هم حرف می‌زنند: نیازهای هم را می‌فهمند، چالش‌ها را با گفت‌وگو حل می‌کنند و کلی از هم یاد می‌گیرند.",
     },
   },
   {
     id: "siteBuild",
     strong: ["who built this", "who made this", "who designed this", "built this site", "made this site", "designed this site", "how was this site", "how did she build", "سایتو کی", "سایت رو کی", "کی ساخته", "کی طراحی کرده", "با چی ساخته", "چطوری ساخته"],
     weak: ["this site", "this website", "your site", "your website", "این سایت", "سایتت"],
-    forward: true,
     answer: {
-      en: "This site is Sudabeh’s portfolio: full case studies, her career and CV. For the story of how it was made, I’ve passed your question to her.",
-      fa: "این سایت پورتفولیوی سودابه است: کیس‌استادی‌های کامل، سوابق و رزومه‌اش. داستان ساختش را بهتر است خودش بگوید، برای همین سؤال‌تان را برایش فرستادم.",
+      en: "Sudabeh made it with Claude, after all the research she could do. She wanted a portfolio that carries her way of thinking, stands apart from the rest, shows the work properly, and, above all, lets people talk with her any time, from anywhere. That last part is me.",
+      fa: "سودابه این سایت را با کمک Claude و بعد از کلی ریسرچ ساخته. می‌خواست پورتفولیویی داشته باشد که طرز فکرش را نشان بدهد، با بقیه فرق داشته باشد، نمونه‌کارها را درست نشان بدهد و مهم‌تر از همه، هر کسی هر وقت و از هر جا بتواند با او حرف بزند. آن بخش آخر، من هستم.",
     },
   },
   {
@@ -811,7 +828,7 @@ export type Match = { intent: Intent; score: number };
 const SMALL_TALK = ["greet", "thanks", "howAreYou", "ack", "compliment"];
 // Questions about the visitor's own project or about leaving a job always go to Sudabeh, even when a
 // project name appears too ("a site for my startup", "why leave Algonet").
-const OVERRIDE = ["inquiry", "leaving", "confidential", "offTopic"];
+const OVERRIDE = ["inquiry", "leaving", "confidential", "offTopic", "teamSize"];
 // Broad intents that shouldn't be tacked onto a more specific answer.
 const GENERIC = ["who", "projects", "greet", "thanks", "bye", "howAreYou", "ack", "compliment"];
 
