@@ -48,7 +48,7 @@ const chapters = [
   {
     icon: Building2,
     label: "Many products at once",
-    body: "Three connected products for AzMan, a careful redesign for Studio Kaaryar, and a new face for Novin Host’s fifteen-year-old brand.",
+    body: "Three connected products for AzMan, a careful redesign for Kaaryar Studio, and a new face for Novin Host’s fifteen-year-old brand.",
   },
   {
     icon: Sparkles,

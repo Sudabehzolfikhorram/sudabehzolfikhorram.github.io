@@ -24,7 +24,7 @@ export const LINKS: Record<string, { href: string; label: Record<Lang, string> }
   "azman-erp": { href: "/work/azman-erp", label: { en: "AzMan ERP", fa: "ERP ازمان" } },
   hamgam: { href: "/work/hamgam", label: { en: "Hamgam Saz", fa: "همگام‌ساز" } },
   novinhost: { href: "/work/novinhost", label: { en: "Novin Host case study", fa: "کیس‌استادی نوین هاست" } },
-  kaaryar: { href: "/work/kaaryar", label: { en: "Studio Kaaryar case study", fa: "کیس‌استادی کاریار استودیو" } },
+  kaaryar: { href: "/work/kaaryar", label: { en: "Kaaryar Studio case study", fa: "کیس‌استادی کاریار استودیو" } },
   nanvanamak: { href: "/work/nanvanamak", label: { en: "The Nan va Namak story", fa: "داستان نان و نمک" } },
 };
 

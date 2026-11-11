@@ -6,7 +6,7 @@ import { caseStudies } from "@/lib/case-studies";
 
 export const metadata: Metadata = {
   title: "Work · Sudabeh",
-  description: "Case studies: Atlas, Tamdid, Kudos, Remeet, AzMan, Novin Host, Studio Kaaryar and Nan va Namak.",
+  description: "Case studies: Atlas, Tamdid, Kudos, Remeet, AzMan, Novin Host, Kaaryar Studio and Nan va Namak.",
 };
 
 export default function WorkPage() {

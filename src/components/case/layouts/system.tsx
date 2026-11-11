@@ -1,4 +1,4 @@
-// Studio Kaaryar: a website plus its design system, so the page reads like a
+// Kaaryar Studio: a website plus its design system, so the page reads like a
 // specimen sheet (foundations, building blocks) and then the pages built from it.
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import type { CaseStudy } from "@/lib/case-studies";

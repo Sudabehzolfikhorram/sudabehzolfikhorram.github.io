@@ -61,11 +61,11 @@ const experience = [
   },
   {
     title: "Product Designer",
-    company: "Studio Kaaryar",
+    company: "Kaaryar Studio",
     mode: "Remote",
     period: "Sep 2025 – Jan 2026",
     points: [
-      "Redesigned the full website for a social-impact design studio, improving information architecture, visual storytelling, accessibility and clarity; built a custom design system. Design completed; in development.",
+      "Redesigned the full website for a social-impact design studio, improving information architecture, visual storytelling, accessibility and clarity; built a custom design system. Now live.",
     ],
     links: [
       { label: "Case study", href: work("kaaryar") },
@@ -126,7 +126,7 @@ const experience = [
   },
   {
     title: "Educational Content Designer",
-    company: "Alla Online School",
+    company: "AlaaTV (Online School)",
     mode: "Full-time (hybrid)",
     period: "Aug 2021 – Apr 2023",
     points: [

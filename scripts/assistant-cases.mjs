@@ -101,6 +101,8 @@ export const cases = [
   ["Tell me about Tamdid", "tamdid", false],
   ["درباره‌ی کودوس بگو", "kudos", false],
   ["What is Atlas?", "atlas", false],
+  ["Tell me about Kaaryar Studio", "kaaryar", false],
+  ["کاریار استودیو چیه؟", "kaaryar", false],
   ["Can I see the Atlas designs?", "confidential", true],
   ["What does she work on these days?", "role", false],
   ["great work, what tools does she use?", "tools", false],

@@ -74,7 +74,7 @@
 
 بله، دنبال کار ریموت است و پروژه‌هایی مثل تمدید و کاریار استودیو را به‌صورت ریموت انجام داده.
 
-> Yes, remote is what she’s looking for. She has delivered projects remotely, such as Tamdid and Studio Kaaryar.
+> Yes, remote is what she’s looking for. She has delivered projects remotely, such as Tamdid and Kaaryar Studio.
 
 ## 10. `availability`
 
@@ -96,7 +96,7 @@
 
 ریموت، تمام‌وقت، پاره‌وقت یا پروژه‌ای، همه برایش اوکی است؛ فقط دنبال کار حضوری نیست. تجربه‌ی هر دو را دارد: نقش‌های تمام‌وقت (الگونت، نوادی) و پروژه‌ای (تمدید، کاریار استودیو).
 
-> Remote, full-time, part-time or project-based: all of them work for her. The one thing she isn’t looking for is on-site work. She has done both full-time roles (Algonet, Novaday) and project-based work (Tamdid, Studio Kaaryar).
+> Remote, full-time, part-time or project-based: all of them work for her. The one thing she isn’t looking for is on-site work. She has done both full-time roles (Algonet, Novaday) and project-based work (Tamdid, Kaaryar Studio).
 
 ## 13. `salary` 📨
 
@@ -186,7 +186,7 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 بله: برای الگونت، تمدید و کاریار استودیو دیزاین سیستم اختصاصی ساخته و در نوادی هم روی دیزاین سیستم مبتنی بر Tailwind، UI kit و variableها برای کودوس و ریمیت کار کرده.
 
-> Yes: she built custom design systems for Algonet, Tamdid and Studio Kaaryar, and worked on a Tailwind-based system, UI kit and variables at Novaday for Kudos and Remeet.
+> Yes: she built custom design systems for Algonet, Tamdid and Kaaryar Studio, and worked on a Tailwind-based system, UI kit and variables at Novaday for Kudos and Remeet.
 
 ## 25. `research`
 
@@ -194,7 +194,7 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 بله: بنچمارک، تحلیل رقبا، فیچر لیست و تست یوزبیلیتی؛ مثلاً در نوادی و در ریدیزاین کاریار استودیو.
 
-> Yes: benchmarks, competitor analysis, feature lists and usability testing, for example at Novaday and for Studio Kaaryar’s redesign.
+> Yes: benchmarks, competitor analysis, feature lists and usability testing, for example at Novaday and for Kaaryar Studio’s redesign.
 
 ## 26. `dashboard`
 
@@ -244,7 +244,7 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 پروژه‌های اصلی: اطلس (هوش مصنوعی سازمانی)، تمدید (فین‌تک) و کودوس (پلتفرم منابع انسانی). به‌علاوه ریمیت که جایزه گرفته، سه محصول ازمان، نوین هاست، کاریار استودیو و نان و نمک.
 
-> Lead projects: Atlas (enterprise AI), Tamdid (fintech) and Kudos (HR platform). Also Remeet, an award winner, AzMan’s three products, Novin Host, Studio Kaaryar and Nan va Namak.
+> Lead projects: Atlas (enterprise AI), Tamdid (fintech) and Kudos (HR platform). Also Remeet, an award winner, AzMan’s three products, Novin Host, Kaaryar Studio and Nan va Namak.
 
 ## 33. `tamdid` 🔗
 
@@ -258,9 +258,9 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 نمونه سؤال: «درباره‌ی کودوس بگو»
 
-کودوس نرم‌افزار قدردانی از کارکنان است: همکارها با گیفت‌کارت و سکه از هم تشکر می‌کنند و منابع انسانی نظرسنجی، رویداد و آنبوردینگ را در همان‌جا اجرا می‌کند. سودابه تنها طراحش در نوادی بود؛ صفحه‌ی اصلی را از یک داشبورد ساده به یک فید اجتماعی تبدیل کرد، تست A/B این مسیر را تأیید کرد و منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کرد. کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در یکی از مشتری‌هایش حدود ۵۰۰ نفر از آن استفاده می‌کنند.
+کودوس نرم‌افزار قدردانی از کارکنان است: همکارها با گیفت‌کارت و سکه از هم تشکر می‌کنند و منابع انسانی نظرسنجی، رویداد و آنبوردینگ را در همان‌جا اجرا می‌کند. سودابه تنها طراحش در نوادی بود؛ صفحه‌ی اصلی را از یک داشبورد ساده به یک فید اجتماعی تبدیل کرد، تست A/B این مسیر را تأیید کرد و منطق تک‌تک صفحه‌ها را برای تیم فنی مستند کرد. کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در ابرآروان حدود ۵۰۰ نفر از آن استفاده می‌کنند.
 
-> Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events and onboarding in one place. As its only designer at Novaday, she turned the home from a plain dashboard into a social feed, an A/B test confirmed the direction, and she documented every page’s logic for engineering. It’s live with real companies; at one client alone, around 500 people use it.
+> Kudos is employee-recognition software: colleagues thank each other with gift cards and coins, and HR runs surveys, events and onboarding in one place. As its only designer at Novaday, she turned the home from a plain dashboard into a social feed, an A/B test confirmed the direction, and she documented every page’s logic for engineering. It’s live with real companies; at ArvanCloud alone, around 500 people use it.
 
 ## 35. `remeet` 🔗
 
@@ -284,9 +284,11 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 ## 38. `kaaryar` 🔗
 
-کاریار استودیو فارغ‌التحصیلان دوره‌های کاریار را روی پروژه‌های واقعی می‌برد. سودابه سایت چهارصفحه‌ای‌اش را با محدودیت‌های جدی کارفرما، عمداً ساده، روی یک دیزاین سیستم کوچک ریدیزاین کرد.
+نمونه سؤال: «Tell me about Kaaryar Studio»، «کاریار استودیو چیه؟»
 
-> Studio Kaaryar puts graduates of Kaaryar’s training on real client projects. Sudabeh redesigned its four-page website, deliberately simple, within tight client constraints, on a small design system.
+کاریار استودیو فارغ‌التحصیلان دوره‌های کاریار را روی پروژه‌های واقعی مشتری‌ها می‌برد. سودابه سایت چهارصفحه‌ای‌اش را با محدودیت‌های جدی کارفرما، عمداً ساده و روی یک دیزاین‌سیستم کوچک، ریدیزاین کرد. این طراحی حالا روی studio.kaaryar.ir لایو است و تقریباً همان طراحی نهایی اوست.
+
+> Kaaryar Studio puts graduates of Kaaryar’s training on real client projects. Sudabeh redesigned its four-page website within tight client constraints, deliberately simple, on a small design system. It’s now live at studio.kaaryar.ir, close to her final design.
 
 ## 39. `novinhost` 🔗
 
@@ -320,9 +322,9 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 ## 44. `industries`
 
-فین‌تک (تمدید)، منابع انسانی (کودوس)، مدیریت دسترسی (ریمیت)، هوش مصنوعی سازمانی (اطلس)، مارکت‌پلیس خدمات و ERP آن (ازمان)، هاستینگ (نوین هاست)، استودیوی اجتماعی (کاریار)، چاپ آنلاین (چاپ آقا)، آموزش (آلا) و آشپزی (نان و نمک).
+فین‌تک (تمدید)، منابع انسانی (کودوس)، مدیریت دسترسی (ریمیت)، هوش مصنوعی سازمانی (اطلس)، مارکت‌پلیس خدمات و ERP آن (ازمان)، هاستینگ (نوین هاست)، استودیوی اجتماعی (کاریار)، چاپ آنلاین (چاپ آقا)، آموزش (آلاتی‌وی) و آشپزی (نان و نمک).
 
-> Fintech (Tamdid), HR tech (Kudos), workplace access (Remeet), enterprise AI (Atlas), a services marketplace with its ERP (AzMan), web hosting (Novin Host), a social-impact studio (Kaaryar), online printing (ChapAgha), education (Alla) and food (Nan va Namak).
+> Fintech (Tamdid), HR tech (Kudos), workplace access (Remeet), enterprise AI (Atlas), a services marketplace with its ERP (AzMan), web hosting (Novin Host), a social-impact studio (Kaaryar), online printing (ChapAgha), education (AlaaTV) and food (Nan va Namak).
 
 ## 45. `audience`
 
@@ -390,9 +392,9 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 نمونه سؤال: «What results has she achieved?»، «How does she measure success?»
 
-کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در یکی از مشتری‌هایش حدود ۵۰۰ نفر کاربرش هستند و ریدیزاین صفحه‌ی اصلی‌اش با تست A/B تأیید شد. ریمیت، که طراحی‌اش با او بود، در هفته‌ی دیزاین تهران برنده شد. در الگونت محصولاتی طراحی می‌کند که چند تا از آن‌ها بیش از ۵٬۰۰۰ کاربر دارند، و اطلس در دو سه روز از بریف به نسخه‌ی لایو رسید.
+کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در ابرآروان حدود ۵۰۰ نفر کاربرش هستند و ریدیزاین صفحه‌ی اصلی‌اش با تست A/B تأیید شد. ریمیت، که طراحی‌اش با او بود، در هفته‌ی دیزاین تهران برنده شد. در الگونت محصولاتی طراحی می‌کند که چند تا از آن‌ها بیش از ۵٬۰۰۰ کاربر دارند، و اطلس در دو سه روز از بریف به نسخه‌ی لایو رسید.
 
-> Kudos is live with real companies; at one client alone, around 500 people use it, and an A/B test backed its home redesign. Remeet, which she designed, won at Tehran Design Week. At Algonet she designs products that many thousands rely on, several used by more than 5,000 people, and Atlas went from brief to live in two to three days.
+> Kudos is live with real companies; at ArvanCloud alone, around 500 people use it, and an A/B test backed its home redesign. Remeet, which she designed, won at Tehran Design Week. At Algonet she designs products that many thousands rely on, several used by more than 5,000 people, and Atlas went from brief to live in two to three days.
 
 ## 54. `philosophy`
 
@@ -508,7 +510,7 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 در روند کارش، فیدبک از اول جای مشخصی دارد. در کودوس، فیدبک‌های ریویو یک نوع یادداشت طراحی جدا داشتند، کنار منطق و متن. در کاریار استودیو هم اول وایرفریم خاکستری کشید تا بحث اول درباره‌ی ترتیب و محتوا باشد، نه ظاهر.
 
-> In her process, feedback has a place by design. On Kudos, review feedback had its own type of designer note, next to logic and copy. On Studio Kaaryar she started with grey wireframes, so the first conversation was about order and content, not looks.
+> In her process, feedback has a place by design. On Kudos, review feedback had its own type of designer note, next to logic and copy. On Kaaryar Studio she started with grey wireframes, so the first conversation was about order and content, not looks.
 
 ## 70. `ambiguity`
 
@@ -578,9 +580,9 @@ Product Design Specialist (آمانج)، Google UX Design (کورسرا)، Gamif
 
 نمونه سؤال: «I see a gap in 2023, what happened?»
 
-بین مدرسه‌ی آلا (بهار ۲۰۲۳) و جایگاه (۲۰۲۴) فرانت‌اند می‌خواند. همین مسیر نشانش داد که راه اصلی‌اش طراحی است، و باعث شد بداند رابط کاربری چطور ساخته می‌شود؛ چیزی که هنوز در کار با تیم فنی به کارش می‌آید.
+بین آلاتی‌وی (بهار ۲۰۲۳) و جایگاه (۲۰۲۴) فرانت‌اند می‌خواند. همین مسیر نشانش داد که راه اصلی‌اش طراحی است، و باعث شد بداند رابط کاربری چطور ساخته می‌شود؛ چیزی که هنوز در کار با تیم فنی به کارش می‌آید.
 
-> Between Alla (spring 2023) and Jaygah (2024) she studied front-end development. It confirmed that design was her path, and it left her understanding how interfaces get built, which still helps her work with engineers.
+> Between AlaaTV (spring 2023) and Jaygah (2024) she studied front-end development. It confirmed that design was her path, and it left her understanding how interfaces get built, which still helps her work with engineers.
 
 ## 79. `culture`
 
