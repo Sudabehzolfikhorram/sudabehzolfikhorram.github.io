@@ -45,7 +45,6 @@ const person = {
   url: site.url,
   address: { "@type": "PostalAddress", addressLocality: "Tehran", addressCountry: "IR" },
   worksFor: experience.filter((r) => !r.end).map((r) => ({ "@type": "Organization", name: r.company })),
-  alumniOf: { "@type": "CollegeOrUniversity", name: "Payame Noor University" },
   knowsAbout: skills,
   sameAs: site.socials.filter((s) => !s.href.includes("wa.me")).map((s) => s.href),
 };

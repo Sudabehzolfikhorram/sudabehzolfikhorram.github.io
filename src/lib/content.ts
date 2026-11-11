@@ -180,7 +180,8 @@ export const tools = [
   "Figma & FigJam", "Framer", "Notion", "ChatGPT", "Claude", "Google AI Studio", "Lovable", "NotebookLM",
   "Microsoft Clarity", "GA4", "Adobe Illustrator", "ClickUp", "Slack",
 ];
-export const education = [{ title: "Bachelor of Law", place: "Payame Noor University (PNU)", years: "2021 – 2024" }];
+// The university isn't named on the site; the assistant names it only when asked where she studied.
+export const education = [{ title: "Bachelor of Law", years: "2021 – 2024" }];
 export const courses = [
   { title: "Product Design Specialist", place: "Amanj" },
   { title: "Google UX Design", place: "Coursera" },

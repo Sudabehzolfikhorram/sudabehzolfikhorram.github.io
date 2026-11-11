@@ -176,11 +176,20 @@ export const intents: Intent[] = [
   // Education & languages
   {
     id: "education",
-    strong: ["education", "degree", "university", "bachelor", "study", "studied", "major", "college", "law", "تحصیلات", "مدرک", "دانشگاه", "لیسانس", "کارشناسی", "رشته", "حقوق خوندی", "رشته حقوق", "حقوق خونده", "تحصیل", "چی خوندی", "چی خونده", "چی خوندید", "درس خوندی", "tahsilat", "reshte"],
+    strong: ["education", "degree", "bachelor", "study", "studied", "major", "law", "تحصیلات", "مدرک", "لیسانس", "کارشناسی", "رشته", "حقوق خوندی", "رشته حقوق", "حقوق خونده", "تحصیل", "چی خوندی", "چی خونده", "چی خوندید", "درس خوندی", "tahsilat", "reshte"],
     weak: ["حقوق"],
     answer: {
       en: "I’m a Law graduate.",
       fa: "فارغ‌التحصیل رشته‌ی حقوق هستم.",
+    },
+  },
+  {
+    id: "university",
+    // Named only when asked where she studied; nowhere else on the site.
+    strong: ["which university", "what university", "which college", "where did you study", "where did she study", "where did you study law", "university name", "name of the university", "کدوم دانشگاه", "چه دانشگاهی", "کجا خوندی", "کجا درس خوندی", "کجا حقوق خوندی", "دانشگاهت", "اسم دانشگاه", "کدام دانشگاه", "koja khoondi", "che daneshgahi", "kodoom daneshgah"],
+    answer: {
+      en: "Payame Noor University, Tehran.",
+      fa: "دانشگاه پیام نور تهران.",
     },
   },
   {
@@ -1008,7 +1017,7 @@ const OVERRIDE = ["inquiry", "leaving", "confidential", "offTopic", "teamSize", 
 const GENERIC = ["who", "projects", "greet", "thanks", "bye", "howAreYou", "ack", "compliment"];
 
 // Answers that cover the same ground; one is enough ("why law?" doesn't also need the degree details).
-const OVERLAP = [["lawToDesign", "education"], ["whyHire", "strengths"], ["challenge", "weakness"], ["availability", "freelance"], ["availability", "remote"], ["remote", "freelance"], ["onsite", "freelance"]];
+const OVERLAP = [["lawToDesign", "education"], ["university", "education"], ["university", "lawToDesign"], ["whyHire", "strengths"], ["challenge", "weakness"], ["availability", "freelance"], ["availability", "remote"], ["remote", "freelance"], ["onsite", "freelance"]];
 const overlaps = (a: string, b: string) => OVERLAP.some(([x, y]) => (x === a && y === b) || (x === b && y === a));
 
 /** The best and, if clearly also asked, the second best intent for a question. */
@@ -1184,6 +1193,7 @@ const PROJECT_NEXT = ["results", "team", "process"];
 const FOLLOW: Record<string, string[]> = {
   who: ["whyHire", "projects", "experience"],
   education: ["lawToDesign", "courses", "experience"],
+  university: ["lawToDesign", "courses", "experience"],
   lawToDesign: ["experience", "projects", "whyHire"],
   courses: ["lawToDesign", "tools", "projects"],
   location: ["remote", "relocation", "hours"],
