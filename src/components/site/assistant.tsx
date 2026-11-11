@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * "Ask about me": an assistant that answers questions about Sudabeh in Persian
- * or English, interview-style. Answers come from the AI backend when it's set
+ * or English, interview-style, in her own voice (first person). Answers come from the AI backend when it's set
  * up (see docs/contact-form.gs), and from the built-in answers in assistant.ts
  * otherwise. Either way it says what it is, never pretends to be her, and when
  * it can't answer it sends the question to her, with an optional way to reply.
@@ -42,19 +42,19 @@ const noop = () => () => {};
 const UI: Record<Lang, Record<string, string>> = {
   en: {
     open: "Ask about me",
-    title: "Ask about Sudabeh",
-    subtitle: "Answers from her portfolio",
-    hello: "Hi! I’m Sudabeh’s assistant. Ask me anything about her work, the way you would in an interview, in English or Persian. If I don’t know the answer, I’ll pass your question to her.",
-    placeholder: "Ask anything about her work…",
+    title: "Ask me anything",
+    subtitle: "Answers in my own words",
+    hello: "Hi, I’m Sudabeh! Well, my assistant: it answers in my words, from my CV and answers I’ve written myself. Ask me anything about my work, the way you would in an interview. If it can’t answer, your question comes straight to me.",
+    placeholder: "Ask about my work…",
     slow: "Putting together a proper answer…",
-    sending: "Sending your question to Sudabeh…",
-    forwardTitle: "Sent to Sudabeh. Want her reply?",
+    sending: "Sending your question…",
+    forwardTitle: "It’s with me now. Want my reply?",
     contact: "Email, phone or @telegram",
     send: "Send",
     noThanks: "No thanks",
-    sentReply: "Thanks! She’ll reply at",
-    failed: `That didn’t go through. You can email her at ${site.email}.`,
-    limit: "You’ve sent several questions to her already. For anything else, email her directly.",
+    sentReply: "Thank you! I’ll get in touch at {contact} within the next two working days. I hope we get to work together!",
+    failed: `That didn’t go through. You can email me at ${site.email}.`,
+    limit: "You’ve sent me several questions already. For anything else, email me directly.",
     dismissed: "No problem. What else would you like to know?",
     close: "Close",
     send_aria: "Send question",
@@ -62,19 +62,19 @@ const UI: Record<Lang, Record<string, string>> = {
   },
   fa: {
     open: "از من بپرسید",
-    title: "درباره‌ی سودابه بپرسید",
-    subtitle: "پاسخ از روی رزومه و نمونه‌کارها",
-    hello: "سلام! من دستیار سودابه هستم. هر سؤالی درباره‌ی کارش دارید، مثل یک مصاحبه بپرسید؛ فارسی یا انگلیسی. اگر جوابش را ندانم، سؤال‌تان را برای خودش می‌فرستم.",
-    placeholder: "درباره‌ی کار و سوابقش بپرسید…",
+    title: "از من بپرسید",
+    subtitle: "دستیار من · با حرف‌های خودم",
+    hello: "سلام، سودابه هستم! یا دقیق‌تر، دستیارم؛ با حرف‌های خودم جواب می‌دهد، از روی رزومه و جواب‌هایی که خودم نوشته‌ام. هر سؤالی درباره‌ی کارم دارید، مثل یک مصاحبه بپرسید. اگر جوابش را نداشت، سؤال‌تان مستقیم به دست خودم می‌رسد.",
+    placeholder: "درباره‌ی کار و سوابقم بپرسید…",
     slow: "دارم جواب دقیقی آماده می‌کنم…",
-    sending: "در حال فرستادن سؤال‌تان برای سودابه…",
-    forwardTitle: "برای سودابه فرستاده شد. جوابش را می‌خواهید؟",
+    sending: "در حال فرستادن سؤال‌تان…",
+    forwardTitle: "به دستم رسید. جوابم را می‌خواهید؟",
     contact: "ایمیل، شماره یا آیدی تلگرام",
     send: "ارسال",
     noThanks: "نه، ممنون",
-    sentReply: "ممنون! جواب را می‌فرستد به",
+    sentReply: "ممنونم! تا دو روز کاری آینده از طریق {contact} با شما در ارتباط خواهم بود. امیدوارم همکاری خوبی با هم داشته باشیم!",
     failed: `ارسال نشد. می‌توانید به ${site.email} ایمیل بزنید.`,
-    limit: "چند سؤال برایش فرستاده‌اید. برای سؤال‌های بیشتر، لطفاً مستقیم ایمیل بزنید.",
+    limit: "چند سؤال برایم فرستاده‌اید. برای سؤال‌های بیشتر، لطفاً مستقیم ایمیل بزنید.",
     dismissed: "باشه. چه چیز دیگری می‌خواهید بدانید؟",
     close: "بستن",
     send_aria: "ارسال سؤال",
@@ -250,8 +250,22 @@ export function Assistant() {
     const q = raw.trim().slice(0, MAX_LEN);
     if (!q || typing) return;
     const qLang: Lang = /[؀-ۿ]/.test(q) ? "fa" : /[a-z]/i.test(q) ? "en" : lang;
-    setLang(qLang);
     setInput("");
+    // Just an email, a phone number or a @telegram typed into the chat: that's the visitor's way to be
+    // reached, so it goes to Sudabeh with the last question she was sent, not to the answer engine.
+    const contactOnly = q.split(/\s+/).length <= 3 && checkContact(q.replace(/^(?:my|email|phone|telegram|whatsapp|ایمیل|شماره|تلگرام|واتساپ)[:：\s]*/i, "")).valid;
+    if (contactOnly) {
+      const lastAsked = [...bubblesRef.current].reverse().find((b) => b.forward);
+      push({ from: "me", text: q });
+      if (lastAsked?.forward) {
+        setBubbles((all) => all.map((b) => (b.id === lastAsked.id && b.forward ? { ...b, forward: { ...b.forward, state: "sent" } } : b)));
+        void sendReply(lastAsked.id, lastAsked.forward.question, q.replace(/^\S+[:：]\s*/, ""));
+      } else {
+        void sendReply(-1, "(no question: the visitor left their contact in the chat)", q);
+      }
+      return;
+    }
+    setLang(qLang);
     // An open "want a reply?" card is stale once a new question is asked.
     setBubbles((all) => all.map((b) => (b.forward?.state === "sent" ? { ...b, forward: { ...b.forward, state: "done" } } : b)));
     const history: Turn[] = bubblesRef.current.slice(-HISTORY_TURNS).map((b) => ({ role: b.from === "me" ? "user" : "assistant", text: b.text }));
@@ -301,11 +315,12 @@ export function Assistant() {
   // A way to reply, added after the question has already gone.
   const sendReply = async (bubbleId: number, question: string, contact: string) => {
     patchForward(bubbleId, "replying");
-    const value = checkContact(contact).value;
+    const check = checkContact(contact);
+    const value = check.valid ? check.value : contact.trim();
     try {
       await sendMessage({ message: `Reply details for the question:\n${question}`, contact: value, topic: "Assistant question · reply" });
       patchForward(bubbleId, "done");
-      push({ from: "bot", text: `${t.sentReply} ${value}.` });
+      push({ from: "bot", text: t.sentReply.replace("{contact}", `\u2068${value}\u2069`) });
     } catch {
       patchForward(bubbleId, "sent");
       push({ from: "bot", text: t.failed });

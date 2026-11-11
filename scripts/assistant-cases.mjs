@@ -116,4 +116,10 @@ export const cases = [
   ["How old is she?", "personal", false],
   ["Who built this site?", "siteBuild", false],
   ["Does she like cats?", "", true],
+  ["hey, does she like cats lol", "", true],
+  ["hey there, how is it going today", "howAreYou", false],
+  ["سلام خوبی؟ چرا حقوق خوندی؟", "lawToDesign", false],
+  ["سلام وقتتون بخیر، لطفاً بفرمایید چه نرم‌افزارهایی کار می‌کنید؟", "tools", false],
+  ["چند سال سابقه‌ی کاری دارید؟", "experience", false],
+  ["نقاط قوت‌تان چیست؟", "strengths", false],
 ];

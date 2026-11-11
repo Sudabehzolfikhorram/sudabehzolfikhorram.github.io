@@ -46,9 +46,9 @@ const experience = [
     title: "Product Designer",
     company: "AzMan",
     mode: "Remote",
-    period: "Oct 2025 – Present",
+    period: "Oct 2025 – Sep 2026",
     points: [
-      "Designing three separate products, AzMan, Hamgam Saz and the ERP, each with distinct workflows across service, operations and personnel management.",
+      "Designed three separate products, AzMan, Hamgam Saz and the ERP, each with distinct workflows across service, operations and personnel management.",
       "AzMan: the core experience connecting customers with service providers, covering service requests, expert interactions and key marketplace workflows on web and mobile.",
       "Hamgam Saz: an operational product for managing and synchronising call reports, follow-ups, contact history and privacy-related workflows, keeping customer interactions structured and traceable.",
       "ERP: complex personnel-management workflows, including roles and access levels, operational scopes, document collection, contracts, guarantees, permissions and organisational access.",
