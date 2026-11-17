@@ -32,26 +32,24 @@ const contact = [
 
 const experience = [
   {
-    title: "Product Designer",
+    title: "Product & Brand Designer",
     company: "Algonet",
     mode: "Full-time (on-site)",
     period: "Apr 2026 – Present",
     points: [
-      "Designing Atlas, an AI platform that maps how a company really works, plus complex B2B and internal experiences across dashboards, operational tools and system-level workflows.",
-      "Built a custom design system with reusable patterns and production-ready components, in close collaboration with product and engineering.",
+      "Product design for B2B platforms built for large companies with 200+ employees: monitoring systems, ERP modules and data-heavy dashboards, from new products to redesigns of live ones.",
+      "Designed an enterprise AI platform with AI end to end, live in two to three days; built a custom design system. Brand: Algonet’s visual identity, brand book, brochure and office identity.",
     ],
-    links: [{ label: "Atlas case study", href: work("atlas") }],
+    links: [{ label: "Case study", href: work("atlas") }],
   },
   {
     title: "Product Designer",
-    company: "AzMan",
-    mode: "Remote",
+    company: "AzMan Platform",
+    mode: "Full-time (remote)",
     period: "Oct 2025 – Sep 2026",
     points: [
-      "Designed three separate products, AzMan, Hamgam Saz and the ERP, each with distinct workflows across service, operations and personnel management.",
-      "AzMan: the core experience connecting customers with service providers, covering service requests, expert interactions and key marketplace workflows on web and mobile.",
-      "Hamgam Saz: an operational product for managing and synchronising call reports, follow-ups, contact history and privacy-related workflows, keeping customer interactions structured and traceable.",
-      "ERP: complex personnel-management workflows, including roles and access levels, operational scopes, document collection, contracts, guarantees, permissions and organisational access.",
+      "Designed AzMan, a services marketplace, end to end, along with the two tools that run it, as one connected system.",
+      "Marketplace: customers describe what they need, compare experts and follow a request to completion. Hamgam Saz: call reports, follow-ups and contact history stay in sync. ERP: roles, access levels and scopes decide who can see and approve what.",
     ],
     links: [
       { label: "AzMan", href: work("azman") },
@@ -61,11 +59,24 @@ const experience = [
   },
   {
     title: "Product Designer",
+    company: "Novin Host",
+    mode: "Remote",
+    period: "Jun – Sep 2026",
+    points: [
+      "Redesigned the main pages of a 15-year-old hosting brand: services first, an easier way to choose a server location, and one consistent visual system that still feels familiar.",
+    ],
+    links: [
+      { label: "Case study", href: work("novinhost") },
+      { label: "novinhost.org", href: "https://www.novinhost.org/" },
+    ],
+  },
+  {
+    title: "Product Designer",
     company: "Kaaryar Studio",
     mode: "Remote",
     period: "Sep 2025 – Jan 2026",
     points: [
-      "Redesigned the full website for a social-impact design studio, improving information architecture, visual storytelling, accessibility and clarity; built a custom design system. Now live.",
+      "Redesigned the website of a social-impact studio: four pages with one clear job each, a compact design system on the studio’s brand, mobile first. Now live.",
     ],
     links: [
       { label: "Case study", href: work("kaaryar") },
@@ -73,22 +84,14 @@ const experience = [
     ],
   },
   {
-    title: "Product Designer",
+    title: "Solo Product Designer",
     company: "Tamdid",
     mode: "Remote",
     period: "Aug 2025 – Jun 2026",
     points: [
-      "Designed a fintech product for smart subscription and wallet management, covering payments, wallets and gamification; built a custom design system. Design completed; in development.",
+      "Fintech product for subscriptions, wallet and payments, from the first idea to development: mobile first, then web in light and dark themes, with light gamification and a custom design system.",
     ],
     links: [{ label: "Case study", href: work("tamdid") }],
-  },
-  {
-    title: "UI/UX Designer",
-    company: "ChapAgha",
-    mode: "Remote",
-    period: "Dec 2024 – Jan 2025",
-    points: ["Redesigned the responsive product listing page for business cards, with a clearer layout and stronger mobile usability."],
-    links: [{ label: "Dribbble", href: "https://dribbble.com/shots/26236688-Business-Card-PLP" }],
   },
   {
     title: "Product Designer",
@@ -96,9 +99,8 @@ const experience = [
     mode: "Full-time (hybrid)",
     period: "Sep 2024 – Jun 2025",
     points: [
-      "Designed two B2B products on a Tailwind-based design system to improve consistency and streamline admin workflows.",
-      "Kudos: documented flows and page logic to improve coordination between design and development, and refined the UI; worked closely with PM and QA for smooth delivery.",
-      "Remeet: a multilingual web and mobile access system with biometric (fingerprint/RFID) check-in for meetings and access, integrated with Outlook to automate bookings and make better use of rooms. Winner at Tehran Design Week.",
+      "Kudos (employee recognition & HR): redesigned the home from a dashboard into a social feed, designed the employee side and HR admin, and documented every page’s logic for PM, QA and engineering, on a shared Tailwind-based design system.",
+      "Remeet: a multilingual web and mobile access and meeting system with fingerprint/RFID check-in and Outlook sync. Winner at Tehran Design Week.",
     ],
     links: [
       { label: "Kudos", href: work("kudos") },
@@ -108,10 +110,18 @@ const experience = [
   },
   {
     title: "UI/UX Designer",
-    company: "Nan va Namak",
+    company: "ChapAgha",
     mode: "Remote",
+    period: "Dec 2024 – Jan 2025",
+    points: ["Redesigned the business card product listing page for an online printing platform, with a clearer layout and a fully responsive design."],
+    links: [{ label: "Dribbble", href: "https://dribbble.com/shots/26236688-Business-Card-PLP" }],
+  },
+  {
+    title: "Co-founder & UI/UX Designer",
+    company: "Nan va Namak",
+    mode: "Pre-launch startup",
     period: "Jun – Sep 2024",
-    points: ["Designed a responsive interface for web, mobile and tablet with a focus on accessibility, usability and clear content discovery."],
+    points: ["A cooking platform a few friends and I set out to launch; as one of its two designers, took it from idea to final UI across web, tablet and mobile."],
     links: [
       { label: "Story", href: work("nanvanamak") },
       { label: "Dribbble", href: "https://dribbble.com/shots/26277570-Cooking-Platform-Desktop-Experience" },
@@ -122,7 +132,7 @@ const experience = [
     company: "Jaygah",
     mode: "Remote",
     period: "Mar – Jun 2024",
-    points: ["Collaborated on B2B/B2C marketing packages and digital content, improving visual communication across campaigns and social touchpoints."],
+    points: ["Designed B2B and B2C marketing packages and digital content for campaigns and social media."],
   },
   {
     title: "Educational Content Designer",
@@ -130,7 +140,7 @@ const experience = [
     mode: "Full-time (hybrid)",
     period: "Aug 2021 – Apr 2023",
     points: [
-      "Worked with cross-functional teams to design and structure educational content, improving visual clarity, layout and the overall learning experience.",
+      "First design role, alongside my law degree: designed and structured learning content for Iran’s university entrance exam (Konkur), so dense information was easy to follow.",
     ],
   },
 ];
