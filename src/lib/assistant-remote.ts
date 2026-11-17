@@ -19,14 +19,14 @@ export const LINKS: Record<string, { href: string; label: Record<Lang, string> }
   atlas: { href: "/work/atlas", label: { en: "About Atlas", fa: "درباره‌ی اطلس" } },
   tamdid: { href: "/work/tamdid", label: { en: "Tamdid case study", fa: "کیس‌استادی تمدید" } },
   kudos: { href: "/work/kudos", label: { en: "Kudos case study", fa: "کیس‌استادی کودوس" } },
-  remeet: { href: "/work/remeet", label: { en: "About Remeet", fa: "درباره‌ی ریمیت" } },
-  // AzMan has no case study page yet; these lead to the career page.
+  remeet: { href: "/experience", label: { en: "Remeet on the career page", fa: "ریمیت در سوابق کاری" } },
+  // Projects without a case study page lead to the career page.
   azman: { href: "/experience", label: { en: "AzMan on the career page", fa: "ازمان در سوابق کاری" } },
   "azman-erp": { href: "/experience", label: { en: "AzMan on the career page", fa: "ازمان در سوابق کاری" } },
   hamgam: { href: "/experience", label: { en: "AzMan on the career page", fa: "ازمان در سوابق کاری" } },
   novinhost: { href: "/work/novinhost", label: { en: "Novin Host case study", fa: "کیس‌استادی نوین هاست" } },
   kaaryar: { href: "/work/kaaryar", label: { en: "Kaaryar Studio case study", fa: "کیس‌استادی کاریار استودیو" } },
-  nanvanamak: { href: "/work/nanvanamak", label: { en: "The Nan va Namak story", fa: "داستان نان و نمک" } },
+  nanvanamak: { href: "/experience", label: { en: "Nan va Namak on the career page", fa: "نان و نمک در سوابق کاری" } },
 };
 
 export type Turn = { role: "user" | "assistant"; text: string };

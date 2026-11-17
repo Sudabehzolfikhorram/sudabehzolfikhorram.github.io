@@ -99,7 +99,6 @@ const experience = [
     ],
     links: [
       { label: "Kudos", href: work("kudos") },
-      { label: "Remeet", href: work("remeet") },
       { label: "novaday.ir", href: "https://novaday.ir/" },
     ],
   },
@@ -118,7 +117,6 @@ const experience = [
     period: "Jun – Sep 2024",
     points: ["A cooking platform a few friends and I set out to launch; as one of its two designers, took it from idea to final UI across web, tablet and mobile."],
     links: [
-      { label: "Story", href: work("nanvanamak") },
       { label: "Dribbble", href: "https://dribbble.com/shots/26277570-Cooking-Platform-Desktop-Experience" },
     ],
   },

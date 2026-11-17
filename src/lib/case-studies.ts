@@ -75,6 +75,7 @@ const all: CaseStudy[] = [
     },
     links: [{ label: "Current site: novinhost.org", href: "https://www.novinhost.org/" }],
     cover: { image: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/work/novinhost/after-hero.webp`, alt: "Redesigned Novin Host homepage hero with a live network status card" },
+    thumbnail: { image: `${BASE}/work/novinhost/thumb.webp`, alt: "Novin Host redesign: the new homepage on desktop and mobile on a navy background" },
     context:
       "The brief: make the site modern and easier to use, but don’t let existing customers feel that Novin Host has changed.",
     scope: ["Homepage", "VPS", "Dedicated", "Colocation", "Hosting", "Domains", "Novin Plus", "About", "Contact", "Knowledge base", "Article"],
@@ -146,34 +147,6 @@ const all: CaseStudy[] = [
       { value: "8", label: "Routes kept" },
       { value: "7 days", label: "Brief to live demo" },
     ],
-  },
-  {
-    slug: "remeet",
-    name: "Remeet",
-    layout: "brief",
-    hue: "#5a46e0",
-    badge: "Winner · Tehran Design Week",
-    tagline: "An access and meeting system, first called Access, that won at Tehran Design Week.",
-    summary:
-      "Remeet brings doors, meeting rooms and the people who use them into one flow: a multilingual web and mobile system with fingerprint and RFID check-in, synced with Outlook to automate bookings and make better use of rooms.",
-    category: "Access & meetings · Web & mobile",
-    period: { start: "2024-09", end: "2025-06" },
-    status: "Award-winning",
-    meta: { role: "Product Designer", engagement: "Novaday · Full-time", platform: "Web & mobile, multilingual", tools: ["Figma", "Tailwind-based design system"] },
-    links: [{ label: "remeet.ir", href: "https://remeet.ir/" }],
-    cover: { image: `${BASE}/work/remeet/thumb.svg`, alt: "Remeet: a fingerprint and a booked meeting-room card" },
-    thumbnail: { image: `${BASE}/work/remeet/thumb.svg`, alt: "Remeet: a fingerprint and a booked meeting-room card" },
-    context: "",
-    scope: [],
-    highlights: [],
-    screens: [],
-    facts: [],
-    story: [
-      { title: "The product", body: "Fingerprint and RFID access for doors and rooms, bookings that sync with Outlook, in more than one language, on web and mobile." },
-      { title: "The work", body: "A design system, UI kit and variables on a Tailwind base, shaped by benchmarks, competitor analysis, a feature list and usability testing." },
-      { title: "Recognition", body: "First shown as Access, it won at Tehran Design Week." },
-    ],
-    comingSoon: true,
   },
   {
     slug: "tamdid",
@@ -303,37 +276,10 @@ const all: CaseStudy[] = [
       { value: "Live", label: "At studio.kaaryar.ir, close to the final design" },
     ],
   },
-  {
-    slug: "nanvanamak",
-    name: "Nan va Namak",
-    layout: "brief",
-    hue: "#b5702a",
-    badge: "The turning point",
-    tagline: "A startup of our own. It didn’t launch, and it made me a product designer.",
-    summary:
-      "Nan va Namak was meant to be our own startup: a cooking platform for web, tablet and mobile that we planned to launch ourselves. I designed its interface with a focus on accessibility, usability and clear content discovery.",
-    category: "Cooking platform · Web, tablet, mobile",
-    period: { start: "2024-06", end: "2024-09" },
-    status: "Didn’t launch",
-    meta: { role: "UI/UX Designer", engagement: "Own startup", platform: "Web, tablet & mobile", tools: ["Figma", "FigJam"] },
-    links: [{ label: "Dribbble shot", href: "https://dribbble.com/shots/26277570-Cooking-Platform-Desktop-Experience" }],
-    cover: { image: `${BASE}/work/nanvanamak/thumb.svg`, alt: "Nan va Namak: a loaf of bread and a salt shaker" },
-    thumbnail: { image: `${BASE}/work/nanvanamak/thumb.svg`, alt: "Nan va Namak: a loaf of bread and a salt shaker" },
-    context: "",
-    scope: [],
-    highlights: [],
-    screens: [],
-    facts: [],
-    story: [
-      { title: "The plan", body: "Build and launch a product of our own, not a client brief. I designed the experience across web, tablet and mobile, with accessibility and easy recipe discovery at its core." },
-      { title: "What happened", body: "It never launched. We came out of it with a lot of experience and no product." },
-      { title: "Why it matters", body: "Owning the whole product, not just its screens, showed me where I wanted to go. It’s the project that moved me from UI/UX specialist toward product design." },
-    ],
-  },
 ];
 
 // The order projects appear in: the three lead projects, then the rest.
-const ORDER = ["atlas", "investment-advisor", "tamdid", "kudos", "remeet", "novinhost", "kaaryar", "nanvanamak"];
+const ORDER = ["atlas", "investment-advisor", "tamdid", "kudos", "novinhost", "kaaryar"];
 export const caseStudies = [...all].sort((a, b) => ORDER.indexOf(a.slug) - ORDER.indexOf(b.slug));
 
 export const getCaseStudy = (slug: string) => caseStudies.find((c) => c.slug === slug);

@@ -92,7 +92,7 @@ You may attach up to 2 links that genuinely help (a case study that proves the a
 - `contact`: contact page
 - `about`: her story
 - `experience`: career page with every role
-- `atlas`, `investment-advisor`, `tamdid`, `kudos`, `remeet`, `novinhost`, `kaaryar`, `nanvanamak`: case studies
+- `atlas`, `investment-advisor`, `tamdid`, `kudos`, `novinhost`, `kaaryar`: case studies
 
 Don't paste these as URLs in the answer text; the site shows them as buttons under your answer.
 

@@ -346,7 +346,7 @@ export const intents: Intent[] = [
       en: "Remeet (first called Access) is a multilingual access and meeting system: fingerprint and RFID check-in, with room bookings synced to Outlook. I designed it at Novaday as one of two designers, and in December 2025 the Remeet team won at Tehran Design Week with that design.",
       fa: "ریمیت (که اول اسمش اکسس بود) یک سیستم چندزبانه‌ی مدیریت دسترسی و جلسات است: ورود با اثر انگشت و RFID و رزرو اتاق‌ها هماهنگ با Outlook. در نوادی، به‌عنوان یکی از دو طراح تیم، طراحی‌اش کردم و دسامبر ۲۰۲۵ تیم ریمیت با همین طراحی در هفته‌ی دیزاین تهران برنده شد.",
     },
-    link: { href: "/work/remeet", label: { en: "About Remeet", fa: "درباره‌ی ریمیت" } },
+    link: { href: "/experience", label: { en: "Career", fa: "سوابق کاری" } },
   },
   {
     id: "atlas",
@@ -396,7 +396,7 @@ export const intents: Intent[] = [
       en: "Nan va Namak was a cooking platform a few friends and I set out to turn into a startup. As a co-founder and one of its two designers, I took it from idea to execution across web, tablet and mobile. It never launched, but it’s where I moved from UI design into end-to-end product design.",
       fa: "نان و نمک یک پلتفرم آشپزی بود که با چند دوستم می‌خواستیم به یک استارتاپ تبدیلش کنیم. به‌عنوان هم‌بنیان‌گذار و یکی از دو طراحش، آن را از ایده تا اجرا برای وب، تبلت و موبایل طراحی کردم. لانچ نشد، ولی همان‌جا بود که از طراحی رابط کاربری به طراحی محصول از ابتدا تا انتها رسیدم.",
     },
-    link: { href: "/work/nanvanamak", label: { en: "The story", fa: "داستانش" } },
+    link: { href: "/experience", label: { en: "Career", fa: "سوابق کاری" } },
   },
   {
     id: "algonet",
