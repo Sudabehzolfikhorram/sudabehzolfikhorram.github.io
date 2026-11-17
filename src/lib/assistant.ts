@@ -366,7 +366,7 @@ export const intents: Intent[] = [
       en: "AzMan is three connected products, and I designed all of them between October 2025 and September 2026: the AzMan marketplace for customers, Hamgam Saz for the field experts and their communication, and the ERP that runs both.",
       fa: "ازمان سه محصول به‌هم‌پیوسته است که از مهر ۱۴۰۴ تا شهریور ۱۴۰۵ طراحی هر سه با من بود: مارکت‌پلیس ازمان برای مشتری‌ها، همگام‌ساز برای کارشناسان و ارتباطات‌شان، و ERP که هر دو را مدیریت می‌کند.",
     },
-    link: { href: "/work/azman", label: { en: "AzMan case study", fa: "کیس‌استادی ازمان" } },
+    link: { href: "/experience", label: { en: "Career", fa: "سوابق کاری" } },
   },
   {
     id: "kaaryar",

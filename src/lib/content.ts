@@ -98,11 +98,6 @@ export const experience: Role[] = [
     company: "AzMan", logo: "azman", title: "Product Designer", type: "Full-time", mode: "Remote", start: "2025-10", end: "2026-09",
     summary: "Three connected products: a marketplace, a field tool and the ERP behind them.",
     about: "I designed AzMan, a services marketplace, end to end, along with the two tools that run it, as one connected system. In the marketplace, customers describe what they need, compare experts and follow a request to completion. In Hamgam Saz, field experts’ call reports, follow-ups and contact history stay in sync. In the ERP, roles, access levels and scopes decide who can see and approve what, with documents and contracts in one place.",
-    cases: [
-      { slug: "azman", label: "AzMan" },
-      { slug: "azman-erp", label: "ERP" },
-      { slug: "hamgam", label: "Hamgam Saz" },
-    ],
   },
   {
     company: "Novin Host", logo: "novinhost", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2026-06", end: "2026-09",

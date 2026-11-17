@@ -176,88 +176,6 @@ const all: CaseStudy[] = [
     comingSoon: true,
   },
   {
-    slug: "azman",
-    name: "AzMan",
-    layout: "editorial",
-    hue: "#6b46d9",
-    family: { label: "AzMan", slugs: ["azman", "azman-erp", "hamgam"] },
-    tagline: "A marketplace where customers find a service, request it and follow it through with an expert.",
-    summary:
-      "AzMan connects customers with service experts. Customers describe what they need, compare experts and follow the request to completion, on web and mobile. It’s one of three connected products I designed for AzMan, with Hamgam Saz and the ERP behind them.",
-    category: "Marketplace · Web & mobile",
-    period: { start: "2025-10", end: "2026-09" },
-    status: "Product design",
-    meta: { role: "Product Designer", engagement: "Project-based · Remote", platform: "Web & mobile", tools: ["Figma", "FigJam"] },
-    cover: "azman-request",
-    context:
-      "The marketplace is where customers meet AzMan. It had to keep a request simple on a phone, from the first description to the finished job, while staying connected to the field tool and the ERP behind it.",
-    scope: ["Service requests", "Expert interactions", "Marketplace workflows", "Responsive web and mobile"],
-    highlights: [
-      { title: "Service requests", body: "Customers describe what they need, compare experts and follow a request to completion." },
-      { title: "One connected system", body: "What happens in the marketplace shows up in Hamgam Saz for the expert and in the ERP for the organisation." },
-    ],
-    screens: [{ id: "azman-request", title: "AzMan · service request", caption: "A customer request with matched experts and the steps to completion." }],
-    facts: [
-      { value: "Web + mobile", label: "Platforms" },
-      { value: "1 of 3", label: "Connected AzMan products" },
-    ],
-  },
-  {
-    slug: "azman-erp",
-    name: "AzMan ERP",
-    layout: "editorial",
-    hue: "#3346b8",
-    family: { label: "AzMan", slugs: ["azman", "azman-erp", "hamgam"] },
-    tagline: "The system behind AzMan and Hamgam Saz: people, roles, access, documents and contracts.",
-    summary:
-      "The ERP runs AzMan from the inside: personnel, roles and access levels, operational scopes, documents, contracts and guarantees. It’s one of three connected products I designed for AzMan.",
-    category: "ERP · Internal tool",
-    period: { start: "2025-10", end: "2026-09" },
-    status: "Product design",
-    meta: { role: "Product Designer", engagement: "Project-based · Remote", platform: "Web", tools: ["Figma", "FigJam"] },
-    cover: "erp-access",
-    thumbnail: { image: `${BASE}/work/azman/thumb.webp`, alt: "ERP AzMan: product thumbnail with the AzMan mark" },
-    context:
-      "Inside the organisation, every action depends on who you are and what you’re allowed to touch. The ERP had to make roles, access levels and scopes clear enough to manage, and the paperwork behind them easy to find.",
-    scope: ["Roles & access levels", "Operational scopes", "Documents & contracts", "Guarantees & permissions"],
-    highlights: [
-      { title: "Access by role and scope", body: "Roles, access levels and operational scopes decide who can see and approve what." },
-      { title: "Paperwork in one place", body: "Documents, contracts and guarantees sit next to the people and permissions they belong to." },
-    ],
-    screens: [{ id: "erp-access", title: "ERP · roles & access", caption: "Roles, access levels and operational scopes for personnel management." }],
-    facts: [
-      { value: "Web", label: "Platform" },
-      { value: "1 of 3", label: "Connected AzMan products" },
-    ],
-  },
-  {
-    slug: "hamgam",
-    name: "Hamgam Saz",
-    layout: "editorial",
-    hue: "#1f9d6b",
-    family: { label: "AzMan", slugs: ["azman", "azman-erp", "hamgam"] },
-    tagline: "The tool AzMan’s field experts work in: call reports, follow-ups and contact history, always in sync.",
-    summary:
-      "Hamgam Saz is where AzMan’s field experts log calls, follow up and keep in touch with customers, so every conversation is traceable. It’s one of three connected products I designed for AzMan.",
-    category: "Operations tool · Field experts",
-    period: { start: "2025-10", end: "2026-09" },
-    status: "Product design",
-    meta: { role: "Product Designer", engagement: "Project-based · Remote", platform: "Web & mobile", tools: ["Figma", "FigJam"] },
-    cover: "hamgam-calls",
-    context:
-      "Field experts juggle many customers at once. Call reports, follow-ups and contact history had to stay in sync with the marketplace and the ERP, without slowing the expert down.",
-    scope: ["Call reports", "Follow-ups", "Contact history", "Privacy workflows"],
-    highlights: [
-      { title: "Traceable follow-ups", body: "Call reports, follow-ups and contact history stay synchronised so teams can see what happened and what’s next." },
-      { title: "One connected system", body: "Requests arrive from the AzMan marketplace, and the ERP decides who can see and do what." },
-    ],
-    screens: [{ id: "hamgam-calls", title: "Hamgam Saz · call reports", caption: "Call reports, follow-ups and contact history in one synchronised view." }],
-    facts: [
-      { value: "Web + mobile", label: "Platforms" },
-      { value: "1 of 3", label: "Connected AzMan products" },
-    ],
-  },
-  {
     slug: "tamdid",
     name: "Tamdid",
     layout: "tamdid",
@@ -415,7 +333,7 @@ const all: CaseStudy[] = [
 ];
 
 // The order projects appear in: the three lead projects, then the rest.
-const ORDER = ["atlas", "investment-advisor", "tamdid", "kudos", "remeet", "azman", "azman-erp", "hamgam", "novinhost", "kaaryar", "nanvanamak"];
+const ORDER = ["atlas", "investment-advisor", "tamdid", "kudos", "remeet", "novinhost", "kaaryar", "nanvanamak"];
 export const caseStudies = [...all].sort((a, b) => ORDER.indexOf(a.slug) - ORDER.indexOf(b.slug));
 
 export const getCaseStudy = (slug: string) => caseStudies.find((c) => c.slug === slug);
