@@ -98,11 +98,6 @@ export const experience: Role[] = [
     company: "AzMan", logo: "azman", title: "Product Designer", type: "Full-time", mode: "Remote", start: "2025-10", end: "2026-09",
     summary: "Three connected products: a marketplace, a field tool and the ERP behind them.",
     about: "I designed AzMan, a services marketplace, end to end, along with the two tools that run it, as one connected system. In the marketplace, customers describe what they need, compare experts and follow a request to completion. In Hamgam Saz, field experts’ call reports, follow-ups and contact history stay in sync. In the ERP, roles, access levels and scopes decide who can see and approve what, with documents and contracts in one place.",
-    cases: [
-      { slug: "azman", label: "AzMan" },
-      { slug: "azman-erp", label: "ERP" },
-      { slug: "hamgam", label: "Hamgam Saz" },
-    ],
   },
   {
     company: "Novin Host", logo: "novinhost", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2026-06", end: "2026-09",
@@ -130,7 +125,6 @@ export const experience: Role[] = [
     about: "On Kudos, an employee-recognition and HR platform, I redesigned the home from a dashboard into a social feed, designed the employee side and HR admin, and documented every page’s flows and logic for engineering with PM and QA. Remeet (first called Access) is a multilingual access and meeting system with fingerprint and RFID check-in and Outlook sync; it won at Tehran Design Week. Across both: the design system, UI kit and variables on a Tailwind base, plus benchmarks, competitor analysis, feature lists and usability testing.",
     cases: [
       { slug: "kudos", label: "Kudos" },
-      { slug: "remeet", label: "Remeet" },
     ],
     link: { label: "novaday.ir", href: "https://novaday.ir/" },
   },
@@ -144,7 +138,6 @@ export const experience: Role[] = [
     company: "Nan va Namak", title: "Co-founder & UI/UX Designer", type: "Own startup", mode: "Remote", start: "2024-06", end: "2024-09",
     summary: "Our own startup. It didn’t launch, and it made me a product designer.",
     about: "A few friends and I set out to launch a cooking platform of our own, covering research, product and back end. Another designer and I took it from idea to execution across web, tablet and mobile. It never launched, but it’s where I became a product designer.",
-    cases: [{ slug: "nanvanamak", label: "Nan va Namak" }],
     link: { label: "Dribbble shot", href: "https://dribbble.com/shots/26277570-Cooking-Platform-Desktop-Experience" },
   },
   {

@@ -51,11 +51,6 @@ const experience = [
       "Designed AzMan, a services marketplace, end to end, along with the two tools that run it, as one connected system.",
       "Marketplace: customers describe what they need, compare experts and follow a request to completion. Hamgam Saz: call reports, follow-ups and contact history stay in sync. ERP: roles, access levels and scopes decide who can see and approve what.",
     ],
-    links: [
-      { label: "AzMan", href: work("azman") },
-      { label: "ERP", href: work("azman-erp") },
-      { label: "Hamgam Saz", href: work("hamgam") },
-    ],
   },
   {
     title: "Product Designer",
@@ -104,7 +99,6 @@ const experience = [
     ],
     links: [
       { label: "Kudos", href: work("kudos") },
-      { label: "Remeet", href: work("remeet") },
       { label: "novaday.ir", href: "https://novaday.ir/" },
     ],
   },
@@ -123,7 +117,6 @@ const experience = [
     period: "Jun – Sep 2024",
     points: ["A cooking platform a few friends and I set out to launch; as one of its two designers, took it from idea to final UI across web, tablet and mobile."],
     links: [
-      { label: "Story", href: work("nanvanamak") },
       { label: "Dribbble", href: "https://dribbble.com/shots/26277570-Cooking-Platform-Desktop-Experience" },
     ],
   },

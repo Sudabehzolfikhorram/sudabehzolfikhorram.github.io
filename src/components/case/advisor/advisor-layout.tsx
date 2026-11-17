@@ -89,16 +89,6 @@ const filterSummary: [string, string, string][] = [
 type Shot = { img?: string; alt?: string; mock?: [string, string][]; text: string };
 const filterChallenges: { title: string; why: string; before: Shot; after: { img: string; alt: string; points: string[] } }[] = [
   {
-    title: "Filters stood between people and the projects.",
-    why: "Direct search opened on a form of seven fields and a submit button, and the list below stayed empty until it was sent. Nothing showed whether a choice would leave ten projects or none.",
-    before: { img: "old-catalog", alt: "The demo’s direct search: a form of dropdowns and a submit button above the project cards", text: "Seven fields, three buttons, then results. Changing one filter meant submitting again." },
-    after: {
-      img: "new-results",
-      alt: "The redesigned projects page: four filters in a top bar, results in a grid and an advanced filter panel beside them",
-      points: ["Results open first; the four basic filters sit in one bar above them.", "Optional fields fold into an advanced panel beside the results.", "Every change applies instantly and updates the count.", "Filters can be saved and come back later."],
-    },
-  },
-  {
     title: "Location was one province at a time.",
     why: "Province and city were single-select dropdowns, and the city list stayed empty until a province was picked. An investor open to three provinces had to run three searches.",
     before: { img: "old-step", alt: "The demo’s questionnaire step with single-select dropdowns for project group, type, province and city", text: "Dependent single-select dropdowns: “choose a province first”." },
@@ -278,30 +268,21 @@ const week: { dow: string; day: number; rounds?: number; items?: string[] }[] = 
 
 const turning = [
   { r: "R2", day: "Nov 10", t: "Improve, never remove", before: "Groups merged from 11 to 10 and subtypes from 76 to 54 to shorten the lists.", after: "The full taxonomy restored; a QA pass in round 7 brought back 73 missing projects.", why: "It set the rule for the whole project: improving never means deleting." },
-  { r: "R2", day: "Nov 10", t: "Basic information, then results", before: "Results depended on a form in the hero.", after: "A short basic-information step, routes as the main categories, main filters on top.", why: "It fixed the order of the whole flow." },
   { r: "R4–6", day: "Nov 10", t: "No dots on the map", before: "A dotted map of Iran.", after: "Real province and county borders, and a landmark photo for each province.", why: "The map became a working control and the strongest visual." },
-  { r: "R9", day: "Nov 11", t: "A chat that reads like one", before: "The assistant had a field on top and results below.", after: "A real chat with the composer at the bottom, quick replies and a save card.", why: "The assistant started to behave like a conversation." },
-  { r: "R10–11", day: "Nov 11", t: "The first colour rules", before: "Black surfaces, then coral.", after: "No black, no gold, orange only where needed, and a new name after the old one misread.", why: "The palette got its first constraints." },
   { r: "R12", day: "Nov 14", t: "Change only what I name", before: "One round quietly flattened a budget chart nobody had mentioned.", after: "Every later round changed only what the review named.", why: "It changed how every remaining round was run." },
-  { r: "R13–14", day: "Nov 14", t: "Compass hero, charcoal text", before: "A busy hero and green text everywhere.", after: "The compass chosen from three ideas; text set in #2F3533 after a contrast check.", why: "The first screen and the reading colour were settled." },
   { r: "R16–18", day: "Nov 15", t: "Not a wireframe, not AI output", before: "Uneven section titles and a heavy green tone.", after: "One rule for every section head, a blue-tinted background, black-and-grey photo overlays.", why: "It reset the visual direction to clean." },
   { r: "R20", day: "Nov 15", t: "A second colour, a decision step", before: "Compare was a small bar; one colour family.", after: "A compare page with a data-grounded chat, and a blue for selection and data.", why: "It added the step between browsing and calling an expert." },
-  { r: "R24–26", day: "Nov 16", t: "Remove the step", before: "A one-sentence intake, then a step-by-step one.", after: "No intake: results open with four filters. #00ADAB and #1E40AF chosen.", why: "The search for the right first step ended by removing it." },
 ];
 
 const principles = [
   { p: "Improve, never remove", n: "Every field, form and flow of the demo stays; components get better.", r: "Brief" },
-  { p: "Invent nothing", n: "No field or process that isn’t in the source.", r: "Nov 10" },
   { p: "Fewest clicks", n: "The simplest component that saves a click wins.", r: "Brief" },
   { p: "Open by default", n: "No registration wall; login only at the moment of saving.", r: "Brief" },
   { p: "Change only what I name", n: "A review round touches exactly what it mentions.", r: "R12" },
   { p: "Controlled colour", n: "More white; colour only where it means something.", r: "R2" },
   { p: "Not a wireframe, not AI output", n: "Every surface has to look designed and specific.", r: "R16–23" },
   { p: "Right to left, charts included", n: "Gauges, gradients and axes read the way Persian does.", r: "R15" },
-  { p: "Selected means obvious", n: "Every choice shows that it is chosen.", r: "R4" },
   { p: "Think like an investor", n: "Simplify any flow an investor wouldn’t sit through.", r: "R18" },
-  { p: "Charts over paragraphs", n: "Where data can be drawn, draw it.", r: "R21" },
-  { p: "One structure everywhere", n: "Every dossier in the same order, whatever the project type.", r: "R25" },
 ];
 
 const ReviewLoop = () => {
@@ -343,10 +324,8 @@ const explored = [
   { what: "Hero ideas", built: 3, kept: 1, result: "Round 13: compass, live sentence, transparent dossier. The compass stayed." },
   { what: "Intake flows", built: 3, kept: 0, result: "Four steps, one sentence, steps again. All removed so results open first." },
   { what: "Landing concepts", built: 3, kept: 0, result: "Girih, metro and dossier in round 21. No pick on record; work continued on the existing landing." },
-  { what: "Ideas lab", built: 4, kept: 0, result: "Four live prototypes in round 19. None adopted as built." },
   { what: "Secondary blues", built: 4, kept: 1, result: "#2152E0, #0E53C8, #1E3A8A, then #1E40AF." },
   { what: "Product names", built: 4, kept: 1, result: "Four names over the week; Sarmayeh-Gozin stayed." },
-  { what: "Merged categories", built: 1, kept: 0, result: "Tried to shorten the lists, reversed because it lost data." },
 ];
 
 const names = [
@@ -403,31 +382,6 @@ const walk: Walk[] = [
     decision: "One headline, one sentence and one prompt field beside the map. The hero asks for one thing only.",
   },
   {
-    id: "routes",
-    label: "Routes",
-    headline: "Make the main doors look like doors.",
-    before: W("b-routes", 1200, 608, "The demo’s grid of ten photo cards mixing routes, services and funds"),
-    after: W("a-routes", 1200, 858, "Eight route cards with a “what do you bring?” switch and a stats strip"),
-    versions: [
-      { r: 0, t: "Route was one field in the hero form" },
-      { r: 2, t: "Eight route cards under the hero" },
-      { r: 16, t: "One row of badges, then +n" },
-      { r: 17, t: "Plain white cards, rejected the same day" },
-      { r: 18, t: "Icons on top, a live map for the stats" },
-      { r: 20, t: "“What do you bring?” switch" },
-      { r: 22, t: "Soft gradient, stats moved below" },
-      { r: 26, t: "Blue icon tiles and hover" },
-    ],
-    notes: [
-      { r: "R2", t: "It isn’t clear that these cards are the main categories." },
-      { r: "R16", t: "Client review: the design looks like a wireframe." },
-      { r: "R17", t: "Bring the earlier cards back. Only improve the badges and the spacing." },
-      { r: "R22", t: "Move the stats below, taking little space, and give the cards a touch of colour." },
-    ],
-    dropped: ["Plain white cards", "Stats as their own section", "Stats beside the title", "A bar-chart stats card", "Two-line titles"],
-    decision: "Eight routes on lightly coloured cards, one row of badges, a footer aligned to the bottom. A card should look designed and never grow with its content.",
-  },
-  {
     id: "groups",
     label: "Project groups",
     headline: "Show the hierarchy. Lose no category.",
@@ -451,50 +405,6 @@ const walk: Walk[] = [
     ],
     dropped: ["Merged taxonomy", "Vertical text in narrow panels", "Two-row card grid", "Green overlay", "Index numbers"],
     decision: "The 11 groups of the chosen route as a list beside one photo panel with its subtypes. Route, then group, then subtype, and nothing merged.",
-  },
-  {
-    id: "projects",
-    label: "Project cards",
-    headline: "Subtract until only the choice is left.",
-    before: W("b-projects", 1200, 675, "The demo’s project cards with a placeholder illustration, long text and two buttons each"),
-    after: W("a-projects", 1200, 783, "The final project cards: a real photo under a dark overlay, four key facts and icon actions"),
-    versions: [
-      { r: 0, t: "Photo with a green overlay, a match ring and reason chips" },
-      { r: 3, t: "Lighter card, four key facts" },
-      { r: 9, t: "Photos rotate on hover" },
-      { r: 22, t: "The photo becomes the whole card" },
-      { r: 23, t: "Badge, mark and extra words removed" },
-    ],
-    notes: [
-      { r: "R2", t: "Good to carry Algonet’s identity, but it has gone too green." },
-      { r: "R3", t: "The card is too heavy. Show only the most important data." },
-      { r: "R22", t: "Let the photo be the frame, with a black layer and blur rising from the bottom." },
-      { r: "R23", t: "These designs have to get out of wireframe mode." },
-    ],
-    dropped: ["Green photo overlay", "Large match ring", "Reason chips", "“Newly added”", "“Within your budget”", "Tag badge", "The “A” mark", "Text compare button"],
-    decision: "The photo is the card, carrying the title and four facts. One image treatment became the site’s signature, and a card shows only what helps someone choose.",
-  },
-  {
-    id: "why",
-    label: "Why these projects",
-    headline: "Explain a match by showing it.",
-    before: { quote: "“Showing an item does not mean a financial fit or real acceptance.”", note: "The demo’s only word on how projects were picked: a disclaimer above the list." },
-    after: W("a-why", 1200, 487, "A three-step explainer beside a funnel that narrows the sample projects"),
-    versions: [
-      { r: 0, t: "A block of text from the demo" },
-      { r: 16, t: "Numbered steps beside a dark demo card" },
-      { r: 17, t: "A timeline with an animated stage" },
-      { r: 18, t: "A field of dots filtered step by step" },
-      { r: 22, t: "A white card with progress segments" },
-      { r: 24, t: "A live funnel, no step numbers" },
-    ],
-    notes: [
-      { r: "R16", t: "These cards aren’t clear. We don’t know what they are." },
-      { r: "R17", t: "Better, but the sample result pulls too much focus." },
-      { r: "R24", t: "Change the design of this sample entirely." },
-    ],
-    dropped: ["Dark demo card", "Explanatory badges", "Dot field", "Numbered steps"],
-    decision: "Three short steps beside a funnel. On every project, what fits, what doesn’t and what is unknown; unknown scores half and is marked “needs review”.",
   },
   {
     id: "results",
@@ -547,48 +457,6 @@ const walk: Walk[] = [
     dropped: ["A timeline that looked draggable", "Large dotted location map", "Fact cards of uneven height", "“Data and income pattern” chart", "Dot plot of similar projects", "Chapter numbers"],
     decision: "One section order for every project type, with a chart wherever the data allows. A dossier is read the same way each time, and an unknown value is shown as unknown.",
   },
-  {
-    id: "assistant",
-    label: "Assistant",
-    headline: "Invite a sentence. Don’t explain yourself.",
-    before: W("b-assistant", 1200, 750, "The demo’s guided questionnaire, starting with photo cards for each route"),
-    after: W("assistant", 1440, 900, "The assistant: a conversation that returns up to ten projects with match percentages", "."),
-    versions: [
-      { r: 0, t: "A prompt and up to ten suggestions" },
-      { r: 9, t: "A real chat, composer at the bottom" },
-      { r: 13, t: "An “intelligent” look with reasoning steps" },
-      { r: 14, t: "Short title, saved conditions as a chip" },
-      { r: 17, t: "Green glow removed" },
-      { r: 20, t: "Understood conditions as chips" },
-      { r: 24, t: "Sides swapped for right-to-left" },
-    ],
-    notes: [
-      { r: "R9", t: "A field on top with answers below it doesn’t make sense as a flow." },
-      { r: "R14", t: "Too busy and full of text. At most a shortcut, like adding a skill." },
-      { r: "R24", t: "Answers on the left, my questions on the right." },
-    ],
-    dropped: ["Field on top, answers below", "Long welcome title", "Green background glow", "Messages on the wrong side"],
-    decision: "A plain chat with one short title and saved conditions one click away. The assistant invites a sentence instead of explaining itself.",
-  },
-  {
-    id: "compare",
-    label: "Compare",
-    headline: "Compare and ask in the same place.",
-    before: { none: "Not a page in the demo. A small compare bar came first, and the page was added in round 20." },
-    after: W("compare", 1440, 1209, "The compare page: two to four projects with charts, a table and a small chat", "."),
-    versions: [
-      { r: 5, t: "Compare up to three from a bottom bar" },
-      { r: 20, t: "Its own page, with a data-grounded chat" },
-      { r: 23, t: "Empty state and a sticky assistant column" },
-      { r: 24, t: "Chat sides swapped" },
-    ],
-    notes: [
-      { r: "R20", t: "Compare two to four projects, and talk with AI about them on the same page." },
-      { r: "R23", t: "Keep the assistant in a column that stays while scrolling, and start from an empty state, not four empty slots." },
-    ],
-    dropped: ["Four empty slots", "A compare tray at the bottom"],
-    decision: "Table, charts and assistant on one screen. Comparing and asking happen in the same place, right before calling an expert.",
-  },
 ];
 
 const shotSrc = (img: string) => `${IMG}/${img.replace(/^\.\//, "")}.webp`;
@@ -596,36 +464,6 @@ const shotSrc = (img: string) => `${IMG}/${img.replace(/^\.\//, "")}.webp`;
 const WalkShot = ({ s, muted }: { s: WShot; muted?: boolean }) => (
   <img alt={s.alt} className={cn("w-full rounded-xl border border-rule bg-white", muted ? "opacity-90 saturate-[0.6]" : "shadow-[0_30px_60px_-30px_rgb(0_60_60/0.35)]")} height={s.h} loading="lazy" src={shotSrc(s.img)} width={s.w} />
 );
-
-const VersionTrack = ({ versions }: { versions: Walk["versions"] }) => {
-  const last = versions[versions.length - 1].r;
-  return (
-    <div>
-      <div className="relative mx-2 h-4">
-        <div className="absolute inset-x-0 top-1/2 h-px bg-rule" />
-        {Array.from({ length: 28 }, (_, i) => (
-          <span className="absolute top-1/2 h-1.5 w-px -translate-y-1/2 bg-rule" key={i} style={{ left: `${(i / 27) * 100}%` }} />
-        ))}
-        {versions.map((v, i) => (
-          <span
-            className="absolute top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full ring-4 ring-paper"
-            key={`${v.r}-${i}`}
-            style={{ left: `${(v.r / 27) * 100}%`, background: v.r === last ? TEAL_TEXT : BLUE, opacity: v.r === last ? 1 : 0.75 }}
-          />
-        ))}
-      </div>
-      <div className="mx-2 mt-1 flex justify-between font-mono text-[0.62rem] text-ink-soft"><span>v1 · Nov 10</span><span>Round 27 · Nov 16</span></div>
-      <ol className="mt-4 grid gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
-        {versions.map((v, i) => (
-          <li className="flex gap-3 text-sm" key={`${v.r}-${i}`}>
-            <span className="w-9 shrink-0 font-mono text-xs leading-5" style={{ color: v.r === last ? TEAL_TEXT : BLUE }}>{v.r === 0 ? "v1" : `R${v.r}`}</span>
-            <span className={cn("leading-5", v.r === last ? "font-medium" : "text-ink-soft")}>{v.t}</span>
-          </li>
-        ))}
-      </ol>
-    </div>
-  );
-};
 
 const Walkthrough = () => (
   <>
@@ -636,12 +474,13 @@ const Walkthrough = () => (
         </a>
       ))}
     </nav>
-    <ol className="mt-10 space-y-32">
+    <ol className="mt-10 space-y-24">
       {walk.map((s, i) => (
         <li className="scroll-mt-32" id={`walk-${s.id}`} key={s.id}>
           <Reveal className="flex flex-wrap items-baseline gap-x-5 gap-y-2 border-rule border-t pt-6">
             <span className="font-mono text-sm" style={{ color: TEAL_TEXT }}>{String(i + 1).padStart(2, "0")} · {s.label}</span>
             <h3 className="font-display text-3xl leading-tight sm:text-4xl">{s.headline}</h3>
+            <span className="ms-auto font-mono text-ink-soft text-xs">{s.versions.length} versions · v1 → round 27</span>
           </Reveal>
 
           {/* before / after */}
@@ -684,12 +523,6 @@ const Walkthrough = () => (
               </div>
             </Reveal>
           )}
-
-          {/* versions on a 27-round axis */}
-          <Reveal className="mt-8 rounded-2xl border border-rule bg-paper p-5 sm:p-6">
-            <p className="mb-4 font-mono text-[0.72rem] text-ink-soft uppercase tracking-[0.06em]">{s.versions.length} versions across the rounds</p>
-            <VersionTrack versions={s.versions} />
-          </Reveal>
 
           {/* thinking */}
           <div className="mt-4 grid gap-4 lg:grid-cols-12">
@@ -941,7 +774,7 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
       <section className="py-24">
         <div className={wrap}>
           <Chapter label="Section by section" n="07" title="From a question to a person to call.">
-            <p>Nine parts of the product, each from the original demo to round 27: every version on the way, what I saw in review, what was built and dropped, and the decision that shaped the final design.</p>
+            <p>The four parts that took the most rounds, each from the original demo to round 27: what I saw in review, what was built and dropped, and the decision that shaped the final design.</p>
           </Chapter>
           <Walkthrough />
         </div>
@@ -1172,7 +1005,7 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
 
           {/* turning points */}
           <Reveal className="mt-6 rounded-3xl border border-rule bg-paper p-6 sm:p-8">
-            <p className="font-mono text-[0.72rem] text-ink-soft uppercase tracking-[0.06em]">Ten turning points</p>
+            <p className="font-mono text-[0.72rem] text-ink-soft uppercase tracking-[0.06em]">Five turning points</p>
             <ol className="relative mt-6 border-rule border-s">
               {turning.map((t, i) => (
                 <li className="relative grid gap-2 py-4 ps-6 md:grid-cols-[9rem_1fr_1fr] md:gap-6" key={t.t}>

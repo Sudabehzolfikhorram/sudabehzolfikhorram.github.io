@@ -6,7 +6,7 @@ import { caseStudies } from "@/lib/case-studies";
 
 export const metadata: Metadata = {
   title: "Work · Sudabeh",
-  description: "Case studies: Atlas, Tamdid, Kudos, Remeet, AzMan, Novin Host, Kaaryar Studio and Nan va Namak.",
+  description: "Case studies: Atlas, Investment Advisor, Tamdid, Kudos, Novin Host and Kaaryar Studio.",
 };
 
 export default function WorkPage() {
@@ -35,7 +35,7 @@ export default function WorkPage() {
 
         <Reveal className="mt-24 mb-8 flex flex-wrap items-end justify-between gap-4 border-rule border-t pt-10">
           <h2 className="font-display text-3xl sm:text-4xl">All projects</h2>
-          <p className="max-w-sm text-ink-soft text-sm">Fintech, HR, an award winner, AzMan’s three products, two redesigns and the startup that changed my direction.</p>
+          <p className="max-w-sm text-ink-soft text-sm">Enterprise AI, fintech, HR and two redesigns.</p>
         </Reveal>
         <RevealGroup className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
           {rest.map((cs) => (
