@@ -15,7 +15,7 @@ const TEAL = "#00ADAB";
 const TEAL_TEXT = "#007A78";
 const BLUE = "#1E40AF";
 /** The live demo on GitHub Pages. Left empty, the call-to-action buttons are hidden. */
-const DEMO_URL = "";
+const DEMO_URL = "https://sudabehzolfikhorram.github.io/Investment_Advisor/";
 
 const DemoLink = ({ className }: { className?: string }) =>
   DEMO_URL ? (
