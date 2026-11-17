@@ -3,7 +3,6 @@
 // the source HTML demo). All projects, amounts and returns on the screens are
 // sample data, and contact details are blurred.
 
-import { Vazirmatn } from "next/font/google";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import type { CaseStudy } from "@/lib/case-studies";
 import { cn } from "@/lib/utils";
@@ -11,7 +10,6 @@ import { wrap } from "../blocks";
 import { BeforeAfter, type PageTab, PageSwitcher, TwinScroll } from "../novin/interactive";
 import { ReadingProgress } from "../novin/reading-progress";
 
-const vazir = Vazirmatn({ subsets: ["arabic", "latin"], weight: ["400", "500", "700"] });
 const IMG = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/work/advisor`;
 const TEAL = "#00ADAB";
 const TEAL_TEXT = "#007A78";
@@ -64,16 +62,10 @@ const decisions = [
 ];
 
 const copy = [
-  { part: "Eyebrow", before: "سرمایه، تخصص و دارایی، در مسیر خلق ارزش", after: "مشاور سرمایه‌گذاری" },
-  { part: "Headline", before: "در ساختن آینده، شریک شوید.", after: "سرمایه‌تان را به سمت درست ببرید." },
-  { part: "Subheadline", before: "فرصت‌های سرمایه‌گذاری، اجرای پروژه و توسعه دارایی را کشف کنید.", after: "بگویید چه می‌خواهید، پروژه‌های هم‌خوان را با درصد تطابق نشانتان می‌دهیم." },
-  { part: "Main action", before: "کشف فرصت‌های همکاری", after: "پیشنهاد بگیرید" },
-];
-const copyEn = [
-  ["Capital, expertise and assets, on the path to creating value", "Investment advisor"],
-  ["Become a partner in building the future.", "Take your capital in the right direction."],
-  ["Discover opportunities for investment, project delivery and asset development.", "Tell us what you want, and we show you matching projects with a match percentage."],
-  ["Discover collaboration opportunities", "Get suggestions"],
+  { part: "Eyebrow", before: "Capital, expertise and assets, on the path to creating value", after: "Investment advisor" },
+  { part: "Headline", before: "Become a partner in building the future.", after: "Take your capital in the right direction." },
+  { part: "Subheadline", before: "Discover opportunities for investment, project delivery and asset development.", after: "Tell us what you want, and we’ll show you matching projects with a match percentage." },
+  { part: "Main action", before: "Discover collaboration opportunities", after: "Get suggestions" },
 ];
 
 const tokens = [
@@ -177,7 +169,7 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
               <span className="rounded-full border border-white/15 px-3 py-1 font-mono text-[0.72rem] uppercase tracking-[0.06em]">{cs.status}</span>
             </div>
             <h1 className="mt-8 font-display text-[clamp(2.75rem,7vw,5rem)] leading-[0.95]">
-              Investment Advisor <span className={cn("block text-[0.55em] text-white/60", vazir.className)} dir="rtl">سرمایه‌گزین</span>
+              Investment Advisor
             </h1>
             <p className="mt-6 max-w-3xl font-display text-2xl text-white/85 leading-snug sm:text-4xl">{cs.tagline}</p>
           </Reveal>
@@ -247,9 +239,8 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
           <Reveal>
             <p className="font-mono text-[#7fe0de] text-[0.78rem] uppercase tracking-[0.06em]"><span className="text-white">02</span> — The brief</p>
             <blockquote className="mt-8 max-w-5xl font-display text-[clamp(1.9rem,4vw,3rem)] leading-[1.1]">
-              “Ask investors what they have and what they want, then show them the projects that fit. Very professional, and right for investors.”
+              Design an investment advisor that learns what an investor brings and expects, then answers with the projects that fit, with the clarity and polish serious investors expect.
             </blockquote>
-            <p className={cn("mt-6 text-lg text-white/60", vazir.className)} dir="rtl">«خیلی حرفه‌ای، لوکس و مناسب برای سرمایه‌گذاران»</p>
           </Reveal>
           <RevealGroup className="mt-16 grid gap-6 md:grid-cols-3">
             {[
@@ -277,10 +268,10 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
               <p className="font-display text-[clamp(3.5rem,9vw,7rem)] leading-none">4 → 0</p>
               <p className="mt-3 text-paper/70 dark:text-ink-soft">steps between arriving and seeing a project</p>
             </div>
-            <p className={cn("text-xl leading-relaxed lg:col-span-7", vazir.className)} dir="rtl">
-              «کاربر قبل از دیدن هر پروژه باید ۴ مرحله و ۱۵ تا ۲۵ فیلد را پر کند»
-              <span className="mt-3 block font-sans text-base text-paper/60 dark:text-ink-soft" dir="ltr">“Before seeing any project, the user has to complete 4 steps and 15 to 25 fields.” From the audit.</span>
-            </p>
+            <div className="lg:col-span-7">
+              <p className="font-mono text-[0.72rem] text-paper/60 uppercase tracking-[0.06em] dark:text-ink-soft">Key finding</p>
+              <p className="mt-3 font-display text-2xl leading-snug">Before seeing a single project, a visitor had to complete four steps and 15 to 25 fields, most of them optional but presented as required.</p>
+            </div>
           </Reveal>
           <RevealGroup className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {audit.map((a) => (
@@ -328,7 +319,7 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
       <section className="border-rule border-t bg-paper-2/60 py-24">
         <div className={wrap}>
           <Chapter label="Words" n="06" title="From “discover opportunities” to “get suggestions”.">
-            <p>The old hero spoke about the company. The new one speaks to the visitor and tells them exactly what happens next.</p>
+            <p>The original hero spoke about the company. The new one speaks to the visitor and states exactly what happens next. The interface is in Persian; the copy is shown here in English.</p>
           </Chapter>
           <Reveal className="mt-14 overflow-hidden rounded-2xl border border-rule bg-paper">
             <div className="grid grid-cols-[7rem_1fr_1fr] bg-ink px-6 py-3 font-mono text-[0.72rem] text-paper uppercase tracking-[0.06em] dark:bg-paper-2 dark:text-ink">
@@ -336,17 +327,11 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
               <span>Before</span>
               <span>After</span>
             </div>
-            {copy.map((c, i) => (
+            {copy.map((c) => (
               <div className="grid grid-cols-[7rem_1fr_1fr] items-start gap-4 border-rule border-t px-6 py-5" key={c.part}>
                 <span className="font-mono text-[0.72rem] text-ink-soft uppercase">{c.part}</span>
-                <div>
-                  <p className={cn("text-ink-soft", vazir.className)} dir="rtl">{c.before}</p>
-                  <p className="mt-1 text-ink-soft/80 text-sm">{copyEn[i][0]}</p>
-                </div>
-                <div>
-                  <p className={cn("font-medium", vazir.className)} dir="rtl">{c.after}</p>
-                  <p className="mt-1 text-ink-soft text-sm">{copyEn[i][1]}</p>
-                </div>
+                <p className="text-ink-soft">{c.before}</p>
+                <p className="font-medium">{c.after}</p>
               </div>
             ))}
           </Reveal>
@@ -369,7 +354,7 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
       <section className="bg-[#06302f] py-24 text-white">
         <div className={wrap}>
           <Chapter dark label="Visual system" n="08" title="Less green, more meaning.">
-            <p>The first versions were too green and “read as AI output”. Green was cut back to actions, text became neutral charcoal, and a blue took over selection, focus and data.</p>
+            <p>The early palette leaned too heavily on green and felt generic. Teal was reserved for primary actions, text moved to a neutral charcoal, and a blue took over selection, focus and data.</p>
           </Chapter>
           <RevealGroup className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {tokens.map((t) => (
@@ -421,7 +406,7 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
               ["Nov 10–11", "A short flow: basic information, results, advanced filter beside them."],
               ["Nov 14", "Three live hero alternatives; the compass hero with the Iran map was chosen."],
               ["Nov 15", "Compare page, colour roles, and a QA pass that restored 73 sample projects."],
-              ["Nov 16", "Intake page removed so results open straight away. Final name: Sarmayeh-Gozin."],
+              ["Nov 16", "Intake page removed so results open straight away. Final product name chosen."],
             ].map(([d, b]) => (
               <RevealItem as="li" className="bg-paper p-6" key={d}>
                 <p className="font-mono text-sm" style={{ color: TEAL_TEXT }}>{d}</p>
