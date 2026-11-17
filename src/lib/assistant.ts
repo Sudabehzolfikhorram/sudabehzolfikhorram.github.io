@@ -403,8 +403,8 @@ export const intents: Intent[] = [
     entity: true,
     strong: ["algonet", "الگونت", "algonet.ai"],
     answer: {
-      en: "At Algonet (full-time) I design B2B products for Iranian and international clients, several used by more than 5,000 people: Atlas, monitoring systems, ERP modules and data-heavy dashboards. I build new products from zero and audit live ones to fix where users struggle, on a custom design system I built and maintain. I also designed Algonet’s brand identity and I’m creating its brand book.",
-      fa: "در الگونت (تمام‌وقت) محصولات B2B برای مشتری‌های ایرانی و بین‌المللی طراحی می‌کنم که چند تا از آن‌ها بیش از ۵٬۰۰۰ کاربر دارند: اطلس، سیستم‌های مانیتورینگ، ماژول‌های ERP و داشبوردهای پرداده. محصول جدید را از صفر می‌سازم و محصولات لایو را آدیت می‌کنم تا جاهایی را که کاربر گیر می‌کند درست کنم؛ همه روی دیزاین‌سیستم اختصاصی‌ای که خودم ساخته‌ام و نگه می‌دارم. هویت بصری الگونت را هم طراحی کرده‌ام و الان برندبوکش را می‌سازم.",
+      en: "At Algonet (full-time) I’m a product and brand designer. I design B2B platforms for large companies with 200+ employees, for Iranian and international clients: Atlas, monitoring systems, ERP modules and data-heavy dashboards. I build new products from zero and audit live ones to fix where users struggle, on a custom design system I built and maintain. On the brand side, I designed Algonet’s visual identity, brand book, brochure and the environmental identity for the office.",
+      fa: "در الگونت (تمام‌وقت) پروداکت و برند دیزاینرم. پلتفرم‌های B2B برای شرکت‌های بزرگ با بیش از ۲۰۰ نفر پرسنل، برای مشتری‌های ایرانی و بین‌المللی طراحی می‌کنم: اطلس، سیستم‌های مانیتورینگ، ماژول‌های ERP و داشبوردهای پرداده. محصول جدید را از صفر می‌سازم و محصولات لایو را آدیت می‌کنم تا جاهایی را که کاربر گیر می‌کند درست کنم؛ همه روی دیزاین‌سیستم اختصاصی‌ای که خودم ساخته‌ام و نگه می‌دارم. در بخش برند هم هویت بصری، برندبوک، بروشور و هویت محیطی دفتر الگونت را طراحی کرده‌ام.",
     },
   },
   {
@@ -420,8 +420,8 @@ export const intents: Intent[] = [
     id: "branding",
     strong: ["branding", "brand", "logo", "visual identity", "identity", "graphic design", "environmental", "برندینگ", "برند", "لوگو", "هویت بصری", "گرافیک", "بروشور", "پترن"],
     answer: {
-      en: "Yes, out of curiosity: I designed Algonet’s visual identity (logo, pattern, colour, typography and brochure) and I’m building its brand book; I’ve also done campaign visuals. Product design is still my main craft.",
-      fa: "بله، از سر علاقه: هویت بصری الگونت (لوگو، پترن، رنگ، تایپوگرافی و بروشور) را طراحی کرده‌ام و الان برندبوکش را می‌سازم؛ طراحی کمپین هم انجام داده‌ام. ولی تخصص اصلی‌ام پروداکت دیزاین است.",
+      en: "Yes, it’s part of my role at Algonet: I designed its visual identity (logo, pattern, colour and typography), its brand book, brochure and the environmental identity for the office. I’ve also done campaign visuals at Jaygah. Product design stays at the centre of my work.",
+      fa: "بله، بخشی از نقشم در الگونت است: هویت بصری (لوگو، پترن، رنگ و تایپوگرافی)، برندبوک، بروشور و هویت محیطی دفتر الگونت را طراحی کرده‌ام. در جایگاه هم طراحی کمپین انجام داده‌ام. ولی محور کارم پروداکت دیزاین است.",
     },
   },
 
@@ -507,8 +507,8 @@ export const intents: Intent[] = [
     id: "results",
     strong: ["results", "impact", "metrics", "kpi", "kpis", "numbers", "how many users", "outcome", "outcomes", "achievement", "achievements", "accomplishment", "measure success", "success metrics", "data driven", "data-driven", "نتیجه", "نتایج", "دستاورد", "دستاوردها", "چند کاربر", "تعداد کاربر", "موفقیت", "سنجش"],
     answer: {
-      en: "Kudos is live with real companies; at ArvanCloud alone around 500 people use it, and an A/B test validated its home redesign. Remeet, which I designed, won at Tehran Design Week. At Algonet, several of the products I design are used by more than 5,000 people, and Atlas went from brief to live in two to three days.",
-      fa: "کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در ابرآروان حدود ۵۰۰ نفر کاربرش هستند و ریدیزاین صفحه‌ی اصلی‌اش با تست A/B تأیید شد. ریمیت، که طراحی‌اش با من بود، در هفته‌ی دیزاین تهران برنده شد. در الگونت چند تا از محصولاتی که طراحی می‌کنم بیش از ۵٬۰۰۰ کاربر دارند و اطلس در دو سه روز از بریف به نسخه‌ی لایو رسید.",
+      en: "Kudos is live with real companies; at ArvanCloud alone around 500 people use it, and an A/B test validated its home redesign. Remeet, which I designed, won at Tehran Design Week. At Algonet, I design platforms for large companies with 200+ employees, and Atlas went from brief to live in two to three days.",
+      fa: "کودوس در شرکت‌های واقعی استفاده می‌شود؛ فقط در ابرآروان حدود ۵۰۰ نفر کاربرش هستند و ریدیزاین صفحه‌ی اصلی‌اش با تست A/B تأیید شد. ریمیت، که طراحی‌اش با من بود، در هفته‌ی دیزاین تهران برنده شد. در الگونت برای شرکت‌های بزرگ با بیش از ۲۰۰ نفر پرسنل طراحی می‌کنم و اطلس در دو سه روز از بریف به نسخه‌ی لایو رسید.",
     },
   },
   {

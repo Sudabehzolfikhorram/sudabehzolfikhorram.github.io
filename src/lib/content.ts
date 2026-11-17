@@ -86,15 +86,18 @@ export type Role = {
 // From the resume and Sudabeh's own account of each role.
 export const experience: Role[] = [
   {
-    company: "Algonet", title: "Product Designer", type: "Full-time", mode: "On-site", start: "2026-04", end: null,
+    company: "Algonet", title: "Product & Brand Designer", type: "Full-time", mode: "On-site", start: "2026-04", end: null,
     summary: "Atlas: an AI platform that reads how a company really works.",
-    about: "I design Atlas, which analyses a company’s emails, chats and workflows and suggests a better way to run them. Alongside it: dashboards, operational tools and a custom design system with production-ready components. I also shaped Algonet’s visual identity: logo, pattern and brochure.",
-    cases: [{ slug: "atlas", label: "Atlas" }],
+    about: "Product design for B2B platforms built for large companies with 200+ employees: monitoring systems, ERP modules and data-heavy dashboards, from new products to redesigns of live ones. I design Atlas, an AI platform that analyses how a company works and suggests simpler processes, and maintain a custom design system with production-ready components. On the brand side, I designed Algonet’s visual identity, brand book, brochure and the environmental identity for the office.",
+    cases: [
+      { slug: "atlas", label: "Atlas" },
+      { slug: "investment-advisor", label: "Investment Advisor" },
+    ],
   },
   {
-    company: "AzMan", logo: "azman", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-10", end: "2026-09",
+    company: "AzMan", logo: "azman", title: "Product Designer", type: "Full-time", mode: "Remote", start: "2025-10", end: "2026-09",
     summary: "Three connected products: a marketplace, a field tool and the ERP behind them.",
-    about: "AzMan is the marketplace where customers find services. Hamgam Saz is the tool the field experts work and communicate in. The ERP runs both, from roles and permissions to contracts and documents.",
+    about: "I designed AzMan, a services marketplace, end to end, along with the two tools that run it, as one connected system. In the marketplace, customers describe what they need, compare experts and follow a request to completion. In Hamgam Saz, field experts’ call reports, follow-ups and contact history stay in sync. In the ERP, roles, access levels and scopes decide who can see and approve what, with documents and contracts in one place.",
     cases: [
       { slug: "azman", label: "AzMan" },
       { slug: "azman-erp", label: "ERP" },
@@ -104,27 +107,27 @@ export const experience: Role[] = [
   {
     company: "Novin Host", logo: "novinhost", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2026-06", end: "2026-09",
     summary: "A redesign for a 15-year-old hosting brand.",
-    about: "A redesign that makes Novin Host feel current and easier to choose from, without customers feeling it changed. I redesigned the main pages before the collaboration ended in September 2026.",
+    about: "A redesign that makes Novin Host feel current and easier to choose from, without customers feeling it changed: services first, an easier way to choose a server location, and one consistent visual system. I redesigned the main pages before the collaboration ended in September 2026.",
     cases: [{ slug: "novinhost", label: "Novin Host" }],
     link: { label: "novinhost.org", href: "https://www.novinhost.org/" },
   },
   {
     company: "Kaaryar Studio", logo: "kaaryar", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-09", end: "2026-01",
     summary: "A website redesign for a social-impact design studio.",
-    about: "A deliberately simple redesign within tight client constraints: clearer structure, better storytelling and accessibility, on a small custom design system.",
+    about: "A redesign for a social-impact studio that puts Kaaryar graduates on real client projects. I restructured the site so each of its four pages has one clear job, built a mood board, style board and compact design system on the studio’s brand, and designed every section mobile first.",
     cases: [{ slug: "kaaryar", label: "Kaaryar Studio" }],
     link: { label: "Live site: studio.kaaryar.ir", href: "https://studio.kaaryar.ir/" },
   },
   {
-    company: "Tamdid", logo: "tamdid", title: "Product Designer", type: "Project-based", mode: "Remote", start: "2025-08", end: "2026-06",
+    company: "Tamdid", logo: "tamdid", title: "Solo Product Designer", type: "Project-based", mode: "Remote", start: "2025-08", end: "2026-06",
     summary: "Solo designer on a fintech product, from idea to development.",
-    about: "Subscriptions, wallet and payments in one product, with gamification. Mobile first, then web. I designed it alone, end to end, with its own design system. It’s now in development.",
+    about: "Subscriptions, wallet and payments in one product. I designed it alone, from the first idea to development: mobile first, then web in light and dark themes, with light gamification that keeps users on top of their renewals and a custom design system shared by mobile and web.",
     cases: [{ slug: "tamdid", label: "Tamdid" }],
   },
   {
     company: "Novaday", title: "Product Designer", type: "Full-time", mode: "Hybrid", start: "2024-09", end: "2025-06",
     summary: "Kudos, an HR platform, and Remeet, an award-winning access system.",
-    about: "On Kudos, an HR and employee-engagement platform, I documented flows and page logic for engineering and refined the UI with PM and QA. Remeet (first called Access) is a multilingual access and meeting system with fingerprint and RFID check-in and Outlook sync; it won at Tehran Design Week. Across both: the design system, UI kit and variables on a Tailwind base, plus benchmarks, competitor analysis, feature lists and usability testing.",
+    about: "On Kudos, an employee-recognition and HR platform, I redesigned the home from a dashboard into a social feed, designed the employee side and HR admin, and documented every page’s flows and logic for engineering with PM and QA. Remeet (first called Access) is a multilingual access and meeting system with fingerprint and RFID check-in and Outlook sync; it won at Tehran Design Week. Across both: the design system, UI kit and variables on a Tailwind base, plus benchmarks, competitor analysis, feature lists and usability testing.",
     cases: [
       { slug: "kudos", label: "Kudos" },
       { slug: "remeet", label: "Remeet" },
@@ -138,7 +141,7 @@ export const experience: Role[] = [
     link: { label: "Dribbble shot", href: "https://dribbble.com/shots/26236688-Business-Card-PLP" },
   },
   {
-    company: "Nan va Namak", title: "UI/UX Designer", type: "Own startup", mode: "Remote", start: "2024-06", end: "2024-09",
+    company: "Nan va Namak", title: "Co-founder & UI/UX Designer", type: "Own startup", mode: "Remote", start: "2024-06", end: "2024-09",
     summary: "Our own startup. It didn’t launch, and it made me a product designer.",
     about: "A few friends and I set out to launch a cooking platform of our own, covering research, product and back end. Another designer and I took it from idea to execution across web, tablet and mobile. It never launched, but it’s where I became a product designer.",
     cases: [{ slug: "nanvanamak", label: "Nan va Namak" }],
@@ -147,12 +150,12 @@ export const experience: Role[] = [
   {
     company: "Jaygah", title: "UI / Visual Designer", type: "Project-based", mode: "Remote", start: "2024-03", end: "2024-06",
     summary: "Campaign and social visuals for B2B and B2C brands.",
-    about: "Collaborated on B2B and B2C marketing packages and digital content, improving visual communication across campaigns and social touchpoints.",
+    about: "Designed B2B and B2C marketing packages and digital content for campaigns and social media.",
   },
   {
     company: "AlaaTV (Online School)", title: "Educational Content Designer", type: "Full-time", mode: "Hybrid", start: "2021-08", end: "2023-04",
     summary: "Where it started: designing learning content for exam prep.",
-    about: "My first design job, started the same term as my law degree: structuring and designing educational content for a university-entrance exam school, with clearer layouts and a better learning experience.",
+    about: "My first design role, started alongside my law degree: designing and structuring learning content for Iran’s university entrance exam (Konkur), so dense information was easy to follow.",
   },
 ];
 
@@ -172,7 +175,7 @@ export const skills = [
 // The same skills, grouped for the career page.
 export const skillGroups = [
   { title: "Thinking", items: ["Product strategy", "UX research & testing", "Information architecture", "User flows"] },
-  { title: "Making", items: ["Dashboard UX", "Interaction design", "Wireframing & prototyping", "Visual design", "Responsive web & mobile"] },
+  { title: "Making", items: ["Dashboard UX", "Interaction design", "Wireframing & prototyping", "Visual design", "Brand identity", "Responsive web & mobile"] },
   { title: "Scaling", items: ["Design systems", "AI-assisted design", "Developer handoff"] },
 ];
 
