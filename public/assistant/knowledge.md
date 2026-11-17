@@ -120,18 +120,18 @@ Don't paste these as URLs in the answer text; the site shows them as buttons und
 - Salary and rates: never give a figure. In her words: it's something to discuss together once you're in touch; it depends on the project's scale and duration, and gets settled in a meeting after talking it through. End by asking for their email or another way to reach them («می‌توانید ایمیل یا یک راه ارتباطی بفرستید تا با شما در ارتباط باشم؟»). (Forward.)
 
 ### Current work
-- Algonet (algonet.ai): full-time Product Designer since April 2026, on-site in Tehran. She designs B2B products for Iranian and international clients, many of them used by more than 5,000 people: new products built from zero (discovery, requirements, user flows, information architecture, developer-ready UI) and live products she improves by auditing the UX, finding where users struggle and redesigning the flows that matter most. Areas: Atlas, monitoring systems, ERP modules and data-heavy dashboards that turn complex data, roles and business rules into clear interfaces. She uses AI throughout to research faster, map and streamline business processes and reach a working product sooner. Built and maintains a custom design system with reusable patterns and production-ready components. Works closely with product and engineering from discovery to handoff. Team: three designers, plus a large front-end and back-end team.
-- Algonet brand: designed Algonet's visual identity (logo, brand pattern, colour, typography, print collateral such as the brochure), is creating the brand book for digital and print, and is designing its environmental identity (graphics for its physical spaces) so the brand feels the same on screen and in the office.
-- Earlier this year, alongside Algonet: AzMan (Oct 2025 – Sep 2026, project-based, remote; three connected products) and the Novin Host website redesign (Jun – Sep 2026). Both collaborations ended at the end of Shahrivar 1405 (September 2026), so talk about them in the past tense.
+- Algonet (algonet.ai): full-time Product & Brand Designer since April 2026, on-site in Tehran. She designs B2B platforms for large companies with 200+ employees, for Iranian and international clients: new products built from zero (discovery, requirements, user flows, information architecture, developer-ready UI) and live products she improves by auditing the UX, finding where users struggle and redesigning the flows that matter most. Areas: Atlas, monitoring systems, ERP modules and data-heavy dashboards that turn complex data, roles and business rules into clear interfaces. She uses AI throughout to research faster, map and streamline business processes and reach a working product sooner. Built and maintains a custom design system with reusable patterns and production-ready components. Works closely with product and engineering from discovery to handoff. Team: three designers, plus a large front-end and back-end team.
+- Algonet brand: designed Algonet's visual identity (logo, brand pattern, colour, typography, print collateral such as the brochure), created the brand book for digital and print, and designed its environmental identity (graphics for its physical spaces) so the brand feels the same on screen and in the office.
+- Earlier this year, alongside Algonet: AzMan (Oct 2025 – Sep 2026, full-time, remote; three connected products) and the Novin Host website redesign (Jun – Sep 2026). Both collaborations ended at the end of Shahrivar 1405 (September 2026), so talk about them in the past tense.
 - If asked "where does she work now" or "her latest project", the main answer is Algonet and Atlas.
 - How she ran them side by side (until September 2026): Algonet is full-time and on-site; AzMan and Novin Host were remote, so they had her evening hours and never overlapped. Each project fed the other: what she learned on one, she brought to the next.
 
 ### Career, newest first (CV)
-- Algonet · Product Designer · Full-time (on-site) · Apr 2026 – present. Atlas, dashboards, operational tools, custom design system, brand identity.
+- Algonet · Product & Brand Designer · Full-time (on-site) · Apr 2026 – present. Atlas, B2B platforms for companies with 200+ employees, dashboards, ERP modules, custom design system; visual identity, brand book, brochure, environmental identity.
 - Novin Host · Product Designer · Remote · Jun – Sep 2026. Redesign of a 15-year-old hosting brand's website.
-- AzMan · Product Designer · Project-based, remote · Oct 2025 – Sep 2026. AzMan marketplace, Hamgam Saz, ERP.
+- AzMan Platform · Product Designer · Full-time, remote · Oct 2025 – Sep 2026. AzMan marketplace, Hamgam Saz, ERP.
 - Kaaryar Studio · Product Designer · Freelance, remote · Sep 2025 – Jan 2026. Full website redesign + compact design system. Now live at studio.kaaryar.ir, close to her final design.
-- Tamdid · Product Designer (solo) · Freelance, remote · Aug 2025 – Jun 2026. Fintech product, idea to development. Design completed; in development.
+- Tamdid · Solo Product Designer · Freelance, remote · Aug 2025 – Jun 2026. Fintech product, idea to development. Design completed; in development.
 - Novaday · Product Designer · Full-time, hybrid · Sep 2024 – Jun 2025. Kudos and Remeet, on a Tailwind-based design system. Benchmarks, competitor analysis, feature lists, usability testing.
 - ChapAgha · UI/UX Designer · Project-based, remote · Dec 2024 – Jan 2025. Redesigned the responsive product listing page for business cards (online printing): clearer layout, stronger mobile usability. On Dribbble.
 - Nan va Namak · Co-founder & UI/UX Designer · Pre-launch startup, remote · Jun – Sep 2024. Cooking platform.
@@ -178,7 +178,7 @@ Don't paste these as URLs in the answer text; the site shows them as buttons und
 - Team: two designers (she was one), a PM, a back-end developer, two front-end developers, and a software engineer who built the Remeet device.
 - Won at Tehran Design Week in December 2025, after she had moved on from Novaday; the winning product was her design. Full case study coming soon.
 
-**AzMan (Oct 2025 – Sep 2026, project-based, remote): three connected products, all designed by her**
+**AzMan (Oct 2025 – Sep 2026, full-time, remote): three connected products, all designed by her**
 - AzMan marketplace (web and mobile): customers describe a service they need, compare experts and follow the request to completion.
 - Hamgam Saz (web and mobile): the tool AzMan's field experts work in: call reports, follow-ups, contact history and privacy workflows, all synchronised and traceable.
 - ERP (web): personnel, roles and access levels, operational scopes, documents, contracts, guarantees and permissions. What happens in the marketplace shows up in Hamgam Saz for the expert and in the ERP for the organisation.
@@ -207,7 +207,7 @@ Don't paste these as URLs in the answer text; the site shows them as buttons und
 - Accessibility: designs with it in mind; checks contrast, readability and states with several AI tools.
 - RTL and multilingual: mostly Persian RTL products, plus multilingual ones (Remeet) and English versions (Tamdid).
 - Dark mode: Tamdid has light and dark themes from the same tokens.
-- Branding: out of curiosity, yes (Algonet's logo, pattern and brochure; campaign visuals at Jaygah). Product design stays her main craft.
+- Branding: yes, part of her role at Algonet (visual identity, brand book, brochure, environmental identity); campaign visuals at Jaygah. Product design stays at the centre of her work.
 
 ### Tools
 - Daily: Figma and FigJam.
@@ -222,7 +222,7 @@ Don't paste these as URLs in the answer text; the site shows them as buttons und
 - AI: her thinking partner, not her designer. She uses it to research faster, compare directions, draft UX copy and prototype; the decisions stay hers.
 - Design philosophy (her words): a design has to work for two people at once: the user, who needs it to be easy, and the business, which needs it to deliver. When both are happy, and she enjoyed the way there, the job is done right.
 - Pressure: every project has its hard part, so she won't pick one "hardest project". What tests her most is extreme time pressure, like Atlas (live in 2 to 3 days). She gets through it with a tight plan, AI as a partner and plenty of persistence.
-- Results she can point to: Kudos live with real companies (around 500 people at ArvanCloud alone), and its home redesign validated by an A/B test; Remeet won at Tehran Design Week (December 2025); Algonet products, many used by more than 5,000 people; Atlas from brief to live in 2 to 3 days; Tamdid’s design complete and in development; Kaaryar Studio’s redesign live at studio.kaaryar.ir.
+- Results she can point to: Kudos live with real companies (around 500 people at ArvanCloud alone), and its home redesign validated by an A/B test; Remeet won at Tehran Design Week (December 2025); Algonet platforms for large companies with 200+ employees; Atlas from brief to live in 2 to 3 days; Tamdid’s design complete and in development; Kaaryar Studio’s redesign live at studio.kaaryar.ir.
 
 ### Strengths the work shows (use as evidence, not as her quotes)
 - Turning dense rules into clear flows: law background; permission matrices and roles in the AzMan ERP; wallets and payment order in Tamdid.

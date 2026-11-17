@@ -172,7 +172,7 @@ export const skills = [
 // The same skills, grouped for the career page.
 export const skillGroups = [
   { title: "Thinking", items: ["Product strategy", "UX research & testing", "Information architecture", "User flows"] },
-  { title: "Making", items: ["Dashboard UX", "Interaction design", "Wireframing & prototyping", "Visual design", "Responsive web & mobile"] },
+  { title: "Making", items: ["Dashboard UX", "Interaction design", "Wireframing & prototyping", "Visual design", "Brand identity", "Responsive web & mobile"] },
   { title: "Scaling", items: ["Design systems", "AI-assisted design", "Developer handoff"] },
 ];
 
