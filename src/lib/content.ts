@@ -89,7 +89,10 @@ export const experience: Role[] = [
     company: "Algonet", title: "Product & Brand Designer", type: "Full-time", mode: "On-site", start: "2026-04", end: null,
     summary: "Atlas: an AI platform that reads how a company really works.",
     about: "Product design for B2B platforms built for large companies with 200+ employees: monitoring systems, ERP modules and data-heavy dashboards, from new products to redesigns of live ones. I design Atlas, an AI platform that analyses how a company works and suggests simpler processes, and maintain a custom design system with production-ready components. On the brand side, I designed Algonet’s visual identity, brand book, brochure and the environmental identity for the office.",
-    cases: [{ slug: "atlas", label: "Atlas" }],
+    cases: [
+      { slug: "atlas", label: "Atlas" },
+      { slug: "investment-advisor", label: "Investment Advisor" },
+    ],
   },
   {
     company: "AzMan", logo: "azman", title: "Product Designer", type: "Full-time", mode: "Remote", start: "2025-10", end: "2026-09",

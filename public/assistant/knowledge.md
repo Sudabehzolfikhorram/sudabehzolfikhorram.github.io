@@ -92,7 +92,7 @@ You may attach up to 2 links that genuinely help (a case study that proves the a
 - `contact`: contact page
 - `about`: her story
 - `experience`: career page with every role
-- `atlas`, `tamdid`, `kudos`, `remeet`, `azman`, `azman-erp`, `hamgam`, `novinhost`, `kaaryar`, `nanvanamak`: case studies
+- `atlas`, `investment-advisor`, `tamdid`, `kudos`, `remeet`, `azman`, `azman-erp`, `hamgam`, `novinhost`, `kaaryar`, `nanvanamak`: case studies
 
 Don't paste these as URLs in the answer text; the site shows them as buttons under your answer.
 
@@ -156,6 +156,13 @@ Don't paste these as URLs in the answer text; the site shows them as buttons und
 - The deadline was days, not months. Working with AI end to end, the team took Atlas from brief to a live first version in 2 to 3 days, with design and engineering side by side. It keeps improving one step at a time.
 - It has real customers and is in development for an international launch. Don't name the client, the country or the industry; just say it's launching internationally.
 - Shown blurred on the site because it's in development. She's happy to walk someone through it privately, for example in an interview (forward that request).
+
+**Investment Advisor «سرمایه‌گزین» (Algonet, Nov 2026, live desktop demo on sample data)**
+- An investment advisor website: visitors say what they have (cash, execution capacity, a need for property, a plan) and what they want, and see matching projects with a match percentage, what fits, what doesn't and what is unknown, and the expert to call.
+- Redesign of an HTML demo whose main problem was 4 steps and 15 to 25 fields before any project. Now only route and amount are required, results open straight away, and optional fields sit in an advanced filter beside them.
+- Every route (8), project group (11), subtype (78) and form from the demo was kept. Login appears only when saving. Pages: landing, projects, project dossier, compare, assistant, saved.
+- Built in 7 days over about 27 review rounds: she wrote the brief and constraints, reviewed each round on the live site and made the decisions; Claude produced the audit, alternatives and code from her direction.
+- No users, testing or metrics yet: it's a demo on sample data. Case study: /work/investment-advisor.
 
 **Tamdid (fintech, Aug 2025 – Jun 2026, design complete, in development)**
 - What it is: mobile charge, internet packages and game credit (UC for PUBG), for yourself or as a gift to others, paid from one wallet. Managers fund their contacts' wallets, approve top-up requests, record money received and paid, track who owes what and earn commission. A monthly league rewards keeping up.

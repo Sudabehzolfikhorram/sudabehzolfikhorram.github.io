@@ -7,7 +7,7 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 import type { ScreenId } from "@/components/case/mockups";
 
-export type Layout = "split" | "duo" | "journey" | "editorial" | "system" | "novin" | "brief" | "kaaryar" | "atlas" | "tamdid" | "kudos";
+export type Layout = "split" | "duo" | "journey" | "editorial" | "system" | "novin" | "brief" | "kaaryar" | "atlas" | "tamdid" | "kudos" | "advisor";
 
 export type CaseStudy = {
   slug: string;
@@ -118,6 +118,34 @@ const all: CaseStudy[] = [
     ],
     peek: [{ label: "Home" }],
     confidential: true,
+  },
+  {
+    slug: "investment-advisor",
+    name: "Investment Advisor",
+    layout: "advisor",
+    hue: "#00ADAB",
+    tagline: "From four steps and twenty fields to a list of projects that fit you.",
+    summary:
+      "An investment advisor for Algonet: visitors say what they have and what they want, and see matching projects with a match percentage, an explanation and a person to call. I redesigned it from an HTML demo, keeping every route, field and flow while cutting the path to the first project from four steps to none.",
+    category: "Fintech · Investment platform · Algonet",
+    period: { start: "2026-11", end: "2026-11" },
+    status: "Live demo",
+    meta: { role: "Product Designer", engagement: "Algonet · Full-time", platform: "Desktop web (RTL, Persian)", tools: ["Claude", "Next.js", "shadcn", "Iconsax"] },
+    cover: { image: `${BASE}/work/advisor/thumb.webp`, alt: "The redesigned investment advisor landing: a prompt field beside an Iran map of projects" },
+    thumbnail: { image: `${BASE}/work/advisor/thumb.webp`, alt: "The redesigned investment advisor landing: a prompt field beside an Iran map of projects" },
+    context: "Before seeing any project, visitors had to complete 4 steps and 15 to 25 fields.",
+    scope: ["Information architecture", "Landing page", "Results & filters", "Project dossier", "Compare", "Assistant"],
+    highlights: [
+      { title: "Results first", body: "Only route and amount are required; results open straight away with an advanced filter beside them." },
+      { title: "Nothing dropped", body: "Every route, group, subtype and form from the demo was kept, with better components." },
+      { title: "Explained matches", body: "Each project shows what fits, what doesn’t and what is unknown." },
+    ],
+    screens: [],
+    facts: [
+      { value: "4 → 0", label: "Steps before the first project" },
+      { value: "8", label: "Routes kept" },
+      { value: "7 days", label: "Brief to live demo" },
+    ],
   },
   {
     slug: "remeet",
@@ -387,7 +415,7 @@ const all: CaseStudy[] = [
 ];
 
 // The order projects appear in: the three lead projects, then the rest.
-const ORDER = ["atlas", "tamdid", "kudos", "remeet", "azman", "azman-erp", "hamgam", "novinhost", "kaaryar", "nanvanamak"];
+const ORDER = ["atlas", "investment-advisor", "tamdid", "kudos", "remeet", "azman", "azman-erp", "hamgam", "novinhost", "kaaryar", "nanvanamak"];
 export const caseStudies = [...all].sort((a, b) => ORDER.indexOf(a.slug) - ORDER.indexOf(b.slug));
 
 export const getCaseStudy = (slug: string) => caseStudies.find((c) => c.slug === slug);

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Breadcrumb, MoreProjects, ScreensNote } from "@/components/case/blocks";
+import { AdvisorLayout } from "@/components/case/advisor/advisor-layout";
 import { AtlasLayout } from "@/components/case/layouts/atlas";
 import { BriefLayout } from "@/components/case/layouts/brief";
 import { DuoLayout } from "@/components/case/layouts/duo";
@@ -27,6 +28,7 @@ const layouts: Record<Layout, (p: { cs: CaseStudy }) => React.ReactNode> = {
   atlas: AtlasLayout,
   tamdid: TamdidLayout,
   kudos: KudosLayout,
+  advisor: AdvisorLayout,
 };
 
 export function generateStaticParams() {
