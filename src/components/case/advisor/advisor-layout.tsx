@@ -7,7 +7,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import type { CaseStudy } from "@/lib/case-studies";
 import { cn } from "@/lib/utils";
 import { wrap } from "../blocks";
-import { BeforeAfter, type PageTab, PageSwitcher, TwinScroll } from "../novin/interactive";
+import { BeforeAfter, TwinScroll } from "../novin/interactive";
 import { ReadingProgress } from "../novin/reading-progress";
 
 const IMG = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/work/advisor`;
@@ -308,68 +308,177 @@ const explored = [
   { what: "Merged categories", built: 1, kept: 0, result: "Tried to shorten the lists, reversed because it lost data." },
 ];
 
-const pages: PageTab[] = [
+type Walk = {
+  id: string;
+  label: string;
+  headline: string;
+  before?: { img: string; w: number; h: number; alt: string } | { quote: string; note: string } | { none: string };
+  after: { img: string; w: number; h: number; alt: string };
+  was: string;
+  saw: string;
+  tried?: string;
+  decision: string;
+};
+
+const walk: Walk[] = [
   {
-    id: "home",
-    label: "Landing",
-    src: `${IMG}/after-full.webp`,
-    width: 1200,
-    height: 4830,
-    notes: [
-      "One prompt field in the hero, with a typing hint: say what you want in your own words.",
-      "Eight routes up front, with a “what do you bring?” switch that highlights the ones that fit.",
-      "The 11 project groups of the chosen route, with photos and subtype badges.",
-      "“Why are we showing you these projects?” explains the matching in three steps.",
-    ],
+    id: "hero",
+    label: "Hero",
+    headline: "From a slogan to a question.",
+    before: { img: "b-hero", w: 1200, h: 593, alt: "The demo hero: a stock photo with the slogan “Become a partner in building the future”" },
+    after: { img: "a-hero", w: 1200, h: 743, alt: "The redesigned hero: one prompt field beside an Iran map of sample projects" },
+    was: "A stock photo, a slogan in the company’s voice, and below it three separate doors: explore, advise, introduce.",
+    saw: "The first screen spoke about the company, not to the investor, and never said what happens after the click.",
+    tried: "A fill-in-the-blank sentence with the four basic fields, then the assistant as the default tab, then three live alternatives side by side: a compass, a live sentence and a transparent dossier.",
+    decision: "The compass: one prompt field with a typing hint, and real projects on a map of Iran. The earlier hero felt busy, so the trust row under it was removed.",
+  },
+  {
+    id: "routes",
+    label: "Routes",
+    headline: "Eight doors, and a hint which one is yours.",
+    before: { img: "b-routes", w: 1200, h: 608, alt: "The demo’s grid of ten photo cards mixing routes, services and funds" },
+    after: { img: "a-routes", w: 1200, h: 858, alt: "Eight route cards with a “what do you bring?” switch and a stats strip" },
+    was: "Ten photo cards of equal weight, mixing ways to invest with services, funds and ideas.",
+    saw: "Routes and services looked the same, and nothing told a visitor which card fitted what they had.",
+    tried: "Plain white cards, which were rejected because they looked like a wireframe.",
+    decision: "Eight routes as the main categories, single-select because each brings its own filters, plus a “what do you bring?” switch that lights up the routes that fit.",
+  },
+  {
+    id: "groups",
+    label: "Project groups",
+    headline: "Show the catalogue instead of hiding it in a list.",
+    before: { img: "b-groups", w: 1200, h: 512, alt: "The demo’s questionnaire step with dropdowns for project group and type" },
+    after: { img: "a-groups", w: 1200, h: 725, alt: "The groups of the chosen route as a list, with a large photo and subtype badges for the one in focus" },
+    was: "11 groups and 78 subtypes, visible only by opening two dependent dropdowns in step two of a questionnaire.",
+    saw: "Nobody could see what was on offer before committing to a route and a step.",
+    tried: "Merging categories to shorten the lists, reversed because it lost data.",
+    decision: "Every group of the chosen route on the landing, with a photo and its subtypes as badges. Nothing merged, nothing dropped.",
   },
   {
     id: "projects",
-    label: "Projects",
-    src: `${IMG}/projects.webp`,
-    width: 1440,
-    height: 2251,
-    notes: [
-      "Opens straight on results: route, domain, location and budget sit as four filters in the top bar.",
-      "The advanced filter sits beside the results and applies instantly, with removable chips.",
-      "Filters can be saved and come back later, with sorting and 12 projects per page.",
-    ],
+    label: "Project cards",
+    headline: "Four facts, one photo, one glance.",
+    before: { img: "b-projects", w: 1200, h: 675, alt: "The demo’s project cards with a placeholder illustration, long text and two buttons each" },
+    after: { img: "a-projects", w: 1200, h: 783, alt: "The new project cards: a real photo under a dark overlay, four key facts and icon actions" },
+    was: "The same placeholder drawing on every card, a paragraph of text and two full-width buttons.",
+    saw: "Every project looked alike, and the numbers an investor compares were buried in sentences.",
+    decision: "A real photo per project type under one black-and-grey overlay, four facts in a fixed grid (entry, payback, risk, location), and save and compare as icons.",
   },
   {
-    id: "detail",
+    id: "why",
+    label: "Why these projects",
+    headline: "A match percentage has to explain itself.",
+    before: { quote: "“Showing an item does not mean a financial fit or real acceptance.”", note: "The demo’s only word on how projects were picked: a disclaimer above the list." },
+    after: { img: "a-why", w: 1200, h: 487, alt: "A three-step explainer: your conditions are checked against every project, each suggestion shows its reasons, the next step is clear" },
+    was: "No explanation of how projects were chosen, only a disclaimer.",
+    saw: "Once every card carried a match percentage, people would need to know where the number came from to trust it.",
+    decision: "A three-step explainer on the landing, and on every project what fits, what doesn’t and what is unknown. Unknown is never zero: it scores half and gets a “needs review” label.",
+  },
+  {
+    id: "dossier",
     label: "Project dossier",
-    src: `${IMG}/detail.webp`,
-    width: 1440,
-    height: 5855,
-    notes: [
-      "A full page, not a dialog, with one section order for every project type.",
-      "Money over time, return compared with similar projects, risk and the full dossier.",
-      "Empty fields read “not recorded” once, in one group, instead of scattered blanks.",
-      "It ends with the expert’s name and mobile (blurred here), or a guide file.",
-    ],
-  },
-  {
-    id: "compare",
-    label: "Compare",
-    src: `${IMG}/compare.webp`,
-    width: 1440,
-    height: 1209,
-    notes: [
-      "Two to four projects side by side, with charts and a table.",
-      "A small chat answers questions about the selection, built only from the data on screen.",
-    ],
+    headline: "A dossier deserves a page, not a pop-up.",
+    before: { img: "b-detail", w: 860, h: 800, alt: "The demo’s project details in a dialog, with “not recorded” repeated across fields" },
+    after: { img: "a-detail", w: 1200, h: 917, alt: "The new project page: identity, money over time and return compared with similar projects" },
+    was: "A dialog over the list, with “not recorded” scattered across the fields.",
+    saw: "Investors read, compare and come back to a dossier; a pop-up squeezes it and every blank adds noise.",
+    decision: "A full page with one section order for every project type. Empty fields are grouped once, and the page ends with the expert’s name and mobile, or a guide file.",
   },
   {
     id: "assistant",
     label: "Assistant",
-    src: `${IMG}/assistant.webp`,
-    width: 1440,
-    height: 900,
-    notes: [
-      "Describe your conditions in a sentence and get up to ten projects, each with a match percentage.",
-      "Saved conditions can be attached to a message instead of typed again.",
-    ],
+    headline: "Say it in a sentence instead of four steps.",
+    before: { img: "b-assistant", w: 1200, h: 750, alt: "The demo’s guided questionnaire starting with photo cards for each route" },
+    after: { img: "assistant", w: 1440, h: 900, alt: "The assistant: a conversation that returns up to ten projects with match percentages" },
+    was: "A guided questionnaire: pick a route, then four steps and 15 to 25 fields before a single project.",
+    saw: "Most of those fields were optional, yet the flow made them feel required, and results came last.",
+    tried: "A four-step intake, then a one-sentence intake, then steps again. All three were built, and in round 26 the intake page was removed.",
+    decision: "Results open straight away, and the assistant is there for people who would rather describe what they want. Saved conditions can be attached instead of typed again.",
+  },
+  {
+    id: "compare",
+    label: "Compare",
+    headline: "Added along the way: put projects side by side.",
+    before: { none: "Not in the demo. Added in round 20 at the owner’s request." },
+    after: { img: "compare", w: 1440, h: 1209, alt: "The compare page: two to four projects with charts, a table and a small chat" },
+    was: "No way to look at two projects together except switching back and forth.",
+    saw: "Choosing between a shortlist is the step right before calling an expert.",
+    decision: "Two to four projects with charts and a table, and a small chat whose answers come only from the data on screen.",
   },
 ];
+
+const WalkShot = ({ src, w, h, alt, muted }: { src: string; w: number; h: number; alt: string; muted?: boolean }) => (
+  <img alt={alt} className={cn("w-full rounded-xl border border-rule bg-white", muted ? "opacity-90 saturate-[0.6]" : "shadow-[0_30px_60px_-30px_rgb(0_60_60/0.35)]")} height={h} loading="lazy" src={src} width={w} />
+);
+
+const ThinkingChain = ({ s }: { s: Walk }) => {
+  const steps = [
+    { k: "It was", v: s.was },
+    { k: "What I saw", v: s.saw },
+    ...(s.tried ? [{ k: "Tried and dropped", v: s.tried }] : []),
+    { k: "Decision", v: s.decision, strong: true },
+  ];
+  return (
+    <ol className={cn("grid gap-3", steps.length === 4 ? "md:grid-cols-4" : "md:grid-cols-3")}>
+      {steps.map((st, i) => (
+        <li className={cn("relative rounded-2xl p-5", st.strong ? "text-white" : "bg-paper ring-1 ring-rule")} key={st.k} style={st.strong ? { background: TEAL_TEXT } : undefined}>
+          <p className={cn("flex items-center gap-2 font-mono text-[0.68rem] uppercase tracking-[0.06em]", st.strong ? "text-white/75" : "text-ink-soft")}>
+            <span className={cn("grid size-5 place-items-center rounded-full text-[0.62rem]", st.strong ? "bg-white/20" : "bg-paper-2")}>{i + 1}</span>
+            {st.k}
+          </p>
+          <p className={cn("mt-3 text-sm leading-relaxed", st.strong ? "" : "text-ink-soft")}>{st.v}</p>
+          {i < steps.length - 1 && (
+            <svg aria-hidden className="-right-3 -translate-y-1/2 absolute top-1/2 z-10 hidden size-6 rounded-full bg-paper p-1 text-ink-soft ring-1 ring-rule md:block" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 16 16"><path d="M6 4l4 4-4 4" /></svg>
+          )}
+        </li>
+      ))}
+    </ol>
+  );
+};
+
+const Walkthrough = () => (
+  <>
+    <nav aria-label="Sections in this walkthrough" className="sticky top-16 z-20 mt-12 -mx-2 flex gap-2 overflow-x-auto rounded-full bg-paper/85 px-2 py-2 backdrop-blur">
+      {walk.map((s, i) => (
+        <a className="shrink-0 rounded-full px-3 py-1.5 text-ink-soft text-sm ring-1 ring-rule transition hover:text-ink" href={`#walk-${s.id}`} key={s.id}>
+          <span className="font-mono text-[0.7rem]" style={{ color: TEAL_TEXT }}>{String(i + 1).padStart(2, "0")}</span> {s.label}
+        </a>
+      ))}
+    </nav>
+    <ol className="mt-10 space-y-28">
+      {walk.map((s, i) => (
+        <li className="scroll-mt-32" id={`walk-${s.id}`} key={s.id}>
+          <Reveal className="flex flex-wrap items-baseline gap-x-5 gap-y-2 border-rule border-t pt-6">
+            <span className="font-mono text-sm" style={{ color: TEAL_TEXT }}>{String(i + 1).padStart(2, "0")} · {s.label}</span>
+            <h3 className="font-display text-3xl leading-tight sm:text-4xl">{s.headline}</h3>
+          </Reveal>
+          <div className="mt-8 grid items-start gap-6 lg:grid-cols-12">
+            <Reveal className="lg:col-span-5">
+              <p className="mb-3 flex items-center gap-2 font-mono text-[0.72rem] text-ink-soft uppercase"><span className="size-2 rounded-full bg-ink-soft/50" />Before · HTML demo</p>
+              {s.before && "img" in s.before && <WalkShot alt={s.before.alt} h={s.before.h} muted src={`${IMG}/walk/${s.before.img}.webp`} w={s.before.w} />}
+              {s.before && "quote" in s.before && (
+                <figure className="rounded-xl border border-rule bg-white p-6 text-[#2F3533]">
+                  <blockquote className="font-display text-xl leading-snug">{s.before.quote}</blockquote>
+                  <figcaption className="mt-3 text-[#5b6361] text-sm">{s.before.note}</figcaption>
+                </figure>
+              )}
+              {s.before && "none" in s.before && (
+                <div className="grid aspect-[4/3] place-items-center rounded-xl border border-rule border-dashed bg-paper-2/60 p-6 text-center text-ink-soft text-sm">{s.before.none}</div>
+              )}
+            </Reveal>
+            <Reveal className="lg:col-span-7" delay={0.08}>
+              <p className="mb-3 flex items-center gap-2 font-mono text-[0.72rem] uppercase" style={{ color: TEAL_TEXT }}><span className="size-2 rounded-full" style={{ background: TEAL }} />After · redesign</p>
+              <WalkShot alt={s.after.alt} h={s.after.h} src={s.after.img.startsWith("a-") ? `${IMG}/walk/${s.after.img}.webp` : `${IMG}/${s.after.img}.webp`} w={s.after.w} />
+            </Reveal>
+          </div>
+          <Reveal className="mt-6">
+            <ThinkingChain s={s} />
+          </Reveal>
+        </li>
+      ))}
+    </ol>
+  </>
+);
 
 /* ───────────── page ───────────── */
 
@@ -563,15 +672,13 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
         </div>
       </section>
 
-      {/* 07 — Key pages */}
+      {/* 07 — Section by section */}
       <section className="py-24">
         <div className={wrap}>
-          <Chapter label="The flow" n="07" title="From a question to a person to call.">
-            <p>The landing is the first step of a short flow: results, a dossier for each project, a way to compare, and an assistant for people who would rather just describe what they want.</p>
+          <Chapter label="Section by section" n="07" title="From a question to a person to call.">
+            <p>Each part of the flow, before and after, and the line of thinking in between: what it was, what I noticed, what we tried and dropped, and the decision that shaped the final design.</p>
           </Chapter>
-          <div className="mt-12">
-            <PageSwitcher accent={TEAL_TEXT} altSuffix="page" pages={pages} />
-          </div>
+          <Walkthrough />
         </div>
       </section>
 
