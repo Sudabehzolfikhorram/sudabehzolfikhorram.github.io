@@ -145,23 +145,6 @@ const DropdownMock = ({ fields }: { fields: [string, string][] }) => (
   </div>
 );
 
-const earlyMix = [
-  { hex: "#0F766E", w: 30 },
-  { hex: "#083B37", w: 22 },
-  { hex: "#00ADAB", w: 16 },
-  { hex: "#F3F7F6", w: 18, dark: true },
-  { hex: "#FF785A", w: 8 },
-  { hex: "#262C33", w: 6 },
-];
-const finalMix = [
-  { hex: "#F8FAFC", w: 46, dark: true },
-  { hex: "#FFFFFF", w: 20, dark: true },
-  { hex: "#2F3533", w: 16 },
-  { hex: "#00ADAB", w: 8, dark: true },
-  { hex: "#1E40AF", w: 7 },
-  { hex: "#E0603F", w: 3 },
-];
-
 const roles: { hex: string; ratio: number; role: string; rule: string; sample: React.ReactNode }[] = [
   {
     hex: "#00ADAB",
@@ -216,55 +199,110 @@ const roles: { hex: string; ratio: number; role: string; rule: string; sample: R
 ];
 
 const rejected = [
-  { hex: "#0F766E", note: "The starting teal. Too green, and it read as AI output." },
-  { hex: "#083B37", note: "Dark green surfaces made whole sections green." },
-  { hex: "#FF785A", note: "A coral accent; competed with the teal." },
-  { hex: "#262C33", note: "Charcoal surfaces and black buttons felt heavy." },
-  { hex: "#1E3A8A", note: "This blue read as near-black beside charcoal text." },
+  { hex: "#0F766E", note: "The starting primary, rounds 1 to 25. Too green; it read as AI output." },
+  { hex: "#FF785A", note: "Coral in place of black, round 10. Gone within a day." },
+  { hex: "#083B37", note: "Dark green surfaces, rounds 11 to 17." },
+  { hex: "#262C33", note: "Charcoal-slate surfaces, rounds 18 to 26. Black buttons ruled out in round 27." },
+  { hex: "#1E3A8A", note: "Round 23’s blue. It read as near-black beside charcoal text." },
 ];
 
-const week: { dow: string; day: number; items?: string[] }[] = [
-  { dow: "Tue", day: 10, items: ["Brief", "Audit: 8 routes, 11 groups, ~10 forms"] },
-  { dow: "Wed", day: 11, items: ["Short flow: basics, results, filter beside them"] },
-  { dow: "Thu", day: 12 },
-  { dow: "Fri", day: 13 },
-  { dow: "Sat", day: 14, items: ["Three live hero alternatives", "Compass hero chosen"] },
-  { dow: "Sun", day: 15, items: ["Compare page", "Colour roles", "QA restores 73 projects"] },
-  { dow: "Mon", day: 16, items: ["Intake page removed", "Name chosen", "Latest live version"] },
+type Seg = { from: number; to: number; hex: string; label: string; light?: boolean };
+const colourRows: { role: string; segs: Seg[] }[] = [
+  { role: "Primary", segs: [{ from: 0, to: 25, hex: "#0F766E", label: "#0F766E" }, { from: 26, to: 27, hex: "#00ADAB", label: "#00ADAB" }] },
+  { role: "Text", segs: [{ from: 0, to: 13, hex: "#3f7f78", label: "green-tinted" }, { from: 14, to: 27, hex: "#2F3533", label: "#2F3533 charcoal" }] },
+  { role: "Dark surfaces", segs: [{ from: 10, to: 10, hex: "#0b0b0b", label: "black" }, { from: 11, to: 17, hex: "#083B37", label: "#083B37" }, { from: 18, to: 26, hex: "#262C33", label: "#262C33" }, { from: 27, to: 27, hex: "#005D5C", label: "teal" }] },
+  { role: "Accent", segs: [{ from: 0, to: 0, hex: "#C9A24B", label: "gold" }, { from: 10, to: 11, hex: "#FF785A", label: "coral" }, { from: 17, to: 19, hex: "#EE7B52", label: "orange" }, { from: 20, to: 27, hex: "#E0603F", label: "warnings only" }] },
+  { role: "Secondary", segs: [{ from: 20, to: 22, hex: "#2152E0", label: "cobalt" }, { from: 23, to: 25, hex: "#1E3A8A", label: "#1E3A8A" }, { from: 26, to: 27, hex: "#1E40AF", label: "#1E40AF" }] },
 ];
-
-const milestones = [
-  { r: 2, t: "Fill-in-the-blank hero with the four basics" },
-  { r: 16, t: "Map, teaser and stats sections removed" },
-  { r: 19, t: "Kickoff and ideation procedure" },
-  { r: 20, t: "Compare page added" },
-  { r: 21, t: "Three landing concepts" },
-  { r: 26, t: "Intake removed; results open first" },
-  { r: 27, t: "Latest live version" },
+const days = [
+  { d: "Nov 10", from: 0, to: 7 },
+  { d: "Nov 11", from: 8, to: 11 },
+  { d: "Nov 14", from: 12, to: 15 },
+  { d: "Nov 15", from: 16, to: 21 },
+  { d: "Nov 16", from: 22, to: 27 },
 ];
+const pct = (n: number) => `${(n / 28) * 100}%`;
 
-const RoundTrack = () => (
-  <div className="mt-8">
-    <div className="relative h-3">
-      <div className="absolute inset-x-0 top-1/2 h-px bg-rule" />
-      {Array.from({ length: 27 }, (_, i) => (
-        <span className="-translate-x-1/2 absolute top-0 h-3 w-px bg-rule" key={i} style={{ left: `${(i / 26) * 100}%` }} />
-      ))}
-      {milestones.map((m) => (
-        <span className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 size-3 rounded-full ring-4 ring-paper" key={m.r} style={{ left: `${((m.r - 1) / 26) * 100}%`, background: m.r >= 26 ? TEAL_TEXT : BLUE }} />
-      ))}
+const ColourTimeline = () => (
+  <div className="overflow-x-auto">
+    <div className="min-w-[640px]">
+      <div className="grid grid-cols-[7.5rem_1fr] items-end">
+        <span />
+        <div className="relative h-6">
+          {days.map((d) => (
+            <span className="absolute bottom-0 border-white/25 border-s ps-1.5 font-mono text-[0.62rem] text-white/55" key={d.d} style={{ left: pct(d.from) }}>{d.d}</span>
+          ))}
+        </div>
+      </div>
+      <div className="mt-2 space-y-2">
+        {colourRows.map((row) => (
+          <div className="grid grid-cols-[7.5rem_1fr] items-center" key={row.role}>
+            <span className="text-sm text-white/70">{row.role}</span>
+            <div className="relative h-9 rounded-md bg-white/[0.04]">
+              {days.map((d, i) => i > 0 && <span aria-hidden className="absolute inset-y-0 border-white/10 border-s" key={d.d} style={{ left: pct(d.from) }} />)}
+              {row.segs.map((g) => (
+                <span
+                  className="absolute inset-y-1 flex items-center overflow-hidden rounded px-1.5 font-mono text-[0.6rem] text-white/85"
+                  key={g.label + g.from}
+                  style={{ left: pct(g.from), width: `calc(${pct(g.to - g.from + 1)} - 2px)`, background: g.hex }}
+                  title={`${g.label}, rounds ${g.from === 0 ? "v1" : g.from}–${g.to}`}
+                >
+                  {g.to - g.from >= 2 ? g.label : ""}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="mt-2 grid grid-cols-[7.5rem_1fr]">
+        <span />
+        <div className="relative h-4 font-mono text-[0.6rem] text-white/40">
+          {[0, 5, 10, 15, 20, 25, 27].map((r) => (
+            <span className="absolute" key={r} style={{ left: pct(r + 0.5), transform: "translateX(-50%)" }}>{r === 0 ? "v1" : `R${r}`}</span>
+          ))}
+        </div>
+      </div>
     </div>
-    <div className="mt-2 flex justify-between font-mono text-[0.65rem] text-ink-soft"><span>Round 1</span><span>Round 27</span></div>
-    <ol className="mt-6 grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
-      {milestones.map((m) => (
-        <li className="flex gap-3 text-sm" key={m.r}>
-          <span className="w-8 shrink-0 font-mono" style={{ color: m.r >= 26 ? TEAL_TEXT : BLUE }}>R{m.r}</span>
-          <span className="text-ink-soft">{m.t}</span>
-        </li>
-      ))}
-    </ol>
   </div>
 );
+
+const week: { dow: string; day: number; rounds?: number; items?: string[] }[] = [
+  { dow: "Tue", day: 10, rounds: 7, items: ["Brief, audit, version 1", "Taxonomy restored", "Real map borders", "QA restores 73 projects"] },
+  { dow: "Wed", day: 11, rounds: 4, items: ["Assistant becomes a chat", "Services redesigned", "Coral, then dark green"] },
+  { dow: "Thu", day: 12 },
+  { dow: "Fri", day: 13 },
+  { dow: "Sat", day: 14, rounds: 4, items: ["“Change only what I name”", "Three heroes; compass chosen", "Text moves to charcoal"] },
+  { dow: "Sun", day: 15, rounds: 6, items: ["“Looks like a wireframe” reset", "Compare page, blue secondary", "Three landing concepts"] },
+  { dow: "Mon", day: 16, rounds: 6, items: ["Name chosen", "Intake page removed", "Final colours; round 27 live"] },
+];
+
+const turning = [
+  { r: "R2", day: "Nov 10", t: "Improve, never remove", before: "Groups merged from 11 to 10 and subtypes from 76 to 54 to shorten the lists.", after: "The full taxonomy restored; a QA pass in round 7 brought back 73 missing projects.", why: "It set the rule for the whole project: improving never means deleting." },
+  { r: "R2", day: "Nov 10", t: "Basic information, then results", before: "Results depended on a form in the hero.", after: "A short basic-information step, routes as the main categories, main filters on top.", why: "It fixed the order of the whole flow." },
+  { r: "R4–6", day: "Nov 10", t: "No dots on the map", before: "A dotted map of Iran.", after: "Real province and county borders, and a landmark photo for each province.", why: "The map became a working control and the strongest visual." },
+  { r: "R9", day: "Nov 11", t: "A chat that reads like one", before: "The assistant had a field on top and results below.", after: "A real chat with the composer at the bottom, quick replies and a save card.", why: "The assistant started to behave like a conversation." },
+  { r: "R10–11", day: "Nov 11", t: "The first colour rules", before: "Black surfaces, then coral.", after: "No black, no gold, orange only where needed, and a new name after the old one misread.", why: "The palette got its first constraints." },
+  { r: "R12", day: "Nov 14", t: "Change only what I name", before: "One round quietly flattened a budget chart nobody had mentioned.", after: "Every later round changed only what the review named.", why: "It changed how every remaining round was run." },
+  { r: "R13–14", day: "Nov 14", t: "Compass hero, charcoal text", before: "A busy hero and green text everywhere.", after: "The compass chosen from three ideas; text set in #2F3533 after a contrast check.", why: "The first screen and the reading colour were settled." },
+  { r: "R16–18", day: "Nov 15", t: "Not a wireframe, not AI output", before: "Uneven section titles and a heavy green tone.", after: "One rule for every section head, a blue-tinted background, black-and-grey photo overlays.", why: "It reset the visual direction to clean." },
+  { r: "R20", day: "Nov 15", t: "A second colour, a decision step", before: "Compare was a small bar; one colour family.", after: "A compare page with a data-grounded chat, and a blue for selection and data.", why: "It added the step between browsing and calling an expert." },
+  { r: "R24–26", day: "Nov 16", t: "Remove the step", before: "A one-sentence intake, then a step-by-step one.", after: "No intake: results open with four filters. #00ADAB and #1E40AF chosen.", why: "The search for the right first step ended by removing it." },
+];
+
+const principles = [
+  { p: "Improve, never remove", n: "Every field, form and flow of the demo stays; components get better.", r: "Brief" },
+  { p: "Invent nothing", n: "No field or process that isn’t in the source.", r: "Nov 10" },
+  { p: "Fewest clicks", n: "The simplest component that saves a click wins.", r: "Brief" },
+  { p: "Open by default", n: "No registration wall; login only at the moment of saving.", r: "Brief" },
+  { p: "Change only what I name", n: "A review round touches exactly what it mentions.", r: "R12" },
+  { p: "Controlled colour", n: "More white; colour only where it means something.", r: "R2" },
+  { p: "Not a wireframe, not AI output", n: "Every surface has to look designed and specific.", r: "R16–23" },
+  { p: "Right to left, charts included", n: "Gauges, gradients and axes read the way Persian does.", r: "R15" },
+  { p: "Selected means obvious", n: "Every choice shows that it is chosen.", r: "R4" },
+  { p: "Think like an investor", n: "Simplify any flow an investor wouldn’t sit through.", r: "R18" },
+  { p: "Charts over paragraphs", n: "Where data can be drawn, draw it.", r: "R21" },
+  { p: "One structure everywhere", n: "Every dossier in the same order, whatever the project type.", r: "R25" },
+];
 
 const ReviewLoop = () => {
   const steps = ["Written feedback", "Build", "Deploy live", "Review live"];
@@ -302,137 +340,290 @@ const ReviewLoop = () => {
 };
 
 const explored = [
-  { what: "Hero ideas", built: 3, kept: 1, result: "Compass with the Iran map, chosen over a live sentence and a transparent dossier." },
-  { what: "Intake flows", built: 3, kept: 0, result: "Four steps, one sentence, steps again: all removed so results open first." },
-  { what: "Landing concepts", built: 3, kept: 0, result: "Girih, metro and dossier, built for comparison; work continued on the existing landing." },
+  { what: "Hero ideas", built: 3, kept: 1, result: "Round 13: compass, live sentence, transparent dossier. The compass stayed." },
+  { what: "Intake flows", built: 3, kept: 0, result: "Four steps, one sentence, steps again. All removed so results open first." },
+  { what: "Landing concepts", built: 3, kept: 0, result: "Girih, metro and dossier in round 21. No pick on record; work continued on the existing landing." },
+  { what: "Ideas lab", built: 4, kept: 0, result: "Four live prototypes in round 19. None adopted as built." },
+  { what: "Secondary blues", built: 4, kept: 1, result: "#2152E0, #0E53C8, #1E3A8A, then #1E40AF." },
+  { what: "Product names", built: 4, kept: 1, result: "Four names over the week; Sarmayeh-Gozin stayed." },
   { what: "Merged categories", built: 1, kept: 0, result: "Tried to shorten the lists, reversed because it lost data." },
 ];
 
+const names = [
+  { fa: "سرمایه‌نما", en: "Sarmayeh-Nama", note: "“capital view”", r: "v1", out: true },
+  { fa: "هم‌سرمایه", en: "Ham-Sarmayeh", note: "“co-capital”, but it read as hamsar, “spouse”", r: "R2", out: true },
+  { fa: "سرمایه‌نما", en: "Sarmayeh-Nama", note: "back again", r: "R11", out: true },
+  { fa: "سهم‌یاب", en: "Sahm-Yab", note: "“share finder”, proposed and declined", r: "R24", out: true },
+  { fa: "سرمایه‌گزین", en: "Sarmayeh-Gozin", note: "“capital chooser”", r: "R24", out: false },
+];
+
+type WShot = { img: string; w: number; h: number; alt: string };
 type Walk = {
   id: string;
   label: string;
   headline: string;
-  before?: { img: string; w: number; h: number; alt: string } | { quote: string; note: string } | { none: string };
-  after: { img: string; w: number; h: number; alt: string };
-  was: string;
-  saw: string;
-  tried?: string;
+  before: WShot | { quote: string; note: string } | { none: string };
+  after: WShot;
+  film?: { img: string; label: string }[];
+  versions: { r: number; t: string }[];
+  notes: { r: string; t: string }[];
+  dropped: string[];
   decision: string;
 };
+
+const W = (img: string, w: number, h: number, alt: string, dir = "walk"): WShot => ({ img: `${dir}/${img}`, w, h, alt });
 
 const walk: Walk[] = [
   {
     id: "hero",
     label: "Hero",
-    headline: "From a slogan to a question.",
-    before: { img: "b-hero", w: 1200, h: 593, alt: "The demo hero: a stock photo with the slogan “Become a partner in building the future”" },
-    after: { img: "a-hero", w: 1200, h: 743, alt: "The redesigned hero: one prompt field beside an Iran map of sample projects" },
-    was: "A stock photo, a slogan in the company’s voice, and below it three separate doors: explore, advise, introduce.",
-    saw: "The first screen spoke about the company, not to the investor, and never said what happens after the click.",
-    tried: "A fill-in-the-blank sentence with the four basic fields, then the assistant as the default tab, then three live alternatives side by side: a compass, a live sentence and a transparent dossier.",
-    decision: "The compass: one prompt field with a typing hint, and real projects on a map of Iran. The earlier hero felt busy, so the trust row under it was removed.",
+    headline: "One question, one field.",
+    before: W("b-hero", 1200, 593, "The demo hero: a stock photo with the slogan “Become a partner in building the future”"),
+    after: W("a-hero", 1200, 743, "The final hero: one prompt field beside an Iran map of sample projects"),
+    film: [
+      { img: "r01-hero", label: "Version 1 · Nov 10" },
+      { img: "r11-hero", label: "Round 11 · Nov 11" },
+      { img: "r20-hero", label: "Round 20 · Nov 15" },
+      { img: "r27-hero", label: "Round 27 · Nov 16" },
+    ],
+    versions: [
+      { r: 0, t: "Dark hero with a basic form and a dotted map" },
+      { r: 1, t: "A sentence with four dropdown blanks" },
+      { r: 2, t: "Assistant by default, one blank left" },
+      { r: 13, t: "Three alternatives side by side" },
+      { r: 14, t: "Compass hero chosen" },
+      { r: 26, t: "Final palette applied" },
+    ],
+    notes: [
+      { r: "R1", t: "Make the hero creative and different." },
+      { r: "R13", t: "The map works, but the content is busy and not creative. Give me three ideas that convey ease and confidence about investing." },
+      { r: "R14", t: "Keep the compass. Drop the “I’ll choose myself” option, the weak button label and the row underneath." },
+    ],
+    dropped: ["Dark form hero", "Four-blank sentence", "Live sentence hero", "Transparent dossier hero", "Trust row", "“Find” as the button"],
+    decision: "One headline, one sentence and one prompt field beside the map. The hero asks for one thing only.",
   },
   {
     id: "routes",
     label: "Routes",
-    headline: "Eight doors, and a hint which one is yours.",
-    before: { img: "b-routes", w: 1200, h: 608, alt: "The demo’s grid of ten photo cards mixing routes, services and funds" },
-    after: { img: "a-routes", w: 1200, h: 858, alt: "Eight route cards with a “what do you bring?” switch and a stats strip" },
-    was: "Ten photo cards of equal weight, mixing ways to invest with services, funds and ideas.",
-    saw: "Routes and services looked the same, and nothing told a visitor which card fitted what they had.",
-    tried: "Plain white cards, which were rejected because they looked like a wireframe.",
-    decision: "Eight routes as the main categories, single-select because each brings its own filters, plus a “what do you bring?” switch that lights up the routes that fit.",
+    headline: "Make the main doors look like doors.",
+    before: W("b-routes", 1200, 608, "The demo’s grid of ten photo cards mixing routes, services and funds"),
+    after: W("a-routes", 1200, 858, "Eight route cards with a “what do you bring?” switch and a stats strip"),
+    versions: [
+      { r: 0, t: "Route was one field in the hero form" },
+      { r: 2, t: "Eight route cards under the hero" },
+      { r: 16, t: "One row of badges, then +n" },
+      { r: 17, t: "Plain white cards, rejected the same day" },
+      { r: 18, t: "Icons on top, a live map for the stats" },
+      { r: 20, t: "“What do you bring?” switch" },
+      { r: 22, t: "Soft gradient, stats moved below" },
+      { r: 26, t: "Blue icon tiles and hover" },
+    ],
+    notes: [
+      { r: "R2", t: "It isn’t clear that these cards are the main categories." },
+      { r: "R16", t: "Client review: the design looks like a wireframe." },
+      { r: "R17", t: "Bring the earlier cards back. Only improve the badges and the spacing." },
+      { r: "R22", t: "Move the stats below, taking little space, and give the cards a touch of colour." },
+    ],
+    dropped: ["Plain white cards", "Stats as their own section", "Stats beside the title", "A bar-chart stats card", "Two-line titles"],
+    decision: "Eight routes on lightly coloured cards, one row of badges, a footer aligned to the bottom. A card should look designed and never grow with its content.",
   },
   {
     id: "groups",
     label: "Project groups",
-    headline: "Show the catalogue instead of hiding it in a list.",
-    before: { img: "b-groups", w: 1200, h: 512, alt: "The demo’s questionnaire step with dropdowns for project group and type" },
-    after: { img: "a-groups", w: 1200, h: 725, alt: "The groups of the chosen route as a list, with a large photo and subtype badges for the one in focus" },
-    was: "11 groups and 78 subtypes, visible only by opening two dependent dropdowns in step two of a questionnaire.",
-    saw: "Nobody could see what was on offer before committing to a route and a step.",
-    tried: "Merging categories to shorten the lists, reversed because it lost data.",
-    decision: "Every group of the chosen route on the landing, with a photo and its subtypes as badges. Nothing merged, nothing dropped.",
+    headline: "Show the hierarchy. Lose no category.",
+    before: W("b-groups", 1200, 512, "The demo’s questionnaire step with dropdowns for project group and type"),
+    after: W("a-groups", 1200, 725, "The groups of the chosen route as a list, with a large photo and subtype badges for the one in focus"),
+    versions: [
+      { r: 0, t: "Groups merged from 11 to 10, subtypes from 76 to 54" },
+      { r: 1, t: "Photo panels that open on hover" },
+      { r: 2, t: "All 11 groups and 78 subtypes restored" },
+      { r: 4, t: "Tied to the chosen route" },
+      { r: 13, t: "Neutral dark overlay instead of green" },
+      { r: 16, t: "Two rows of upright cards" },
+      { r: 17, t: "Back to the panels, rotated" },
+      { r: 22, t: "A list beside one photo panel" },
+    ],
+    notes: [
+      { r: "R2", t: "Merging the domains lost more than half of our data. Keep every process and flow." },
+      { r: "R4", t: "Nothing shows that these are subcategories of the main category." },
+      { r: "R16", t: "Upright cards, so the text stays horizontal and readable." },
+      { r: "R24", t: "Bigger type here: these are our main categories." },
+    ],
+    dropped: ["Merged taxonomy", "Vertical text in narrow panels", "Two-row card grid", "Green overlay", "Index numbers"],
+    decision: "The 11 groups of the chosen route as a list beside one photo panel with its subtypes. Route, then group, then subtype, and nothing merged.",
   },
   {
     id: "projects",
     label: "Project cards",
-    headline: "Four facts, one photo, one glance.",
-    before: { img: "b-projects", w: 1200, h: 675, alt: "The demo’s project cards with a placeholder illustration, long text and two buttons each" },
-    after: { img: "a-projects", w: 1200, h: 783, alt: "The new project cards: a real photo under a dark overlay, four key facts and icon actions" },
-    was: "The same placeholder drawing on every card, a paragraph of text and two full-width buttons.",
-    saw: "Every project looked alike, and the numbers an investor compares were buried in sentences.",
-    decision: "A real photo per project type under one black-and-grey overlay, four facts in a fixed grid (entry, payback, risk, location), and save and compare as icons.",
+    headline: "Subtract until only the choice is left.",
+    before: W("b-projects", 1200, 675, "The demo’s project cards with a placeholder illustration, long text and two buttons each"),
+    after: W("a-projects", 1200, 783, "The final project cards: a real photo under a dark overlay, four key facts and icon actions"),
+    versions: [
+      { r: 0, t: "Photo with a green overlay, a match ring and reason chips" },
+      { r: 3, t: "Lighter card, four key facts" },
+      { r: 9, t: "Photos rotate on hover" },
+      { r: 22, t: "The photo becomes the whole card" },
+      { r: 23, t: "Badge, mark and extra words removed" },
+    ],
+    notes: [
+      { r: "R2", t: "Good to carry Algonet’s identity, but it has gone too green." },
+      { r: "R3", t: "The card is too heavy. Show only the most important data." },
+      { r: "R22", t: "Let the photo be the frame, with a black layer and blur rising from the bottom." },
+      { r: "R23", t: "These designs have to get out of wireframe mode." },
+    ],
+    dropped: ["Green photo overlay", "Large match ring", "Reason chips", "“Newly added”", "“Within your budget”", "Tag badge", "The “A” mark", "Text compare button"],
+    decision: "The photo is the card, carrying the title and four facts. One image treatment became the site’s signature, and a card shows only what helps someone choose.",
   },
   {
     id: "why",
     label: "Why these projects",
-    headline: "A match percentage has to explain itself.",
+    headline: "Explain a match by showing it.",
     before: { quote: "“Showing an item does not mean a financial fit or real acceptance.”", note: "The demo’s only word on how projects were picked: a disclaimer above the list." },
-    after: { img: "a-why", w: 1200, h: 487, alt: "A three-step explainer: your conditions are checked against every project, each suggestion shows its reasons, the next step is clear" },
-    was: "No explanation of how projects were chosen, only a disclaimer.",
-    saw: "Once every card carried a match percentage, people would need to know where the number came from to trust it.",
-    decision: "A three-step explainer on the landing, and on every project what fits, what doesn’t and what is unknown. Unknown is never zero: it scores half and gets a “needs review” label.",
+    after: W("a-why", 1200, 487, "A three-step explainer beside a funnel that narrows the sample projects"),
+    versions: [
+      { r: 0, t: "A block of text from the demo" },
+      { r: 16, t: "Numbered steps beside a dark demo card" },
+      { r: 17, t: "A timeline with an animated stage" },
+      { r: 18, t: "A field of dots filtered step by step" },
+      { r: 22, t: "A white card with progress segments" },
+      { r: 24, t: "A live funnel, no step numbers" },
+    ],
+    notes: [
+      { r: "R16", t: "These cards aren’t clear. We don’t know what they are." },
+      { r: "R17", t: "Better, but the sample result pulls too much focus." },
+      { r: "R24", t: "Change the design of this sample entirely." },
+    ],
+    dropped: ["Dark demo card", "Explanatory badges", "Dot field", "Numbered steps"],
+    decision: "Three short steps beside a funnel. On every project, what fits, what doesn’t and what is unknown; unknown scores half and is marked “needs review”.",
+  },
+  {
+    id: "results",
+    label: "Projects page",
+    headline: "Ask less. Show sooner.",
+    before: W("b-groups", 1200, 512, "The demo’s questionnaire step that came before any results"),
+    after: W("new-results", 1440, 810, "The final projects page: four filters in a top bar and results straight away", "filters"),
+    versions: [
+      { r: 0, t: "Results fed by the hero form" },
+      { r: 2, t: "A basic-info step before results" },
+      { r: 5, t: "Real province borders, no dots" },
+      { r: 8, t: "Budget histogram" },
+      { r: 10, t: "Multi-select province and city" },
+      { r: 20, t: "Intake as one sentence" },
+      { r: 24, t: "Steps again, with the photo map" },
+      { r: 26, t: "Intake page deleted" },
+    ],
+    notes: [
+      { r: "R2", t: "First take basic information, then show results. Keep the main filters at the top, within reach." },
+      { r: "R20", t: "A different, creative process for each section, as long as it gets easier." },
+      { r: "R24", t: "This structure doesn’t suit our persona." },
+      { r: "R26", t: "Delete this page. Go straight to results, with four main filters in one bar." },
+    ],
+    dropped: ["Form in the hero", "Four-step intake", "One-sentence intake", "Map inside the location popover", "Dotted maps", "“Show farther projects” switch"],
+    decision: "Results open at once, with route, domain, location and budget on top and everything else beside them. Show projects first and let people narrow them.",
   },
   {
     id: "dossier",
     label: "Project dossier",
-    headline: "A dossier deserves a page, not a pop-up.",
-    before: { img: "b-detail", w: 860, h: 800, alt: "The demo’s project details in a dialog, with “not recorded” repeated across fields" },
-    after: { img: "a-detail", w: 1200, h: 917, alt: "The new project page: identity, money over time and return compared with similar projects" },
-    was: "A dialog over the list, with “not recorded” scattered across the fields.",
-    saw: "Investors read, compare and come back to a dossier; a pop-up squeezes it and every blank adds noise.",
-    decision: "A full page with one section order for every project type. Empty fields are grouped once, and the page ends with the expert’s name and mobile, or a guide file.",
+    headline: "Read the same way, every time.",
+    before: W("b-detail", 860, 800, "The demo’s project details in a dialog, with “not recorded” repeated across fields"),
+    after: W("a-detail", 1200, 917, "The final project page: a photo gallery, identity facts and the start of the dossier"),
+    versions: [
+      { r: 0, t: "A storytelling page with key numbers" },
+      { r: 2, t: "Every source field, empty ones marked" },
+      { r: 3, t: "The bold expert card returns" },
+      { r: 6, t: "Province outline with the county filled" },
+      { r: 9, t: "Entry steps as a roadmap" },
+      { r: 15, t: "A right-to-left risk gauge" },
+      { r: 21, t: "Return chart and peer comparison" },
+      { r: 25, t: "Same chapters for every project" },
+      { r: 27, t: "One fixed section order" },
+    ],
+    notes: [
+      { r: "Brief", t: "Highly readable, with storytelling, not text after text." },
+      { r: "R15", t: "This design is right-to-left; gradients in charts must respect that." },
+      { r: "R21", t: "Where a chart can be used, use one." },
+      { r: "R25", t: "Every project detail should share the same basic structure." },
+    ],
+    dropped: ["A timeline that looked draggable", "Large dotted location map", "Fact cards of uneven height", "“Data and income pattern” chart", "Dot plot of similar projects", "Chapter numbers"],
+    decision: "One section order for every project type, with a chart wherever the data allows. A dossier is read the same way each time, and an unknown value is shown as unknown.",
   },
   {
     id: "assistant",
     label: "Assistant",
-    headline: "Say it in a sentence instead of four steps.",
-    before: { img: "b-assistant", w: 1200, h: 750, alt: "The demo’s guided questionnaire starting with photo cards for each route" },
-    after: { img: "assistant", w: 1440, h: 900, alt: "The assistant: a conversation that returns up to ten projects with match percentages" },
-    was: "A guided questionnaire: pick a route, then four steps and 15 to 25 fields before a single project.",
-    saw: "Most of those fields were optional, yet the flow made them feel required, and results came last.",
-    tried: "A four-step intake, then a one-sentence intake, then steps again. All three were built, and in round 26 the intake page was removed.",
-    decision: "Results open straight away, and the assistant is there for people who would rather describe what they want. Saved conditions can be attached instead of typed again.",
+    headline: "Invite a sentence. Don’t explain yourself.",
+    before: W("b-assistant", 1200, 750, "The demo’s guided questionnaire, starting with photo cards for each route"),
+    after: W("assistant", 1440, 900, "The assistant: a conversation that returns up to ten projects with match percentages", "."),
+    versions: [
+      { r: 0, t: "A prompt and up to ten suggestions" },
+      { r: 9, t: "A real chat, composer at the bottom" },
+      { r: 13, t: "An “intelligent” look with reasoning steps" },
+      { r: 14, t: "Short title, saved conditions as a chip" },
+      { r: 17, t: "Green glow removed" },
+      { r: 20, t: "Understood conditions as chips" },
+      { r: 24, t: "Sides swapped for right-to-left" },
+    ],
+    notes: [
+      { r: "R9", t: "A field on top with answers below it doesn’t make sense as a flow." },
+      { r: "R14", t: "Too busy and full of text. At most a shortcut, like adding a skill." },
+      { r: "R24", t: "Answers on the left, my questions on the right." },
+    ],
+    dropped: ["Field on top, answers below", "Long welcome title", "Green background glow", "Messages on the wrong side"],
+    decision: "A plain chat with one short title and saved conditions one click away. The assistant invites a sentence instead of explaining itself.",
   },
   {
     id: "compare",
     label: "Compare",
-    headline: "Added along the way: put projects side by side.",
-    before: { none: "Not in the demo. Added in round 20 at the owner’s request." },
-    after: { img: "compare", w: 1440, h: 1209, alt: "The compare page: two to four projects with charts, a table and a small chat" },
-    was: "No way to look at two projects together except switching back and forth.",
-    saw: "Choosing between a shortlist is the step right before calling an expert.",
-    decision: "Two to four projects with charts and a table, and a small chat whose answers come only from the data on screen.",
+    headline: "Compare and ask in the same place.",
+    before: { none: "Not a page in the demo. A small compare bar came first, and the page was added in round 20." },
+    after: W("compare", 1440, 1209, "The compare page: two to four projects with charts, a table and a small chat", "."),
+    versions: [
+      { r: 5, t: "Compare up to three from a bottom bar" },
+      { r: 20, t: "Its own page, with a data-grounded chat" },
+      { r: 23, t: "Empty state and a sticky assistant column" },
+      { r: 24, t: "Chat sides swapped" },
+    ],
+    notes: [
+      { r: "R20", t: "Compare two to four projects, and talk with AI about them on the same page." },
+      { r: "R23", t: "Keep the assistant in a column that stays while scrolling, and start from an empty state, not four empty slots." },
+    ],
+    dropped: ["Four empty slots", "A compare tray at the bottom"],
+    decision: "Table, charts and assistant on one screen. Comparing and asking happen in the same place, right before calling an expert.",
   },
 ];
 
-const WalkShot = ({ src, w, h, alt, muted }: { src: string; w: number; h: number; alt: string; muted?: boolean }) => (
-  <img alt={alt} className={cn("w-full rounded-xl border border-rule bg-white", muted ? "opacity-90 saturate-[0.6]" : "shadow-[0_30px_60px_-30px_rgb(0_60_60/0.35)]")} height={h} loading="lazy" src={src} width={w} />
+const shotSrc = (img: string) => `${IMG}/${img.replace(/^\.\//, "")}.webp`;
+
+const WalkShot = ({ s, muted }: { s: WShot; muted?: boolean }) => (
+  <img alt={s.alt} className={cn("w-full rounded-xl border border-rule bg-white", muted ? "opacity-90 saturate-[0.6]" : "shadow-[0_30px_60px_-30px_rgb(0_60_60/0.35)]")} height={s.h} loading="lazy" src={shotSrc(s.img)} width={s.w} />
 );
 
-const ThinkingChain = ({ s }: { s: Walk }) => {
-  const steps = [
-    { k: "It was", v: s.was },
-    { k: "What I saw", v: s.saw },
-    ...(s.tried ? [{ k: "Tried and dropped", v: s.tried }] : []),
-    { k: "Decision", v: s.decision, strong: true },
-  ];
+const VersionTrack = ({ versions }: { versions: Walk["versions"] }) => {
+  const last = versions[versions.length - 1].r;
   return (
-    <ol className={cn("grid gap-3", steps.length === 4 ? "md:grid-cols-4" : "md:grid-cols-3")}>
-      {steps.map((st, i) => (
-        <li className={cn("relative rounded-2xl p-5", st.strong ? "text-white" : "bg-paper ring-1 ring-rule")} key={st.k} style={st.strong ? { background: TEAL_TEXT } : undefined}>
-          <p className={cn("flex items-center gap-2 font-mono text-[0.68rem] uppercase tracking-[0.06em]", st.strong ? "text-white/75" : "text-ink-soft")}>
-            <span className={cn("grid size-5 place-items-center rounded-full text-[0.62rem]", st.strong ? "bg-white/20" : "bg-paper-2")}>{i + 1}</span>
-            {st.k}
-          </p>
-          <p className={cn("mt-3 text-sm leading-relaxed", st.strong ? "" : "text-ink-soft")}>{st.v}</p>
-          {i < steps.length - 1 && (
-            <svg aria-hidden className="-right-3 -translate-y-1/2 absolute top-1/2 z-10 hidden size-6 rounded-full bg-paper p-1 text-ink-soft ring-1 ring-rule md:block" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 16 16"><path d="M6 4l4 4-4 4" /></svg>
-          )}
-        </li>
-      ))}
-    </ol>
+    <div>
+      <div className="relative mx-2 h-4">
+        <div className="absolute inset-x-0 top-1/2 h-px bg-rule" />
+        {Array.from({ length: 28 }, (_, i) => (
+          <span className="absolute top-1/2 h-1.5 w-px -translate-y-1/2 bg-rule" key={i} style={{ left: `${(i / 27) * 100}%` }} />
+        ))}
+        {versions.map((v, i) => (
+          <span
+            className="absolute top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full ring-4 ring-paper"
+            key={`${v.r}-${i}`}
+            style={{ left: `${(v.r / 27) * 100}%`, background: v.r === last ? TEAL_TEXT : BLUE, opacity: v.r === last ? 1 : 0.75 }}
+          />
+        ))}
+      </div>
+      <div className="mx-2 mt-1 flex justify-between font-mono text-[0.62rem] text-ink-soft"><span>v1 · Nov 10</span><span>Round 27 · Nov 16</span></div>
+      <ol className="mt-4 grid gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+        {versions.map((v, i) => (
+          <li className="flex gap-3 text-sm" key={`${v.r}-${i}`}>
+            <span className="w-9 shrink-0 font-mono text-xs leading-5" style={{ color: v.r === last ? TEAL_TEXT : BLUE }}>{v.r === 0 ? "v1" : `R${v.r}`}</span>
+            <span className={cn("leading-5", v.r === last ? "font-medium" : "text-ink-soft")}>{v.t}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 };
 
@@ -445,35 +636,92 @@ const Walkthrough = () => (
         </a>
       ))}
     </nav>
-    <ol className="mt-10 space-y-28">
+    <ol className="mt-10 space-y-32">
       {walk.map((s, i) => (
         <li className="scroll-mt-32" id={`walk-${s.id}`} key={s.id}>
           <Reveal className="flex flex-wrap items-baseline gap-x-5 gap-y-2 border-rule border-t pt-6">
             <span className="font-mono text-sm" style={{ color: TEAL_TEXT }}>{String(i + 1).padStart(2, "0")} · {s.label}</span>
             <h3 className="font-display text-3xl leading-tight sm:text-4xl">{s.headline}</h3>
           </Reveal>
+
+          {/* before / after */}
           <div className="mt-8 grid items-start gap-6 lg:grid-cols-12">
             <Reveal className="lg:col-span-5">
               <p className="mb-3 flex items-center gap-2 font-mono text-[0.72rem] text-ink-soft uppercase"><span className="size-2 rounded-full bg-ink-soft/50" />Before · HTML demo</p>
-              {s.before && "img" in s.before && <WalkShot alt={s.before.alt} h={s.before.h} muted src={`${IMG}/walk/${s.before.img}.webp`} w={s.before.w} />}
-              {s.before && "quote" in s.before && (
+              {"img" in s.before && <WalkShot muted s={s.before} />}
+              {"quote" in s.before && (
                 <figure className="rounded-xl border border-rule bg-white p-6 text-[#2F3533]">
                   <blockquote className="font-display text-xl leading-snug">{s.before.quote}</blockquote>
                   <figcaption className="mt-3 text-[#5b6361] text-sm">{s.before.note}</figcaption>
                 </figure>
               )}
-              {s.before && "none" in s.before && (
+              {"none" in s.before && (
                 <div className="grid aspect-[4/3] place-items-center rounded-xl border border-rule border-dashed bg-paper-2/60 p-6 text-center text-ink-soft text-sm">{s.before.none}</div>
               )}
             </Reveal>
             <Reveal className="lg:col-span-7" delay={0.08}>
-              <p className="mb-3 flex items-center gap-2 font-mono text-[0.72rem] uppercase" style={{ color: TEAL_TEXT }}><span className="size-2 rounded-full" style={{ background: TEAL }} />After · redesign</p>
-              <WalkShot alt={s.after.alt} h={s.after.h} src={s.after.img.startsWith("a-") ? `${IMG}/walk/${s.after.img}.webp` : `${IMG}/${s.after.img}.webp`} w={s.after.w} />
+              <p className="mb-3 flex items-center gap-2 font-mono text-[0.72rem] uppercase" style={{ color: TEAL_TEXT }}><span className="size-2 rounded-full" style={{ background: TEAL }} />After · round 27</p>
+              <WalkShot s={s.after} />
             </Reveal>
           </div>
-          <Reveal className="mt-6">
-            <ThinkingChain s={s} />
+
+          {/* filmstrip of rendered versions */}
+          {s.film && (
+            <Reveal className="mt-8">
+              <p className="font-mono text-[0.72rem] text-ink-soft uppercase tracking-[0.06em]">How it got here · rendered from the git history</p>
+              <div className="mt-3 grid grid-cols-2 gap-3 lg:grid-cols-4">
+                {s.film.map((f, j) => (
+                  <figure key={f.img}>
+                    <div className="relative">
+                      <img alt={`The hero at ${f.label}`} className={cn("w-full rounded-lg border bg-white", j === s.film!.length - 1 ? "border-transparent ring-2" : "border-rule")} height={750} loading="lazy" src={`${IMG}/versions/${f.img}.webp`} style={j === s.film!.length - 1 ? { ["--tw-ring-color" as string]: TEAL } : undefined} width={1200} />
+                      {j < s.film!.length - 1 && (
+                        <svg aria-hidden className="-right-[0.6rem] -translate-y-1/2 absolute top-1/2 z-10 hidden size-5 rounded-full bg-paper p-0.5 text-ink-soft ring-1 ring-rule lg:block" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 16 16"><path d="M6 4l4 4-4 4" /></svg>
+                      )}
+                    </div>
+                    <figcaption className="mt-2 font-mono text-[0.68rem] text-ink-soft">{f.label}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </Reveal>
+          )}
+
+          {/* versions on a 27-round axis */}
+          <Reveal className="mt-8 rounded-2xl border border-rule bg-paper p-5 sm:p-6">
+            <p className="mb-4 font-mono text-[0.72rem] text-ink-soft uppercase tracking-[0.06em]">{s.versions.length} versions across the rounds</p>
+            <VersionTrack versions={s.versions} />
           </Reveal>
+
+          {/* thinking */}
+          <div className="mt-4 grid gap-4 lg:grid-cols-12">
+            <Reveal className="rounded-2xl border border-rule bg-paper p-5 sm:p-6 lg:col-span-7">
+              <p className="font-mono text-[0.72rem] text-ink-soft uppercase tracking-[0.06em]">What I saw in review</p>
+              <ol className="relative mt-5 space-y-5 border-rule border-s ps-6">
+                {s.notes.map((n) => (
+                  <li className="relative" key={n.r + n.t}>
+                    <span aria-hidden className="-start-[1.85rem] absolute top-1.5 size-2.5 rounded-full ring-4 ring-paper" style={{ background: BLUE }} />
+                    <p className="font-mono text-[0.7rem]" style={{ color: BLUE }}>{n.r}</p>
+                    <p className="mt-1 leading-relaxed">{n.t}</p>
+                  </li>
+                ))}
+              </ol>
+            </Reveal>
+            <div className="grid gap-4 lg:col-span-5">
+              <Reveal className="rounded-2xl border border-rule border-dashed bg-paper-2/50 p-5 sm:p-6" delay={0.06}>
+                <p className="font-mono text-[0.72rem] text-ink-soft uppercase tracking-[0.06em]">Built, then dropped</p>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {s.dropped.map((d) => (
+                    <li className="rounded-full bg-paper px-3 py-1 text-ink-soft text-sm line-through decoration-ink-soft/50 ring-1 ring-rule" key={d}>{d}</li>
+                  ))}
+                </ul>
+              </Reveal>
+              <Reveal delay={0.12}>
+                <div className="h-full rounded-2xl p-5 text-white sm:p-6" style={{ background: TEAL_TEXT }}>
+                  <p className="font-mono text-[0.72rem] text-white/75 uppercase tracking-[0.06em]">The decision</p>
+                  <p className="mt-3 font-display text-xl leading-snug">{s.decision}</p>
+                </div>
+              </Reveal>
+            </div>
+          </div>
         </li>
       ))}
     </ol>
@@ -669,6 +917,23 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
               </div>
             ))}
           </Reveal>
+          <Reveal className="mt-10 rounded-2xl border border-rule bg-paper p-6 sm:p-8">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <p className="font-mono text-[0.72rem] text-ink-soft uppercase tracking-[0.06em]">Naming, in four attempts</p>
+              <p className="text-ink-soft text-sm">A name has to read right in Persian at a glance.</p>
+            </div>
+            <ol className="mt-6 grid gap-3 sm:grid-cols-5">
+              {names.map((n, i) => (
+                <li className={cn("relative rounded-xl p-4", n.out ? "bg-paper-2/60" : "text-white")} key={n.r + n.en} style={n.out ? undefined : { background: TEAL_TEXT }}>
+                  <p className={cn("font-mono text-[0.65rem]", n.out ? "text-ink-soft" : "text-white/75")}>{n.r}</p>
+                  <p className={cn("mt-2 font-display text-2xl", n.out && "text-ink-soft line-through decoration-ink-soft/40")} dir="rtl" lang="fa">{n.fa}</p>
+                  <p className="mt-1 text-sm">{n.en}</p>
+                  <p className={cn("mt-1 text-xs leading-snug", n.out ? "text-ink-soft" : "text-white/80")}>{n.note}</p>
+                  {i < names.length - 1 && <span aria-hidden className="-right-2.5 -translate-y-1/2 absolute top-1/2 z-10 hidden text-ink-soft sm:block">›</span>}
+                </li>
+              ))}
+            </ol>
+          </Reveal>
         </div>
       </section>
 
@@ -676,7 +941,7 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
       <section className="py-24">
         <div className={wrap}>
           <Chapter label="Section by section" n="07" title="From a question to a person to call.">
-            <p>Each part of the flow, before and after, and the line of thinking in between: what it was, what I noticed, what we tried and dropped, and the decision that shaped the final design.</p>
+            <p>Nine parts of the product, each from the original demo to round 27: every version on the way, what I saw in review, what was built and dropped, and the decision that shaped the final design.</p>
           </Chapter>
           <Walkthrough />
         </div>
@@ -750,27 +1015,13 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
             <p>The first rounds were green everywhere and read as generic. The fix was not a new green but fewer of them: a neutral base, and each colour kept for one job.</p>
           </Chapter>
 
-          {/* palette shift */}
-          <Reveal className="mt-14 grid gap-8 rounded-3xl border border-white/10 p-6 sm:p-10">
-            {[
-              { label: "Early rounds", note: "Green on surfaces, text and actions", bar: earlyMix },
-              { label: "Final", note: "Neutral base; colour only where it means something", bar: finalMix },
-            ].map((row) => (
-              <div key={row.label}>
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <p className="font-display text-2xl">{row.label}</p>
-                  <p className="text-sm text-white/55">{row.note}</p>
-                </div>
-                <div className="mt-4 flex h-14 overflow-hidden rounded-xl ring-1 ring-white/10">
-                  {row.bar.map((s) => (
-                    <div className="flex items-end p-2 font-mono text-[0.62rem]" key={s.hex + s.w} style={{ background: s.hex, flexGrow: s.w, color: s.dark ? "#2F3533" : "rgb(255 255 255 / 0.8)" }} title={s.hex}>
-                      {s.w >= 8 ? s.hex : ""}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-            <p className="font-mono text-[0.68rem] text-white/40">Bar widths are illustrative, to show the shift in balance; they are not measured.</p>
+          {/* colour timeline */}
+          <Reveal className="mt-14 rounded-3xl border border-white/10 p-6 sm:p-10">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <p className="font-display text-2xl">Colour, round by round</p>
+              <p className="max-w-md text-sm text-white/55">Green carried everything at first. Over 27 rounds it was narrowed to one job, and a blue took over selection and data.</p>
+            </div>
+            <div className="mt-8"><ColourTimeline /></div>
           </Reveal>
 
           {/* roles */}
@@ -877,7 +1128,7 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
             </Reveal>
             <Reveal className="grid gap-px overflow-hidden rounded-3xl border border-rule bg-rule lg:col-span-5" delay={0.08}>
               {[
-                { who: "Me", tone: TEAL_TEXT, items: ["Brief, brand, content and platform rules", "Source demo and references", "Written, screenshot-based review of every round", "The calls: compass hero, name, colour and text rules, removing the intake"] },
+                { who: "Me", tone: TEAL_TEXT, items: ["Brief, brand, content and platform rules", "Source demo and references", "Written, screenshot-based review of all ~27 rounds", "A kickoff and ideation procedure (round 19)", "The calls: compass hero, name, colour and text rules, removing the intake"] },
                 { who: "Claude", tone: BLUE, items: ["Audit and information architecture", "Layout alternatives and concepts", "All code, copy drafts and QA", "Builds and deploys"] },
               ].map((c) => (
                 <div className="bg-paper p-6" key={c.who}>
@@ -899,9 +1150,12 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
             <ol className="mt-6 grid grid-cols-7 gap-2">
               {week.map((d) => (
                 <li className="min-w-0" key={d.day}>
-                  <div className={cn("rounded-xl px-2 py-3 text-center", d.items ? "text-white" : "bg-paper-2 text-ink-soft")} style={d.items ? { background: TEAL_TEXT } : undefined}>
-                    <p className="font-mono text-[0.65rem] uppercase opacity-80">{d.dow}</p>
-                    <p className="font-display text-2xl leading-none">{d.day}</p>
+                  <div className="flex h-28 items-end rounded-xl bg-paper-2/70 p-1.5">
+                    <div className={cn("flex w-full flex-col justify-end rounded-lg px-2 py-2 text-center", d.rounds ? "text-white" : "text-ink-soft")} style={d.rounds ? { background: TEAL_TEXT, height: `${30 + (d.rounds / 7) * 70}%` } : { height: "100%" }}>
+                      <p className="font-mono text-[0.62rem] uppercase opacity-80">{d.dow}</p>
+                      <p className="font-display text-2xl leading-none">{d.day}</p>
+                      {d.rounds && <p className="mt-1 font-mono text-[0.62rem] opacity-90">{d.rounds} rounds</p>}
+                    </div>
                   </div>
                   {d.items && (
                     <ul className="mt-3 space-y-1.5 text-[0.78rem] text-ink-soft leading-snug max-md:hidden">
@@ -916,11 +1170,44 @@ export function AdvisorLayout({ cs }: { cs: CaseStudy }) {
             </ul>
           </Reveal>
 
-          {/* rounds track */}
+          {/* turning points */}
           <Reveal className="mt-6 rounded-3xl border border-rule bg-paper p-6 sm:p-8">
-            <p className="font-mono text-[0.72rem] text-ink-soft uppercase tracking-[0.06em]">Milestones across ~27 review rounds</p>
-            <RoundTrack />
+            <p className="font-mono text-[0.72rem] text-ink-soft uppercase tracking-[0.06em]">Ten turning points</p>
+            <ol className="relative mt-6 border-rule border-s">
+              {turning.map((t, i) => (
+                <li className="relative grid gap-2 py-4 ps-6 md:grid-cols-[9rem_1fr_1fr] md:gap-6" key={t.t}>
+                  <span aria-hidden className="-start-[0.4rem] absolute top-[1.35rem] size-3 rounded-full ring-4 ring-paper" style={{ background: i === turning.length - 1 ? TEAL_TEXT : BLUE }} />
+                  <div>
+                    <p className="font-mono text-xs" style={{ color: BLUE }}>{t.r}</p>
+                    <p className="font-mono text-[0.65rem] text-ink-soft">{t.day}</p>
+                  </div>
+                  <div>
+                    <p className="font-display text-xl leading-snug">{t.t}</p>
+                    <p className="mt-2 text-ink-soft text-sm leading-relaxed"><span className="line-through decoration-ink-soft/40">{t.before}</span></p>
+                    <p className="mt-1 text-sm leading-relaxed" style={{ color: TEAL_TEXT }}>→ {t.after}</p>
+                  </div>
+                  <p className="self-center text-ink-soft text-sm italic leading-relaxed md:border-rule md:border-s md:ps-6">{t.why}</p>
+                </li>
+              ))}
+            </ol>
           </Reveal>
+
+          {/* principles */}
+          <Reveal className="mt-6">
+            <p className="font-mono text-[0.72rem] text-ink-soft uppercase tracking-[0.06em]">The rules I kept setting</p>
+          </Reveal>
+          <RevealGroup className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {principles.map((pr, i) => (
+              <RevealItem className="flex flex-col rounded-2xl bg-paper p-5 ring-1 ring-rule" key={pr.p}>
+                <div className="flex items-baseline justify-between gap-2">
+                  <span className="font-mono text-[0.68rem]" style={{ color: TEAL_TEXT }}>{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-mono text-[0.62rem] text-ink-soft">{pr.r}</span>
+                </div>
+                <p className="mt-3 font-display text-lg leading-snug">{pr.p}</p>
+                <p className="mt-1.5 text-ink-soft text-sm leading-relaxed">{pr.n}</p>
+              </RevealItem>
+            ))}
+          </RevealGroup>
 
           {/* exploration + QA */}
           <div className="mt-6 grid gap-6 lg:grid-cols-12">
